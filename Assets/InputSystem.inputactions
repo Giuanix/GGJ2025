@@ -31,15 +31,6 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
-                },
-                {
-                    "name": "Pause",
-                    "type": "Button",
-                    "id": "02180729-8d15-46c3-96e3-479ce14ff65e",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": true
                 }
             ],
             "bindings": [
@@ -185,11 +176,37 @@
                     "action": "Shoot",
                     "isComposite": false,
                     "isPartOfComposite": false
+                }
+            ]
+        },
+        {
+            "name": "UI",
+            "id": "cd1db5a1-1398-48a5-a1e0-b6b217d91b10",
+            "actions": [
+                {
+                    "name": "Pause",
+                    "type": "Button",
+                    "id": "b5a8f8a4-c460-4176-a626-ea594dc2a251",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
                 },
                 {
+                    "name": "Join",
+                    "type": "Button",
+                    "id": "de80ce2a-cff0-4be6-8c87-eff05de71a53",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                }
+            ],
+            "bindings": [
+                {
                     "name": "",
-                    "id": "c372c20e-c7f3-46f9-b0dd-9911f850e106",
-                    "path": "<Keyboard>/escape",
+                    "id": "dd685718-4870-41e2-8b1b-2403ea2b203c",
+                    "path": "<Keyboard>/#(P)",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -199,12 +216,34 @@
                 },
                 {
                     "name": "",
-                    "id": "5ba33953-6f26-476a-92a0-ef22e1d65225",
+                    "id": "6d09e55b-e651-4319-9784-d82eee60e6cd",
                     "path": "<Gamepad>/start",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
                     "action": "Pause",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "484fa17f-2769-4e38-b0bf-b8deb0462cb4",
+                    "path": "<Keyboard>/j",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Join",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "6f7a0909-bfe2-4dce-a664-a9898c8a87cb",
+                    "path": "<Gamepad>/select",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Join",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
