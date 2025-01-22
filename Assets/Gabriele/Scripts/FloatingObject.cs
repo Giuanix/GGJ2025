@@ -1,20 +1,14 @@
 using UnityEngine;
-[RequireComponent (typeof(Rigidbody2D))]
 public class FloatingObject : MonoBehaviour
 {
     [SerializeField] private float buoyancyForce = 10f;  // Force pushing the object upwards
     [SerializeField] private float dragCoefficient = 0.5f;  // Drag force for horizontal motion
     [SerializeField] private float angularDragCoefficient = 0.1f;  // Drag force for rotation
 
-    private Rigidbody2D rb;  // Rigidbody2D for applying physics
+    [SerializeField] private Rigidbody2D rb; 
 
     private bool isInWater;
     public bool IsInWater() { return isInWater; }
-
-    private void Start()
-    {
-        rb = GetComponent<Rigidbody2D>();
-    }
 
     private void FixedUpdate()
     {

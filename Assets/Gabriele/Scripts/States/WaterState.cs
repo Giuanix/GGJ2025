@@ -21,7 +21,8 @@ public class WaterState : State
     public override void Update()
     {
         player.Movement();
-        
+        player.Gravity();
+
         if (!player.floatingObject.IsInWater())
             player.ChangeState(player.jumpState);
     }

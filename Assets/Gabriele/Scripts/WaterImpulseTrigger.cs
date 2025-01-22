@@ -11,7 +11,6 @@ public class WaterImpulseTrigger : MonoBehaviour
         {
             if (!fl.IsInWater() && WaterLevel.Instance.CanSplash())
             {
-                Debug.Log("Splash");
                 transform.parent.GetComponent<WaterLevel>().StartImpulse(15f, 0.25f, this);
             }
         }

@@ -4,15 +4,19 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 
 [RequireComponent(typeof(Rigidbody2D))]
-[RequireComponent(typeof(FloatingObject))]
+[RequireComponent(typeof(Animator))]
 public class PlayerController : MonoBehaviour
 {
     public static PlayerController instance;
-    
+
     [Header("Movement Settings")]
     [HideInInspector] public Rigidbody2D rb;
-    [HideInInspector] public FloatingObject floatingObject;
+    [HideInInspector] public Animator animator;
+    public FloatingObject floatingObject;
+
     [SerializeField] private float moveSpeed;
+    private float actualSpeed;
+
     private float horizontalMovement;
     public bool isFacingRight = true;
 
@@ -29,11 +33,16 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float maxFallSpeed = 18f;
     [SerializeField] private float fallSpeedMultiplier = 2f;
 
-    [Header("StateMachine Settings")]
+
+
     State currentState;
     [HideInInspector] public LocomotionState locomotionState;
     [HideInInspector] public JumpState jumpState;
     [HideInInspector] public WaterState waterState;
+    [HideInInspector] public BubbleState bubbleState;
+
+
+
     public void ChangeState(State newState, bool callOnEnter = true)
     {
         currentState?.OnExit();
@@ -48,6 +57,7 @@ public class PlayerController : MonoBehaviour
         return currentState is T;
     }
 
+
     private void Awake()
     {
         instance = this;
@@ -56,11 +66,14 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        floatingObject = GetComponent<FloatingObject>();
+        animator = GetComponent<Animator>();
 
         locomotionState = new LocomotionState(this);
         jumpState = new JumpState(this);
         waterState = new WaterState(this);
+        bubbleState = new BubbleState(this);
+
+        actualSpeed = moveSpeed;
 
         ChangeState(locomotionState);
     }
@@ -68,29 +81,49 @@ public class PlayerController : MonoBehaviour
     public void Update()
     {
         currentState.Update();
-        if (floatingObject.IsInWater() && !IsInState<WaterState>())
+
+        if (floatingObject.IsInWater() && !IsInState<WaterState>() && !IsInState<BubbleState>())
         {
             ChangeState(waterState);
         }
     }
+
     public void Movement()
     {
-        rb.velocity = new Vector2(horizontalMovement * moveSpeed,rb.velocity.y);
-        Gravity();
+        animator.SetFloat("Speed", horizontalMovement);
+
+        rb.velocity = new Vector2(horizontalMovement * actualSpeed,rb.velocity.y);
         Flip();
     }
-    
+
+    public void ResetSpeed()
+    {
+        actualSpeed = moveSpeed;
+    }
+    public void ReduceActualSpeedBy(float d)
+    {
+        actualSpeed /= d;
+    }
+    public void SetActualSpeed(float s)
+    {
+        actualSpeed = s;
+    }
     //Inizio di Input
     public void Move(InputAction.CallbackContext context)
     {
         horizontalMovement = context.ReadValue<Vector2>().x;
     }
+
+
     public void Jump(InputAction.CallbackContext context)
     {
         currentState.JumpCall(context);
     }
+
+
+
     //Funzioni di Controllo
-    private void Gravity()
+    public void Gravity()
     {
         if(rb.velocity.y < 0)
         {
@@ -102,13 +135,17 @@ public class PlayerController : MonoBehaviour
             rb.gravityScale = baseGravity;
         }
     }
+
+
     public bool IsGrounded()
     {
         return Physics2D.OverlapBox(groundCheckPos.position, groundCheckSize, 0, grondLayer) && Mathf.Abs(rb.velocity.y) <0.1f; //<-- avoid IsGrounded instantly when jumping!
     }
+
+
     private void Flip()
     {
-        if(isFacingRight && horizontalMovement < 0 || !isFacingRight && horizontalMovement > 0)
+        if(isFacingRight && horizontalMovement > 0 || !isFacingRight && horizontalMovement < 0)
         {
             isFacingRight = !isFacingRight;
             Vector3 ls = transform.localScale;
@@ -116,9 +153,14 @@ public class PlayerController : MonoBehaviour
             transform.localScale = ls;
         }
     }
+
+
+
     private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.white;
         Gizmos.DrawCube(groundCheckPos.position,groundCheckSize);
     }
+
+
 }
