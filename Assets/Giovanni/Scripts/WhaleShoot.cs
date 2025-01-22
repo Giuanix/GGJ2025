@@ -8,7 +8,10 @@ public class WhaleShoot : MonoBehaviour
     [SerializeField] Transform BulletSpawnPoint;
     [SerializeField] float shotDelay;
     float shotTimeCounter;
-
+    private void Start()
+    {
+        shotTimeCounter = shotDelay;
+    }
     void Update()
     {
         shotTimeCounter += Time.deltaTime;

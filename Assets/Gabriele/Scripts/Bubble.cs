@@ -80,10 +80,6 @@ public class Bubble : MonoBehaviour
 
         if (isProjectile)
         {
-
-     
-            horizontalMovement = horizontalSpeed * Time.deltaTime;
-            
             horizontalSpeed -= Time.deltaTime * airFriction;
             horizontalSpeed = Mathf.Clamp(horizontalSpeed, 0, 100);
         }
