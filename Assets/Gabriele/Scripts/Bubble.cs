@@ -2,6 +2,7 @@ using UnityEngine;
 
 [RequireComponent(typeof(SpriteRenderer))]
 [RequireComponent(typeof(CircleCollider2D))]
+[RequireComponent(typeof(Animator))]
 public class Bubble : MonoBehaviour
 {
     [Header("Bubble")]
@@ -57,13 +58,15 @@ public class Bubble : MonoBehaviour
         Move();
 
         decreaseSpeed += Time.deltaTime * airFriction;
-
+        livingTime -= Time.deltaTime;
         if (scaleIncreasing)
             transform.localScale += Vector3.one * Time.deltaTime * Random.Range(increasingScaleSpeed.x, increasingScaleSpeed.y);
      
         
         if (livingTime <= 0)
-            Destroy(gameObject);
+        {
+            BubbleBlowUp();
+        }
     }
 
     private void Move()
@@ -90,9 +93,24 @@ public class Bubble : MonoBehaviour
 
     }
 
-
+    public void BubbleBlowUp()
+    {
+        Animator anim = GetComponent<Animator>();
+        anim.Play("BubbleBlowUp");
+        transform.DetachChildren();
+        Destroy(gameObject, 1f);
+    }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        foreach (MonoBehaviour script in collision.GetComponents<MonoBehaviour>())
+        {
+            if (script is IDamageable damageable)
+            {
+                damageable.TakeDamage(Mathf.FloorToInt(Random.Range(damage.x,damage.y)));
+                BubbleBlowUp();
+                return;
+            }
+        }
     }
 }
