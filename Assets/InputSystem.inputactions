@@ -31,6 +31,24 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
+                },
+                {
+                    "name": "Pause",
+                    "type": "Button",
+                    "id": "200f0e24-c439-4a5a-a3fe-81437c858649",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "Join",
+                    "type": "Button",
+                    "id": "070a722a-2626-4a0a-9794-85a116960802",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
                 }
             ],
             "bindings": [
@@ -176,36 +194,10 @@
                     "action": "Shoot",
                     "isComposite": false,
                     "isPartOfComposite": false
-                }
-            ]
-        },
-        {
-            "name": "UI",
-            "id": "cd1db5a1-1398-48a5-a1e0-b6b217d91b10",
-            "actions": [
-                {
-                    "name": "Pause",
-                    "type": "Button",
-                    "id": "b5a8f8a4-c460-4176-a626-ea594dc2a251",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": true
                 },
                 {
-                    "name": "Join",
-                    "type": "Button",
-                    "id": "de80ce2a-cff0-4be6-8c87-eff05de71a53",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": true
-                }
-            ],
-            "bindings": [
-                {
                     "name": "",
-                    "id": "dd685718-4870-41e2-8b1b-2403ea2b203c",
+                    "id": "695365e0-8f04-41a9-87f9-8d29a8cf8304",
                     "path": "<Keyboard>/#(P)",
                     "interactions": "",
                     "processors": "",
@@ -216,7 +208,7 @@
                 },
                 {
                     "name": "",
-                    "id": "6d09e55b-e651-4319-9784-d82eee60e6cd",
+                    "id": "3b92d2b3-9fca-4bda-91ed-b3ee6f1fcb6c",
                     "path": "<Gamepad>/start",
                     "interactions": "",
                     "processors": "",
@@ -227,7 +219,7 @@
                 },
                 {
                     "name": "",
-                    "id": "484fa17f-2769-4e38-b0bf-b8deb0462cb4",
+                    "id": "705209c1-ee5d-4729-bea9-497cd6bd90a0",
                     "path": "<Keyboard>/j",
                     "interactions": "",
                     "processors": "",
@@ -238,7 +230,7 @@
                 },
                 {
                     "name": "",
-                    "id": "6f7a0909-bfe2-4dce-a664-a9898c8a87cb",
+                    "id": "a9b37e52-82fc-418d-aed9-b8867c7f45e3",
                     "path": "<Gamepad>/select",
                     "interactions": "",
                     "processors": "",

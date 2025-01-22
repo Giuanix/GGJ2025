@@ -265,6 +265,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 0}
+  floatingObject: {fileID: 0}
   moveSpeed: 6
   isFacingRight: 1
   jumpForce: 13

@@ -8,11 +8,10 @@ using UnityEngine.InputSystem;
 public class PlayerController : MonoBehaviour
 {
     public static PlayerController instance;
-
+    
     [Header("Movement Settings")]
     [HideInInspector] public Rigidbody2D rb;
     [HideInInspector] public FloatingObject floatingObject;
-
     [SerializeField] private float moveSpeed;
     private float horizontalMovement;
     public bool isFacingRight = true;
@@ -30,15 +29,11 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float maxFallSpeed = 18f;
     [SerializeField] private float fallSpeedMultiplier = 2f;
 
-
-
+    [Header("StateMachine Settings")]
     State currentState;
     [HideInInspector] public LocomotionState locomotionState;
     [HideInInspector] public JumpState jumpState;
     [HideInInspector] public WaterState waterState;
-
-
-
     public void ChangeState(State newState, bool callOnEnter = true)
     {
         currentState?.OnExit();
@@ -52,7 +47,6 @@ public class PlayerController : MonoBehaviour
     {
         return currentState is T;
     }
-
 
     private void Awake()
     {
@@ -68,7 +62,6 @@ public class PlayerController : MonoBehaviour
         jumpState = new JumpState(this);
         waterState = new WaterState(this);
 
-
         ChangeState(locomotionState);
     }
 
@@ -80,7 +73,6 @@ public class PlayerController : MonoBehaviour
             ChangeState(waterState);
         }
     }
-
     public void Movement()
     {
         rb.velocity = new Vector2(horizontalMovement * moveSpeed,rb.velocity.y);
@@ -93,15 +85,10 @@ public class PlayerController : MonoBehaviour
     {
         horizontalMovement = context.ReadValue<Vector2>().x;
     }
-
-
     public void Jump(InputAction.CallbackContext context)
     {
         currentState.JumpCall(context);
     }
-
-
-
     //Funzioni di Controllo
     private void Gravity()
     {
@@ -115,14 +102,10 @@ public class PlayerController : MonoBehaviour
             rb.gravityScale = baseGravity;
         }
     }
-
-
     public bool IsGrounded()
     {
         return Physics2D.OverlapBox(groundCheckPos.position, groundCheckSize, 0, grondLayer) && Mathf.Abs(rb.velocity.y) <0.1f; //<-- avoid IsGrounded instantly when jumping!
     }
-
-
     private void Flip()
     {
         if(isFacingRight && horizontalMovement < 0 || !isFacingRight && horizontalMovement > 0)
@@ -133,9 +116,6 @@ public class PlayerController : MonoBehaviour
             transform.localScale = ls;
         }
     }
-
-
-
     private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.white;

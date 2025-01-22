@@ -162,6 +162,7 @@ GameObject:
   - component: {fileID: 3645337461578501605}
   - component: {fileID: 5717196923446263666}
   - component: {fileID: -4916584610776354104}
+  - component: {fileID: 6815765085842441391}
   m_Layer: 0
   m_Name: Whale
   m_TagString: Player
@@ -410,6 +411,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 0}
+  floatingObject: {fileID: 0}
   moveSpeed: 4
   isFacingRight: 1
   jumpForce: 13
@@ -448,3 +450,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9d14a8d53491db14189c794214f64c68, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &6815765085842441391
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8488802530823548771}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bb03486fd4e846d44a7967bcb846e81a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  buoyancyForce: 10
+  dragCoefficient: 0.5
+  angularDragCoefficient: 0.1
