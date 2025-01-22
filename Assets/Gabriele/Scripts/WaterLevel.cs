@@ -11,15 +11,16 @@ public class WaterLevel : MonoBehaviour
     
     [Range(2, 64)]
     [SerializeField] private int waterPointsCount = 6;
-    [SerializeField] private int waterHeight = 5;
-    [SerializeField] private float waterFrequency = 15f;
-    [SerializeField] private float speed = 3f;
     [SerializeField] private int curveThickness = 3;
-    
-    
+    public float speed = 3f;
+    public float waterFrequency = 15f;
+    public int waterHeight = 5;
+    public float angularForce = 20; //<-- used in floatingObj
+
     [SerializeField] private Color curveColor;
     [SerializeField] private Color fillColor;
     [SerializeField] private GameObject waterHitPoint;
+
 
     private List<WaterImpulseTrigger> waterPoints = new List<WaterImpulseTrigger>();
     private Texture2D waterTexture;

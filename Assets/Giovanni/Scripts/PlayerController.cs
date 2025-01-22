@@ -90,7 +90,7 @@ public class PlayerController : MonoBehaviour
 
     public void Movement()
     {
-        animator.SetFloat("Speed", horizontalMovement);
+        animator.SetFloat("Speed", Mathf.Abs(horizontalMovement));
 
         rb.velocity = new Vector2(horizontalMovement * actualSpeed,rb.velocity.y);
         Flip();

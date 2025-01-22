@@ -25,6 +25,7 @@ public class FloatingObject : MonoBehaviour
 
             // Apply the buoyancy force
             rb.AddForce(Vector2.up * buoyancy, ForceMode2D.Force);
+            rb.AddForce(Vector2.right * WaterLevel.Instance.angularForce * WaterLevel.Instance.waterHeight, ForceMode2D.Force);
 
             Vector2 dragForce = -rb.velocity * dragCoefficient;
             rb.AddForce(dragForce, ForceMode2D.Force);
