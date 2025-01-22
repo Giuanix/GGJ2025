@@ -30,7 +30,7 @@ public class Bubble : MonoBehaviour
 
     private float startHorizontalOffset;
     private float decreaseSpeed = 1f;
-
+    private bool isBlowUp = false;
     private SpriteRenderer spriteRenderer;
 
     public void SetupDirection(bool right)
@@ -63,7 +63,7 @@ public class Bubble : MonoBehaviour
             transform.localScale += Vector3.one * Time.deltaTime * Random.Range(increasingScaleSpeed.x, increasingScaleSpeed.y);
      
         
-        if (livingTime <= 0)
+        if (livingTime <= 0 && !isBlowUp)
         {
             BubbleBlowUp();
         }
@@ -95,10 +95,22 @@ public class Bubble : MonoBehaviour
 
     public void BubbleBlowUp()
     {
-        Animator anim = GetComponent<Animator>();
-        anim.Play("BubbleBlowUp");
-        transform.DetachChildren();
-        Destroy(gameObject, 1f);
+        if (!isBlowUp)
+        {
+            isBlowUp = true;
+
+            Animator anim = GetComponent<Animator>();
+            anim.Play("BubbleBlowUp");
+
+
+            if (transform.GetChild(0).TryGetComponent<PlayerController>(out PlayerController pl))
+                pl.ChangeState(pl.locomotionState);
+            transform.DetachChildren();
+
+            Destroy(gameObject, 1f);
+
+        }
+
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -109,7 +121,7 @@ public class Bubble : MonoBehaviour
             {
                 damageable.TakeDamage(Mathf.FloorToInt(Random.Range(damage.x,damage.y)));
                 BubbleBlowUp();
-                return;
+                break;
             }
         }
     }

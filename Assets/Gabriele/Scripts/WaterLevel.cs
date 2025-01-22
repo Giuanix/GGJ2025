@@ -9,7 +9,7 @@ public class WaterLevel : MonoBehaviour
     [SerializeField] private float offset = 200f;
     
     
-    [Range(2, 32)]
+    [Range(2, 64)]
     [SerializeField] private int waterPointsCount = 6;
     [SerializeField] private int waterHeight = 5;
     [SerializeField] private float waterFrequency = 15f;
@@ -149,7 +149,7 @@ public class WaterLevel : MonoBehaviour
 
         foreach(WaterImpulseTrigger t in waterPoints)
         {
-            float currentDistance = Mathf.Abs(t.transform.position.x - x); // Use absolute distance
+            float currentDistance = Mathf.Abs(t.transform.position.x - x);
             if(currentDistance < distance)
             {
                 closestPoint = t.transform;
@@ -157,13 +157,12 @@ public class WaterLevel : MonoBehaviour
             }
         }
 
-        // Log the water height for debugging
         if (closestPoint != null)
         {
             return closestPoint.position.y;
         }
 
-        return 0f;  // Return 0 if no closest point is found
+        return 0f;  
     }
 
 

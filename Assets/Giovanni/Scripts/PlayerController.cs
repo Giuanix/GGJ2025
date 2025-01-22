@@ -4,14 +4,15 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 
 [RequireComponent(typeof(Rigidbody2D))]
-[RequireComponent(typeof(FloatingObject))]
+[RequireComponent(typeof(Animator))]
 public class PlayerController : MonoBehaviour
 {
     public static PlayerController instance;
 
     [Header("Movement Settings")]
     [HideInInspector] public Rigidbody2D rb;
-    [HideInInspector] public FloatingObject floatingObject;
+    [HideInInspector] public Animator animator;
+    public FloatingObject floatingObject;
 
     [SerializeField] private float moveSpeed;
     private float actualSpeed;
@@ -65,7 +66,7 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        floatingObject = GetComponent<FloatingObject>();
+        animator = GetComponent<Animator>();
 
         locomotionState = new LocomotionState(this);
         jumpState = new JumpState(this);
@@ -89,6 +90,8 @@ public class PlayerController : MonoBehaviour
 
     public void Movement()
     {
+        animator.SetFloat("Speed", horizontalMovement);
+
         rb.velocity = new Vector2(horizontalMovement * actualSpeed,rb.velocity.y);
         Flip();
     }
@@ -142,7 +145,7 @@ public class PlayerController : MonoBehaviour
 
     private void Flip()
     {
-        if(isFacingRight && horizontalMovement < 0 || !isFacingRight && horizontalMovement > 0)
+        if(isFacingRight && horizontalMovement > 0 || !isFacingRight && horizontalMovement < 0)
         {
             isFacingRight = !isFacingRight;
             Vector3 ls = transform.localScale;
