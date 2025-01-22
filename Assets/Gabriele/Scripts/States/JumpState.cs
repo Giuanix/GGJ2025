@@ -27,6 +27,7 @@ public class JumpState : State
     public override void Update()
     {
         player.Movement();
+        player.Gravity();
 
         if (player.IsGrounded()) player.ChangeState(player.locomotionState);
     }

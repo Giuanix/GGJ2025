@@ -29,6 +29,7 @@ public class LocomotionState : State
     public override void Update()
     {
         player.Movement();
+        player.Gravity();
     }
 
 }

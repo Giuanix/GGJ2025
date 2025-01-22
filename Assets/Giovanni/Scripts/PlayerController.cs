@@ -14,6 +14,8 @@ public class PlayerController : MonoBehaviour
     [HideInInspector] public FloatingObject floatingObject;
 
     [SerializeField] private float moveSpeed;
+    private float actualSpeed;
+
     private float horizontalMovement;
     public bool isFacingRight = true;
 
@@ -36,6 +38,7 @@ public class PlayerController : MonoBehaviour
     [HideInInspector] public LocomotionState locomotionState;
     [HideInInspector] public JumpState jumpState;
     [HideInInspector] public WaterState waterState;
+    [HideInInspector] public BubbleState bubbleState;
 
 
 
@@ -67,7 +70,9 @@ public class PlayerController : MonoBehaviour
         locomotionState = new LocomotionState(this);
         jumpState = new JumpState(this);
         waterState = new WaterState(this);
+        bubbleState = new BubbleState(this);
 
+        actualSpeed = moveSpeed;
 
         ChangeState(locomotionState);
     }
@@ -75,7 +80,8 @@ public class PlayerController : MonoBehaviour
     public void Update()
     {
         currentState.Update();
-        if (floatingObject.IsInWater() && !IsInState<WaterState>())
+
+        if (floatingObject.IsInWater() && !IsInState<WaterState>() && !IsInState<BubbleState>())
         {
             ChangeState(waterState);
         }
@@ -83,11 +89,22 @@ public class PlayerController : MonoBehaviour
 
     public void Movement()
     {
-        rb.velocity = new Vector2(horizontalMovement * moveSpeed,rb.velocity.y);
-        Gravity();
+        rb.velocity = new Vector2(horizontalMovement * actualSpeed,rb.velocity.y);
         Flip();
     }
-    
+
+    public void ResetSpeed()
+    {
+        actualSpeed = moveSpeed;
+    }
+    public void ReduceActualSpeedBy(float d)
+    {
+        actualSpeed /= d;
+    }
+    public void SetActualSpeed(float s)
+    {
+        actualSpeed = s;
+    }
     //Inizio di Input
     public void Move(InputAction.CallbackContext context)
     {
@@ -103,7 +120,7 @@ public class PlayerController : MonoBehaviour
 
 
     //Funzioni di Controllo
-    private void Gravity()
+    public void Gravity()
     {
         if(rb.velocity.y < 0)
         {
@@ -141,4 +158,6 @@ public class PlayerController : MonoBehaviour
         Gizmos.color = Color.white;
         Gizmos.DrawCube(groundCheckPos.position,groundCheckSize);
     }
+
+
 }
