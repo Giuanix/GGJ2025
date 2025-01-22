@@ -7,7 +7,7 @@ public class SwitcherPlayer : MonoBehaviour
 {
     public SelectPlayer managerPlayer;
     [SerializeField] PlayerInputManager manager;
-    int index = 0;
+    private int index = 0;
     [SerializeField] List<GameObject> fighters = new List<GameObject>();
     // Start is called before the first frame update
     void Start()
@@ -25,6 +25,5 @@ public class SwitcherPlayer : MonoBehaviour
     public void  SwitchNextSpawnCharacter(PlayerInput input)
     {
         index++;
-        manager.playerPrefab = fighters[index];
     }
 }

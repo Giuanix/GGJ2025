@@ -293,12 +293,12 @@ MonoBehaviour:
     m_ActionName: Movement/Shoot[/Mouse/leftButton,/XInputControllerWindows/rightTrigger]
   - m_PersistentCalls:
       m_Calls: []
-    m_ActionId: b5a8f8a4-c460-4176-a626-ea594dc2a251
-    m_ActionName: UI/Pause[/Keyboard/p,/XInputControllerWindows/start]
+    m_ActionId: 200f0e24-c439-4a5a-a3fe-81437c858649
+    m_ActionName: Movement/Pause[/Keyboard/p,/XInputControllerWindows/start]
   - m_PersistentCalls:
       m_Calls: []
-    m_ActionId: de80ce2a-cff0-4be6-8c87-eff05de71a53
-    m_ActionName: UI/Join[/Keyboard/j,/XInputControllerWindows/select]
+    m_ActionId: 070a722a-2626-4a0a-9794-85a116960802
+    m_ActionName: Movement/Join[/Keyboard/j,/XInputControllerWindows/select]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Movement
@@ -337,7 +337,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7819502705844467337}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6f86372a984ebcd46a2daedc7ae999f8, type: 3}
   m_Name: 

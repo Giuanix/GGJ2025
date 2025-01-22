@@ -798,7 +798,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c1f93ac5b64ad054dae8817f467d2a66, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  prefabDuck: {fileID: 577042306242707002, guid: 61b9fa8f1b09f4a4cb314dd2ef3f7307, type: 3}
+  prefabDuck: {fileID: 7819502705844467337, guid: d5ee4eb657e4e554bb4d129bcd299284, type: 3}
   prefabWhale: {fileID: 8488802530823548771, guid: de67c6ef670e91149b8b418251a53fd1, type: 3}
   currentPrefab1: {fileID: 0}
   currentPrefab2: {fileID: 0}
