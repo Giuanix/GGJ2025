@@ -4,11 +4,12 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 public class PlayerController : MonoBehaviour
 {
+    public static PlayerController instance;
     [Header("Movement Settings")]
     [SerializeField] private Rigidbody2D rb;
     [SerializeField] private float moveSpeed;
     private float horizontalMovement;
-    private bool isFacingRight = true;
+    public bool isFacingRight = true;
 
     [Header("Jump Settings")]
     [SerializeField] private float jumpForce;
@@ -24,7 +25,10 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float baseGravity = 2f;
     [SerializeField] private float maxFallSpeed = 18f;
     [SerializeField] private float fallSpeedMultiplier = 2f;
-
+    private void Awake()
+    {
+        instance = this;
+    }
     // Start is called before the first frame update
     void Start()
     {
