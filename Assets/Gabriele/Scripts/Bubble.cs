@@ -2,6 +2,7 @@ using UnityEngine;
 
 [RequireComponent(typeof(SpriteRenderer))]
 [RequireComponent(typeof(CircleCollider2D))]
+[RequireComponent(typeof(Rigidbody2D))]
 [RequireComponent(typeof(Animator))]
 public class Bubble : MonoBehaviour
 {
@@ -11,9 +12,12 @@ public class Bubble : MonoBehaviour
     [SerializeField] private float horizontalSpeed = 1f;
     [SerializeField] private float verticalSpeed = 0.65f;
     [SerializeField] private float livingTime = 10f;
-    [SerializeField] private float scale = 5f;
 
+    [Space(5)]
+
+    [SerializeField] private float scale = 5f;
     [SerializeField] private bool scaleIncreasing = false;
+
     [Space(5)]
     [Header("Random")]
 
@@ -27,22 +31,22 @@ public class Bubble : MonoBehaviour
     [Header("Projectile")]
     [SerializeField] private bool isProjectile = false;
     [SerializeField] private float airFriction = 1f;
+    [SerializeField] private float minSpeedStartFloating = 7f;
 
     private float startHorizontalOffset;
-    private float decreaseSpeed = 1f;
     private bool isBlowUp = false;
     private SpriteRenderer spriteRenderer;
+    PlayerController manager;
+    Rigidbody2D rb;
 
-    public void SetupDirection(bool right)
-    {
-        horizontalSpeed *= (right ? 1 : -1);
-    }
+    bool isFacingRight;
 
     private void Start()
     {
         startHorizontalOffset = Random.Range(-5, 5);
         spriteRenderer = GetComponent<SpriteRenderer>();
-
+        rb = GetComponent<Rigidbody2D>();
+        rb.gravityScale = 0;
         if (spriteRenderer.drawMode != SpriteDrawMode.Sliced)
         {
             spriteRenderer.drawMode = SpriteDrawMode.Sliced;
@@ -51,22 +55,22 @@ public class Bubble : MonoBehaviour
         // Set the initial texture size
         spriteRenderer.size = Vector2.one * scale;
         GetComponent<CircleCollider2D>().radius = 0.22f * scale;
+        manager = PlayerController.instance;
+        isFacingRight = manager.isFacingRight;
+
     }
     private void Update()
     {
 
+        
         Move();
 
-        decreaseSpeed += Time.deltaTime * airFriction;
-        livingTime -= Time.deltaTime;
+
         if (scaleIncreasing)
             transform.localScale += Vector3.one * Time.deltaTime * Random.Range(increasingScaleSpeed.x, increasingScaleSpeed.y);
-     
         
         if (livingTime <= 0 && !isBlowUp)
-        {
             BubbleBlowUp();
-        }
     }
 
     private void Move()
@@ -76,19 +80,35 @@ public class Bubble : MonoBehaviour
 
         if (isProjectile)
         {
-            horizontalMovement = horizontalSpeed * Time.deltaTime;  // Applying speed over time
+
+     
+            horizontalMovement = horizontalSpeed * Time.deltaTime;
+            
+            horizontalSpeed -= Time.deltaTime * airFriction;
+            horizontalSpeed = Mathf.Clamp(horizontalSpeed, 0, 100);
         }
         else
         {
+            livingTime -= Time.deltaTime;
             horizontalMovement = horizontalAmplitude * Mathf.Sin((Time.time + startHorizontalOffset));
         }
 
-        if ((isProjectile && Mathf.Abs(horizontalMovement) < 1f) || !isProjectile)
+        if ((isProjectile && Mathf.Abs(horizontalSpeed) < minSpeedStartFloating) || !isProjectile)
         {
+            if(isProjectile)
+                livingTime -= Time.deltaTime;
+
             verticalMovement = Random.Range(floatingSpeed.x, floatingSpeed.y);
         }
+        if (isFacingRight == true)
+        {
+            rb.velocity = -transform.right  * horizontalSpeed;
 
-        transform.position += new Vector3(horizontalMovement, 0, 0) * Time.deltaTime * horizontalSpeed;  
+        }
+        else
+        {
+            rb.velocity = transform.right   * horizontalSpeed;
+        }
         transform.position += new Vector3(0, verticalMovement, 0) * Time.deltaTime * verticalSpeed;  
 
     }
@@ -102,11 +122,11 @@ public class Bubble : MonoBehaviour
             Animator anim = GetComponent<Animator>();
             anim.Play("BubbleBlowUp");
 
-
-            if (transform.GetChild(0).TryGetComponent<PlayerController>(out PlayerController pl))
-                pl.ChangeState(pl.locomotionState);
+            if(transform.childCount > 0)
+                if (transform.GetChild(0).TryGetComponent<PlayerController>(out PlayerController pl))
+                    pl.ChangeState(pl.locomotionState);
+            
             transform.DetachChildren();
-
             Destroy(gameObject, 1f);
 
         }
@@ -115,6 +135,11 @@ public class Bubble : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        if (collision.gameObject.CompareTag("Ground"))
+        {
+            BubbleBlowUp();
+            return;
+        }
         foreach (MonoBehaviour script in collision.GetComponents<MonoBehaviour>())
         {
             if (script is IDamageable damageable)
