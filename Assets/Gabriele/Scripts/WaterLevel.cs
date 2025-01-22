@@ -1,11 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+[RequireComponent(typeof(BoxCollider2D))]
 public class WaterLevel : MonoBehaviour
 {
-    [SerializeField] private int textureWidth = 640;
-    [SerializeField] private int textureHeight = 640;
+    [SerializeField] private int textureWidth = 320;
+    [SerializeField] private int textureHeight = 180;
     [SerializeField] private float offset = 200f;
     
     
@@ -54,7 +54,7 @@ public class WaterLevel : MonoBehaviour
         spriteRenderer = gameObject.AddComponent<SpriteRenderer>();
         spriteRenderer.sortingOrder = 1;
         spriteRenderer.sprite = Sprite.Create(waterTexture, new Rect(0, 0, waterTexture.width, waterTexture.height), new Vector2(0.5f, 0.5f), 1f);
-
+        transform.tag = "Water";
         DrawWaterCurve();
     }
 

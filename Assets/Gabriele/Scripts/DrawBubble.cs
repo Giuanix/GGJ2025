@@ -1,75 +1,47 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(SpriteRenderer))]
 public class DrawBubble : MonoBehaviour
 {
-    [SerializeField] private int bubbleSize = 50;  // The diameter of the bubble
-    [SerializeField] private int textureSize = 100; // The resolution of the texture
-    [SerializeField] private Color[] colorPalette;
-    [SerializeField] private int colorCounter = 5;
-    [SerializeField] private int thickness = 1;
+    [Header("Bubble")]
+    [SerializeField] private float horizontalSpeed = 1f;
+    [SerializeField] private Vector2 horizontalAmplitude = new Vector2(0.5f, 1.5f);
+    [SerializeField] private Vector2 floatingSpeed = new Vector2(1, 2);
+    [SerializeField] private Vector2 increasingScaleSpeed = new Vector2(1, 2);
 
-    private Texture2D bubbleTexture;
-    private SpriteRenderer spriteRenderer;
-
+    [SerializeField] private float movementVariance = 0.5f; 
+    [SerializeField] private bool scaleIncreasing = false;
+    [SerializeField] private float livingTime = 10f;
+    [SerializeField] private float generalSpeed = 0.65f;
+    private float startHorizontalOffset;
     private void Start()
     {
-        bubbleTexture = new Texture2D(textureSize, textureSize);
-        bubbleTexture.filterMode = FilterMode.Point;
-        bubbleTexture.wrapMode = TextureWrapMode.Clamp;
-
-        spriteRenderer = gameObject.AddComponent<SpriteRenderer>();
-        spriteRenderer.sortingOrder = 1;
-        spriteRenderer.sprite = Sprite.Create(bubbleTexture, new Rect(0, 0, textureSize, textureSize), new Vector2(0.5f, 0.5f), 1f);
-
-        DrawBubbleCircle();
+        startHorizontalOffset = Random.Range(-50, 50);
     }
 
-    private void DrawBubbleCircle()
+    private void Update()
     {
-        Color[] texturePixels = new Color[textureSize * textureSize];
+       
 
-        // Clear texture
-        for (int i = 0; i < texturePixels.Length; i++)
+        if (scaleIncreasing)
+            transform.localScale += Vector3.one * Time.deltaTime * Random.Range(increasingScaleSpeed.x, increasingScaleSpeed.y);
+
+        float randomHorizontalMovement = Mathf.Sin(Time.time * horizontalSpeed + startHorizontalOffset) 
+            * Random.Range(horizontalAmplitude.x, horizontalAmplitude.y);
+     
+        randomHorizontalMovement += Random.Range(-movementVariance, movementVariance);  // Add randomness
+
+        float randomVerticalMovement = Random.Range(floatingSpeed.x, floatingSpeed.y)
+            + Random.Range(-movementVariance, movementVariance); // Randomize floating speed
+
+
+        transform.position += new Vector3(randomHorizontalMovement, randomVerticalMovement, 0) * Time.deltaTime * generalSpeed;
+
+
+
+        if(livingTime <= 0)
         {
-            texturePixels[i] = Color.clear;
+            Destroy(gameObject);
         }
-
-        int radius = bubbleSize / 2;
-        int textureCenter = textureSize / 2;
-        int counter = 0;
-
-        for (int y = -radius; y <= radius; y++)
-        {
-            for (int x = -radius; x <= radius; x++)
-            {
-                int px = textureCenter + x;
-                int py = textureCenter + y;
-
-                if (px >= 0 && px < textureSize && py >= 0 && py < textureSize)
-                {
-                    int distanceSquared = x * x + y * y;
-                    if (Mathf.Abs(distanceSquared - (radius * radius)) < thickness)
-                    {
-                        texturePixels[py * textureSize + px] = colorPalette[counter];
-
-                        if (y % colorCounter == 0)
-                        {
-                            counter++;
-                            if (counter == colorPalette.Length) counter = 0;
-                        }
-                    }
-                    else if (distanceSquared <= (radius * radius))
-                    {
-
-                        texturePixels[py * textureSize + px] =  new Color(1,1,1,0.1f);
-                    }
-                }
-            }
-        }
-
-        bubbleTexture.SetPixels(texturePixels);
-        bubbleTexture.Apply();
     }
 }
