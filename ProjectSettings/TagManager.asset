@@ -4,12 +4,13 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - Water
+  - Ground
+  - Bullet
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Ground
   - Water
   - UI
   - 
