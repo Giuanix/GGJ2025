@@ -18,26 +18,23 @@ public class FloatingObject : MonoBehaviour
 
     private void FixedUpdate()
     {
-        // Get the current water height at the object's X position
         float waterHeight = WaterLevel.Instance.GetHeightAtPosition(transform.position.x);
 
-        // Calculate the current distance from the water level
+    
         float currentDistanceFromWater = transform.position.y - waterHeight;
 
-        // Apply the buoyancy force only if the object is below the water surface
+       
         float buoyancy = 0f;
-        if (currentDistanceFromWater < 0) // Object is below water surface
+        if (currentDistanceFromWater < 0) 
         {
             buoyancy = buoyancyForce * Mathf.Abs(currentDistanceFromWater);  // Increase buoyancy with depth
 
             // Apply the buoyancy force
             rb.AddForce(Vector2.up * buoyancy, ForceMode2D.Force);
 
-            // Apply drag force for horizontal motion
             Vector2 dragForce = -rb.velocity * dragCoefficient;
             rb.AddForce(dragForce, ForceMode2D.Force);
 
-            // Apply angular drag
             rb.angularDrag = angularDragCoefficient;
         }
 
@@ -45,11 +42,11 @@ public class FloatingObject : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.transform.tag == "Water") isInWater = true;
+        if (collision.transform.TryGetComponent<WaterLevel>(out WaterLevel w)) isInWater = true;
     }
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.transform.tag == "Water") isInWater = false;
+        if (collision.transform.TryGetComponent<WaterLevel>(out WaterLevel w)) isInWater = false;
 
     }
 

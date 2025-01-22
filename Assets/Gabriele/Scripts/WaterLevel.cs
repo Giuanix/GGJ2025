@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-[RequireComponent(typeof(BoxCollider2D))]
+[RequireComponent(typeof(PolygonCollider2D))]
 public class WaterLevel : MonoBehaviour
 {
     [SerializeField] private int textureWidth = 320;
@@ -24,6 +24,9 @@ public class WaterLevel : MonoBehaviour
     private List<WaterImpulseTrigger> waterPoints = new List<WaterImpulseTrigger>();
     private Texture2D waterTexture;
     private SpriteRenderer spriteRenderer;
+    private PolygonCollider2D polyCollider;
+
+
 
     private float impulseIntensity = 0f;
     private float impulsePosition = 0f;
@@ -54,8 +57,11 @@ public class WaterLevel : MonoBehaviour
         spriteRenderer = gameObject.AddComponent<SpriteRenderer>();
         spriteRenderer.sortingOrder = 1;
         spriteRenderer.sprite = Sprite.Create(waterTexture, new Rect(0, 0, waterTexture.width, waterTexture.height), new Vector2(0.5f, 0.5f), 1f);
-        transform.tag = "Water";
+
+        polyCollider = GetComponent<PolygonCollider2D>();
+        polyCollider.points = new Vector2[waterPointsCount + 2];
         DrawWaterCurve();
+
     }
 
     private void Update()
@@ -72,11 +78,23 @@ public class WaterLevel : MonoBehaviour
 
             float downwardEffect = Mathf.Exp(-Mathf.Pow(xPos - impulsePosition, 2) / (2 * Mathf.Pow(impulseWidth, 2))) * Mathf.Cos(2f * time + xPos * 0.1f);
 
+
+
             yPos += downwardEffect * impulse;
 
-            waterPoints[i].transform.localPosition = new Vector3(xPos, yPos, 0);
+            waterPoints[i].transform.localPosition = new Vector2(xPos, yPos);
+
+        }
+        Vector2[] colliderPoints = new Vector2[waterPointsCount + 2];
+        for (int i = 0; i < waterPointsCount; i++)
+        {
+            colliderPoints[i] = waterPoints[i].transform.localPosition;
         }
 
+        colliderPoints[waterPointsCount] = new Vector2(textureWidth / 2, -textureHeight);
+        colliderPoints[waterPointsCount + 1] = new Vector2(-textureWidth / 2, -textureHeight);
+
+        polyCollider.points = colliderPoints;
         // Redraw the water curve
         DrawWaterCurve();
     }
