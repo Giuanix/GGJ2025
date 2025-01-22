@@ -2,19 +2,23 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+
+[RequireComponent(typeof(Rigidbody2D))]
+[RequireComponent(typeof(FloatingObject))]
 public class PlayerController : MonoBehaviour
 {
     public static PlayerController instance;
+
     [Header("Movement Settings")]
-    [SerializeField] private Rigidbody2D rb;
+    [HideInInspector] public Rigidbody2D rb;
+    [HideInInspector] public FloatingObject floatingObject;
+
     [SerializeField] private float moveSpeed;
     private float horizontalMovement;
     public bool isFacingRight = true;
 
     [Header("Jump Settings")]
-    [SerializeField] private float jumpForce;
-    private int maxJump = 1;
-    private int jumpRemaning;
+    public float jumpForce;
 
     [Header("GroundCheck Settings")]
     [SerializeField] private Transform groundCheckPos;
@@ -25,21 +29,61 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float baseGravity = 2f;
     [SerializeField] private float maxFallSpeed = 18f;
     [SerializeField] private float fallSpeedMultiplier = 2f;
+
+
+
+    State currentState;
+    [HideInInspector] public LocomotionState locomotionState;
+    [HideInInspector] public JumpState jumpState;
+    [HideInInspector] public WaterState waterState;
+
+
+
+    public void ChangeState(State newState, bool callOnEnter = true)
+    {
+        currentState?.OnExit();
+        State oldState = currentState;
+        currentState = newState;
+
+        if (callOnEnter)
+            currentState.OnEnter(oldState);
+    }
+    public bool IsInState<T>()
+    {
+        return currentState is T;
+    }
+
+
     private void Awake()
     {
         instance = this;
     }
-    // Start is called before the first frame update
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        floatingObject = GetComponent<FloatingObject>();
+
+        locomotionState = new LocomotionState(this);
+        jumpState = new JumpState(this);
+        waterState = new WaterState(this);
+
+
+        ChangeState(locomotionState);
     }
 
-    // Update is called once per frame
-    void Update()
+    public void Update()
+    {
+        currentState.Update();
+        if (floatingObject.IsInWater() && !IsInState<WaterState>())
+        {
+            ChangeState(waterState);
+        }
+    }
+
+    public void Movement()
     {
         rb.velocity = new Vector2(horizontalMovement * moveSpeed,rb.velocity.y);
-        GroundCheck();
         Gravity();
         Flip();
     }
@@ -49,17 +93,14 @@ public class PlayerController : MonoBehaviour
     {
         horizontalMovement = context.ReadValue<Vector2>().x;
     }
+
+
     public void Jump(InputAction.CallbackContext context)
     {
-        if(jumpRemaning > 0)
-        {
-            if(context.performed)
-            {
-                rb.velocity = new Vector2(rb.velocity.x, jumpForce);
-                jumpRemaning--;
-            }
-        }
+        currentState.JumpCall(context);
     }
+
+
 
     //Funzioni di Controllo
     private void Gravity()
@@ -74,13 +115,14 @@ public class PlayerController : MonoBehaviour
             rb.gravityScale = baseGravity;
         }
     }
-    private void GroundCheck()
+
+
+    public bool IsGrounded()
     {
-        if(Physics2D.OverlapBox(groundCheckPos.position, groundCheckSize, 0, grondLayer))
-        {
-            jumpRemaning = maxJump;
-        }
+        return Physics2D.OverlapBox(groundCheckPos.position, groundCheckSize, 0, grondLayer) && Mathf.Abs(rb.velocity.y) <0.1f; //<-- avoid IsGrounded instantly when jumping!
     }
+
+
     private void Flip()
     {
         if(isFacingRight && horizontalMovement < 0 || !isFacingRight && horizontalMovement > 0)
@@ -91,6 +133,9 @@ public class PlayerController : MonoBehaviour
             transform.localScale = ls;
         }
     }
+
+
+
     private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.white;

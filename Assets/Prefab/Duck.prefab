@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 8036273851514551961}
   - component: {fileID: 999223782339120322}
   - component: {fileID: -4268579225660819044}
+  - component: {fileID: 9041707258739980910}
   m_Layer: 0
   m_Name: Duck
   m_TagString: Player
@@ -302,6 +303,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9d14a8d53491db14189c794214f64c68, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &9041707258739980910
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 577042306242707002}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bb03486fd4e846d44a7967bcb846e81a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  buoyancyForce: 67.4
+  dragCoefficient: 10.06
+  angularDragCoefficient: 2.71
 --- !u!1 &1255208694388223274
 GameObject:
   m_ObjectHideFlags: 0
