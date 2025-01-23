@@ -20,6 +20,8 @@ public class SwitcherPlayer : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        uiPlayer1 = GameObject.FindGameObjectWithTag("UiPlayer1").GetComponent<UI_Manager>();
+        uiPlayer2 = GameObject.FindGameObjectWithTag("UiPlayer2").GetComponent<UI_Manager>();
         managerPlayer = SelectPlayer.instance;
         manager = GetComponent<PlayerInputManager>();
         PlayerInputManager.instance.onPlayerJoined += OnPlayerJoined;
@@ -32,7 +34,6 @@ public class SwitcherPlayer : MonoBehaviour
         manager.playerPrefab = fighters[index];
     }
 
-
     public void OnPlayerJoined(PlayerInput playerInput)
     {
         Debug.Log("Player Joined: " + playerInput.playerIndex);
@@ -41,11 +42,13 @@ public class SwitcherPlayer : MonoBehaviour
         if (playerInput.playerIndex == 0)
         {
             playerInput.GetComponent<PlayerController>().uiManager = uiPlayer1;
+            uiPlayer1.targetPlayer = playerInput.transform;
             playerInput.gameObject.transform.position = spawnPointPlayer1.transform.position;
         }
         else if (playerInput.playerIndex == 1)
         {
             playerInput.GetComponent<PlayerController>().uiManager = uiPlayer2;
+            uiPlayer2.targetPlayer = playerInput.transform;
             playerInput.gameObject.transform.position = spawnPointPlayer2.transform.position;
         }
     }

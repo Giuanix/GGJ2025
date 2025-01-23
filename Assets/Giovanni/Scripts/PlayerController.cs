@@ -73,7 +73,7 @@ public class PlayerController : MonoBehaviour
         waterState = new WaterState(this);
         bubbleState = new BubbleState(this);
 
-        uiManager.targetPlayer = transform;
+        //uiManager.targetPlayer = transform;
 
         actualSpeed = moveSpeed;
 
