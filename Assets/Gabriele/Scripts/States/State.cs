@@ -20,5 +20,6 @@ public abstract class State
     public abstract void Update();
     public abstract void OnExit();
     public abstract void JumpCall(InputAction.CallbackContext context);
+    public abstract void AnyKeyCall(InputAction.CallbackContext context);
 }
 

@@ -7,13 +7,16 @@ public class ResourceBox : MonoBehaviour, IDamageable
     [SerializeField] private int health = 10;
     [SerializeField] private GameObject spawnItem;
     
-    public void TakeDamage(int amount)
+    public void TakeDamage(int amount,bool damageFromProjectile)
     {
-        health -= amount;
-        if(health <= 0)
+        if (damageFromProjectile)
         {
-            Instantiate(spawnItem, transform.position,Quaternion.identity);
-            Destroy(gameObject);
+            health -= amount;
+            if (health <= 0)
+            {
+                Instantiate(spawnItem, transform.position, Quaternion.identity);
+                Destroy(gameObject);
+            }
         }
     }
 }

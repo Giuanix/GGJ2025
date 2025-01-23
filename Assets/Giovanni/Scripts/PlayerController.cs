@@ -122,6 +122,7 @@ public class PlayerController : MonoBehaviour
 
 
 
+
     //Funzioni di Controllo
     public void Gravity()
     {
@@ -134,6 +135,9 @@ public class PlayerController : MonoBehaviour
         {
             rb.gravityScale = baseGravity;
         }
+
+        animator.SetBool("IsGrounded", IsGrounded());
+        animator.SetFloat("yVelocity", rb.velocity.y);
     }
 
 

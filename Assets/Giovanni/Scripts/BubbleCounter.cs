@@ -11,26 +11,40 @@ public class BubbleCounter : MonoBehaviour, IDamageable
 
     [Header("Settings")]
     [SerializeField] private int maxDamageCounter = 100;
-    [Header("HUD")]
-    [SerializeField] private Text damageText;
-    
+    public int MaxDamageCounter { get => maxDamageCounter;}
+
+    [SerializeField] private DamageText damageText;
+
+    PlayerController pl;
+
     private int damageCounter = 0;
-    
-    
-    public void TakeDamage(int amount)
+
+
+    private void Start()
+    {
+        pl = GetComponent<PlayerController>();
+    }
+
+    public void TakeDamage(int amount,bool damageFromProjectile)
     {
         damageCounter += amount;
-      
-        if(damageText)
-            damageText.text = damageCounter.ToString();
 
-        if(damageCounter >= maxDamageCounter)
+        UpdateText();
+
+        if (damageCounter >= maxDamageCounter && !pl.IsInState<BubbleState>())
         {
             Incapsulate();
         }
     }
 
-
+    public void UpdateText()
+    {
+        if (damageText)
+        {
+            damageText.amount = damageCounter;
+            damageText.UpdateText(maxDamageCounter);
+        }
+    }
     public void Incapsulate()
     {
         GameObject prefab = Resources.Load<GameObject>("Prefabs/IncapsulateBubble");
@@ -40,14 +54,19 @@ public class BubbleCounter : MonoBehaviour, IDamageable
 
 
 
-        if (transform.TryGetComponent<PlayerController>(out PlayerController pl))
-            pl.ChangeState(pl.bubbleState);
-        if (transform.TryGetComponent<Rigidbody2D>(out Rigidbody2D rb))
-            rb.simulated = false;
+        pl.ChangeState(pl.bubbleState);
     }
 
     public void Heal(int amount)
     {
         damageCounter -= amount;
+        UpdateText();
+
+    }
+
+    public void SetPercentage(int amount)
+    {
+        damageCounter -= amount;
+        UpdateText();
     }
 }
