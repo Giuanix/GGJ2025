@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -6,8 +5,8 @@ using UnityEngine.InputSystem;
 public class SwitcherPlayer : MonoBehaviour
 {
     public static SwitcherPlayer instance;
-    public DamageText damagePlayer1;
-    public DamageText damagePlayer2;
+    public UI_Manager uiPlayer1;
+    public UI_Manager uiPlayer2;
     public Transform spawnPointPlayer1;
     public Transform spawnPointPlayer2;
     public SelectPlayer managerPlayer;
@@ -41,12 +40,12 @@ public class SwitcherPlayer : MonoBehaviour
         // Set position only if it's a new player
         if (playerInput.playerIndex == 0)
         {
-            playerInput.GetComponent<BubbleCounter>().damageText = damagePlayer1;
+            playerInput.GetComponent<PlayerController>().uiManager = uiPlayer1;
             playerInput.gameObject.transform.position = spawnPointPlayer1.transform.position;
         }
         else if (playerInput.playerIndex == 1)
         {
-            playerInput.GetComponent<BubbleCounter>().damageText = damagePlayer2;
+            playerInput.GetComponent<PlayerController>().uiManager = uiPlayer2;
             playerInput.gameObject.transform.position = spawnPointPlayer2.transform.position;
         }
     }

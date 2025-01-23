@@ -40,7 +40,7 @@ public class PlayerController : MonoBehaviour
     [HideInInspector] public JumpState jumpState;
     [HideInInspector] public WaterState waterState;
     [HideInInspector] public BubbleState bubbleState;
-
+     public UI_Manager uiManager;
 
 
     public void ChangeState(State newState, bool callOnEnter = true)
@@ -72,6 +72,8 @@ public class PlayerController : MonoBehaviour
         jumpState = new JumpState(this);
         waterState = new WaterState(this);
         bubbleState = new BubbleState(this);
+
+        uiManager.targetPlayer = transform;
 
         actualSpeed = moveSpeed;
 

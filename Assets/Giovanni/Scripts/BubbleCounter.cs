@@ -14,7 +14,7 @@ public class BubbleCounter : MonoBehaviour, IDamageable
     [SerializeField] private int maxDamageCounter = 100;
     public int MaxDamageCounter { get => maxDamageCounter;}
 
-    public DamageText damageText;
+ 
 
     PlayerController pl;
 
@@ -44,10 +44,10 @@ public class BubbleCounter : MonoBehaviour, IDamageable
     {
         damageCounter = Mathf.Clamp(damageCounter,0,maxDamageCounter+5);
 
-        if (damageText)
+        if (pl.uiManager)
         {
-            damageText.amount = damageCounter;
-            damageText.UpdateText(maxDamageCounter);
+            pl.uiManager.amount = damageCounter;
+            pl.uiManager.UpdateText(maxDamageCounter);
         }
     }
     public void Incapsulate()

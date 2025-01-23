@@ -47,5 +47,6 @@ MonoBehaviour:
   objectsToSpawn:
   - {fileID: 2872004113756938627, guid: 9cb5ae2dc2c456745901cb1a2f836746, type: 3}
   - {fileID: 2872004113756938627, guid: a38ea9779670fb64088f61ff69e76bb5, type: 3}
+  - {fileID: 2872004113756938627, guid: 6f6626d9397f7654b8e86b19fac2c64b, type: 3}
   minSpawnTime: 10
   maxSpawnTime: 20

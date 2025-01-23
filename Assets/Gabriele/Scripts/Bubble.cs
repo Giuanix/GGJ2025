@@ -60,9 +60,9 @@ public class Bubble : MonoBehaviour
     {
         isFacingRight = right;
     }
-    public void SetupProjectileOwner(GameObject pl)
+    public void SetupProjectileOwner(GameObject pla)
     {
-        pl = this.pl;
+        pl = pla;
     }
     private void Update()
     {
@@ -146,11 +146,20 @@ public class Bubble : MonoBehaviour
 
         if (collision.TryGetComponent<IDamageable>(out IDamageable damageable))
         {
-            if(collision != pl.gameObject)
+            if (pl)
+            {
+                if (collision.gameObject != pl.gameObject)
+                {
+                    damageable.TakeDamage(Mathf.FloorToInt(Random.Range(damage.x, damage.y)), isProjectile);
+                    BubbleBlowUp();
+                }
+            }
+            else
             {
                 damageable.TakeDamage(Mathf.FloorToInt(Random.Range(damage.x, damage.y)), isProjectile);
                 BubbleBlowUp();
             }
+
         }
     }
 }

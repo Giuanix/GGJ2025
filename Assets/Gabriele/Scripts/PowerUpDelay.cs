@@ -19,7 +19,7 @@ public class PowerUpDelay : MonoBehaviour
     {
         if(collision.TryGetComponent<PlayerShoot>(out PlayerShoot pl))
         {
-            pl.StarPowerup(duration, delayReducer);
+            pl.StarPowerup(duration, delayReducer,GetComponent<SpriteRenderer>().sprite);
             Destroy(gameObject);
         }
     }

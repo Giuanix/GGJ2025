@@ -94,8 +94,8 @@ public class PlayerShoot : MonoBehaviour
     public void SpawnBubble()
     {
         Bubble b = Instantiate(bullet, BulletSpawnPoint.position, transform.rotation).GetComponent<Bubble>();
-        b.SetupDirection(pl.isFacingRight);
         b.SetupProjectileOwner(gameObject);
+        b.SetupDirection(pl.isFacingRight);
     }
     
     IEnumerator Raffica()
@@ -138,14 +138,19 @@ public class PlayerShoot : MonoBehaviour
                 yield return null;
             }
             spriteRenderer.color = Color.white;
-           
+            pl.uiManager.SetupPowerUpImage(null);
+
             singleShotDelay *= delayReducer;
         }
+
     }
 
-    public void StarPowerup(float duration, float delayReducer)
+    public void StarPowerup(float duration, float delayReducer,Sprite icon)
     {
         StartCoroutine(PowerUp(duration, delayReducer));
+        pl.uiManager.SetupPowerUpImage(icon);
     }
+
+
 
 }
