@@ -25,6 +25,7 @@ public class PlayerShoot : MonoBehaviour
     [SerializeField] private ShotType type;
    
     private float shotTimeCounter;
+    private float extraDamage = 0f;
     private Slider slider;
     private PlayerController pl;
 
@@ -96,6 +97,7 @@ public class PlayerShoot : MonoBehaviour
         Bubble b = Instantiate(bullet, BulletSpawnPoint.position, transform.rotation).GetComponent<Bubble>();
         b.SetupProjectileOwner(gameObject);
         b.SetupDirection(pl.isFacingRight);
+        b.damage += Vector2.one * extraDamage;
     }
     
     IEnumerator Raffica()
@@ -144,13 +146,39 @@ public class PlayerShoot : MonoBehaviour
         }
 
     }
+    IEnumerator PowerUpDamage(float duration)
+    {
+        float elapsedTime = 0f;
+        SpriteRenderer spriteRenderer = GetComponent<SpriteRenderer>();
+
+        if (spriteRenderer)
+        {
+            while (elapsedTime < duration)
+            {
+                spriteRenderer.color = Color.red;
+
+                elapsedTime += Time.deltaTime;
+
+                yield return null;
+            }
+            spriteRenderer.color = Color.white;
+            pl.uiManager.SetupPowerUpImage(null);
+            extraDamage = 0f;
+        }
+
+    }
 
     public void StarPowerup(float duration, float delayReducer,Sprite icon)
     {
         StartCoroutine(PowerUp(duration, delayReducer));
         pl.uiManager.SetupPowerUpImage(icon);
     }
-
+    public void SetDamage(float duration, int damage, Sprite icon)
+    {
+        StartCoroutine(PowerUpDamage(duration));
+        pl.uiManager.SetupPowerUpImage(icon);
+        extraDamage = damage;
+    }
 
 
 }

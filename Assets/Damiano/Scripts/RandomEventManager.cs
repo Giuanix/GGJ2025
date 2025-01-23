@@ -24,9 +24,10 @@ public class RandomEventManager : MonoBehaviour
     }
 
     [SerializeField] private WaveEvent[] waveEvents;
-    [SerializeField] private SpawnEvent[] spawnEvents;
+    [SerializeField] private SpawnEvent spawnEvent;
     [SerializeField] private float countdownTime = 15f;
     [SerializeField] private float waterChangeDirectionTimer = 15f;
+    [SerializeField] private float defaultSpawnTimer = 4f;
     private float currentWaterDirCountdown;
 
     private float currentCountdown;
@@ -52,6 +53,7 @@ public class RandomEventManager : MonoBehaviour
         }
 
         ResetCountdown();
+        StartCoroutine("DefaultSpawBubble");
     }
 
     void Update()
@@ -83,12 +85,9 @@ public class RandomEventManager : MonoBehaviour
 
             StartCoroutine(HandleWaveEvent(selectedEvent));
         }
-        else if (spawnEvents.Length > 0)
+        else if (spawnEvent != null)
         {
-            int randomIndex = Random.Range(0, spawnEvents.Length);
-            SpawnEvent selectedEvent = spawnEvents[randomIndex];
-
-            StartCoroutine(SpawnObjects(selectedEvent));
+            StartCoroutine("SpawnObjects");
         }
     }
 
@@ -138,7 +137,7 @@ public class RandomEventManager : MonoBehaviour
         canCountdown = true;
     }
 
-    private IEnumerator SpawnObjects(SpawnEvent spawnEvent)
+    private IEnumerator SpawnObjects()
     {
         for (int i = 0; i < spawnEvent.spawnCount; i++)
         {
@@ -153,18 +152,15 @@ public class RandomEventManager : MonoBehaviour
         ResetCountdown();
     }
 
-    private IEnumerator DefaultSpawBubble(SpawnEvent spawnEvent)
+    private IEnumerator DefaultSpawBubble()
     {
-        for (int i = 0; i < spawnEvent.spawnCount; i++)
+        while (true)
         {
-            if (spawnEvent.objectsToSpawn.Length > 0)
-            {
-                GameObject randomObject = spawnEvent.objectsToSpawn[Random.Range(0, spawnEvent.objectsToSpawn.Length)];
-                Vector3 spawnPosition = new Vector3(Random.Range(spawnEvent.SpawnRange.x, spawnEvent.SpawnRange.y), spawnEvent.spawnHeight, 0);
-                Instantiate(randomObject, spawnPosition, Quaternion.identity);
-            }
-            yield return new WaitForSeconds(spawnEvent.spawnDuration / spawnEvent.spawnCount);
+            GameObject randomObject = spawnEvent.objectsToSpawn[Random.Range(0, spawnEvent.objectsToSpawn.Length)];
+            Vector3 spawnPosition = new Vector3(Random.Range(spawnEvent.SpawnRange.x, spawnEvent.SpawnRange.y), spawnEvent.spawnHeight, 0);
+            Instantiate(randomObject, spawnPosition, Quaternion.identity);
+
+            yield return new WaitForSeconds(defaultSpawnTimer);
         }
-        ResetCountdown();
     }
 }

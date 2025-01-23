@@ -4,14 +4,16 @@ using UnityEngine;
 [RequireComponent(typeof(CircleCollider2D))]
 [RequireComponent(typeof(Rigidbody2D))]
 [RequireComponent(typeof(FloatingObject))]
-public class HealingObject : MonoBehaviour
+[RequireComponent(typeof(SpriteRenderer))]
+public class PowerUpDamage : MonoBehaviour
 {
-    [SerializeField] private int healAmount = 10;
+    [SerializeField] private int damage = 15;
+    [SerializeField] private float time = 10;
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.TryGetComponent<BubbleCounter>(out BubbleCounter pl))
+        if (collision.TryGetComponent<PlayerShoot>(out PlayerShoot pl))
         {
-            pl.Heal(healAmount);
+            pl.SetDamage(time, damage, GetComponent<SpriteRenderer>().sprite);
             Destroy(gameObject);
         }
     }

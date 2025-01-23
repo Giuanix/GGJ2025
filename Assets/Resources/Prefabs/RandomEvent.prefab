@@ -66,13 +66,15 @@ MonoBehaviour:
     newAngularForce: 200
     eventDuration: 7
   spawnEvents:
-  - objectsToSpawn:
+    objectsToSpawn:
     - {fileID: 4747875170398013927, guid: 38d815327f0aa9a419950294a8430576, type: 3}
     - {fileID: 4747875170398013927, guid: e209352156a2907429613930100b301a, type: 3}
     - {fileID: 4747875170398013927, guid: 7d42a68c3815d794cbb17dbd24f39522, type: 3}
     - {fileID: 4747875170398013927, guid: d500316205314a14eb00156efef2da2d, type: 3}
-    spawnCount: 20
-    spawnDuration: 5
+    spawnCount: 30
+    spawnDuration: 15
     SpawnRange: {x: -9, y: 9}
     spawnHeight: -6
   countdownTime: 37.5
+  waterChangeDirectionTimer: 15
+  defaultSpawnTimer: 4

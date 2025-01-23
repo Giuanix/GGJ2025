@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 6404698731793335759}
   - component: {fileID: 223376500645089317}
   m_Layer: 0
-  m_Name: EvilBox
+  m_Name: BoxDamage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -78,7 +78,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 3479cf6ce57cb2f4095cb7cf9f2328d4, type: 3}
-  m_Color: {r: 1, g: 0.7183408, b: 0.042452812, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 1
@@ -189,7 +189,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 1
-  spawnItem: {fileID: 4747875170398013927, guid: 38d815327f0aa9a419950294a8430576, type: 3}
+  spawnItem: {fileID: 532167451857444836, guid: 331a6ffa687ee0a429f4beeb314ba8ad, type: 3}
   randomSprite:
-  - {fileID: 21300000, guid: b43bf7e41c0cf3447bcb4bd0487d5c52, type: 3}
-  - {fileID: 21300000, guid: 568bf1fd0f81d9b4e8ee3c54c0e03e5d, type: 3}
+  - {fileID: 21300000, guid: 199b7c3eed80fdb47972af8b9803b0ec, type: 3}
+  - {fileID: 21300000, guid: 3479cf6ce57cb2f4095cb7cf9f2328d4, type: 3}

@@ -1672,6 +1672,14 @@ PrefabInstance:
       propertyPath: countdownTime
       value: 35.7
       objectReference: {fileID: 0}
+    - target: {fileID: 3108644622123964831, guid: 6032b7463df51af4bafbcecf559984ee, type: 3}
+      propertyPath: waterChangeDirectionTimer
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 3108644622123964831, guid: 6032b7463df51af4bafbcecf559984ee, type: 3}
+      propertyPath: spawnEvents.objectsToSpawn.Array.size
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 4834433727937332805, guid: 6032b7463df51af4bafbcecf559984ee, type: 3}
       propertyPath: m_Name
       value: RandomEvent

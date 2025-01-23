@@ -25,7 +25,7 @@ public class Bubble : MonoBehaviour
     [SerializeField] private Vector2 increasingScaleSpeed = new Vector2(1, 2);
 
     [Space(3)]
-    [SerializeField] private Vector2 damage = new Vector2(1, 2);
+    public Vector2 damage = new Vector2(1, 2);
 
 
     [Header("Projectile")]

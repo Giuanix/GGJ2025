@@ -14,7 +14,7 @@ public class BubbleCounter : MonoBehaviour, IDamageable
     [SerializeField] private int maxDamageCounter = 100;
     public int MaxDamageCounter { get => maxDamageCounter;}
 
- 
+    private int defense = 0;
 
     PlayerController pl;
 
@@ -30,7 +30,7 @@ public class BubbleCounter : MonoBehaviour, IDamageable
 
     public void TakeDamage(int amount,bool damageFromProjectile)
     {
-        damageCounter += amount;
+        damageCounter += amount - defense;
 
         UpdateText();
 
@@ -68,6 +68,41 @@ public class BubbleCounter : MonoBehaviour, IDamageable
         UpdateText();
 
     }
+
+    public void SetDefense( float duration, int defense,Sprite icon)
+    {
+        this.defense = defense;
+        pl.uiManager.SetupPowerUpImage(icon);
+        StartCoroutine(DefensePowerUp(duration));
+
+    }
+
+    IEnumerator DefensePowerUp(float duration)
+    {
+        float elapsedTime = 0f;
+
+        SpriteRenderer spriteRenderer = GetComponent<SpriteRenderer>();
+
+        if (spriteRenderer)
+        {
+            while (elapsedTime < duration)
+            {
+                spriteRenderer.color = Color.gray;
+                elapsedTime += Time.deltaTime;
+
+                yield return null;
+            }
+            spriteRenderer.color = Color.white;
+            pl.uiManager.SetupPowerUpImage(null);
+
+            defense = 0;
+        }
+
+    }
+
+
+
+
 
     public void SetPercentage(int amount)
     {
