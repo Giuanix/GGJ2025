@@ -23,9 +23,12 @@ public class RandomEventManager : MonoBehaviour
         public float spawnHeight = -6f;
     }
 
-    public WaveEvent[] waveEvents;
-    public SpawnEvent[] spawnEvents;
-    public float countdownTime = 15f;
+    [SerializeField] private WaveEvent[] waveEvents;
+    [SerializeField] private SpawnEvent[] spawnEvents;
+    [SerializeField] private float countdownTime = 15f;
+    [SerializeField] private float waterChangeDirectionTimer = 15f;
+    private float currentWaterDirCountdown;
+
     private float currentCountdown;
     private WaterLevel waterLevel;
 
@@ -61,6 +64,13 @@ public class RandomEventManager : MonoBehaviour
                 TriggerRandomEvent();
                 canCountdown = false;
             }
+        }
+
+        currentWaterDirCountdown -= Time.deltaTime;
+        if(currentWaterDirCountdown <= 0)
+        {
+            currentWaterDirCountdown = waterChangeDirectionTimer;
+            waterLevel.speed *= -1;
         }
     }
 
@@ -129,6 +139,21 @@ public class RandomEventManager : MonoBehaviour
     }
 
     private IEnumerator SpawnObjects(SpawnEvent spawnEvent)
+    {
+        for (int i = 0; i < spawnEvent.spawnCount; i++)
+        {
+            if (spawnEvent.objectsToSpawn.Length > 0)
+            {
+                GameObject randomObject = spawnEvent.objectsToSpawn[Random.Range(0, spawnEvent.objectsToSpawn.Length)];
+                Vector3 spawnPosition = new Vector3(Random.Range(spawnEvent.SpawnRange.x, spawnEvent.SpawnRange.y), spawnEvent.spawnHeight, 0);
+                Instantiate(randomObject, spawnPosition, Quaternion.identity);
+            }
+            yield return new WaitForSeconds(spawnEvent.spawnDuration / spawnEvent.spawnCount);
+        }
+        ResetCountdown();
+    }
+
+    private IEnumerator DefaultSpawBubble(SpawnEvent spawnEvent)
     {
         for (int i = 0; i < spawnEvent.spawnCount; i++)
         {

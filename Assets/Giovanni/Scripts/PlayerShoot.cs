@@ -2,6 +2,7 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.InputSystem;
+using static UnityEngine.GraphicsBuffer;
 public class PlayerShoot : MonoBehaviour
 {
     [Header("Shared Player Shoot var")]
@@ -12,6 +13,9 @@ public class PlayerShoot : MonoBehaviour
     [Header("Only Duck")]
 
     [SerializeField] private int shotMaxCounter = 4;
+    [Header("Only Whale")]
+    [SerializeField] private float singleShotDelay = 0.25f;
+
     [Space(5)]
     [Header("Reload Bar")]
     private Transform canvas;
@@ -80,19 +84,62 @@ public class PlayerShoot : MonoBehaviour
                         StartCoroutine("Raffica");
                         break;
                     case ShotType.SingleShot:
-                        Instantiate(bullet, BulletSpawnPoint.position, transform.rotation);
+                        StartCoroutine("SingleShot");
                         break;
                 }
             }
         }
     }
+    
+    
     IEnumerator Raffica()
     {
-        for(int i = 0; i < shotMaxCounter; i++)
+        for (int i = 0; i < shotMaxCounter; i++)
         {
-            Instantiate(bullet, BulletSpawnPoint.position, transform.rotation);
+            Instantiate(bullet, BulletSpawnPoint.position, transform.rotation).GetComponent<Bubble>().SetupDirection(pl.isFacingRight);
             yield return new WaitForSeconds(0.1f);
         }
 
     }
+
+    IEnumerator SingleShot()
+    {
+            yield return new WaitForSeconds(singleShotDelay);
+            Instantiate(bullet, BulletSpawnPoint.position, transform.rotation).GetComponent<Bubble>().SetupDirection(pl.isFacingRight);
+    }
+
+    IEnumerator PowerUp(float duration,float delayReducer)
+    {
+        float elapsedTime = 0f;
+        float colorTime = 0f;
+        SpriteRenderer spriteRenderer = GetComponent<SpriteRenderer>();
+
+
+        if (spriteRenderer)
+        {
+            singleShotDelay /= delayReducer;
+           
+            while (elapsedTime < duration)
+            {
+                spriteRenderer.color = Color.HSVToRGB(colorTime, 1f, 1f);
+                
+                colorTime += Time.deltaTime*2f;
+                if (colorTime >= 1) colorTime = 0;
+
+
+                elapsedTime += Time.deltaTime;
+
+                yield return null;
+            }
+            spriteRenderer.color = Color.HSVToRGB(0f, 1f, 1f);
+           
+            singleShotDelay *= delayReducer;
+        }
+    }
+
+    public void StarPowerup(float duration, float delayReducer)
+    {
+        StartCoroutine(PowerUp(duration, delayReducer));
+    }
+
 }

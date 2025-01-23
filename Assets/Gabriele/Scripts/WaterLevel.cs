@@ -39,6 +39,7 @@ public class WaterLevel : MonoBehaviour
     [SerializeField] private float impulseWidth = 30f;
 
 
+    private float timeOffset = 0f; // Track phase offset
 
     public static WaterLevel Instance { get; private set; }
 
@@ -65,27 +66,36 @@ public class WaterLevel : MonoBehaviour
 
     }
 
+
     private void Update()
     {
-        float time = Time.time * speed;
+        float newFrequency = waterFrequency;
+
+        // Maintain phase continuity by adjusting timeOffset when frequency changes
+        if (Mathf.Abs(newFrequency - waterFrequency) > Mathf.Epsilon)
+        {
+            timeOffset = Time.time * (waterFrequency - newFrequency);
+            waterFrequency = newFrequency;
+        }
+
+        float time = (Time.time + timeOffset) * speed;
 
         for (int i = 0; i < waterPointsCount; i++)
         {
             float xPos = -textureWidth / 2 + (textureWidth / (waterPointsCount - 1)) * i;
 
-            float yPos = waterHeight * Mathf.Sin(waterFrequency * (xPos * Mathf.PI / 180f) + time) + offset;
+            // Use phase offset correction to keep wave direction consistent
+            float phase = xPos / textureWidth * Mathf.PI * 2;
+            float yPos = waterHeight * Mathf.Sin(phase * waterFrequency + time) + offset;
 
             float impulse = impulseIntensity * Mathf.Exp(-Mathf.Pow(xPos - impulsePosition, 2) / (2 * impulseWidth * impulseWidth));
-
             float downwardEffect = Mathf.Exp(-Mathf.Pow(xPos - impulsePosition, 2) / (2 * Mathf.Pow(impulseWidth, 2))) * Mathf.Cos(2f * time + xPos * 0.1f);
-
-
 
             yPos += downwardEffect * impulse;
 
             waterPoints[i].transform.localPosition = new Vector2(xPos, yPos);
-
         }
+
         Vector2[] colliderPoints = new Vector2[waterPointsCount + 2];
         for (int i = 0; i < waterPointsCount; i++)
         {
@@ -96,11 +106,10 @@ public class WaterLevel : MonoBehaviour
         colliderPoints[waterPointsCount + 1] = new Vector2(-textureWidth / 2, -textureHeight);
 
         polyCollider.points = colliderPoints;
+
         // Redraw the water curve
         DrawWaterCurve();
     }
-
-
 
     public void StartImpulse(float impulseInitialIntensity, float impulseDuration, WaterImpulseTrigger waterImpulseTrigger)
     {
