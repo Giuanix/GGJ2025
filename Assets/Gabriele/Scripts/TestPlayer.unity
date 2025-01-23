@@ -591,7 +591,7 @@ PrefabInstance:
     - target: {fileID: 3292425288306444481, guid: 8545d110a4a1c484596f48e7987b45da, type: 3}
       propertyPath: m_Controller
       value: 
-      objectReference: {fileID: 9100000, guid: 2652fe7767199354b834768f5a660135, type: 2}
+      objectReference: {fileID: 9100000, guid: e1ddd972664a3cb4fa66321c6ded113e, type: 2}
     - target: {fileID: 6867630237549604282, guid: 8545d110a4a1c484596f48e7987b45da, type: 3}
       propertyPath: m_Name
       value: Whale

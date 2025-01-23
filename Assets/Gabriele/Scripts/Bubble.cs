@@ -55,10 +55,13 @@ public class Bubble : MonoBehaviour
         // Set the initial texture size
         spriteRenderer.size = Vector2.one * scale;
         GetComponent<CircleCollider2D>().radius = 0.22f * scale;
-        manager = PlayerController.instance;
-        isFacingRight = manager.isFacingRight;
-
     }
+
+    public void SetupDirection(bool right)
+    {
+        isFacingRight = right;
+    }
+
     private void Update()
     {
         Move();
