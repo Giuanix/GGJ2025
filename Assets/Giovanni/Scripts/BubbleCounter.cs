@@ -7,19 +7,22 @@ using UnityEngine.UIElements;
 
 public class BubbleCounter : MonoBehaviour, IDamageable
 {
+    public static BubbleCounter instance;
     [Tooltip("Make sure that Prefabs/IncapsulateBubble.prefab exist! ")]
 
     [Header("Settings")]
     [SerializeField] private int maxDamageCounter = 100;
     public int MaxDamageCounter { get => maxDamageCounter;}
 
-    [SerializeField] private DamageText damageText;
+    public DamageText damageText;
 
     PlayerController pl;
 
     private int damageCounter = 0;
-
-
+    void Awake()
+    {
+        instance = this;
+    }
     private void Start()
     {
         pl = GetComponent<PlayerController>();
