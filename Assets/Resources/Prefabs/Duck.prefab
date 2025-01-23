@@ -25,7 +25,7 @@ Transform:
   m_GameObject: {fileID: 2855685271126227569}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.3204, z: 0}
+  m_LocalPosition: {x: -0.0095, y: -0.3204, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -303,7 +303,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.0017258376, y: -0.071391866}
+  m_Offset: {x: -0.009641394, y: -0.071391866}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -314,7 +314,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.25654832, y: 0.49747536}
+  m_Size: {x: 0.20020667, y: 0.49747536}
   m_EdgeRadius: 0
 --- !u!50 &1689800573828224956
 Rigidbody2D:
@@ -424,6 +424,10 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: 070a722a-2626-4a0a-9794-85a116960802
     m_ActionName: Movement/Join[/Keyboard/j]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 51b379b0-a7f4-4c14-ba1a-c9945e34432d
+    m_ActionName: Movement/AnyKey[/Keyboard/anyKey]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Movement
@@ -448,7 +452,7 @@ MonoBehaviour:
   isFacingRight: 1
   jumpForce: 13
   groundCheckPos: {fileID: 8123689303608257652}
-  groundCheckSize: {x: 0.4, y: 0.05}
+  groundCheckSize: {x: 0.5, y: 0.05}
   grondLayer:
     serializedVersion: 2
     m_Bits: 8

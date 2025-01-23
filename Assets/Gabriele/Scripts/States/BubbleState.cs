@@ -13,6 +13,7 @@ public class BubbleState : State
     {
         player.rb.simulated = false;
         player.GetComponent<Collider2D>().isTrigger = true;
+        player.animator.SetLayerWeight(2, 1);
 
     }
 
@@ -20,6 +21,7 @@ public class BubbleState : State
     {
         player.rb.simulated = true;
         player.GetComponent<Collider2D>().isTrigger = false;
+        player.animator.SetLayerWeight(2, 0);
 
     }
 
