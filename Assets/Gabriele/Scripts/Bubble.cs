@@ -36,9 +36,8 @@ public class Bubble : MonoBehaviour
     private float startHorizontalOffset;
     private bool isBlowUp = false;
     private SpriteRenderer spriteRenderer;
-    PlayerController manager;
     Rigidbody2D rb;
-
+    GameObject pl;
     bool isFacingRight;
 
     private void Start()
@@ -61,7 +60,10 @@ public class Bubble : MonoBehaviour
     {
         isFacingRight = right;
     }
-
+    public void SetupProjectileOwner(GameObject pl)
+    {
+        pl = this.pl;
+    }
     private void Update()
     {
         Move();
@@ -144,9 +146,11 @@ public class Bubble : MonoBehaviour
 
         if (collision.TryGetComponent<IDamageable>(out IDamageable damageable))
         {
-            damageable.TakeDamage(Mathf.FloorToInt(Random.Range(damage.x, damage.y)),isProjectile);
-            BubbleBlowUp();
-            return;
+            if(collision != pl.gameObject)
+            {
+                damageable.TakeDamage(Mathf.FloorToInt(Random.Range(damage.x, damage.y)), isProjectile);
+                BubbleBlowUp();
+            }
         }
     }
 }

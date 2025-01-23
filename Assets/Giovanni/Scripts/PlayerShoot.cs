@@ -91,12 +91,18 @@ public class PlayerShoot : MonoBehaviour
         }
     }
     
+    public void SpawnBubble()
+    {
+        Bubble b = Instantiate(bullet, BulletSpawnPoint.position, transform.rotation).GetComponent<Bubble>();
+        b.SetupDirection(pl.isFacingRight);
+        b.SetupProjectileOwner(gameObject);
+    }
     
     IEnumerator Raffica()
     {
         for (int i = 0; i < shotMaxCounter; i++)
         {
-            Instantiate(bullet, BulletSpawnPoint.position, transform.rotation).GetComponent<Bubble>().SetupDirection(pl.isFacingRight);
+            SpawnBubble();
             yield return new WaitForSeconds(0.1f);
         }
 
@@ -104,8 +110,8 @@ public class PlayerShoot : MonoBehaviour
 
     IEnumerator SingleShot()
     {
-            yield return new WaitForSeconds(singleShotDelay);
-            Instantiate(bullet, BulletSpawnPoint.position, transform.rotation).GetComponent<Bubble>().SetupDirection(pl.isFacingRight);
+        yield return new WaitForSeconds(singleShotDelay);
+        SpawnBubble();
     }
 
     IEnumerator PowerUp(float duration,float delayReducer)
