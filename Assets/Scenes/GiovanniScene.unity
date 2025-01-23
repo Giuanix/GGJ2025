@@ -798,8 +798,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c1f93ac5b64ad054dae8817f467d2a66, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  prefabDuck: {fileID: 7819502705844467337, guid: d5ee4eb657e4e554bb4d129bcd299284, type: 3}
-  prefabWhale: {fileID: 8488802530823548771, guid: de67c6ef670e91149b8b418251a53fd1, type: 3}
+  prefabDuck: {fileID: 7435510874179744901, guid: f87a38ab5f4ff8e4eaba682e2d63d037, type: 3}
+  prefabWhale: {fileID: 6867630237549604282, guid: 8545d110a4a1c484596f48e7987b45da, type: 3}
   currentPrefab1: {fileID: 0}
   currentPrefab2: {fileID: 0}
 --- !u!1 &2028265061
