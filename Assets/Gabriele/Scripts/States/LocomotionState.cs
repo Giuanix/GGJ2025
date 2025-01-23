@@ -15,12 +15,14 @@ public class LocomotionState : State
 
     public override void OnExit()
     {
+        player.animator.SetBool("Falling", false);
     }
 
     public override void JumpCall(InputAction.CallbackContext context)
     {
         if (context.performed && player.IsGrounded())
         {
+            player.animator.SetTrigger("Jump");
             player.rb.velocity = new Vector2(player.rb.velocity.x, player.jumpForce);
             player.ChangeState(player.jumpState, true);
         }
@@ -30,6 +32,11 @@ public class LocomotionState : State
     {
         player.Movement();
         player.Gravity();
+        player.animator.SetBool("Falling", !player.IsGrounded());
+
     }
 
+    public override void AnyKeyCall(InputAction.CallbackContext context)
+    {
+    }
 }

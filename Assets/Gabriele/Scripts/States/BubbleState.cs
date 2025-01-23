@@ -11,11 +11,18 @@ public class BubbleState : State
 
     public override void OnEnter(State oldState)
     {
+        player.rb.simulated = false;
+        player.GetComponent<Collider2D>().isTrigger = true;
+        player.animator.SetLayerWeight(2, 1);
+
     }
 
     public override void OnExit()
     {
         player.rb.simulated = true;
+        player.GetComponent<Collider2D>().isTrigger = false;
+        player.animator.SetLayerWeight(2, 0);
+
     }
 
     public override void Update()
@@ -27,4 +34,11 @@ public class BubbleState : State
         //animation stretch Bubble
     }
 
+    public override void AnyKeyCall(InputAction.CallbackContext context)
+    {
+        if(player.transform.parent.TryGetComponent<IncapsulateBubble>(out IncapsulateBubble bubble))
+        {
+            bubble.TryToBeFree();
+        }
+    }
 }

@@ -12,10 +12,13 @@ public class WaterState : State
 
     public override void OnEnter(State oldState)
     {
+        player.animator.SetLayerWeight(1, 1);
     }
 
     public override void OnExit()
     {
+        player.animator.SetLayerWeight(1, 0);
+
     }
 
     public override void Update()
@@ -32,8 +35,12 @@ public class WaterState : State
         //Act like swim
         if (context.performed && player.floatingObject.IsInWater())
         {
+            player.animator.SetTrigger("Jump");
             player.rb.velocity = new Vector2(player.rb.velocity.x, player.jumpForce);
         }
     }
-   
+
+    public override void AnyKeyCall(InputAction.CallbackContext context)
+    {
+    }
 }

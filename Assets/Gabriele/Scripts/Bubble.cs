@@ -75,7 +75,11 @@ public class Bubble : MonoBehaviour
     {
         float verticalMovement = 0f;
         float horizontalMovement = 0f;
-
+        if (isBlowUp)
+        {
+            rb.velocity = Vector3.zero;
+            return;
+        }
         if (isProjectile)
         {
             horizontalSpeed -= Time.deltaTime * airFriction;
@@ -134,14 +138,12 @@ public class Bubble : MonoBehaviour
             BubbleBlowUp();
             return;
         }
-        foreach (MonoBehaviour script in collision.GetComponents<MonoBehaviour>())
+
+        if (collision.TryGetComponent<IDamageable>(out IDamageable damageable))
         {
-            if (script is IDamageable damageable)
-            {
-                damageable.TakeDamage(Mathf.FloorToInt(Random.Range(damage.x,damage.y)));
-                BubbleBlowUp();
-                break;
-            }
+            damageable.TakeDamage(Mathf.FloorToInt(Random.Range(damage.x, damage.y)),isProjectile);
+            BubbleBlowUp();
+            return;
         }
     }
 }

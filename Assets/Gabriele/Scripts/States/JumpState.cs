@@ -37,9 +37,13 @@ public class JumpState : State
         Debug.Log(canJump);
         if (context.performed && canJump)
         {
+            player.animator.SetTrigger("Jump");
             player.rb.velocity = new Vector2(player.rb.velocity.x, player.jumpForce * jumpMultiplier);
             canJump = false;
         }
     }
-   
+
+    public override void AnyKeyCall(InputAction.CallbackContext context)
+    {
+    }
 }

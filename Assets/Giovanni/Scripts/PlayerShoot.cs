@@ -19,9 +19,11 @@ public class PlayerShoot : MonoBehaviour
     [SerializeField] private Vector3 offset = new Vector3(0,1,0);
     [SerializeField] private Color fillColor;
     [SerializeField] private ShotType type;
+   
     private float shotTimeCounter;
     private Slider slider;
-    
+    private PlayerController pl;
+
     enum ShotType
     {
         MultipleShot,
@@ -32,6 +34,8 @@ public class PlayerShoot : MonoBehaviour
     {
         shotTimeCounter = shotDelay;
         canvas = FindObjectOfType<Canvas>().transform;
+        pl = GetComponent<PlayerController>();
+
     }
 
     void Update()
@@ -66,18 +70,20 @@ public class PlayerShoot : MonoBehaviour
 
         if (context.performed && shotTimeCounter > shotDelay && Time.timeScale > 0)
         {
-            shotTimeCounter = 0.0f;
-            PlayerController.instance.animator.SetTrigger("Shoot");
-            switch (type)
+            if (!pl.IsInState<BubbleState>())
             {
-                case ShotType.MultipleShot:
-                    StartCoroutine("Raffica");
-                    break;
-                case ShotType.SingleShot:
-                    Instantiate(bullet, BulletSpawnPoint.position, transform.rotation);
-                    break;
+                shotTimeCounter = 0.0f;
+                pl.animator.SetTrigger("Shoot");
+                switch (type)
+                {
+                    case ShotType.MultipleShot:
+                        StartCoroutine("Raffica");
+                        break;
+                    case ShotType.SingleShot:
+                        Instantiate(bullet, BulletSpawnPoint.position, transform.rotation);
+                        break;
+                }
             }
-
         }
     }
     IEnumerator Raffica()

@@ -1,0 +1,78 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &4834433727937332805
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 910423917977696245}
+  - component: {fileID: 3108644622123964831}
+  m_Layer: 0
+  m_Name: RandomEvent
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &910423917977696245
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4834433727937332805}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.9146781, y: 0.15639257, z: -0.978906}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3108644622123964831
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4834433727937332805}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e576c4ec7ea52840b15dbbdb55c9c95, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  waveEvents:
+  - newWaveHeight: 109
+    newWaveSpeed: -1.64
+    newWaveFrequency: 0.4
+    newAngularForce: -289.94
+    eventDuration: 15
+  - newWaveHeight: 56
+    newWaveSpeed: 5
+    newWaveFrequency: -0.38
+    newAngularForce: 300
+    eventDuration: 7.5
+  - newWaveHeight: 150
+    newWaveSpeed: 1
+    newWaveFrequency: -0.11
+    newAngularForce: 350
+    eventDuration: 7
+  - newWaveHeight: 60
+    newWaveSpeed: -10
+    newWaveFrequency: 0.4
+    newAngularForce: 200
+    eventDuration: 7
+  spawnEvents:
+  - objectsToSpawn:
+    - {fileID: 4747875170398013927, guid: 38d815327f0aa9a419950294a8430576, type: 3}
+    - {fileID: 4747875170398013927, guid: e209352156a2907429613930100b301a, type: 3}
+    - {fileID: 4747875170398013927, guid: 7d42a68c3815d794cbb17dbd24f39522, type: 3}
+    - {fileID: 4747875170398013927, guid: d500316205314a14eb00156efef2da2d, type: 3}
+    spawnCount: 20
+    spawnDuration: 5
+    SpawnRange: {x: -9, y: 9}
+    spawnHeight: -6
+  countdownTime: 37.5
