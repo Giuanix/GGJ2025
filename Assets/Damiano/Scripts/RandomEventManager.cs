@@ -1,50 +1,145 @@
 using UnityEngine;
-using UnityEngine.Events;
+using System.Collections;
 
 public class RandomEventManager : MonoBehaviour
 {
     [System.Serializable]
-    public class EventData
+    public class WaveEvent
     {
-        public string eventName; // Nome dell'evento (per sapere cosa succede)
-        public UnityEvent onEventTriggered; // Evento che viene attivato
+        public float newWaveHeight;
+        public float newWaveSpeed;
+        public float newWaveFrequency;
+        public float newAngularForce;
+        public float eventDuration;
     }
 
-    public EventData[] events; // Lista degli eventi configurabili dall'Inspector
-    public float countdownTime = 5f; // Durata del countdown (in secondi)
+    [System.Serializable]
+    public class SpawnEvent
+    {
+        public GameObject[] objectsToSpawn;  // Array of objects to spawn
+        public int spawnCount;
+        public float spawnDuration;
+        public Vector2 SpawnRange = new Vector2(-9, 9);
+        public float spawnHeight = -6f;
+    }
 
-    private float currentCountdown; // Valore attuale del countdown
+    public WaveEvent[] waveEvents;
+    public SpawnEvent[] spawnEvents;
+    public float countdownTime = 15f;
+    private float currentCountdown;
+    private WaterLevel waterLevel;
+
+    private float originalOffset;
+    private float originalWaveHeight;
+    private float originalWaveSpeed;
+    private float originalWaveFrequency;
+    private float originalAngularForce;
+    private bool canCountdown = true;
 
     void Start()
     {
-        ResetCountdown(); // Imposta il countdown iniziale
+        waterLevel = FindObjectOfType<WaterLevel>();
+        if (waterLevel != null)
+        {
+            originalOffset = waterLevel.offset;
+            originalWaveHeight = waterLevel.waterHeight;
+            originalWaveSpeed = waterLevel.speed;
+            originalWaveFrequency = waterLevel.waterFrequency;
+            originalAngularForce = waterLevel.angularForce;
+        }
+
+        ResetCountdown();
     }
 
     void Update()
     {
-        // Aggiorna il countdown
-        currentCountdown -= Time.deltaTime;
-        if (currentCountdown <= 0)
+        if (canCountdown)
         {
-            TriggerRandomEvent(); // Attiva un evento casuale
-            ResetCountdown(); // Ripristina il countdown
+            currentCountdown -= Time.deltaTime;
+            if (currentCountdown <= 0)
+            {
+                TriggerRandomEvent();
+                canCountdown = false;
+            }
         }
     }
 
     void TriggerRandomEvent()
     {
-        if (events.Length == 0) return; // Se non ci sono eventi, non fare nulla
+        if (waveEvents.Length > 0 && Random.value > 0.5f)
+        {
+            int randomIndex = Random.Range(0, waveEvents.Length);
+            WaveEvent selectedEvent = waveEvents[randomIndex];
 
-        // Seleziona un evento casuale
-        int randomIndex = Random.Range(0, events.Length);
-        EventData selectedEvent = events[randomIndex];
+            StartCoroutine(HandleWaveEvent(selectedEvent));
+        }
+        else if (spawnEvents.Length > 0)
+        {
+            int randomIndex = Random.Range(0, spawnEvents.Length);
+            SpawnEvent selectedEvent = spawnEvents[randomIndex];
 
-        Debug.Log($"Evento selezionato: {selectedEvent.eventName}"); // Mostra l'evento selezionato nella console
-        selectedEvent.onEventTriggered?.Invoke(); // Attiva l'evento
+            StartCoroutine(SpawnObjects(selectedEvent));
+        }
+    }
+
+    private IEnumerator HandleWaveEvent(WaveEvent waveEvent)
+    {
+        yield return StartCoroutine(LerpOffset(-200f, 5f));
+
+        waterLevel.waterHeight = waveEvent.newWaveHeight;
+        waterLevel.speed = waveEvent.newWaveSpeed;
+        waterLevel.waterFrequency = waveEvent.newWaveFrequency;
+        waterLevel.angularForce = waveEvent.newAngularForce;
+
+        yield return StartCoroutine(LerpOffset(originalOffset, 2f));
+
+        yield return new WaitForSeconds(waveEvent.eventDuration);
+
+        yield return StartCoroutine(LerpOffset(-200f, 2f));
+
+        waterLevel.waterHeight = originalWaveHeight;
+        waterLevel.speed = originalWaveSpeed;
+        waterLevel.waterFrequency = originalWaveFrequency;
+        waterLevel.angularForce = originalAngularForce;
+
+        yield return StartCoroutine(LerpOffset(originalOffset, 2f));
+        ResetCountdown();
+    }
+
+    private IEnumerator LerpOffset(float target, float duration)
+    {
+        float elapsedTime = 0f;
+        float startOffset = waterLevel.offset;
+
+        while (elapsedTime < duration)
+        {
+            elapsedTime += Time.deltaTime;
+            float t = elapsedTime / duration;
+            waterLevel.offset = Mathf.Lerp(startOffset, target, t);
+            yield return null;
+        }
+
+        waterLevel.offset = target;
     }
 
     void ResetCountdown()
     {
-        currentCountdown = countdownTime; // Imposta il countdown al valore iniziale
+        currentCountdown = countdownTime;
+        canCountdown = true;
+    }
+
+    private IEnumerator SpawnObjects(SpawnEvent spawnEvent)
+    {
+        for (int i = 0; i < spawnEvent.spawnCount; i++)
+        {
+            if (spawnEvent.objectsToSpawn.Length > 0)
+            {
+                GameObject randomObject = spawnEvent.objectsToSpawn[Random.Range(0, spawnEvent.objectsToSpawn.Length)];
+                Vector3 spawnPosition = new Vector3(Random.Range(spawnEvent.SpawnRange.x, spawnEvent.SpawnRange.y), spawnEvent.spawnHeight, 0);
+                Instantiate(randomObject, spawnPosition, Quaternion.identity);
+            }
+            yield return new WaitForSeconds(spawnEvent.spawnDuration / spawnEvent.spawnCount);
+        }
+        ResetCountdown();
     }
 }

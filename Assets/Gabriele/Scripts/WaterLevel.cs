@@ -6,7 +6,7 @@ public class WaterLevel : MonoBehaviour
 {
     [SerializeField] private int textureWidth = 320;
     [SerializeField] private int textureHeight = 180;
-    [SerializeField] private float offset = 200f;
+    public float offset = 200f;
     
     
     [Range(2, 64)]
@@ -14,7 +14,7 @@ public class WaterLevel : MonoBehaviour
     [SerializeField] private int curveThickness = 3;
     public float speed = 3f;
     public float waterFrequency = 15f;
-    public int waterHeight = 5;
+    public float waterHeight = 5;
     public float angularForce = 20; //<-- used in floatingObj
 
     [SerializeField] private Color curveColor;

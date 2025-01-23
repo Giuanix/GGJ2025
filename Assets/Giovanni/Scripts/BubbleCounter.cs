@@ -46,5 +46,8 @@ public class BubbleCounter : MonoBehaviour, IDamageable
             rb.simulated = false;
     }
 
-    
+    public void Heal(int amount)
+    {
+        damageCounter -= amount;
+    }
 }
