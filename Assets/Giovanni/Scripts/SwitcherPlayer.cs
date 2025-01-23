@@ -32,6 +32,8 @@ public class SwitcherPlayer : MonoBehaviour
 
         manager.playerPrefab = fighters[index];
     }
+
+
     public void OnPlayerJoined(PlayerInput playerInput)
     {
         Debug.Log("Player Joined: " + playerInput.playerIndex);
@@ -48,8 +50,11 @@ public class SwitcherPlayer : MonoBehaviour
             playerInput.gameObject.transform.position = spawnPointPlayer2.transform.position;
         }
     }
+
+
     public void SwitchNextSpawnCharacter(PlayerInput input)
     {
-        index++;
+        if (fighters[index] != null)
+            index++;
     }
 }

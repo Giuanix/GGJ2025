@@ -131,7 +131,7 @@ public class PlayerShoot : MonoBehaviour
 
                 yield return null;
             }
-            spriteRenderer.color = Color.HSVToRGB(0f, 1f, 1f);
+            spriteRenderer.color = Color.white;
            
             singleShotDelay *= delayReducer;
         }

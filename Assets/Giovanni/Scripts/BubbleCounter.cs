@@ -42,6 +42,8 @@ public class BubbleCounter : MonoBehaviour, IDamageable
 
     public void UpdateText()
     {
+        damageCounter = Mathf.Clamp(damageCounter,0,maxDamageCounter+5);
+
         if (damageText)
         {
             damageText.amount = damageCounter;

@@ -20,11 +20,14 @@ public class LocomotionState : State
 
     public override void JumpCall(InputAction.CallbackContext context)
     {
-        if (context.performed && player.IsGrounded())
+        if (context.performed)
         {
+            player.jumpState.canJump = player.IsGrounded();
+
             player.animator.SetTrigger("Jump");
             player.rb.velocity = new Vector2(player.rb.velocity.x, player.jumpForce);
             player.ChangeState(player.jumpState, true);
+
         }
     }
 

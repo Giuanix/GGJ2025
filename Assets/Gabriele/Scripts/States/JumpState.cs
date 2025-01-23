@@ -5,7 +5,7 @@ using UnityEngine.InputSystem;
 
 public class JumpState : State
 {
-    bool canJump = true;
+    public bool canJump = true;
     float jumpMultiplier = 1f;
     public JumpState(PlayerController player) : base(player)
     {
@@ -34,7 +34,6 @@ public class JumpState : State
 
     public override void JumpCall(InputAction.CallbackContext context)
     {
-        Debug.Log(canJump);
         if (context.performed && canJump)
         {
             player.animator.SetTrigger("Jump");
