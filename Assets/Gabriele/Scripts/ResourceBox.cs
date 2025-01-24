@@ -10,7 +10,7 @@ public class ResourceBox : MonoBehaviour, IDamageable
 
     private void Start()
     {
-        GetComponent<SpriteRenderer>().sprite = randomSprite[Random.Range(0, randomSprite.Length-1)];
+        GetComponent<SpriteRenderer>().sprite = randomSprite[Random.Range(0, randomSprite.Length)];
     }
 
 

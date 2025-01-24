@@ -13,6 +13,7 @@ public class WaterState : State
     public override void OnEnter(State oldState)
     {
         player.animator.SetLayerWeight(1, 1);
+        player.particles.Play("Splash");
     }
 
     public override void OnExit()

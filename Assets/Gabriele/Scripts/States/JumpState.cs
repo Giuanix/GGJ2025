@@ -17,10 +17,16 @@ public class JumpState : State
             jumpMultiplier = 0.45f;
         else
             jumpMultiplier = 1f;
+
+        AudioManager.instance.PlayJump();
+
+        player.particles.Play("JumpDustAnimation");
     }
 
     public override void OnExit()
     {
+        player.particles.Play("None");
+        
         canJump = true;
     }
 
@@ -37,6 +43,7 @@ public class JumpState : State
         if (context.performed && canJump)
         {
             player.animator.SetTrigger("Jump");
+            AudioManager.instance.PlayJump();
             player.rb.velocity = new Vector2(player.rb.velocity.x, player.jumpForce * jumpMultiplier);
             canJump = false;
         }

@@ -25,11 +25,19 @@ public class PlayerShoot : MonoBehaviour
    
     private float shotTimeCounter;
     private float extraDamage = 0f;
+    private float chargedShotExtraDamage = 0f;
+    private float extraSize = 0f;
+
+
+    private float chargeTime = 0f;
+    [SerializeField] private float maxChargeTime = 2f; 
+    private bool isCharging = false;
+
 
     [SerializeField] private GameObject sliderPrefab;
     Slider slider;
     private PlayerController pl;
-
+    SpriteRenderer spriteRenderer;
     [HideInInspector] public AudioManager managerAudio;
     enum ShotType
     {
@@ -44,10 +52,22 @@ public class PlayerShoot : MonoBehaviour
         canvas = FindObjectOfType<Canvas>().transform;
         pl = GetComponent<PlayerController>();
 
+        spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
     void Update()
     {
+        if (isCharging)
+        {
+            chargeTime += Time.deltaTime;
+
+            if(chargeTime > maxChargeTime)
+            {
+                spriteRenderer.color = Color.yellow;
+            }
+        }
+ 
+
         shotTimeCounter += Time.deltaTime;
         if(shotTimeCounter < shotDelay)
         {
@@ -76,12 +96,28 @@ public class PlayerShoot : MonoBehaviour
     public void Shoot(InputAction.CallbackContext context)
     {
 
+        if (context.started && Time.timeScale > 0)
+        {
+            isCharging = true;
+            chargeTime = 0f;
+        }
+
         if (context.performed && shotTimeCounter > shotDelay && Time.timeScale > 0)
         {
             if (!pl.IsInState<BubbleState>())
             {
                 shotTimeCounter = 0.0f;
+             
                 pl.animator.SetTrigger("Shoot");
+
+                if (chargeTime >= maxChargeTime)
+                {
+                    extraDamage += maxChargeTime*2;
+                    extraSize += maxChargeTime;
+                    spriteRenderer.color = Color.white;
+                }
+               
+                    // Perform Normal Shot
                 switch (type)
                 {
                     case ShotType.MultipleShot:
@@ -91,7 +127,16 @@ public class PlayerShoot : MonoBehaviour
                         StartCoroutine("SingleShot");
                         break;
                 }
+                
+                isCharging = false;
+                chargeTime = 0f;
             }
+        }
+
+        if (context.canceled)
+        {
+            isCharging = false;
+            chargeTime = 0f;
         }
     }
     
@@ -100,7 +145,8 @@ public class PlayerShoot : MonoBehaviour
         Bubble b = Instantiate(bullet, BulletSpawnPoint.position, transform.rotation).GetComponent<Bubble>();
         b.SetupProjectileOwner(gameObject);
         b.SetupDirection(pl.isFacingRight);
-        b.damage += Vector2.one * extraDamage;
+        b.damage += Vector2.one * extraDamage + Vector2.one * chargedShotExtraDamage;
+        b.scale += extraSize;
     }
     
     IEnumerator Raffica()
@@ -111,6 +157,8 @@ public class PlayerShoot : MonoBehaviour
             SpawnBubble();
             yield return new WaitForSeconds(0.1f);
         }
+        chargedShotExtraDamage = 0;
+        extraSize = 0;
     }
 
     IEnumerator SingleShot()
@@ -118,13 +166,14 @@ public class PlayerShoot : MonoBehaviour
         managerAudio.PlaySparoBalena();
         yield return new WaitForSeconds(singleShotDelay);
         SpawnBubble();
+        chargedShotExtraDamage = 0;
+        extraSize = 0;
     }
 
     IEnumerator PowerUp(float duration,float delayReducer)
     {
         float elapsedTime = 0f;
         float colorTime = 0f;
-        SpriteRenderer spriteRenderer = GetComponent<SpriteRenderer>();
 
 
         if (spriteRenderer)
@@ -153,8 +202,6 @@ public class PlayerShoot : MonoBehaviour
     IEnumerator PowerUpDamage(float duration)
     {
         float elapsedTime = 0f;
-        SpriteRenderer spriteRenderer = GetComponent<SpriteRenderer>();
-
         if (spriteRenderer)
         {
             while (elapsedTime < duration)

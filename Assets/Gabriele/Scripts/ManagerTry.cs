@@ -38,7 +38,6 @@ public class ManagerTry : MonoBehaviour
     [SerializeField] List<GameObject> fighters = new List<GameObject>();
 
     int joinIndex = 0;
-    bool firstSelected = false;
 
 
     private void Start()

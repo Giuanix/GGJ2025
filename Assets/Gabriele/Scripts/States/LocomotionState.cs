@@ -5,16 +5,21 @@ using UnityEngine.InputSystem;
 
 public class LocomotionState : State
 {
+
+    bool canParticles;
     public LocomotionState(PlayerController player) : base(player)
     {
     }
 
     public override void OnEnter(State oldState)
     {
+        if (Mathf.Abs(player.rb.velocity.x) > 0.1f)
+            player.particles.Play("RunDustAnimation");
     }
 
     public override void OnExit()
     {
+        player.particles.Play("None");
         player.animator.SetBool("Falling", false);
     }
 
@@ -37,6 +42,16 @@ public class LocomotionState : State
         player.Gravity();
         player.animator.SetBool("Falling", !player.IsGrounded());
 
+        if (Mathf.Abs(player.rb.velocity.x) < 0.1f)
+        {
+            canParticles = true;
+        }
+        else if (canParticles)
+        {
+            canParticles = false;
+            player.particles.Play("RunDustAnimation");
+
+        }
     }
 
     public override void AnyKeyCall(InputAction.CallbackContext context)
