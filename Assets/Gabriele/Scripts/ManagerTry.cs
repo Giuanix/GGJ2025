@@ -56,7 +56,7 @@ public class ManagerTry : MonoBehaviour
       
         foreach (var gamepad in Gamepad.all)
         {
-            if (gamepad.aButton.wasPressedThisFrame) // Gamepad 'A' button to join a player
+            if (gamepad.buttonSouth.wasPressedThisFrame) // Gamepad 'A' button to join a player
             {
                 TryJoinDevice(gamepad);
             }
@@ -110,32 +110,24 @@ public class ManagerTry : MonoBehaviour
 
     private void HandlePlayerSelection()
     {
-
-        if (Keyboard.current != null)
+        for (int i = 0; i < joinedDevices.Count; i++)
         {
-            if (Keyboard.current.digit1Key.wasPressedThisFrame)
+            if (joinedDevices[i] is Keyboard)
             {
-                if (Keyboard.current == joinedDevices[0])
+                var keyboard = (Keyboard)joinedDevices[i];
+
+                if (keyboard.digit1Key.wasPressedThisFrame)
                 {
-                    SwitchIcon(0);
-                }
-                else if(Keyboard.current == joinedDevices[1])
-                {
-                    SwitchIcon(1);
+                    SwitchIcon(i);
                 }
             }
-        }
-        else if (Gamepad.current != null)
-        {
-            if (Gamepad.current.aButton.wasPressedThisFrame)
+            else if (joinedDevices[i] is Gamepad)
             {
-                if (Gamepad.current == joinedDevices[0])
+                var gamepad = (Gamepad)joinedDevices[i];
+
+                if (gamepad.buttonSouth.wasPressedThisFrame)
                 {
-                    SwitchIcon(0);
-                }
-                else if (Gamepad.current == joinedDevices[1])
-                {
-                    SwitchIcon(1);
+                    SwitchIcon(i);
                 }
             }
         }
@@ -146,7 +138,7 @@ public class ManagerTry : MonoBehaviour
         Debug.Log("Player Joined: " + playerInput.playerIndex);
 
         // Set position only if it's a new player
-        if (playerInput.playerIndex == 0 && joinIndex == 0)
+        if (joinIndex == 0)
         {
             playerInput.GetComponent<PlayerController>().uiManager = uiPlayer1;
             uiPlayer1.targetPlayer = playerInput.transform;
@@ -155,7 +147,7 @@ public class ManagerTry : MonoBehaviour
             joinIndex += 1;
 
         }
-        else if (playerInput.playerIndex == 1)
+        else if (joinIndex == 1)
         {
             playerInput.GetComponent<PlayerController>().uiManager = uiPlayer2;
             uiPlayer2.targetPlayer = playerInput.transform;
