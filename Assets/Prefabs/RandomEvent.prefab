@@ -71,7 +71,7 @@ MonoBehaviour:
     newWaveSpeed: -2.03
     newWaveFrequency: 40.2
     newAngularForce: -75.85
-    eventDuration: 7
+    eventDuration: 9
     onlyOffset: 0
   - newWaveHeight: -55.4
     newWaveOffset: -36
