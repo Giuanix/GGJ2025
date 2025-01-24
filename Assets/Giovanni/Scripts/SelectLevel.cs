@@ -50,18 +50,20 @@ public class SelectLevel : MonoBehaviour
     {
         switch (pointer.anchoredPosition.x)
         {
-            case -100: //Stage1
+            case -100:
                 screen[0].SetActive(false);
                 screen[1].SetActive(true);
                 stage[0].SetActive(true);
                 FindObjectOfType<ManagerTry>().enabled = true;
+                enabled = false;
                 break;
 
-            case +200: //Stage2
+            case 100:
                 screen[0].SetActive(false);
                 screen[1].SetActive(true);
                 stage[1].SetActive(true);
                 FindObjectOfType<ManagerTry>().enabled = true;
+                enabled = false;
                 break;
         } 
     }

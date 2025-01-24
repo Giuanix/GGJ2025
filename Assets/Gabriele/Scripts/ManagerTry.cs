@@ -138,7 +138,6 @@ public class ManagerTry : MonoBehaviour
 
     }
 
-
     private void HandlePlayerSelection()
     {
         for (int i = 0; i < joinedDevices.Count; i++)
