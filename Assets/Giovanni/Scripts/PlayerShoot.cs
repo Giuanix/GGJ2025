@@ -30,7 +30,7 @@ public class PlayerShoot : MonoBehaviour
 
 
     private float chargeTime = 0f;
-    [SerializeField] private float maxChargeTime = 2f; 
+    [SerializeField] private float maxChargeTime = 3.5f; 
     private bool isCharging = false;
 
 
@@ -61,26 +61,28 @@ public class PlayerShoot : MonoBehaviour
         {
             chargeTime += Time.deltaTime;
 
-            if(chargeTime > maxChargeTime)
+            if (chargeTime >= 0.5f)
             {
                 spriteRenderer.color = Color.yellow;
             }
+
+            if (chargeTime > maxChargeTime)
+            {
+                chargeTime = maxChargeTime;
+            }
         }
- 
 
         shotTimeCounter += Time.deltaTime;
-        if(shotTimeCounter < shotDelay)
+        if (shotTimeCounter < shotDelay)
         {
-            if (!slider) {
-                slider = Instantiate(sliderPrefab,canvas).GetComponent<Slider>();
+            if (!slider)
+            {
+                slider = Instantiate(sliderPrefab, canvas).GetComponent<Slider>();
                 slider.maxValue = shotDelay;
                 slider.transform.Find("Fill Area").Find("Fill").GetComponent<Image>().color = fillColor;
             }
             slider.value = shotTimeCounter;
-
-           
         }
-        
         else if (slider && shotTimeCounter > shotDelay + 0.5f)
         {
             Destroy(slider.gameObject);
@@ -93,53 +95,48 @@ public class PlayerShoot : MonoBehaviour
             slider.transform.position = screenPos;
         }
     }
+
     public void Shoot(InputAction.CallbackContext context)
     {
-
         if (context.started && Time.timeScale > 0)
         {
             isCharging = true;
             chargeTime = 0f;
         }
 
-        if (context.performed && shotTimeCounter > shotDelay && Time.timeScale > 0)
-        {
-            if (!pl.IsInState<BubbleState>())
-            {
-                shotTimeCounter = 0.0f;
-             
-                pl.animator.SetTrigger("Shoot");
-
-                if (chargeTime >= maxChargeTime)
-                {
-                    extraDamage += maxChargeTime*2;
-                    extraSize += maxChargeTime;
-                    spriteRenderer.color = Color.white;
-                }
-               
-                    // Perform Normal Shot
-                switch (type)
-                {
-                    case ShotType.MultipleShot:
-                        StartCoroutine("Raffica");
-                        break;
-                    case ShotType.SingleShot:
-                        StartCoroutine("SingleShot");
-                        break;
-                }
-                
-                isCharging = false;
-                chargeTime = 0f;
-            }
-        }
-
         if (context.canceled)
         {
+            if (shotTimeCounter > shotDelay && Time.timeScale > 0)
+            {
+                if (!pl.IsInState<BubbleState>())
+                {
+                    shotTimeCounter = 0.0f;
+                    pl.animator.SetTrigger("Shoot");
+
+                    if (chargeTime >= 0.5f)
+                    {
+                        // Perform charged shot
+                        extraDamage += maxChargeTime * 2;
+                        extraSize += maxChargeTime/2;
+                        spriteRenderer.color = Color.white;
+                    }
+
+                    switch (type)
+                    {
+                        case ShotType.MultipleShot:
+                            StartCoroutine("Raffica");
+                            break;
+                        case ShotType.SingleShot:
+                            StartCoroutine("SingleShot");
+                            break;
+                    }
+                }
+            }
             isCharging = false;
             chargeTime = 0f;
         }
     }
-    
+
     public void SpawnBubble()
     {
         Bubble b = Instantiate(bullet, BulletSpawnPoint.position, transform.rotation).GetComponent<Bubble>();
