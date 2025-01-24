@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditorInternal;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -32,7 +33,9 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float baseGravity = 2f;
     [SerializeField] private float maxFallSpeed = 18f;
     [SerializeField] private float fallSpeedMultiplier = 2f;
-
+    [SerializeField] private float slipperySpeedMultiplier = 0.5f;
+    [SerializeField] private float maxSlipperySpeed = 5f;
+    [SerializeField] private float frictionSlippery = 1.5f;
 
 
     State currentState;
@@ -41,6 +44,8 @@ public class PlayerController : MonoBehaviour
     [HideInInspector] public WaterState waterState;
     [HideInInspector] public BubbleState bubbleState;
      public UI_Manager uiManager;
+
+    private float accumulatedVelocity;
 
 
     public void ChangeState(State newState, bool callOnEnter = true)
@@ -95,7 +100,35 @@ public class PlayerController : MonoBehaviour
     {
         animator.SetFloat("Speed", Mathf.Abs(horizontalMovement));
 
-        rb.velocity = new Vector2(horizontalMovement * actualSpeed,rb.velocity.y);
+        if (IsSlippery())
+        {
+
+            // Accumulate velocity when there is input
+            if (Mathf.Abs(horizontalMovement) >= 0.1f)
+            {
+                accumulatedVelocity += Time.deltaTime * 5f;
+                accumulatedVelocity = Mathf.Clamp(accumulatedVelocity, 0, maxSlipperySpeed);
+               
+                rb.velocity = new Vector2(horizontalMovement * actualSpeed, rb.velocity.y);
+            }
+            else
+            {
+                accumulatedVelocity -= Time.deltaTime; // Gradually reduce velocity without input
+                accumulatedVelocity = Mathf.Clamp(accumulatedVelocity, 0, maxSlipperySpeed);
+               
+                rb.velocity = new Vector2(
+                   (Mathf.Abs(horizontalMovement) * actualSpeed * slipperySpeedMultiplier + (accumulatedVelocity / frictionSlippery)) * (isFacingRight ? -1 : 1),
+                   rb.velocity.y);
+            
+            }
+   
+        }
+        else
+        {
+            accumulatedVelocity = 0f;
+            rb.velocity = new Vector2(horizontalMovement * actualSpeed, rb.velocity.y);
+        }
+
         Flip();
     }
 
@@ -149,10 +182,16 @@ public class PlayerController : MonoBehaviour
 
     public bool IsGrounded()
     {
-        return Physics2D.OverlapBox(groundCheckPos.position, groundCheckSize, 0, grondLayer) && Mathf.Abs(rb.velocity.y) <0.1f; //<-- avoid IsGrounded instantly when jumping!
+        return Physics2D.OverlapBox(groundCheckPos.position, groundCheckSize, 0, grondLayer) && Mathf.Abs(rb.velocity.y) < 0.1f; //<-- avoid IsGrounded instantly when jumping!
     }
 
-
+    public bool IsSlippery()
+    {
+        
+        if(Physics2D.OverlapBox(groundCheckPos.position, groundCheckSize, 0, grondLayer))
+            return Physics2D.OverlapBox(groundCheckPos.position, groundCheckSize, 0, grondLayer).gameObject.tag == "Slippery";
+        return false;
+    }
     private void Flip()
     {
         if(isFacingRight && horizontalMovement > 0 || !isFacingRight && horizontalMovement < 0)

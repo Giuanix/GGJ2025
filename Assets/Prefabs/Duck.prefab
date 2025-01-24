@@ -473,6 +473,9 @@ MonoBehaviour:
   baseGravity: 2
   maxFallSpeed: 18
   fallSpeedMultiplier: 2
+  slipperySpeedMultiplier: 0.85
+  maxSlipperySpeed: 4
+  frictionSlippery: 0.5
   uiManager: {fileID: 0}
 --- !u!114 &7929221384556208824
 MonoBehaviour:
@@ -494,6 +497,7 @@ MonoBehaviour:
   offset: {x: 0, y: 0.5, z: 0}
   fillColor: {r: 1, g: 0.89212996, b: 0.3915094, a: 1}
   type: 0
+  maxChargeTime: 3.5
   sliderPrefab: {fileID: 6029025125323320054, guid: 36407245cd878e6458aefd5633bf7762, type: 3}
   managerAudio: {fileID: 0}
 --- !u!114 &3530814244235874763

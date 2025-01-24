@@ -16,7 +16,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &910423917977696245
 Transform:
   m_ObjectHideFlags: 0
@@ -45,26 +45,41 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   waveEvents:
-  - newWaveHeight: 109
-    newWaveSpeed: -1.64
-    newWaveFrequency: 0.4
-    newAngularForce: -289.94
+  - newWaveHeight: 35.5
+    newWaveOffset: 108.6
+    newWaveSpeed: 2.78
+    newWaveFrequency: -2.07
+    newAngularForce: 209.1
     eventDuration: 15
-  - newWaveHeight: 56
-    newWaveSpeed: 5
-    newWaveFrequency: -0.38
-    newAngularForce: 300
-    eventDuration: 7.5
-  - newWaveHeight: 150
-    newWaveSpeed: 1
-    newWaveFrequency: -0.11
-    newAngularForce: 350
+    onlyOffset: 0
+  - newWaveHeight: 3
+    newWaveOffset: 222.7
+    newWaveSpeed: 3
+    newWaveFrequency: 15
+    newAngularForce: -20
+    eventDuration: 5
+    onlyOffset: 1
+  - newWaveHeight: 230.1
+    newWaveOffset: -105.91
+    newWaveSpeed: 3.91
+    newWaveFrequency: 43
+    newAngularForce: -384.7
     eventDuration: 7
-  - newWaveHeight: 60
-    newWaveSpeed: -10
-    newWaveFrequency: 0.4
-    newAngularForce: 200
+    onlyOffset: 0
+  - newWaveHeight: 146.8
+    newWaveOffset: 13.5
+    newWaveSpeed: -2.03
+    newWaveFrequency: 40.2
+    newAngularForce: -75.85
     eventDuration: 7
+    onlyOffset: 0
+  - newWaveHeight: -55.4
+    newWaveOffset: -36
+    newWaveSpeed: 8.04
+    newWaveFrequency: 36.1
+    newAngularForce: 320
+    eventDuration: 7
+    onlyOffset: 0
   spawnEvent:
     objectsToSpawn:
     - {fileID: 4747875170398013927, guid: 38d815327f0aa9a419950294a8430576, type: 3}
@@ -75,6 +90,17 @@ MonoBehaviour:
     spawnDuration: 20
     SpawnRange: {x: -9, y: 9}
     spawnHeight: -6
-  countdownTime: 37.5
-  waterChangeDirectionTimer: 15
+  slipperyEvent:
+    newWaveHeight: 150
+    newWaveSpeed: 2
+    newWaveFrequency: 0.4
+    eventDuration: 15
+    color: {r: 0.9433962, g: 0.48504806, b: 0.79755807, a: 0.57254905}
+    toSlippery:
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    firstWaveDuration: 1
+  countdownTime: 35.7
   defaultSpawnTimer: 4
