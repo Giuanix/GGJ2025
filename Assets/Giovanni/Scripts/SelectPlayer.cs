@@ -8,7 +8,7 @@ public class SelectPlayer : MonoBehaviour
 {
     public static SelectPlayer instance;
     public SwitcherPlayer switcherManager;
-
+    
     [Header("Prefab Player in Game Object")]
     [Tooltip("Should be the same amount of character in the same order: \n\n Duck\nWhale\n3pg")]
     [SerializeField] private GameObject[] prefabPlayer;
@@ -16,6 +16,7 @@ public class SelectPlayer : MonoBehaviour
     [HideInInspector] public GameObject currentPrefab1; 
     [HideInInspector] public GameObject currentPrefab2;
     [SerializeField] private Sprite[] portraits;
+
     [Header("Prefab Player1")]
     public Image iconPlayer1;
 
@@ -42,7 +43,7 @@ public class SelectPlayer : MonoBehaviour
             iconPlayer1.sprite = portraits[selectionIndex[0]];
             currentPrefab1 = prefabPlayer[selectionIndex[0]];
         }
-        else if(Input.GetKeyDown("2") && switcherManager.index == 1)
+        else if(Input.GetKeyDown("1") && switcherManager.index == 1)
         {
             selectionIndex[1]++;
             if (selectionIndex[1] == prefabPlayer.Length)
