@@ -38,6 +38,8 @@ public class ManagerTry : MonoBehaviour
     [SerializeField] List<GameObject> fighters = new List<GameObject>();
 
     int joinIndex = 0;
+    bool firstSelected = false;
+
 
     private void Start()
     {
@@ -55,6 +57,8 @@ public class ManagerTry : MonoBehaviour
 
         foreach (Animator a in previews)
             a.gameObject.SetActive(false);
+
+        selectionScreen.SetActive(true);
     }
 
     private void Update()
@@ -146,7 +150,8 @@ public class ManagerTry : MonoBehaviour
 
                 if (keyboard.digit1Key.wasPressedThisFrame)
                 {
-                    SwitchIcon(i);
+                    if ((i == 0 && joinIndex == 0))
+                        SwitchIcon(i);
                 }
             }
             else if (joinedDevices[i] is Gamepad)
@@ -155,7 +160,8 @@ public class ManagerTry : MonoBehaviour
 
                 if (gamepad.buttonSouth.wasPressedThisFrame)
                 {
-                    SwitchIcon(i);
+                    if ((i == 1 && joinIndex == 1))
+                        SwitchIcon(i);
                 }
             }
         }
@@ -171,9 +177,8 @@ public class ManagerTry : MonoBehaviour
             playerInput.GetComponent<PlayerController>().uiManager = uiPlayer1;
             uiPlayer1.targetPlayer = playerInput.transform;
             playerInput.gameObject.transform.position = spawnPointPlayer1.transform.position;
-
+            
             joinIndex += 1;
-
         }
         else if (joinIndex == 1)
         {
@@ -181,9 +186,6 @@ public class ManagerTry : MonoBehaviour
             uiPlayer2.targetPlayer = playerInput.transform;
             playerInput.gameObject.transform.position = spawnPointPlayer2.transform.position;
 
-        }
-        else
-        {
             selectionScreen.SetActive(false);
             enabled = false;
         }
