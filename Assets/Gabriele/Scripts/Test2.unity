@@ -123,6 +123,11 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &82389099 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 300670490008056292, guid: 354b541a7167a1f4b9b7e3874743438c, type: 3}
+  m_PrefabInstance: {fileID: 2266381099423205452}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &101582081
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -906,10 +911,24 @@ MonoBehaviour:
   - {fileID: 6867630237549604282, guid: 8545d110a4a1c484596f48e7987b45da, type: 3}
   portraits:
   - {fileID: 21300000, guid: c16c654bd8000704abb1367d06b3303c, type: 3}
-  - {fileID: 21300000, guid: 41d75eeee0f855546ae4019036cc0b94, type: 3}
+  - {fileID: 21300000, guid: 611b27dd91f05ee428378120d1b06613, type: 3}
   iconPlayers:
   - {fileID: 2266381099423205454}
   - {fileID: 2266381099423205453}
+  selectionFrame:
+  - {fileID: 2036872710}
+  - {fileID: 584037193}
+  selectionPosition:
+  - {fileID: 1658312861}
+  - {fileID: 910130590}
+  selectionFlipping: 0001
+  previews:
+  - {fileID: 2074897262}
+  - {fileID: 1198150352}
+  animationsName:
+  - Duck
+  - Whale
+  selectionScreen: {fileID: 82389099}
   uiPlayer1: {fileID: 840843080}
   uiPlayer2: {fileID: 319229885}
   spawnPointPlayer1: {fileID: 1754794207}
@@ -1255,6 +1274,11 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!224 &584037193 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 3300941482396820649, guid: 354b541a7167a1f4b9b7e3874743438c, type: 3}
+  m_PrefabInstance: {fileID: 2266381099423205452}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &638484306
 GameObject:
   m_ObjectHideFlags: 0
@@ -1604,6 +1628,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 04205c2e3e35fba4096039741c8575d7, type: 3}
+--- !u!224 &910130590 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 5617806476664654950, guid: 354b541a7167a1f4b9b7e3874743438c, type: 3}
+  m_PrefabInstance: {fileID: 2266381099423205452}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1061634425
 GameObject:
   m_ObjectHideFlags: 0
@@ -1842,6 +1871,11 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!95 &1198150352 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 1837235920809187024, guid: 354b541a7167a1f4b9b7e3874743438c, type: 3}
+  m_PrefabInstance: {fileID: 2266381099423205452}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1207519835
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2266,6 +2300,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cd5102a2a5da85f4fb4363b0121c96cd, type: 3}
+--- !u!224 &1658312861 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 8753441461358260461, guid: 354b541a7167a1f4b9b7e3874743438c, type: 3}
+  m_PrefabInstance: {fileID: 2266381099423205452}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1754794206
 GameObject:
   m_ObjectHideFlags: 0
@@ -2359,6 +2398,11 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!224 &2036872710 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 8893910084597383237, guid: 354b541a7167a1f4b9b7e3874743438c, type: 3}
+  m_PrefabInstance: {fileID: 2266381099423205452}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2040031677
 GameObject:
   m_ObjectHideFlags: 0
@@ -4191,6 +4235,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 03bbe16a1a8f2004291b622ff8aeac96, type: 3}
+--- !u!95 &2074897262 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 4015383080629860458, guid: 354b541a7167a1f4b9b7e3874743438c, type: 3}
+  m_PrefabInstance: {fileID: 2266381099423205452}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2137035590
 GameObject:
   m_ObjectHideFlags: 0
@@ -4350,6 +4399,14 @@ PrefabInstance:
     - target: {fileID: 3952650299817467204, guid: 354b541a7167a1f4b9b7e3874743438c, type: 3}
       propertyPath: m_Name
       value: Canvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 4886615959070096733, guid: 354b541a7167a1f4b9b7e3874743438c, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5977893999113640609, guid: 354b541a7167a1f4b9b7e3874743438c, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

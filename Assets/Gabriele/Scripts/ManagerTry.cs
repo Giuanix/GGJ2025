@@ -11,7 +11,6 @@ public class ManagerTry : MonoBehaviour
 
     private List<InputDevice> joinedDevices = new List<InputDevice>();
 
-    private int selectedPlayerIndex = -1;
 
     [SerializeField] private GameObject[] prefabPlayers;
     private GameObject[] currentPrefabs = {null,null};
@@ -20,7 +19,14 @@ public class ManagerTry : MonoBehaviour
     
     [SerializeField] private Sprite[] portraits;
     [SerializeField] private Image[] iconPlayers;
-    
+    [SerializeField] private Transform[] selectionFrame;
+    [SerializeField] private Transform[] selectionPosition;
+    [SerializeField] private bool[] selectionFlipping;
+    [SerializeField] private Animator[] previews;
+    [SerializeField] private string[] animationsName = { "Duck", "Whale"};
+
+    [SerializeField] private GameObject selectionScreen;
+
     [Space(5)]
     public UI_Manager uiPlayer1;
     public UI_Manager uiPlayer2;
@@ -43,6 +49,12 @@ public class ManagerTry : MonoBehaviour
 
         fighters.Add(null);
         fighters.Add(null);
+
+        foreach (Transform t in selectionFrame)
+            t.gameObject.SetActive(false);
+
+        foreach (Animator a in previews)
+            a.gameObject.SetActive(false);
     }
 
     private void Update()
@@ -89,6 +101,10 @@ public class ManagerTry : MonoBehaviour
         if (playerIndex < 2) // Limit to 4 players (adjust based on your needs)
         {
             joinedDevices.Add(inputDevice);
+
+            selectionFrame[playerIndex].gameObject.SetActive(true);
+            previews[playerIndex].gameObject.SetActive(true);
+
             Debug.Log($"Player {playerIndex + 1} joined with {inputDevice.displayName}");
         }
         else
@@ -100,11 +116,23 @@ public class ManagerTry : MonoBehaviour
     private void SwitchIcon(int n)
     {
         selectionIndex[n]++;
+
+
         if (selectionIndex[n] == prefabPlayers.Length)
             selectionIndex[n] = 0;
 
-        iconPlayers[n].sprite = portraits[selectionIndex[n]];
-        currentPrefabs[n] = prefabPlayers[selectionIndex[n]];
+        int sel = selectionIndex[n];
+
+        iconPlayers[n].sprite = portraits[sel];
+        currentPrefabs[n] = prefabPlayers[sel];
+
+        selectionFrame[n].position = selectionPosition[sel].position;
+
+        selectionFrame[n].transform.localScale = new Vector3( (selectionFlipping[sel] ? -1 : 1),1,1);
+        selectionFrame[n].transform.GetChild(0).localScale = new Vector3((selectionFlipping[sel] ? -1 : 1),1,1);
+
+        previews[n].Play(animationsName[sel]);
+
     }
 
 
@@ -153,6 +181,11 @@ public class ManagerTry : MonoBehaviour
             uiPlayer2.targetPlayer = playerInput.transform;
             playerInput.gameObject.transform.position = spawnPointPlayer2.transform.position;
 
+        }
+        else
+        {
+            selectionScreen.SetActive(false);
+            enabled = false;
         }
     }
 }
