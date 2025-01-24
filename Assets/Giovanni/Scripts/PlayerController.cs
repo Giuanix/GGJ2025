@@ -47,6 +47,11 @@ public class PlayerController : MonoBehaviour
 
     private float accumulatedVelocity;
 
+    private void OnDestroy()
+    {
+        KO.instance.AnimateKO();
+    }
+
 
     public void ChangeState(State newState, bool callOnEnter = true)
     {

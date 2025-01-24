@@ -20,10 +20,22 @@ public class AudioManager : MonoBehaviour
     [Header("OST")]
     [SerializeField] private AudioSource Stage1;
     [SerializeField] private AudioSource SchermataSelezionePersonaggio;
+
+    [Header("Voiceline")]
+    [SerializeField] private AudioSource KO;
+
     void Awake()
     {
         instance = this;
     }
+
+
+    public void StopAll()
+    {
+        Stage1.Stop();
+        SchermataSelezionePersonaggio.Stop();
+    }
+
 
     //SFX
     public void PlaySparoBalena()
@@ -74,5 +86,12 @@ public class AudioManager : MonoBehaviour
     public void StopPlaySchermataSelezionePersonaggio()
     {
         SchermataSelezionePersonaggio.Stop();
+    }
+
+    //VOICELINE
+
+    public void PlayKO()
+    {
+        KO.PlayOneShot(KO.clip, 1f);
     }
 }
