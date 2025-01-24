@@ -6,13 +6,12 @@ using static UnityEngine.GraphicsBuffer;
 public class PlayerShoot : MonoBehaviour
 {
     [Header("Shared Player Shoot var")]
-
     [SerializeField] private GameObject bullet;
     [SerializeField] private Transform BulletSpawnPoint;
     [SerializeField] private float shotDelay;
     [Header("Only Duck")]
-
     [SerializeField] private int shotMaxCounter = 4;
+
     [Header("Only Whale")]
     [SerializeField] private float singleShotDelay = 0.25f;
 
@@ -28,7 +27,7 @@ public class PlayerShoot : MonoBehaviour
     private float extraDamage = 0f;
     private Slider slider;
     private PlayerController pl;
-
+    [HideInInspector] public AudioManager managerAudio;
     enum ShotType
     {
         MultipleShot,
@@ -37,6 +36,7 @@ public class PlayerShoot : MonoBehaviour
 
     private void Start()
     {
+        managerAudio = AudioManager.instance;
         shotTimeCounter = shotDelay;
         canvas = FindObjectOfType<Canvas>().transform;
         pl = GetComponent<PlayerController>();
@@ -102,16 +102,17 @@ public class PlayerShoot : MonoBehaviour
     
     IEnumerator Raffica()
     {
+        managerAudio.PlaySparoPapera();
         for (int i = 0; i < shotMaxCounter; i++)
         {
             SpawnBubble();
             yield return new WaitForSeconds(0.1f);
         }
-
     }
 
     IEnumerator SingleShot()
     {
+        managerAudio.PlaySparoBalena();
         yield return new WaitForSeconds(singleShotDelay);
         SpawnBubble();
     }

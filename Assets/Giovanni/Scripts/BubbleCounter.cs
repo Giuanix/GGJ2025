@@ -13,29 +13,30 @@ public class BubbleCounter : MonoBehaviour, IDamageable
     [Header("Settings")]
     [SerializeField] private int maxDamageCounter = 100;
     public int MaxDamageCounter { get => maxDamageCounter;}
-
     private int defense = 0;
-
     PlayerController pl;
-
     private int damageCounter = 0;
+    [HideInInspector] public AudioManager managerAudio;
     void Awake()
     {
         instance = this;
     }
     private void Start()
     {
+        managerAudio = AudioManager.instance;
         pl = GetComponent<PlayerController>();
     }
 
     public void TakeDamage(int amount,bool damageFromProjectile)
     {
+        managerAudio.PlayDannoSubito();
         damageCounter += amount - defense;
 
         UpdateText();
 
         if (damageCounter >= maxDamageCounter && !pl.IsInState<BubbleState>())
         {
+            managerAudio.PlayFluttuamentoBolla();
             Incapsulate();
         }
     }
@@ -56,9 +57,6 @@ public class BubbleCounter : MonoBehaviour, IDamageable
         prefab = Instantiate(prefab, transform.position, Quaternion.identity);
         
         transform.SetParent(prefab.transform, true);
-
-
-
         pl.ChangeState(pl.bubbleState);
     }
 
