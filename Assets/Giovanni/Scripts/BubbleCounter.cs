@@ -17,6 +17,7 @@ public class BubbleCounter : MonoBehaviour, IDamageable
     PlayerController pl;
     private int damageCounter = 0;
     [HideInInspector] public AudioManager managerAudio;
+    [SerializeField] private GameObject incapsulateBubble; 
     void Awake()
     {
         instance = this;
@@ -51,10 +52,8 @@ public class BubbleCounter : MonoBehaviour, IDamageable
             pl.uiManager.UpdateText(maxDamageCounter);
         }
     }
-    public void Incapsulate()
-    {
-        GameObject prefab = Resources.Load<GameObject>("Prefabs/IncapsulateBubble");
-        prefab = Instantiate(prefab, transform.position, Quaternion.identity);
+    public void Incapsulate() { 
+        GameObject prefab = Instantiate(incapsulateBubble, transform.position, Quaternion.identity);
         
         transform.SetParent(prefab.transform, true);
         pl.ChangeState(pl.bubbleState);

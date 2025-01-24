@@ -365,6 +365,7 @@ MonoBehaviour:
   baseGravity: 2
   maxFallSpeed: 18
   fallSpeedMultiplier: 2
+  uiManager: {fileID: 0}
 --- !u!114 &8797212596078879233
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -378,7 +379,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxDamageCounter: 100
-  damageText: {fileID: 0}
+  managerAudio: {fileID: 0}
+  incapsulateBubble: {fileID: 4747875170398013927, guid: 783050ddcbd67fe4d83302adaae79654, type: 3}
 --- !u!114 &2570541001904814953
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -395,9 +397,12 @@ MonoBehaviour:
   BulletSpawnPoint: {fileID: 2024064165126389897}
   shotDelay: 0.5
   shotMaxCounter: 1
+  singleShotDelay: 0.25
   offset: {x: 0, y: 1, z: 0}
   fillColor: {r: 0.5330188, g: 0.77732426, b: 1, a: 1}
   type: 1
+  sliderPrefab: {fileID: 6029025125323320054, guid: 36407245cd878e6458aefd5633bf7762, type: 3}
+  managerAudio: {fileID: 0}
 --- !u!1 &8880671360151621585
 GameObject:
   m_ObjectHideFlags: 0

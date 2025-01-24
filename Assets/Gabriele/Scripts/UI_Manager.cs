@@ -28,7 +28,7 @@ public class UI_Manager : MonoBehaviour
     {
         if (targetPlayer)
         {
-            Vector3 screenPos = Camera.main.WorldToScreenPoint(targetPlayer.position + new Vector3(0, 0.7f, 0));
+            Vector3 screenPos = Camera.main.WorldToScreenPoint(targetPlayer.position + new Vector3(0, 1f, 0));
             playerIndicator.position = screenPos;
         }
 

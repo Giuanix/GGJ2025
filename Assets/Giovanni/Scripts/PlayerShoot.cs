@@ -25,8 +25,11 @@ public class PlayerShoot : MonoBehaviour
    
     private float shotTimeCounter;
     private float extraDamage = 0f;
-    private Slider slider;
+
+    [SerializeField] private GameObject sliderPrefab;
+    Slider slider;
     private PlayerController pl;
+
     [HideInInspector] public AudioManager managerAudio;
     enum ShotType
     {
@@ -49,7 +52,7 @@ public class PlayerShoot : MonoBehaviour
         if(shotTimeCounter < shotDelay)
         {
             if (!slider) {
-                slider = Instantiate(Resources.Load<GameObject>("Prefabs/ReloadBarPrefab"),canvas).GetComponent<Slider>();
+                slider = Instantiate(sliderPrefab,canvas).GetComponent<Slider>();
                 slider.maxValue = shotDelay;
                 slider.transform.Find("Fill Area").Find("Fill").GetComponent<Image>().color = fillColor;
             }
