@@ -26,9 +26,8 @@ public class RandomEventManager : MonoBehaviour
     [SerializeField] private WaveEvent[] waveEvents;
     [SerializeField] private SpawnEvent spawnEvent;
     [SerializeField] private float countdownTime = 15f;
-    [SerializeField] private float waterChangeDirectionTimer = 15f;
     [SerializeField] private float defaultSpawnTimer = 4f;
-    private float currentWaterDirCountdown;
+
 
     private float currentCountdown;
     private WaterLevel waterLevel;
@@ -68,12 +67,7 @@ public class RandomEventManager : MonoBehaviour
             }
         }
 
-        currentWaterDirCountdown -= Time.deltaTime;
-        if(currentWaterDirCountdown <= 0)
-        {
-            currentWaterDirCountdown = waterChangeDirectionTimer;
-            waterLevel.speed *= -1;
-        }
+
     }
 
     void TriggerRandomEvent()
