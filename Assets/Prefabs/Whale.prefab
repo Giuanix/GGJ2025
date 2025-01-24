@@ -96,7 +96,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -4.12, y: -1, z: 0}
-  m_LocalScale: {x: 2.5, y: 2.5, z: 1}
+  m_LocalScale: {x: 3.2, y: 3.2, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 8025461823820582924}
@@ -210,7 +210,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.013565466, y: -0.071391866}
+  m_Offset: {x: -0.013565466, y: -0.103346094}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -221,7 +221,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.23286906, y: 0.49747536}
+  m_Size: {x: 0.23286906, y: 0.4335669}
   m_EdgeRadius: 0
 --- !u!50 &8458647122014157328
 Rigidbody2D:
@@ -379,6 +379,9 @@ MonoBehaviour:
   baseGravity: 2
   maxFallSpeed: 18
   fallSpeedMultiplier: 2
+  slipperySpeedMultiplier: 0.5
+  maxSlipperySpeed: 5
+  frictionSlippery: 1.5
   uiManager: {fileID: 0}
 --- !u!114 &8797212596078879233
 MonoBehaviour:
@@ -415,6 +418,7 @@ MonoBehaviour:
   offset: {x: 0, y: 1, z: 0}
   fillColor: {r: 0.5330188, g: 0.77732426, b: 1, a: 1}
   type: 1
+  maxChargeTime: 3.5
   sliderPrefab: {fileID: 6029025125323320054, guid: 36407245cd878e6458aefd5633bf7762, type: 3}
   managerAudio: {fileID: 0}
 --- !u!1 &7022139854241590268
