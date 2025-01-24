@@ -9,6 +9,7 @@ TagManager:
   - Water
   - UiPlayer1
   - UiPlayer2
+  - Slippery
   layers:
   - Default
   - TransparentFX

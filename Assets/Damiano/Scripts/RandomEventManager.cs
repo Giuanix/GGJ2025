@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class RandomEventManager : MonoBehaviour
 {
@@ -7,10 +8,12 @@ public class RandomEventManager : MonoBehaviour
     public class WaveEvent
     {
         public float newWaveHeight;
+        public float newWaveOffset;
         public float newWaveSpeed;
         public float newWaveFrequency;
         public float newAngularForce;
         public float eventDuration;
+        public bool onlyOffset;
     }
 
     [System.Serializable]
@@ -22,9 +25,21 @@ public class RandomEventManager : MonoBehaviour
         public Vector2 SpawnRange = new Vector2(-9, 9);
         public float spawnHeight = -6f;
     }
+    [System.Serializable]
+    public class SlipperyEvent
+    {
+        public float newWaveHeight;
+        public float newWaveSpeed;
+        public float newWaveFrequency;
+        public float eventDuration;
+        public Color color;
+        public GameObject[] toSlippery;
+        public float firstWaveDuration;
+    }
 
     [SerializeField] private WaveEvent[] waveEvents;
     [SerializeField] private SpawnEvent spawnEvent;
+    [SerializeField] private SlipperyEvent slipperyEvent;
     [SerializeField] private float countdownTime = 15f;
     [SerializeField] private float defaultSpawnTimer = 4f;
 
@@ -72,38 +87,50 @@ public class RandomEventManager : MonoBehaviour
 
     void TriggerRandomEvent()
     {
-        if (waveEvents.Length > 0 && Random.value > 0.5f)
+        if (waveEvents.Length > 0 && Random.value < .289f)
         {
             int randomIndex = Random.Range(0, waveEvents.Length);
             WaveEvent selectedEvent = waveEvents[randomIndex];
 
             StartCoroutine(HandleWaveEvent(selectedEvent));
         }
-        else if (spawnEvent != null)
+        else if (spawnEvent != null && Random.value < .623f)
         {
             StartCoroutine("SpawnObjects");
+        }else if(slipperyEvent != null)
+        {
+            StartCoroutine("SlipperyWave");
         }
     }
 
     private IEnumerator HandleWaveEvent(WaveEvent waveEvent)
     {
-        yield return StartCoroutine(LerpOffset(-200f, 5f));
+        if (!waveEvent.onlyOffset)
+        {
+            yield return StartCoroutine(LerpOffset(-250f, 5f));
 
-        waterLevel.waterHeight = waveEvent.newWaveHeight;
-        waterLevel.speed = waveEvent.newWaveSpeed;
-        waterLevel.waterFrequency = waveEvent.newWaveFrequency;
-        waterLevel.angularForce = waveEvent.newAngularForce;
+            waterLevel.waterHeight = waveEvent.newWaveHeight;
+            waterLevel.speed = waveEvent.newWaveSpeed;
+            waterLevel.waterFrequency = waveEvent.newWaveFrequency;
+            waterLevel.angularForce = waveEvent.newAngularForce;
 
-        yield return StartCoroutine(LerpOffset(originalOffset, 2f));
+        }
+
+        yield return StartCoroutine(LerpOffset(waveEvent.newWaveOffset, 2f));
 
         yield return new WaitForSeconds(waveEvent.eventDuration);
+        if (!waveEvent.onlyOffset)
+        {
+            yield return StartCoroutine(LerpOffset(-250f, 5f));
 
-        yield return StartCoroutine(LerpOffset(-200f, 2f));
 
-        waterLevel.waterHeight = originalWaveHeight;
-        waterLevel.speed = originalWaveSpeed;
-        waterLevel.waterFrequency = originalWaveFrequency;
-        waterLevel.angularForce = originalAngularForce;
+            waterLevel.waterHeight = originalWaveHeight;
+            waterLevel.speed = originalWaveSpeed;
+            waterLevel.waterFrequency = originalWaveFrequency;
+            waterLevel.angularForce = originalAngularForce;
+
+
+        }
 
         yield return StartCoroutine(LerpOffset(originalOffset, 2f));
         ResetCountdown();
@@ -156,5 +183,101 @@ public class RandomEventManager : MonoBehaviour
 
             yield return new WaitForSeconds(defaultSpawnTimer);
         }
+    }
+
+
+    private IEnumerator SlipperyWave()
+    {
+        Color oldColor = waterLevel.fillColor;
+
+        yield return StartCoroutine(LerpOffset(-250f, 5f));
+
+
+        waterLevel.waterHeight = slipperyEvent.newWaveHeight;
+        waterLevel.speed = slipperyEvent.newWaveSpeed;
+        waterLevel.waterFrequency = slipperyEvent.newWaveFrequency;
+        waterLevel.fillColor = slipperyEvent.color;
+
+
+        yield return StartCoroutine(LerpOffset(originalOffset, 2f));
+        List<string> oldTag = new List<string>();
+        float timer = 0f;
+
+        foreach (GameObject slip in slipperyEvent.toSlippery)
+        {
+            oldTag.Add(slip.tag);
+        }
+
+        Color colorObj = slipperyEvent.color;
+        colorObj.a = 1;
+
+        while (timer < slipperyEvent.firstWaveDuration)
+        {
+            timer += Time.deltaTime;
+            
+            foreach(GameObject slip in slipperyEvent.toSlippery)
+            {
+                if(slip.TryGetComponent<SpriteRenderer>(out SpriteRenderer spr))
+                    spr.color = Color.Lerp(Color.white, colorObj, timer / slipperyEvent.firstWaveDuration);
+            }
+            yield return null;
+        }
+        foreach(GameObject slip in slipperyEvent.toSlippery)
+        {
+            slip.tag = "Slippery";
+        }
+
+
+        yield return StartCoroutine(LerpOffset(-250f, 2f));
+
+        waterLevel.waterHeight = originalWaveHeight;
+        waterLevel.speed = originalWaveSpeed;
+        waterLevel.waterFrequency = originalWaveFrequency;
+        waterLevel.angularForce = originalAngularForce;
+
+
+        yield return StartCoroutine(LerpOffset(originalOffset, 2f));
+     
+
+        yield return new WaitForSeconds(slipperyEvent.eventDuration);
+
+        yield return StartCoroutine(LerpOffset(-250f, 2f));
+       
+        waterLevel.waterHeight = slipperyEvent.newWaveHeight;
+        waterLevel.speed = slipperyEvent.newWaveSpeed;
+        waterLevel.waterFrequency = slipperyEvent.newWaveFrequency;
+        waterLevel.fillColor = oldColor;
+
+        yield return StartCoroutine(LerpOffset(originalOffset, 2f));
+
+        while (timer < slipperyEvent.firstWaveDuration)
+        {
+            timer += Time.deltaTime;
+
+            foreach (GameObject slip in slipperyEvent.toSlippery)
+            {
+                if (slip.TryGetComponent<SpriteRenderer>(out SpriteRenderer spr))
+                    spr.color = Color.Lerp(colorObj, Color.white, timer / slipperyEvent.firstWaveDuration);
+            }
+            yield return null;
+        }
+
+        for(int i = 0; i < oldTag.Count; i++)
+        {
+            slipperyEvent.toSlippery[i].tag = oldTag[i];
+        }
+
+        yield return StartCoroutine(LerpOffset(-250f, 2f));
+
+        waterLevel.waterHeight = originalWaveHeight;
+        waterLevel.speed = originalWaveSpeed;
+        waterLevel.waterFrequency = originalWaveFrequency;
+        waterLevel.angularForce = originalAngularForce;
+
+
+        yield return StartCoroutine(LerpOffset(originalOffset, 2f));
+
+
+        ResetCountdown();
     }
 }

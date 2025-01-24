@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 [RequireComponent(typeof(PolygonCollider2D))]
+[RequireComponent(typeof(SpriteRenderer))]
 public class WaterLevel : MonoBehaviour
 {
     [SerializeField] private int textureWidth = 320;
@@ -18,7 +19,7 @@ public class WaterLevel : MonoBehaviour
     public float angularForce = 20; //<-- used in floatingObj
 
     [SerializeField] private Color curveColor;
-    [SerializeField] private Color fillColor;
+    public Color fillColor;
     [SerializeField] private GameObject waterHitPoint;
 
 
@@ -56,7 +57,7 @@ public class WaterLevel : MonoBehaviour
         waterTexture.filterMode = FilterMode.Point;
         waterTexture.wrapMode = TextureWrapMode.Repeat;
 
-        spriteRenderer = gameObject.AddComponent<SpriteRenderer>();
+        spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
         spriteRenderer.sortingOrder = 1;
         spriteRenderer.sprite = Sprite.Create(waterTexture, new Rect(0, 0, waterTexture.width, waterTexture.height), new Vector2(0.5f, 0.5f), 1f);
 
