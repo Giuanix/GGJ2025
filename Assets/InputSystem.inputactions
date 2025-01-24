@@ -51,18 +51,18 @@
                     "initialStateCheck": true
                 },
                 {
-                    "name": "AnyKey",
+                    "name": "Select",
                     "type": "Button",
-                    "id": "51b379b0-a7f4-4c14-ba1a-c9945e34432d",
+                    "id": "c2b95686-bb1d-421a-affd-49b9303c22be",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
-                    "initialStateCheck": false
+                    "initialStateCheck": true
                 },
                 {
-                    "name": "Select",
+                    "name": "AnyKey",
                     "type": "Button",
-                    "id": "a7764ed3-fc4e-4911-89f3-f68c261143bd",
+                    "id": "51b379b0-a7f4-4c14-ba1a-c9945e34432d",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -270,19 +270,8 @@
                 },
                 {
                     "name": "",
-                    "id": "3cd44afd-c6d0-469c-899c-2fa0190d20cc",
+                    "id": "f355a7b9-563d-42fd-a1dd-c0024098a29e",
                     "path": "<Keyboard>/1",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Select",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "ef56e4d2-4563-490b-a210-59dad9893c30",
-                    "path": "<Gamepad>/rightShoulder",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
