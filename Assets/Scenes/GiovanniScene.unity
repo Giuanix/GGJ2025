@@ -774,8 +774,7 @@ GameObject:
   m_Component:
   - component: {fileID: 367445977}
   - component: {fileID: 367445976}
-  - component: {fileID: 367445975}
-  - component: {fileID: 367445974}
+  - component: {fileID: 367445978}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -783,51 +782,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &367445974
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 367445973}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f99cd876effd872408b960cb6d4dc99d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  uiPlayer1: {fileID: 0}
-  uiPlayer2: {fileID: 0}
-  spawnPointPlayer1: {fileID: 126850472}
-  spawnPointPlayer2: {fileID: 766020339}
-  managerPlayer: {fileID: 0}
-  manager: {fileID: 0}
-  index: 0
-  fighters:
-  - {fileID: 0}
-  - {fileID: 0}
---- !u!114 &367445975
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 367445973}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c1f93ac5b64ad054dae8817f467d2a66, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  switcherManager: {fileID: 367445974}
-  prefabPlayer:
-  - {fileID: 7435510874179744901, guid: f87a38ab5f4ff8e4eaba682e2d63d037, type: 3}
-  - {fileID: 6867630237549604282, guid: 8545d110a4a1c484596f48e7987b45da, type: 3}
-  currentPrefab1: {fileID: 0}
-  currentPrefab2: {fileID: 0}
-  portraits:
-  - {fileID: 21300000, guid: c16c654bd8000704abb1367d06b3303c, type: 3}
-  - {fileID: 21300000, guid: 41d75eeee0f855546ae4019036cc0b94, type: 3}
-  iconPlayer1: {fileID: 2266381099423205454}
-  iconPlayer2: {fileID: 2266381099423205453}
 --- !u!114 &367445976
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -847,21 +801,9 @@ MonoBehaviour:
   m_PlayerJoinedEvent:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 367445974}
-        m_TargetAssemblyTypeName: SwitcherPlayer, Assembly-CSharp
+      - m_Target: {fileID: 367445978}
+        m_TargetAssemblyTypeName: ManagerTry, Assembly-CSharp
         m_MethodName: OnPlayerJoined
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 367445974}
-        m_TargetAssemblyTypeName: SwitcherPlayer, Assembly-CSharp
-        m_MethodName: SwitchNextSpawnCharacter
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -911,6 +853,33 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &367445978
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 367445973}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 27ae333c59b5ee940ad8a6af923df8ba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerInputManager: {fileID: 0}
+  prefabPlayers:
+  - {fileID: 7435510874179744901, guid: f87a38ab5f4ff8e4eaba682e2d63d037, type: 3}
+  - {fileID: 6867630237549604282, guid: 8545d110a4a1c484596f48e7987b45da, type: 3}
+  portraits:
+  - {fileID: 21300000, guid: c16c654bd8000704abb1367d06b3303c, type: 3}
+  - {fileID: 21300000, guid: 41d75eeee0f855546ae4019036cc0b94, type: 3}
+  iconPlayers:
+  - {fileID: 2266381099423205454}
+  - {fileID: 2266381099423205453}
+  uiPlayer1: {fileID: 0}
+  uiPlayer2: {fileID: 0}
+  spawnPointPlayer1: {fileID: 126850472}
+  spawnPointPlayer2: {fileID: 766020339}
+  fighters: []
 --- !u!1 &419422604
 GameObject:
   m_ObjectHideFlags: 0

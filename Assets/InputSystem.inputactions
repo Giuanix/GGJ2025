@@ -51,15 +51,6 @@
                     "initialStateCheck": true
                 },
                 {
-                    "name": "Select",
-                    "type": "Button",
-                    "id": "c2b95686-bb1d-421a-affd-49b9303c22be",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": true
-                },
-                {
                     "name": "AnyKey",
                     "type": "Button",
                     "id": "51b379b0-a7f4-4c14-ba1a-c9945e34432d",
@@ -249,7 +240,7 @@
                 {
                     "name": "",
                     "id": "a9b37e52-82fc-418d-aed9-b8867c7f45e3",
-                    "path": "<Gamepad>/select",
+                    "path": "<Gamepad>/start",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -265,17 +256,6 @@
                     "processors": "",
                     "groups": "",
                     "action": "AnyKey",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "f355a7b9-563d-42fd-a1dd-c0024098a29e",
-                    "path": "<Keyboard>/1",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Select",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
