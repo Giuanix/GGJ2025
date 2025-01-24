@@ -11,7 +11,7 @@ public class ManagerTry : MonoBehaviour
 
     private List<InputDevice> joinedDevices = new List<InputDevice>();
 
-
+    public AudioManager managerAudio;
     [SerializeField] private GameObject[] prefabPlayers;
     private GameObject[] currentPrefabs = {null,null};
 
@@ -42,6 +42,7 @@ public class ManagerTry : MonoBehaviour
 
     private void Start()
     {
+        managerAudio = AudioManager.instance;
         uiPlayer1 = GameObject.FindGameObjectWithTag("UiPlayer1").GetComponent<UI_Manager>();
         uiPlayer2 = GameObject.FindGameObjectWithTag("UiPlayer2").GetComponent<UI_Manager>();
       
@@ -56,7 +57,7 @@ public class ManagerTry : MonoBehaviour
 
         foreach (Animator a in previews)
             a.gameObject.SetActive(false);
-
+            managerAudio.PlaySchermataSelezionePersonaggio();
         selectionScreen.SetActive(true);
     }
 
@@ -92,7 +93,6 @@ public class ManagerTry : MonoBehaviour
 
     private void TryJoinDevice(InputDevice inputDevice)
     {
-       
         if (joinedDevices.Contains(inputDevice))
         {
             Debug.Log("This input device has already been joined!");
@@ -185,6 +185,8 @@ public class ManagerTry : MonoBehaviour
             uiPlayer2.targetPlayer = playerInput.transform;
             playerInput.gameObject.transform.position = spawnPointPlayer2.transform.position;
 
+            managerAudio.PlayStage1();
+            managerAudio.StopPlaySchermataSelezionePersonaggio();
             selectionScreen.SetActive(false);
             enabled = false;
         }
