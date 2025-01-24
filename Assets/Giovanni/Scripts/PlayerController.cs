@@ -13,7 +13,7 @@ public class PlayerController : MonoBehaviour
     [HideInInspector] public Rigidbody2D rb;
     [HideInInspector] public Animator animator;
     public FloatingObject floatingObject;
-
+    public Animator particles;
     [SerializeField] private float moveSpeed;
     private float actualSpeed;
 
@@ -78,6 +78,7 @@ public class PlayerController : MonoBehaviour
         actualSpeed = moveSpeed;
 
         ChangeState(locomotionState);
+
     }
 
     public void Update()
@@ -122,7 +123,10 @@ public class PlayerController : MonoBehaviour
         currentState.JumpCall(context);
     }
 
-
+    public void AnyKey(InputAction.CallbackContext context)
+    {
+        currentState.AnyKeyCall(context);
+    }
 
 
     //Funzioni di Controllo

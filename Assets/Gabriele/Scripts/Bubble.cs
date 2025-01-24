@@ -15,7 +15,7 @@ public class Bubble : MonoBehaviour
 
     [Space(5)]
 
-    [SerializeField] private float scale = 5f;
+    public float scale = 5f;
     [SerializeField] private bool scaleIncreasing = false;
 
     [Space(5)]

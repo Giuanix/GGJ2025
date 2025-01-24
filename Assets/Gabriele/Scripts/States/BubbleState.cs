@@ -22,7 +22,7 @@ public class BubbleState : State
         player.rb.simulated = true;
         player.GetComponent<Collider2D>().isTrigger = false;
         player.animator.SetLayerWeight(2, 0);
-
+        AudioManager.instance.PlayExplosionBubble();
     }
 
     public override void Update()
@@ -39,6 +39,7 @@ public class BubbleState : State
         if(player.transform.parent.TryGetComponent<IncapsulateBubble>(out IncapsulateBubble bubble))
         {
             bubble.TryToBeFree();
+            AudioManager.instance.PlayTryToBeFree();
         }
     }
 }
