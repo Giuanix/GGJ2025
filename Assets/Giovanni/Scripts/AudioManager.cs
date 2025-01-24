@@ -41,7 +41,7 @@ public class AudioManager : MonoBehaviour
     }  
     public void PlayPlayerSconfitto()
     {
-        PlayerSconfitto.PlayOneShot(PlayerSconfitto.clip,0.5f);
+        PlayerSconfitto.PlayOneShot(PlayerSconfitto.clip,1f);
     }  
     
     //OST

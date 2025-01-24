@@ -7,7 +7,7 @@ using UnityEngine;
 public class IncapsulateBubble : MonoBehaviour
 {
     [Header("Bubble")]
-
+    public AudioManager managerAudio;
     [SerializeField] private float horizontalAmplitude = 1f;
     [SerializeField] private float horizontalSpeed = 1f;
     [SerializeField] private float verticalSpeed = 0.65f;
@@ -33,6 +33,7 @@ public class IncapsulateBubble : MonoBehaviour
 
     private void Start()
     {
+        managerAudio = AudioManager.instance;
         startHorizontalOffset = Random.Range(-5, 5);
         spriteRenderer = GetComponent<SpriteRenderer>();
         rb = GetComponent<Rigidbody2D>();
@@ -96,6 +97,7 @@ public class IncapsulateBubble : MonoBehaviour
                 {
                     if (kill)
                     {
+                        managerAudio.PlayPlayerSconfitto();
                         Destroy(pl.gameObject);
                     }
                     else
