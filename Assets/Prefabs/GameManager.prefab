@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 5035926211885137723}
   - component: {fileID: 5504963254834248713}
   - component: {fileID: 3848325467463637551}
+  - component: {fileID: 1092626047770730558}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -102,6 +103,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerInputManager: {fileID: 5504963254834248713}
+  managerAudio: {fileID: 0}
   prefabPlayers:
   - {fileID: 7435510874179744901, guid: f87a38ab5f4ff8e4eaba682e2d63d037, type: 3}
   - {fileID: 6867630237549604282, guid: 8545d110a4a1c484596f48e7987b45da, type: 3}
@@ -130,3 +132,22 @@ MonoBehaviour:
   spawnPointPlayer1: {fileID: 0}
   spawnPointPlayer2: {fileID: 0}
   fighters: []
+--- !u!114 &1092626047770730558
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5677238679063425774}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e18cf19591971e142b30fbfe26a812cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  screen:
+  - {fileID: 0}
+  - {fileID: 0}
+  stage:
+  - {fileID: 0}
+  - {fileID: 0}
+  pointer: {fileID: 0}

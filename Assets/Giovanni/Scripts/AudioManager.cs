@@ -61,6 +61,4 @@ public class AudioManager : MonoBehaviour
     {
         SchermataSelezionePersonaggio.Stop();
     }
-    
-
 }
