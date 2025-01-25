@@ -11,8 +11,6 @@ public class SelectLevel : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        screen[0].SetActive(true);
-        screen[1].SetActive(false);
         FindObjectOfType<ManagerTry>().enabled = false;
     }
 
