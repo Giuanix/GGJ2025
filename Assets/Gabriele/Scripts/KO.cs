@@ -46,9 +46,7 @@ public class KO : MonoBehaviour
         foreach (PlayerController pl in playerControllers){
             if(force)
                 Destroy(p1.gameObject);
-            else
-                pl.GetComponent<PlayerInput>().enabled = false;
-
+   
         }
         if(force) GameTimer.instance.gameObject.SetActive(false);
         yield return new WaitForSeconds(0.5f);
@@ -68,7 +66,7 @@ public class KO : MonoBehaviour
         }else{
             GameTimer.instance.gameObject.SetActive(false);
             overlay.SetActive(true);
-            playerControllers[0].animator.Play("Idle");
+
             p1.sprite = playerControllers[0].GetComponent<SpriteRenderer>().sprite;
         }
         yield return new WaitForSeconds(4);

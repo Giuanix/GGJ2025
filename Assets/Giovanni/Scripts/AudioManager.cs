@@ -43,7 +43,7 @@ public class AudioManager : MonoBehaviour
     //SFX
     public void PlaySparoBalena()
     {
-        SparoBalena.PlayOneShot(SparoBalena.clip,0.5f);
+        SparoBalena.PlayOneShot(SparoBalena.clip,0.2f);
     }  
     public void PlaySparoPapera()
     {
@@ -63,7 +63,7 @@ public class AudioManager : MonoBehaviour
     }
     public void PlayJump()
     {
-        PlayerSconfitto.PlayOneShot(PlayerJump.clip, 0.5f);
+        PlayerSconfitto.PlayOneShot(PlayerJump.clip, 0.3f);
     }
     public void PlayExplosionBubble()
     {
@@ -77,7 +77,7 @@ public class AudioManager : MonoBehaviour
     
     public void PlaySchermataSelezionePersonaggio()
     {
-        SchermataSelezionePersonaggio.PlayOneShot(SchermataSelezionePersonaggio.clip,0.5f);
+        SchermataSelezionePersonaggio.Play();
     }
     public void StopPlaySchermataSelezionePersonaggio()
     {
@@ -86,21 +86,21 @@ public class AudioManager : MonoBehaviour
 
     public void PlayStage(int index)
     {
-        stages[index-1].PlayOneShot(stages[index-1].clip, 0.5f);
+        stages[index-1].Play();
     }
 
     //VOICELINE
 
     public void PlayKO()
     {
-        KO.PlayOneShot(KO.clip, 1f);
+        KO.PlayOneShot(KO.clip, 0.7f);
     }
     public void PlayCountdown()
     {
-        Countdown.PlayOneShot(Countdown.clip, 1f);
+        Countdown.PlayOneShot(Countdown.clip, 0.6f);
     }
     public void PlayChoose()
     {
-        ChooseYourFighter.PlayOneShot(ChooseYourFighter.clip, 1f);
+        ChooseYourFighter.PlayOneShot(ChooseYourFighter.clip, 0.5f);
     }
 }
