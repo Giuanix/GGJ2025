@@ -28,7 +28,7 @@ public class PlayerShoot : MonoBehaviour
     private float chargedShotExtraDamage = 0f;
     private float extraSize = 0f;
 
-
+    [SerializeField] private float chargedScale = 1.5f;
     private float chargeTime = 0f;
     [SerializeField] private float maxChargeTime = 3.5f; 
     private bool isCharging = false;
@@ -42,7 +42,8 @@ public class PlayerShoot : MonoBehaviour
     enum ShotType
     {
         MultipleShot,
-        SingleShot
+        SingleShot,
+        Shotgun
     }
 
     private void Start()
@@ -102,7 +103,7 @@ public class PlayerShoot : MonoBehaviour
                     if (chargeTime >= 0.5f)
                     {
                         extraDamage += 1.5f;
-                        extraSize += maxChargeTime / 2;
+                        extraSize += chargedScale;
                     }
 
                     switch (type)
@@ -112,6 +113,9 @@ public class PlayerShoot : MonoBehaviour
                             break;
                         case ShotType.SingleShot:
                             StartCoroutine(SingleShot());
+                            break;
+                        case ShotType.Shotgun:
+                            StartCoroutine(ShotgunShot());
                             break;
                     }
                 }
@@ -133,7 +137,7 @@ public class PlayerShoot : MonoBehaviour
     }
 
 
-    public void SpawnBubble()
+    public void SpawnBubble(Vector3 offset = new Vector3())
     {
         Bubble b = Instantiate(bullet, BulletSpawnPoint.position, transform.rotation).GetComponent<Bubble>();
 
@@ -142,11 +146,12 @@ public class PlayerShoot : MonoBehaviour
         b.SetupDirection(pl.isFacingRight);
         b.damage += Vector2.one * extraDamage + Vector2.one * chargedShotExtraDamage;
         b.scale += extraSize;
-
+        b.transform.position +=  offset ;
         // Find all child objects with Bubble component and set their projectile owner
         foreach (Bubble childBubble in b.GetComponentsInChildren<Bubble>())
         {
             childBubble.SetupProjectileOwner(gameObject);
+            childBubble.transform.parent = null;
         }
     }
     
@@ -219,7 +224,23 @@ public class PlayerShoot : MonoBehaviour
         }
 
     }
-
+    IEnumerator ShotgunShot()
+    {
+        float direction =  pl.isFacingRight ? -1 : 1;
+        yield return new WaitForSeconds(singleShotDelay);
+        SpawnBubble(new Vector3(-0.25f * direction ,0.5f,0));
+        managerAudio.PlaySparoBalena();
+        SpawnBubble(new Vector3(-0.05f * direction,0.25f,0));
+        managerAudio.PlaySparoBalena();
+        SpawnBubble(new Vector3(0,0,0));
+        managerAudio.PlaySparoBalena();
+        SpawnBubble(new Vector3(-0.05f * direction,-0.25f,0));
+        managerAudio.PlaySparoBalena();
+        SpawnBubble(new Vector3(-0.25f * direction,-0.5f,0));
+        managerAudio.PlaySparoBalena();
+        chargedShotExtraDamage = 0;
+        extraSize = 0;
+    }
     public void StarPowerup(float duration, float delayReducer,Sprite icon)
     {
         StartCoroutine(PowerUp(duration, delayReducer));

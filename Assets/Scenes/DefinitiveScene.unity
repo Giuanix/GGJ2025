@@ -4221,7 +4221,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: -1
   m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.0627451}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.15686275}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 1
@@ -8579,6 +8579,10 @@ PrefabInstance:
     - target: {fileID: 8706053795666698975, guid: 354b541a7167a1f4b9b7e3874743438c, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8966310396019009936, guid: 354b541a7167a1f4b9b7e3874743438c, type: 3}
+      propertyPath: countdown
+      value: 180
       objectReference: {fileID: 0}
     - target: {fileID: 8982988130420185476, guid: 354b541a7167a1f4b9b7e3874743438c, type: 3}
       propertyPath: m_AnchorMax.y

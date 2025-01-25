@@ -602,7 +602,8 @@ MonoBehaviour:
   singleShotDelay: 0.25
   offset: {x: 0, y: 0.5, z: 0}
   fillColor: {r: 0.53381866, g: 0.39215684, b: 1, a: 1}
-  type: 0
+  type: 2
+  chargedScale: 0.5
   maxChargeTime: 3.5
   sliderPrefab: {fileID: 6029025125323320054, guid: 36407245cd878e6458aefd5633bf7762, type: 3}
   managerAudio: {fileID: 0}

@@ -372,6 +372,7 @@ MonoBehaviour:
   offset: {x: 0, y: 0.5, z: 0}
   fillColor: {r: 0.47073075, g: 1, b: 0.39215684, a: 1}
   type: 1
+  chargedScale: 0.7
   maxChargeTime: 3.5
   sliderPrefab: {fileID: 6029025125323320054, guid: 36407245cd878e6458aefd5633bf7762, type: 3}
   managerAudio: {fileID: 0}

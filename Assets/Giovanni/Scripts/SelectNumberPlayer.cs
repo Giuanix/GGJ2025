@@ -16,6 +16,7 @@ public class SelectNumberPlayer : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        AudioManager.instance.PlaySchermataSelezionePersonaggio();
         Cursor.visible = false;
         FindObjectOfType<SelectLevel>().enabled = false;
         manager = ManagerTry.instance;

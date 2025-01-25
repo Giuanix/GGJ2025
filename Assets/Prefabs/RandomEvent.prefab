@@ -16,7 +16,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &910423917977696245
 Transform:
   m_ObjectHideFlags: 0
@@ -45,40 +45,26 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   waveEvents:
-  - newWaveHeight: 35.5
-    newWaveOffset: 108.6
-    newWaveSpeed: 2.78
-    newWaveFrequency: -2.07
-    newAngularForce: 209.1
-    eventDuration: 15
-    onlyOffset: 0
   - newWaveHeight: 3
-    newWaveOffset: 222.7
+    newWaveOffset: 98.8
     newWaveSpeed: 3
     newWaveFrequency: 15
     newAngularForce: -20
-    eventDuration: 5
+    eventDuration: 15
     onlyOffset: 1
-  - newWaveHeight: 230.1
-    newWaveOffset: -105.91
-    newWaveSpeed: 3.91
-    newWaveFrequency: 43
-    newAngularForce: -384.7
+  - newWaveHeight: 55.3
+    newWaveOffset: -53.5
+    newWaveSpeed: 3
+    newWaveFrequency: 1.67
+    newAngularForce: -127.7
     eventDuration: 7
     onlyOffset: 0
-  - newWaveHeight: 146.8
-    newWaveOffset: 13.5
-    newWaveSpeed: -2.03
-    newWaveFrequency: 40.2
-    newAngularForce: -75.85
+  - newWaveHeight: 69.5
+    newWaveOffset: -50
+    newWaveSpeed: 4.56
+    newWaveFrequency: -2.47
+    newAngularForce: 97.7
     eventDuration: 9
-    onlyOffset: 0
-  - newWaveHeight: -55.4
-    newWaveOffset: -36
-    newWaveSpeed: 8.04
-    newWaveFrequency: 36.1
-    newAngularForce: 320
-    eventDuration: 7
     onlyOffset: 0
   spawnEvent:
     objectsToSpawn:

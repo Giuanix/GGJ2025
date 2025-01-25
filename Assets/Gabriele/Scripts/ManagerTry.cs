@@ -73,7 +73,7 @@ public class ManagerTry : MonoBehaviour
             g.gameObject.SetActive(false);
 
 
-        managerAudio.PlaySchermataSelezionePersonaggio();
+        
         selectionScreen.SetActive(true);
 
         uiPlayer1 = GameObject.FindGameObjectWithTag("UiPlayer1").GetComponent<UI_Manager>();
@@ -127,10 +127,12 @@ public class ManagerTry : MonoBehaviour
         {
             int playerIndex = joinedDevices.Count;
             joinedDevices[inputDevice] = playerIndex;
-            SwitchIcon(playerIndex);
+            
 
             selectionFrame[playerIndex].gameObject.SetActive(true);
             previews[playerIndex].gameObject.SetActive(true);
+            selectionIndex[playerIndex] = 0;
+            SwitchIcon(playerIndex);
 
             Debug.Log($"Player {playerIndex + 1} joined with {inputDevice.displayName}");
         }
@@ -144,7 +146,6 @@ public class ManagerTry : MonoBehaviour
     {
         if (lockedDevices.Contains(joinedDevices.Keys.ElementAt(n))) return; // Prevent switching after locking
 
-        selectionIndex[n]++;
         if (selectionIndex[n] == 4)
             selectionIndex[n] = 0;
 
@@ -169,10 +170,13 @@ public class ManagerTry : MonoBehaviour
 
             if (device.Key is Keyboard keyboard && (keyboard.aKey.wasPressedThisFrame || keyboard.dKey.wasPressedThisFrame))
             {
+                selectionIndex[device.Value]++;
+
                 SwitchIcon(device.Value);
             }
             else if (device.Key is Gamepad gamepad && (gamepad.dpad.right.wasPressedThisFrame || gamepad.dpad.left.wasPressedThisFrame))
             {
+                selectionIndex[device.Value]++;
                 SwitchIcon(device.Value);
             }
         }

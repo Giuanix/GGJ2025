@@ -497,6 +497,7 @@ MonoBehaviour:
   offset: {x: 0, y: 0.5, z: 0}
   fillColor: {r: 1, g: 0.89212996, b: 0.3915094, a: 1}
   type: 0
+  chargedScale: 0.9
   maxChargeTime: 3.5
   sliderPrefab: {fileID: 6029025125323320054, guid: 36407245cd878e6458aefd5633bf7762, type: 3}
   managerAudio: {fileID: 0}
@@ -513,6 +514,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxDamageCounter: 100
+  defense: 0
   managerAudio: {fileID: 0}
   incapsulateBubble: {fileID: 4747875170398013927, guid: 783050ddcbd67fe4d83302adaae79654, type: 3}
 --- !u!1 &7627854446639897142
