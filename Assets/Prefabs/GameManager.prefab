@@ -48,7 +48,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_NotificationBehavior: 2
-  m_MaxPlayerCount: -1
+  m_MaxPlayerCount: 4
   m_AllowJoining: 1
   m_JoinBehavior: 1
   m_PlayerJoinedEvent:
@@ -108,26 +108,43 @@ MonoBehaviour:
   prefabPlayers:
   - {fileID: 7435510874179744901, guid: f87a38ab5f4ff8e4eaba682e2d63d037, type: 3}
   - {fileID: 6867630237549604282, guid: 8545d110a4a1c484596f48e7987b45da, type: 3}
-  objectToActiveOnJoin: []
+  - {fileID: 8248129932488849628, guid: 72868f4687a7abd4db70d582bf06f53a, type: 3}
+  - {fileID: 5648766338510067762, guid: eac91dbe6e7791548b9c3235f440ec88, type: 3}
+  objectToActiveOnJoin:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   portraits:
   - {fileID: 21300000, guid: c16c654bd8000704abb1367d06b3303c, type: 3}
   - {fileID: 21300000, guid: 611b27dd91f05ee428378120d1b06613, type: 3}
+  - {fileID: 21300000, guid: fb42e78eec99f094ab327d420381428e, type: 3}
+  - {fileID: 21300000, guid: 611b27dd91f05ee428378120d1b06613, type: 3}
   iconPlayers:
+  - {fileID: 0}
+  - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
   selectionFrame:
   - {fileID: 0}
   - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   selectionPosition:
   - {fileID: 0}
   - {fileID: 0}
-  selectionFlipping: 0001
+  - {fileID: 0}
+  - {fileID: 0}
+  selectionFlipping: 00010001
   previews:
+  - {fileID: 0}
+  - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
   animationsName:
   - Duck
   - Whale
+  - Pina
+  - Rita
   selectionScreen: {fileID: 0}
   maxPlayer: 2
   uiPlayer1: {fileID: 0}
@@ -158,6 +175,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   pointer: {fileID: 0}
+  waitFrame: 0.2
 --- !u!114 &4636852760846756190
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -174,4 +192,6 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   pointer: {fileID: 0}
+  headSprite: {fileID: 0}
   manager: {fileID: 0}
+  waitFrame: 0.2
