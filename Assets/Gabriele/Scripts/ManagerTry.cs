@@ -96,7 +96,9 @@ public class ManagerTry : MonoBehaviour
 
         fighters[0] = currentPrefabs[0];
         fighters[1] = currentPrefabs[1];
-        
+        //fighters[2] = currentPrefabs[2];
+       // fighters[3] = currentPrefabs[3];
+
         playerInputManager.playerPrefab = fighters[joinIndex];
 
     }
@@ -113,6 +115,7 @@ public class ManagerTry : MonoBehaviour
         if (joinedDevices.Count < maxPlayer)
         {
             int playerIndex = joinedDevices.Count;
+            SwitchIcon(playerIndex);
             joinedDevices[inputDevice] = playerIndex;
 
             selectionFrame[playerIndex].gameObject.SetActive(true);
@@ -192,6 +195,7 @@ public class ManagerTry : MonoBehaviour
         else if (joinIndex == 2)
         {
             pl.uiManager = uiPlayer3;
+            uiPlayer3.gameObject.SetActive(true);
             uiPlayer3.targetPlayer = playerInput.transform;
             playerInput.gameObject.transform.position = spawnPointPlayer3.transform.position;
             joinIndex++;
@@ -199,6 +203,8 @@ public class ManagerTry : MonoBehaviour
         else if (joinIndex == 3)
         {
             pl.uiManager = uiPlayer4;
+            uiPlayer4.gameObject.SetActive(true);
+
             uiPlayer4.targetPlayer = playerInput.transform;
             playerInput.gameObject.transform.position = spawnPointPlayer4.transform.position;
             StartGame();

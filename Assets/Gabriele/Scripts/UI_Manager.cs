@@ -22,6 +22,7 @@ public class UI_Manager : MonoBehaviour
     {
         startSizeOutline = outlineDamageText.fontSize;
         startSizeDamageText = damageText.fontSize;
+        playerIndicator.gameObject.SetActive(true);
     }
 
     private void Update()
