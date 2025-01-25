@@ -50,7 +50,7 @@ public class PlayerController : MonoBehaviour
 
     private void OnDestroy()
     {
-        uiManager.gameObject.SetActive(false);
+        uiManager.DeactivateUI();
         KO.instance.AnimateKO();
     }
 

@@ -19,7 +19,7 @@ public class KO : MonoBehaviour
     {
 
         deathCounter++;
-        if (deathCounter == ManagerTry.instance.maxPlayer || force)
+        if (deathCounter == ManagerTry.instance.maxPlayer-1 || force)
         {
             if (!started)
             {

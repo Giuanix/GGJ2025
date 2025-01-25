@@ -136,10 +136,18 @@ public class PlayerShoot : MonoBehaviour
     public void SpawnBubble()
     {
         Bubble b = Instantiate(bullet, BulletSpawnPoint.position, transform.rotation).GetComponent<Bubble>();
+
+        // Setup the main bubble
         b.SetupProjectileOwner(gameObject);
         b.SetupDirection(pl.isFacingRight);
         b.damage += Vector2.one * extraDamage + Vector2.one * chargedShotExtraDamage;
         b.scale += extraSize;
+
+        // Find all child objects with Bubble component and set their projectile owner
+        foreach (Bubble childBubble in b.GetComponentsInChildren<Bubble>())
+        {
+            childBubble.SetupProjectileOwner(gameObject);
+        }
     }
     
     IEnumerator Raffica()

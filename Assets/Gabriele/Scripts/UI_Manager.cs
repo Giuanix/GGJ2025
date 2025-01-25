@@ -59,4 +59,9 @@ public class UI_Manager : MonoBehaviour
             powerUp.color = Color.clear;
         }
     }
+
+    public void DeactivateUI()
+    {
+        playerIndicator.gameObject.SetActive(false);
+    }
 }
