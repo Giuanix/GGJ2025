@@ -61,7 +61,7 @@ public class PlayerController : MonoBehaviour
         currentState = newState;
 
         if (callOnEnter)
-            currentState.OnEnter(oldState);
+            currentState?.OnEnter(oldState);
     }
     public bool IsInState<T>()
     {
