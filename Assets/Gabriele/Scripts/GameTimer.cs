@@ -79,7 +79,7 @@ public class GameTimer : MonoBehaviour
         // Activate all PlayerControllers
         foreach (var controller in playerControllers)
         {
-            controller.gameObject.SetActive(true); // Set each player controller's GameObject as active
+            controller.ChangeState(controller.locomotionState); // Set each player controller's GameObject as active
         }
 
         countdownText.gameObject.SetActive(false);

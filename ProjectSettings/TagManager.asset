@@ -10,6 +10,8 @@ TagManager:
   - UiPlayer1
   - UiPlayer2
   - Slippery
+  - UiPlayer3
+  - UiPlayer4
   layers:
   - Default
   - TransparentFX
