@@ -362,7 +362,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9120111996359293343, guid: e51e8686ef3f3fc4da56d3e1c7c25eb1, type: 3}
       propertyPath: m_Name
-      value: AudioManager (1)
+      value: AudioManager
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1542,7 +1542,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6a160d838ff8b4b4693ac20007e008c7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_AssetsPPU: 28
+  m_AssetsPPU: 24
   m_RefResolutionX: 640
   m_RefResolutionY: 360
   m_UpscaleRT: 0
@@ -1577,8 +1577,8 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 4.59, z: 0}
-  m_LocalScale: {x: 6.8521256, y: 6.8521256, z: 6.8521256}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 1.4, y: 1.4, z: 1.4}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 1955582794}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1623,12 +1623,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: -1
-  m_Sprite: {fileID: 21300000, guid: 4e3a449314c2c4c46bb1aa2834a69cb8, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 8b2188e59e48d444f804cb96b7391e39, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 19.2, y: 10.8}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -7090,6 +7090,7 @@ SceneRoots:
   - {fileID: 737564341}
   - {fileID: 1514870930}
   - {fileID: 2137035593}
+  - {fileID: 258031915}
   - {fileID: 558292424}
   - {fileID: 2266381099423205452}
   - {fileID: 303259979}
@@ -7101,4 +7102,3 @@ SceneRoots:
   - {fileID: 766020339}
   - {fileID: 1868464634}
   - {fileID: 852634997}
-  - {fileID: 258031915}
