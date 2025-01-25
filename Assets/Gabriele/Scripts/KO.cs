@@ -14,18 +14,22 @@ public class KO : MonoBehaviour
         gameObject.SetActive(false);
 
     }
-
-    public void AnimateKO()
+    int deathCounter = 0;
+    public void AnimateKO(bool force = false)
     {
-        if(!started)
-        {
-            started = true;
-            gameObject.SetActive(true);
-            GetComponent<Image>().color = Color.clear;
-            GameTimer.instance.StopTimer();
-            StartCoroutine(CoroutineKO());
-        }
 
+        deathCounter++;
+        if (deathCounter == ManagerTry.instance.maxPlayer || force)
+        {
+            if (!started)
+            {
+                started = true;
+                gameObject.SetActive(true);
+                GetComponent<Image>().color = Color.clear;
+                GameTimer.instance.StopTimer();
+                StartCoroutine(CoroutineKO());
+            }
+        }
     }
 
     IEnumerator CoroutineKO()

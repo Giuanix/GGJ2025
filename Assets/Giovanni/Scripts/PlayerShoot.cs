@@ -57,21 +57,6 @@ public class PlayerShoot : MonoBehaviour
 
     void Update()
     {
-        if (isCharging && shotTimeCounter < shotDelay)
-        {
-            chargeTime += Time.deltaTime;
-
-            if (chargeTime >= 0.5f)
-            {
-                spriteRenderer.color = Color.yellow;
-            }
-
-            if (chargeTime > maxChargeTime)
-            {
-                chargeTime = maxChargeTime;
-            }
-        }
-
         shotTimeCounter += Time.deltaTime;
         if (shotTimeCounter < shotDelay)
         {
@@ -98,15 +83,16 @@ public class PlayerShoot : MonoBehaviour
 
     public void Shoot(InputAction.CallbackContext context)
     {
-        if (context.started && Time.timeScale > 0)
+        if (context.started && Time.timeScale > 0 && shotTimeCounter >= shotDelay)
         {
             isCharging = true;
             chargeTime = 0f;
+            StartCoroutine(ChargeColorLerp());
         }
 
-        if (context.canceled)
+        if (context.canceled && isCharging)
         {
-            if (shotTimeCounter > shotDelay && Time.timeScale > 0)
+            if (shotTimeCounter >= shotDelay && Time.timeScale > 0)
             {
                 if (!pl.IsInState<BubbleState>())
                 {
@@ -115,27 +101,37 @@ public class PlayerShoot : MonoBehaviour
 
                     if (chargeTime >= 0.5f)
                     {
-                        // Perform charged shot
                         extraDamage += maxChargeTime * 2;
-                        extraSize += maxChargeTime/2;
-                        spriteRenderer.color = Color.white;
+                        extraSize += maxChargeTime / 2;
                     }
 
                     switch (type)
                     {
                         case ShotType.MultipleShot:
-                            StartCoroutine("Raffica");
+                            StartCoroutine(Raffica());
                             break;
                         case ShotType.SingleShot:
-                            StartCoroutine("SingleShot");
+                            StartCoroutine(SingleShot());
                             break;
                     }
                 }
             }
             isCharging = false;
             chargeTime = 0f;
+            spriteRenderer.color = Color.white;
         }
     }
+
+    IEnumerator ChargeColorLerp()
+    {
+        while (isCharging && chargeTime < maxChargeTime)
+        {
+            spriteRenderer.color = Color.Lerp(Color.white, Color.yellow, chargeTime / maxChargeTime);
+            chargeTime += Time.deltaTime;
+            yield return null;
+        }
+    }
+
 
     public void SpawnBubble()
     {
