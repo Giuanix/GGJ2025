@@ -23,10 +23,12 @@ public class BubbleState : State
         player.GetComponent<Collider2D>().isTrigger = false;
         player.animator.SetLayerWeight(2, 0);
         AudioManager.instance.PlayExplosionBubble();
+        player.transform.rotation = Quaternion.identity;
     }
 
     public override void Update()
     {
+        player.transform.rotation *= Quaternion.Euler(0, 0, Time.deltaTime);
     }
 
     public override void JumpCall(InputAction.CallbackContext context)

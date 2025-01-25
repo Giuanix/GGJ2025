@@ -62,14 +62,14 @@ public class ManagerTry : MonoBehaviour
 
     private void Update()
     {
-        if (Keyboard.current.digit1Key.wasPressedThisFrame)
+        if (Keyboard.current.jKey.wasPressedThisFrame)
         {
             TryJoinDevice(Keyboard.current);
         }
 
         foreach (var gamepad in Gamepad.all)
         {
-            if (gamepad.dpad.left.wasPressedThisFrame || gamepad.dpad.right.wasPressedThisFrame)
+            if (gamepad.startButton.wasPressedThisFrame)
             {
                 TryJoinDevice(gamepad);
             }
@@ -89,6 +89,7 @@ public class ManagerTry : MonoBehaviour
 
     private void TryJoinDevice(InputDevice inputDevice)
     {
+
         if (joinedDevices.ContainsKey(inputDevice))
         {
             Debug.Log("This input device has already been joined!");
@@ -138,11 +139,11 @@ public class ManagerTry : MonoBehaviour
         {
             if (lockedDevices.Contains(device.Key)) continue;
 
-            if (device.Key is Keyboard keyboard && keyboard.digit1Key.wasPressedThisFrame)
+            if (device.Key is Keyboard keyboard && (keyboard.aKey.wasPressedThisFrame || keyboard.dKey.wasPressedThisFrame))
             {
                 SwitchIcon(device.Value);
             }
-            else if (device.Key is Gamepad gamepad && gamepad.buttonSouth.wasPressedThisFrame)
+            else if (device.Key is Gamepad gamepad && (gamepad.dpad.right.wasPressedThisFrame || gamepad.dpad.left.wasPressedThisFrame))
             {
                 SwitchIcon(device.Value);
             }
@@ -155,7 +156,7 @@ public class ManagerTry : MonoBehaviour
 
         int playerIndex = joinedDevices[playerInput.devices[0]];
 
-        if (playerIndex == 0)
+        if (joinIndex == 0)
         {
             playerInput.GetComponent<PlayerController>().uiManager = uiPlayer1;
 
@@ -164,7 +165,7 @@ public class ManagerTry : MonoBehaviour
 
             joinIndex ++;
         }
-        else if (playerIndex == 1)
+        else if (joinIndex == 1)
         {
             playerInput.GetComponent<PlayerController>().uiManager = uiPlayer2;
 
