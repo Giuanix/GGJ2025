@@ -168,7 +168,7 @@ public class ManagerTry : MonoBehaviour
     {
         lockedDevices.Add(playerInput.devices[0]); // Lock player input after selection
 
-        int playerIndex = joinedDevices[playerInput.devices[0]];
+        //int playerIndex = joinedDevices[playerInput.devices[0]];
         
         if (joinIndex == 0)
         {
@@ -180,6 +180,7 @@ public class ManagerTry : MonoBehaviour
         }
         else if (joinIndex == 1)
         {
+            Debug.Log("Oee");
             playerInput.GetComponent<PlayerController>().uiManager = uiPlayer2;
 
             uiPlayer2.targetPlayer = playerInput.transform;

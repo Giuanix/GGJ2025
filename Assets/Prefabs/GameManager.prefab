@@ -108,8 +108,7 @@ MonoBehaviour:
   prefabPlayers:
   - {fileID: 7435510874179744901, guid: f87a38ab5f4ff8e4eaba682e2d63d037, type: 3}
   - {fileID: 6867630237549604282, guid: 8545d110a4a1c484596f48e7987b45da, type: 3}
-  objectToActiveOnJoin:
-  - {fileID: 0}
+  objectToActiveOnJoin: []
   portraits:
   - {fileID: 21300000, guid: c16c654bd8000704abb1367d06b3303c, type: 3}
   - {fileID: 21300000, guid: 611b27dd91f05ee428378120d1b06613, type: 3}
