@@ -18,7 +18,7 @@ public class ManagerTry : MonoBehaviour
     [SerializeField] private List<GameObject> objectToActiveOnJoin = new List<GameObject>();
     private GameObject[] currentPrefabs = { null, null };
 
-    private int[] selectionIndex = { -1, -1 };
+    private int[] selectionIndex = { -1, -1,-1,-1 };
 
     [SerializeField] private Sprite[] portraits;
     [SerializeField] private Image[] iconPlayers;
@@ -68,10 +68,14 @@ public class ManagerTry : MonoBehaviour
 
         managerAudio.PlaySchermataSelezionePersonaggio();
         selectionScreen.SetActive(true);
+
         uiPlayer1 = GameObject.FindGameObjectWithTag("UiPlayer1").GetComponent<UI_Manager>();
         uiPlayer2 = GameObject.FindGameObjectWithTag("UiPlayer2").GetComponent<UI_Manager>();
         uiPlayer3 = GameObject.FindGameObjectWithTag("UiPlayer3").GetComponent<UI_Manager>();
         uiPlayer4 = GameObject.FindGameObjectWithTag("UiPlayer4").GetComponent<UI_Manager>();
+        uiPlayer3.gameObject.SetActive(false);
+        uiPlayer4.gameObject.SetActive(false);
+
     }
 
     private void Update()
@@ -96,8 +100,8 @@ public class ManagerTry : MonoBehaviour
 
         fighters[0] = currentPrefabs[0];
         fighters[1] = currentPrefabs[1];
-        //fighters[2] = currentPrefabs[2];
-       // fighters[3] = currentPrefabs[3];
+        fighters[2] = currentPrefabs[2];
+        fighters[3] = currentPrefabs[3];
 
         playerInputManager.playerPrefab = fighters[joinIndex];
 
@@ -134,7 +138,7 @@ public class ManagerTry : MonoBehaviour
         if (lockedDevices.Contains(joinedDevices.Keys.ElementAt(n))) return; // Prevent switching after locking
 
         selectionIndex[n]++;
-        if (selectionIndex[n] == prefabPlayers.Length)
+        if (selectionIndex[n] == maxPlayer)
             selectionIndex[n] = 0;
 
         int sel = selectionIndex[n];
