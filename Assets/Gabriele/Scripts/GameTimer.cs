@@ -53,7 +53,10 @@ public class GameTimer : MonoBehaviour
         gameObject.SetActive(true);
         StartCoroutine(CountdownToPlay());
     }
-
+    public void StopTimer()
+    {
+        canCountdown = false;
+    }
     IEnumerator CountdownToPlay()
     {
         yield return new WaitForSeconds(1f);

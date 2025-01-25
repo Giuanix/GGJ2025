@@ -22,6 +22,7 @@ public class KO : MonoBehaviour
             started = true;
             gameObject.SetActive(true);
             GetComponent<Image>().color = Color.clear;
+            GameTimer.instance.StopTimer();
             StartCoroutine(CoroutineKO());
         }
 
