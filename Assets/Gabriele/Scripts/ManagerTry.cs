@@ -70,8 +70,8 @@ public class ManagerTry : MonoBehaviour
         selectionScreen.SetActive(true);
         uiPlayer1 = GameObject.FindGameObjectWithTag("UiPlayer1").GetComponent<UI_Manager>();
         uiPlayer2 = GameObject.FindGameObjectWithTag("UiPlayer2").GetComponent<UI_Manager>();
-       /* uiPlayer3 = GameObject.FindGameObjectWithTag("UiPlayer3").GetComponent<UI_Manager>();
-        uiPlayer4 = GameObject.FindGameObjectWithTag("UiPlayer4").GetComponent<UI_Manager>();*/
+        uiPlayer3 = GameObject.FindGameObjectWithTag("UiPlayer3").GetComponent<UI_Manager>();
+        uiPlayer4 = GameObject.FindGameObjectWithTag("UiPlayer4").GetComponent<UI_Manager>();
     }
 
     private void Update()
@@ -168,21 +168,18 @@ public class ManagerTry : MonoBehaviour
     {
         lockedDevices.Add(playerInput.devices[0]); // Lock player input after selection
 
-        //int playerIndex = joinedDevices[playerInput.devices[0]];
-        
+        PlayerController pl = playerInput.GetComponent<PlayerController>();
+      //  pl.ChangeState(pl.nullState); on create is already state null
         if (joinIndex == 0)
         {
-            playerInput.GetComponent<PlayerController>().uiManager = uiPlayer1;
-
+            pl.uiManager = uiPlayer1;
             uiPlayer1.targetPlayer = playerInput.transform;
             playerInput.gameObject.transform.position = spawnPointPlayer1.transform.position;
             joinIndex++;
         }
         else if (joinIndex == 1)
         {
-            Debug.Log("Oee");
-            playerInput.GetComponent<PlayerController>().uiManager = uiPlayer2;
-
+            pl.uiManager = uiPlayer2;
             uiPlayer2.targetPlayer = playerInput.transform;
             playerInput.gameObject.transform.position = spawnPointPlayer2.transform.position;
 
@@ -194,16 +191,14 @@ public class ManagerTry : MonoBehaviour
         }
         else if (joinIndex == 2)
         {
-            playerInput.GetComponent<PlayerController>().uiManager = uiPlayer3;
-
+            pl.uiManager = uiPlayer3;
             uiPlayer3.targetPlayer = playerInput.transform;
             playerInput.gameObject.transform.position = spawnPointPlayer3.transform.position;
             joinIndex++;
         }
         else if (joinIndex == 3)
         {
-            playerInput.GetComponent<PlayerController>().uiManager = uiPlayer4;
-
+            pl.uiManager = uiPlayer4;
             uiPlayer4.targetPlayer = playerInput.transform;
             playerInput.gameObject.transform.position = spawnPointPlayer4.transform.position;
             StartGame();

@@ -57,7 +57,7 @@ public class PlayerShoot : MonoBehaviour
 
     void Update()
     {
-        if (isCharging)
+        if (isCharging && shotTimeCounter < shotDelay)
         {
             chargeTime += Time.deltaTime;
 

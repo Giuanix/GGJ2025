@@ -53,7 +53,10 @@ public class GameTimer : MonoBehaviour
         gameObject.SetActive(true);
         StartCoroutine(CountdownToPlay());
     }
-
+    public void StopTimer()
+    {
+        canCountdown = false;
+    }
     IEnumerator CountdownToPlay()
     {
         yield return new WaitForSeconds(1f);
@@ -79,7 +82,7 @@ public class GameTimer : MonoBehaviour
         // Activate all PlayerControllers
         foreach (var controller in playerControllers)
         {
-            controller.gameObject.SetActive(true); // Set each player controller's GameObject as active
+            controller.ChangeState(controller.locomotionState); // Set each player controller's GameObject as active
         }
 
         countdownText.gameObject.SetActive(false);

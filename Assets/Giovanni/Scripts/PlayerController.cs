@@ -43,7 +43,8 @@ public class PlayerController : MonoBehaviour
     [HideInInspector] public JumpState jumpState;
     [HideInInspector] public WaterState waterState;
     [HideInInspector] public BubbleState bubbleState;
-     public UI_Manager uiManager;
+    [HideInInspector] public NullState nullState;
+    public UI_Manager uiManager;
 
     private float accumulatedVelocity;
 
@@ -87,13 +88,13 @@ public class PlayerController : MonoBehaviour
 
         actualSpeed = moveSpeed;
 
-        ChangeState(locomotionState);
+        ChangeState(nullState);
 
     }
 
     public void Update()
     {
-        currentState.Update();
+        currentState?.Update();
 
         if (floatingObject.IsInWater() && !IsInState<WaterState>() && !IsInState<BubbleState>())
         {

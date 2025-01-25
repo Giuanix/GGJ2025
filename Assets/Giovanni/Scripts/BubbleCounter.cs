@@ -13,7 +13,8 @@ public class BubbleCounter : MonoBehaviour, IDamageable
     [Header("Settings")]
     [SerializeField] private int maxDamageCounter = 100;
     public int MaxDamageCounter { get => maxDamageCounter;}
-    private int defense = 0;
+    [SerializeField]private int defense = 0;
+    private int extraDefense = 0;
     PlayerController pl;
     private int damageCounter = 0;
     [HideInInspector] public AudioManager managerAudio;
@@ -31,7 +32,7 @@ public class BubbleCounter : MonoBehaviour, IDamageable
     public void TakeDamage(int amount,bool damageFromProjectile)
     {
         managerAudio.PlayDannoSubito();
-        damageCounter += amount - defense;
+        damageCounter += amount - extraDefense - defense;
 
         UpdateText();
 
@@ -68,7 +69,7 @@ public class BubbleCounter : MonoBehaviour, IDamageable
 
     public void SetDefense( float duration, int defense,Sprite icon)
     {
-        this.defense = defense;
+        this.extraDefense = defense;
         pl.uiManager.SetupPowerUpImage(icon);
         StartCoroutine(DefensePowerUp(duration));
 
@@ -92,7 +93,7 @@ public class BubbleCounter : MonoBehaviour, IDamageable
             spriteRenderer.color = Color.white;
             pl.uiManager.SetupPowerUpImage(null);
 
-            defense = 0;
+            extraDefense = 0;
         }
 
     }
