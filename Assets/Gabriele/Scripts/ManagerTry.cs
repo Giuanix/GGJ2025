@@ -8,7 +8,6 @@ using Unity.VisualScripting;
 
 public class ManagerTry : MonoBehaviour
 {
-
     public static ManagerTry instance;
     public PlayerInputManager playerInputManager;
     private Dictionary<InputDevice, int> joinedDevices = new Dictionary<InputDevice, int>();
