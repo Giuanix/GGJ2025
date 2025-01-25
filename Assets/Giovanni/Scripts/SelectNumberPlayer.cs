@@ -7,6 +7,7 @@ public class SelectNumberPlayer : MonoBehaviour
 {
     [SerializeField] private GameObject[] screen;
     [SerializeField] private RectTransform pointer;
+    [SerializeField] private GameObject headSprite;
     public ManagerTry manager;
     // Start is called before the first frame update
     void Start()
@@ -52,6 +53,7 @@ public class SelectNumberPlayer : MonoBehaviour
             case 70:
                 screen[0].SetActive(false);
                 screen[1].SetActive(true);
+                headSprite.SetActive(true);
                 manager.maxPlayer = 2;
                 FindObjectOfType<SelectLevel>().enabled = true;
                 enabled = false;
@@ -60,6 +62,7 @@ public class SelectNumberPlayer : MonoBehaviour
             case -70:
                 screen[0].SetActive(false);
                 screen[1].SetActive(true);
+                headSprite.SetActive(false);
                 manager.maxPlayer = 4;
                 FindObjectOfType<SelectLevel>().enabled = true;
                 enabled = false;

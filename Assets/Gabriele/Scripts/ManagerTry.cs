@@ -115,8 +115,8 @@ public class ManagerTry : MonoBehaviour
         if (joinedDevices.Count < maxPlayer)
         {
             int playerIndex = joinedDevices.Count;
-            SwitchIcon(playerIndex);
             joinedDevices[inputDevice] = playerIndex;
+            SwitchIcon(playerIndex);
 
             selectionFrame[playerIndex].gameObject.SetActive(true);
             previews[playerIndex].gameObject.SetActive(true);
