@@ -43,7 +43,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: 05ac8e2abf42e93468f1cfd152a5b6c2, type: 2}
+  m_Motion: {fileID: 7400000, guid: 1963ab0fa45ba2747990c044b5a59f73, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -70,7 +70,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: bbe71a7aea698924bb7a4d486502dc44, type: 2}
+  m_Motion: {fileID: 7400000, guid: adbdc1fee2d118847a7ad163f73e127a, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -151,7 +151,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: 6e901da0451634e41a980274122ef84f, type: 2}
+  m_Motion: {fileID: 7400000, guid: c1062bfc4298c074082855db9ca6b203, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -209,7 +209,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: ce014611b4c75844786204ad4112d40b, type: 2}
+  m_Motion: {fileID: 7400000, guid: f3cff9504bba92a4aaf1e98b855a6c98, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -236,7 +236,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: 9b1108fcef223784fbf404118ab9ab53, type: 2}
+  m_Motion: {fileID: 7400000, guid: fe45bf6a144f7c842a852ff0bface5e6, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -314,7 +314,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: 9b1108fcef223784fbf404118ab9ab53, type: 2}
+  m_Motion: {fileID: 7400000, guid: fe45bf6a144f7c842a852ff0bface5e6, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -373,7 +373,7 @@ AnimatorController:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: PinaAnimator
+  m_Name: RitaAnimator
   serializedVersion: 5
   m_AnimatorParameters:
   - m_Name: Speed
@@ -853,7 +853,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: a69394c9402df394ba16ea1afe239480, type: 2}
+  m_Motion: {fileID: 7400000, guid: 77104ca9bca8ecd479f5f172f7f8f269, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 

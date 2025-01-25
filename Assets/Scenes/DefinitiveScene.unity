@@ -814,7 +814,7 @@ PrefabInstance:
     - target: {fileID: 3848325467463637551, guid: 2d871af97ce1cdc40ae78e76038ff47f, type: 3}
       propertyPath: prefabPlayers.Array.data[3]
       value: 
-      objectReference: {fileID: 6867630237549604282, guid: 8545d110a4a1c484596f48e7987b45da, type: 3}
+      objectReference: {fileID: 5648766338510067762, guid: eac91dbe6e7791548b9c3235f440ec88, type: 3}
     - target: {fileID: 3848325467463637551, guid: 2d871af97ce1cdc40ae78e76038ff47f, type: 3}
       propertyPath: animationsName.Array.data[2]
       value: Pina
