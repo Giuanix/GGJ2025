@@ -9,6 +9,6 @@ EditorBuildSettings:
     path: Assets/Scenes/MenuPrincipale.unity
     guid: 6f71cac6a9b787040a1415422cf3f571
   - enabled: 1
-    path: Assets/Scenes/GiovanniScene.unity
-    guid: 5a114cd9552b1c549be4edaa0a5298b9
+    path: Assets/Scenes/DefinitiveScene.unity
+    guid: 732610db3b0c69b41a0d26563d90ca2e
   m_configObjects: {}

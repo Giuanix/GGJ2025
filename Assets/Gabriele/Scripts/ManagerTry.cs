@@ -3,27 +3,27 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.InputSystem;
-using System;
+using System.Linq;
 
 public class ManagerTry : MonoBehaviour
 {
     public PlayerInputManager playerInputManager;
-
-    private List<InputDevice> joinedDevices = new List<InputDevice>();
+    private Dictionary<InputDevice, int> joinedDevices = new Dictionary<InputDevice, int>();
+    private List<InputDevice> lockedDevices = new List<InputDevice>();
 
     public AudioManager managerAudio;
     [SerializeField] private GameObject[] prefabPlayers;
-    private GameObject[] currentPrefabs = {null,null};
+    private GameObject[] currentPrefabs = { null, null };
 
     private int[] selectionIndex = { -1, -1 };
-    
+
     [SerializeField] private Sprite[] portraits;
     [SerializeField] private Image[] iconPlayers;
     [SerializeField] private Transform[] selectionFrame;
     [SerializeField] private Transform[] selectionPosition;
     [SerializeField] private bool[] selectionFlipping;
     [SerializeField] private Animator[] previews;
-    [SerializeField] private string[] animationsName = { "Duck", "Whale"};
+    [SerializeField] private string[] animationsName = { "Duck", "Whale" };
 
     [SerializeField] private GameObject selectionScreen;
 
@@ -34,18 +34,16 @@ public class ManagerTry : MonoBehaviour
     public Transform spawnPointPlayer1;
     public Transform spawnPointPlayer2;
     [Space(5)]
-    [Tooltip("Debug")]
-    [SerializeField] List<GameObject> fighters = new List<GameObject>();
+    [SerializeField] private List<GameObject> fighters = new List<GameObject>();
 
     int joinIndex = 0;
-
 
     private void Start()
     {
         managerAudio = AudioManager.instance;
         uiPlayer1 = GameObject.FindGameObjectWithTag("UiPlayer1").GetComponent<UI_Manager>();
         uiPlayer2 = GameObject.FindGameObjectWithTag("UiPlayer2").GetComponent<UI_Manager>();
-      
+
         playerInputManager = GetComponent<PlayerInputManager>();
         playerInputManager.onPlayerJoined += OnPlayerJoined;
 
@@ -57,27 +55,25 @@ public class ManagerTry : MonoBehaviour
 
         foreach (Animator a in previews)
             a.gameObject.SetActive(false);
-            managerAudio.PlaySchermataSelezionePersonaggio();
+
+        managerAudio.PlaySchermataSelezionePersonaggio();
         selectionScreen.SetActive(true);
     }
 
     private void Update()
     {
-     
-        if (Keyboard.current.digit1Key.wasPressedThisFrame) // Example: Spacebar to join a player
+        if (Keyboard.current.digit1Key.wasPressedThisFrame)
         {
             TryJoinDevice(Keyboard.current);
         }
 
-      
         foreach (var gamepad in Gamepad.all)
         {
-            if (gamepad.buttonSouth.wasPressedThisFrame) // Gamepad 'A' button to join a player
+            if (gamepad.dpad.left.wasPressedThisFrame || gamepad.dpad.right.wasPressedThisFrame)
             {
                 TryJoinDevice(gamepad);
             }
         }
-
 
         if (joinedDevices.Count > 0)
         {
@@ -86,24 +82,23 @@ public class ManagerTry : MonoBehaviour
 
         fighters[0] = currentPrefabs[0];
         fighters[1] = currentPrefabs[1];
-
+        
         playerInputManager.playerPrefab = fighters[joinIndex];
-    }
 
+    }
 
     private void TryJoinDevice(InputDevice inputDevice)
     {
-        if (joinedDevices.Contains(inputDevice))
+        if (joinedDevices.ContainsKey(inputDevice))
         {
             Debug.Log("This input device has already been joined!");
             return;
         }
 
-        // Join the player with the input device
-        int playerIndex = joinedDevices.Count;
-        if (playerIndex < 2) // Limit to 4 players (adjust based on your needs)
+        if (joinedDevices.Count < 2)
         {
-            joinedDevices.Add(inputDevice);
+            int playerIndex = joinedDevices.Count;
+            joinedDevices[inputDevice] = playerIndex;
 
             selectionFrame[playerIndex].gameObject.SetActive(true);
             previews[playerIndex].gameObject.SetActive(true);
@@ -115,77 +110,70 @@ public class ManagerTry : MonoBehaviour
             Debug.Log("Maximum number of players already joined!");
         }
     }
-     
+
     private void SwitchIcon(int n)
     {
+        if (lockedDevices.Contains(joinedDevices.Keys.ElementAt(n))) return; // Prevent switching after locking
+
         selectionIndex[n]++;
-
-
         if (selectionIndex[n] == prefabPlayers.Length)
             selectionIndex[n] = 0;
 
         int sel = selectionIndex[n];
-
         iconPlayers[n].sprite = portraits[sel];
         currentPrefabs[n] = prefabPlayers[sel];
 
         selectionFrame[n].position = selectionPosition[sel].position;
-
-        selectionFrame[n].transform.localScale = new Vector3( (selectionFlipping[sel] ? -1 : 1),1,1);
-        selectionFrame[n].transform.GetChild(0).localScale = new Vector3((selectionFlipping[sel] ? -1 : 1),1,1);
+        selectionFrame[n].transform.localScale = new Vector3((selectionFlipping[sel] ? -1 : 1), 1, 1);
+        selectionFrame[n].transform.GetChild(0).localScale = new Vector3((selectionFlipping[sel] ? -1 : 1), 1, 1);
 
         previews[n].Play(animationsName[sel]);
+        
 
     }
 
     private void HandlePlayerSelection()
     {
-        for (int i = 0; i < joinedDevices.Count; i++)
+        foreach (var device in joinedDevices)
         {
-            if (joinedDevices[i] is Keyboard)
-            {
-                var keyboard = (Keyboard)joinedDevices[i];
+            if (lockedDevices.Contains(device.Key)) continue;
 
-                if (keyboard.digit1Key.wasPressedThisFrame)
-                {
-                    if ((i == 0 && joinIndex == 0))
-                        SwitchIcon(i);
-                }
+            if (device.Key is Keyboard keyboard && keyboard.digit1Key.wasPressedThisFrame)
+            {
+                SwitchIcon(device.Value);
             }
-            else if (joinedDevices[i] is Gamepad)
+            else if (device.Key is Gamepad gamepad && gamepad.buttonSouth.wasPressedThisFrame)
             {
-                var gamepad = (Gamepad)joinedDevices[i];
-
-                if (gamepad.buttonSouth.wasPressedThisFrame)
-                {
-                    if ((i == 1 && joinIndex == 1))
-                        SwitchIcon(i);
-                }
+                SwitchIcon(device.Value);
             }
         }
     }
 
     public void OnPlayerJoined(PlayerInput playerInput)
     {
-        Debug.Log("Player Joined: " + playerInput.playerIndex);
+        lockedDevices.Add(playerInput.devices[0]); // Lock player input after selection
 
-        // Set position only if it's a new player
-        if (joinIndex == 0)
+        int playerIndex = joinedDevices[playerInput.devices[0]];
+
+        if (playerIndex == 0)
         {
             playerInput.GetComponent<PlayerController>().uiManager = uiPlayer1;
+
             uiPlayer1.targetPlayer = playerInput.transform;
             playerInput.gameObject.transform.position = spawnPointPlayer1.transform.position;
-            
-            joinIndex += 1;
+
+            joinIndex ++;
         }
-        else if (joinIndex == 1)
+        else if (playerIndex == 1)
         {
             playerInput.GetComponent<PlayerController>().uiManager = uiPlayer2;
+
             uiPlayer2.targetPlayer = playerInput.transform;
             playerInput.gameObject.transform.position = spawnPointPlayer2.transform.position;
 
             managerAudio.PlayStage1();
             managerAudio.StopPlaySchermataSelezionePersonaggio();
+
             selectionScreen.SetActive(false);
             enabled = false;
         }
