@@ -145,7 +145,7 @@ public class ManagerTry : MonoBehaviour
         if (lockedDevices.Contains(joinedDevices.Keys.ElementAt(n))) return; // Prevent switching after locking
 
         selectionIndex[n]++;
-        if (selectionIndex[n] == maxPlayer)
+        if (selectionIndex[n] == 4)
             selectionIndex[n] = 0;
 
         int sel = selectionIndex[n];
@@ -228,7 +228,8 @@ public class ManagerTry : MonoBehaviour
         foreach (GameObject g in objectToActiveOnJoin)
             g.gameObject.SetActive(true);
 
-        managerAudio.PlayStage1();
+
+        managerAudio.PlayStage(FindObjectOfType<SelectLevel>().selectedStage);
         managerAudio.StopPlaySchermataSelezionePersonaggio();
 
         selectionScreen.SetActive(false);

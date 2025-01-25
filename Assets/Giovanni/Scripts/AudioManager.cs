@@ -18,11 +18,13 @@ public class AudioManager : MonoBehaviour
     [SerializeField] private AudioSource TryToBeFree;
 
     [Header("OST")]
-    [SerializeField] private AudioSource Stage1;
+    [SerializeField] private AudioSource[] stages;
     [SerializeField] private AudioSource SchermataSelezionePersonaggio;
 
     [Header("Voiceline")]
     [SerializeField] private AudioSource KO;
+    [SerializeField] private AudioSource Countdown;
+    [SerializeField] private AudioSource ChooseYourFighter;
 
     void Awake()
     {
@@ -32,7 +34,8 @@ public class AudioManager : MonoBehaviour
 
     public void StopAll()
     {
-        Stage1.Stop();
+        foreach(AudioSource a in  stages)
+            a.Stop();
         SchermataSelezionePersonaggio.Stop();
     }
 
@@ -71,14 +74,7 @@ public class AudioManager : MonoBehaviour
         PlayerSconfitto.PlayOneShot(PlayerJump.clip, 0.5f);
     }
     //OST
-    public void PlayStage1()
-    {
-        Stage1.PlayOneShot(Stage1.clip,0.5f);
-    }  
-    public void StopPlayStage1()
-    {
-        Stage1.Stop();
-    }  
+    
     public void PlaySchermataSelezionePersonaggio()
     {
         SchermataSelezionePersonaggio.PlayOneShot(SchermataSelezionePersonaggio.clip,0.5f);
@@ -88,10 +84,23 @@ public class AudioManager : MonoBehaviour
         SchermataSelezionePersonaggio.Stop();
     }
 
+    public void PlayStage(int index)
+    {
+        stages[index-1].PlayOneShot(stages[index-1].clip, 0.5f);
+    }
+
     //VOICELINE
 
     public void PlayKO()
     {
         KO.PlayOneShot(KO.clip, 1f);
+    }
+    public void PlayCountdown()
+    {
+        Countdown.PlayOneShot(Countdown.clip, 1f);
+    }
+    public void PlayChoose()
+    {
+        ChooseYourFighter.PlayOneShot(ChooseYourFighter.clip, 1f);
     }
 }

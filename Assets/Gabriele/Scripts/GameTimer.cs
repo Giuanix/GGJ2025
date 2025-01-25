@@ -60,6 +60,7 @@ public class GameTimer : MonoBehaviour
     IEnumerator CountdownToPlay()
     {
         yield return new WaitForSeconds(1f);
+        AudioManager.instance.PlayCountdown();
         countdownText.text = "3";
         countdownText2.text = "3";
         yield return new WaitForSeconds(1f);

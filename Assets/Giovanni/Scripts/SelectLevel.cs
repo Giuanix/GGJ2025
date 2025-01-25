@@ -9,6 +9,7 @@ public class SelectLevel : MonoBehaviour
     [SerializeField] private GameObject[] stage;
     [SerializeField] private RectTransform pointer;
     [SerializeField] private float waitFrame = 0.2f;
+    [HideInInspector] public int selectedStage;
     // Start is called before the first frame update
     void Start()
     {
@@ -77,7 +78,10 @@ public class SelectLevel : MonoBehaviour
         screen[0].SetActive(false);
         screen[1].SetActive(true);
         stage[0].SetActive(true);
+        selectedStage = 1;
         FindObjectOfType<ManagerTry>().enabled = true;
+        AudioManager.instance.PlayChoose();
+
         enabled = false;
     }
     public void SelectStage2()
@@ -85,7 +89,10 @@ public class SelectLevel : MonoBehaviour
         screen[0].SetActive(false);
         screen[1].SetActive(true);
         stage[1].SetActive(true);
+        selectedStage = 2;
         FindObjectOfType<ManagerTry>().enabled = true;
+        AudioManager.instance.PlayChoose();
+
         enabled = false;
     }
 }

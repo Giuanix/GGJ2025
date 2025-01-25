@@ -62,6 +62,6 @@ public class UI_Manager : MonoBehaviour
 
     public void DeactivateUI()
     {
-        playerIndicator.gameObject.SetActive(false);
+        playerIndicator?.gameObject.SetActive(false);
     }
 }
