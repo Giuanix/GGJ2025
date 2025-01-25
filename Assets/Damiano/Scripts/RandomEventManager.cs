@@ -274,7 +274,11 @@ public class RandomEventManager : MonoBehaviour
         waterLevel.waterFrequency = originalWaveFrequency;
         waterLevel.angularForce = originalAngularForce;
 
-
+      foreach (GameObject slip in slipperyEvent.toSlippery)
+            {
+                if (slip.TryGetComponent<SpriteRenderer>(out SpriteRenderer spr))
+                    spr.color = Color.white;
+            }
         yield return StartCoroutine(LerpOffset(originalOffset, 2f));
 
 

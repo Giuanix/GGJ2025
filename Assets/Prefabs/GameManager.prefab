@@ -118,7 +118,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: c16c654bd8000704abb1367d06b3303c, type: 3}
   - {fileID: 21300000, guid: 611b27dd91f05ee428378120d1b06613, type: 3}
   - {fileID: 21300000, guid: fb42e78eec99f094ab327d420381428e, type: 3}
-  - {fileID: 21300000, guid: 611b27dd91f05ee428378120d1b06613, type: 3}
+  - {fileID: 21300000, guid: d7b433e1af37d7c4489801d6f5344997, type: 3}
   iconPlayers:
   - {fileID: 0}
   - {fileID: 0}
@@ -176,6 +176,7 @@ MonoBehaviour:
   - {fileID: 0}
   pointer: {fileID: 0}
   waitFrame: 0.2
+  selectedStage: 0
 --- !u!114 &4636852760846756190
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -195,3 +196,6 @@ MonoBehaviour:
   headSprite: {fileID: 0}
   manager: {fileID: 0}
   waitFrame: 0.2
+  select2Player: {fileID: 0}
+  select4Player: {fileID: 0}
+  clicked: {fileID: 0}

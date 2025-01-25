@@ -164,7 +164,7 @@ MonoBehaviour:
   scaleIncreasing: 1
   floatingSpeed: {x: -2, y: 2}
   increasingScaleSpeed: {x: 2, y: 3}
-  damage: {x: 0.5, y: 1.5}
+  damage: {x: 1, y: 1}
   isProjectile: 1
   airFriction: 10
   minSpeedStartFloating: 6.5
@@ -359,7 +359,7 @@ MonoBehaviour:
   scaleIncreasing: 1
   floatingSpeed: {x: -2, y: -1}
   increasingScaleSpeed: {x: 2, y: 3}
-  damage: {x: 1, y: 2}
+  damage: {x: 1, y: 1}
   isProjectile: 1
   airFriction: 10
   minSpeedStartFloating: 6.5
@@ -554,7 +554,7 @@ MonoBehaviour:
   scaleIncreasing: 1
   floatingSpeed: {x: 1, y: 2}
   increasingScaleSpeed: {x: 2, y: 3}
-  damage: {x: 0.5, y: 1}
+  damage: {x: 1, y: 1}
   isProjectile: 1
   airFriction: 10
   minSpeedStartFloating: 6.5
@@ -749,7 +749,7 @@ MonoBehaviour:
   scaleIncreasing: 1
   floatingSpeed: {x: -1, y: 1}
   increasingScaleSpeed: {x: 2, y: 3}
-  damage: {x: 0, y: 1}
+  damage: {x: 1, y: 1}
   isProjectile: 1
   airFriction: 10
   minSpeedStartFloating: 6.5
@@ -941,14 +941,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   horizontalAmplitude: 1
-  horizontalSpeed: 3
+  horizontalSpeed: 4
   verticalSpeed: 0.65
   livingTime: 0.2
   scale: 0.34
   scaleIncreasing: 1
   floatingSpeed: {x: -0.5, y: 0.5}
   increasingScaleSpeed: {x: 1, y: 2}
-  damage: {x: 0.5, y: 1}
+  damage: {x: 1, y: 1}
   isProjectile: 1
   airFriction: 20
   minSpeedStartFloating: 6.5

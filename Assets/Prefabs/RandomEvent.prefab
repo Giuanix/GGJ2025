@@ -16,7 +16,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &910423917977696245
 Transform:
   m_ObjectHideFlags: 0
@@ -97,6 +97,12 @@ MonoBehaviour:
     eventDuration: 15
     color: {r: 0.9433962, g: 0.48504806, b: 0.79755807, a: 0.57254905}
     toSlippery:
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
     - {fileID: 0}
     - {fileID: 0}
     - {fileID: 0}

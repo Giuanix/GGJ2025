@@ -334,7 +334,7 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 12800000, guid: b77ac7b4537e6a947a332f8787d9067d, type: 3}
-    m_FontSize: 240
+    m_FontSize: 220
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 0
@@ -717,7 +717,7 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 12800000, guid: b77ac7b4537e6a947a332f8787d9067d, type: 3}
-    m_FontSize: 300
+    m_FontSize: 280
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 0
@@ -1028,6 +1028,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pointer: {fileID: 1498824726}
   comandScreen: {fileID: 1433911758}
+  inizia: {fileID: 1578664244}
+  comandi: {fileID: 144914186}
+  clicked: {fileID: 21300000, guid: cd50866c7c4ee5a448d0a2f21ae3c0dc, type: 3}
+  unclicked: {fileID: 21300000, guid: 43771f878f273534f8215cbb0c8d0239, type: 3}
+  waitFrame: 0.2
 --- !u!1 &1656111545
 GameObject:
   m_ObjectHideFlags: 0

@@ -99,7 +99,7 @@ MonoBehaviour:
   textureWidth: 640
   textureHeight: 360
   offset: -105.91
-  waterPointsCount: 42
+  waterPointsCount: 56
   curveThickness: 3
   speed: 3
   waterFrequency: 15
@@ -109,7 +109,7 @@ MonoBehaviour:
   fillColor: {r: 0, g: 0.7672267, b: 1, a: 0.6156863}
   waterHitPoint: {fileID: 5922843114942596547, guid: 3ef227b47c8213142a8ed767cf4923a5, type: 3}
   canImpact: 1
-  impulseWidth: 30
+  impulseWidth: 45
 --- !u!212 &5830808728051405247
 SpriteRenderer:
   m_ObjectHideFlags: 0

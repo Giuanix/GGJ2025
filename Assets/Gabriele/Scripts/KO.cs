@@ -3,16 +3,24 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
-
+using UnityEngine.SceneManagement;
+using Unity.VisualScripting;
 public class KO : MonoBehaviour
 {
     public static KO instance;
+    
+    [SerializeField] private GameObject overlay;
+    [SerializeField] private GameObject draw;
+    [SerializeField] private Image p1;
+
     bool started = false;
     void Start()
     {
+        draw.SetActive(false);
+
         instance = this;
         gameObject.SetActive(false);
-
+        overlay.SetActive(false);
     }
     int deathCounter = 0;
     public void AnimateKO(bool force = false)
@@ -27,27 +35,45 @@ public class KO : MonoBehaviour
                 gameObject.SetActive(true);
                 GetComponent<Image>().color = Color.clear;
                 GameTimer.instance.StopTimer();
-                StartCoroutine(CoroutineKO());
+                StartCoroutine(CoroutineKO(force));
             }
         }
     }
 
-    IEnumerator CoroutineKO()
+    IEnumerator CoroutineKO(bool force)
     {
         PlayerController[] playerControllers = FindObjectsOfType<PlayerController>();
-        foreach (PlayerController pl in playerControllers)
-            pl.GetComponent<PlayerInput>().enabled = false;
+        foreach (PlayerController pl in playerControllers){
+            if(force)
+                Destroy(p1.gameObject);
+            else
+                pl.GetComponent<PlayerInput>().enabled = false;
 
+        }
+        if(force) GameTimer.instance.gameObject.SetActive(false);
         yield return new WaitForSeconds(0.5f);
         
         AudioManager.instance.StopAll();
+
         GetComponent<Image>().color = Color.white;
         GetComponent<Animator>().Play("KOAnimation");
         yield return new WaitForSeconds(0.1f);
         AudioManager.instance.PlayKO();
-
         gameObject.SetActive(true);
+        yield return new WaitForSeconds(4);
+    
+        GetComponent<Image>().color = Color.clear;
+        if(force){
+            draw.SetActive(true);
+        }else{
+            GameTimer.instance.gameObject.SetActive(false);
+            overlay.SetActive(true);
+            playerControllers[0].animator.Play("Idle");
+            p1.sprite = playerControllers[0].GetComponent<SpriteRenderer>().sprite;
+        }
+        yield return new WaitForSeconds(4);
 
+        SceneManager.LoadScene(0);
         yield return null;
     }
 }

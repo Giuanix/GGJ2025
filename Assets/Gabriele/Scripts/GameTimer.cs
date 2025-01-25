@@ -44,6 +44,7 @@ public class GameTimer : MonoBehaviour
             if (countdown <= 0)
             {
                 KO.instance.AnimateKO(true);
+                canCountdown = false;
             }
         }
     }

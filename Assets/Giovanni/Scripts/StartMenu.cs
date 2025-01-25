@@ -3,10 +3,15 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
 public class StartMenu : MonoBehaviour
 {
     public RectTransform pointer;
     public GameObject comandScreen;
+    public Image inizia;
+    public Image comandi;
+    public Sprite clicked;
+    public Sprite unclicked;
     [SerializeField] private float waitFrame = 0.2f;
     void Start()
     {
@@ -65,10 +70,12 @@ public class StartMenu : MonoBehaviour
         switch (pointer.anchoredPosition.y)
         {
             case -80:
+            inizia.sprite = clicked;
             Invoke("SelectInizia",waitFrame); 
                 break;
 
             case -250:
+            comandi.sprite = clicked;
             Invoke("SelectComandi",waitFrame); 
                 break;
 
@@ -85,6 +92,7 @@ public class StartMenu : MonoBehaviour
     }
     public void SelectComandi()
     {
+        comandi.sprite = unclicked;
         comandScreen.SetActive(true);
     }
 }

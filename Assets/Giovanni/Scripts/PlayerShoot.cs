@@ -101,7 +101,7 @@ public class PlayerShoot : MonoBehaviour
 
                     if (chargeTime >= 0.5f)
                     {
-                        extraDamage += maxChargeTime * 2;
+                        extraDamage += 1.5f;
                         extraSize += maxChargeTime / 2;
                     }
 

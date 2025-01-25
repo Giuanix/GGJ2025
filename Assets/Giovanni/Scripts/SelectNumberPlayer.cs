@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
-
+using UnityEngine.UI;
 public class SelectNumberPlayer : MonoBehaviour
 {
     [SerializeField] private GameObject[] screen;
@@ -10,6 +10,9 @@ public class SelectNumberPlayer : MonoBehaviour
     [SerializeField] private GameObject headSprite;
     public ManagerTry manager;
     [SerializeField] private float waitFrame = 0.2f;
+    public Image select2Player;
+    public Image select4Player;
+    public Sprite clicked;
     // Start is called before the first frame update
     void Start()
     {
@@ -66,10 +69,12 @@ public class SelectNumberPlayer : MonoBehaviour
         switch (pointer.anchoredPosition.y)
         {
             case 70:
+                select2Player.sprite = clicked;
                 Invoke("Select2Player",waitFrame);
                 break;
 
             case -70:
+                select2Player.sprite = clicked;
                 Invoke("Select4Player",waitFrame);
                 break;
         } 
