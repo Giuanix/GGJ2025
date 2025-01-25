@@ -4,15 +4,19 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.InputSystem;
 using System.Linq;
+using Unity.VisualScripting;
 
 public class ManagerTry : MonoBehaviour
 {
+
+    public static ManagerTry instance;
     public PlayerInputManager playerInputManager;
     private Dictionary<InputDevice, int> joinedDevices = new Dictionary<InputDevice, int>();
     private List<InputDevice> lockedDevices = new List<InputDevice>();
 
     public AudioManager managerAudio;
     [SerializeField] private GameObject[] prefabPlayers;
+    [SerializeField] private List<GameObject> objectToActiveOnJoin = new List<GameObject>();
     private GameObject[] currentPrefabs = { null, null };
 
     private int[] selectionIndex = { -1, -1 };
@@ -26,23 +30,30 @@ public class ManagerTry : MonoBehaviour
     [SerializeField] private string[] animationsName = { "Duck", "Whale" };
 
     [SerializeField] private GameObject selectionScreen;
-
+    public int maxPlayer = 2;
     [Space(5)]
     public UI_Manager uiPlayer1;
     public UI_Manager uiPlayer2;
+    public UI_Manager uiPlayer3;
+    public UI_Manager uiPlayer4;
     [Space(5)]
     public Transform spawnPointPlayer1;
     public Transform spawnPointPlayer2;
+    public Transform spawnPointPlayer3;
+    public Transform spawnPointPlayer4;
     [Space(5)]
     [SerializeField] private List<GameObject> fighters = new List<GameObject>();
 
     int joinIndex = 0;
 
+    private void Awake()
+    {
+        instance = this;
+    }
+
     private void Start()
     {
         managerAudio = AudioManager.instance;
-        uiPlayer1 = GameObject.FindGameObjectWithTag("UiPlayer1").GetComponent<UI_Manager>();
-        uiPlayer2 = GameObject.FindGameObjectWithTag("UiPlayer2").GetComponent<UI_Manager>();
 
         playerInputManager = GetComponent<PlayerInputManager>();
         playerInputManager.onPlayerJoined += OnPlayerJoined;
@@ -58,6 +69,10 @@ public class ManagerTry : MonoBehaviour
 
         managerAudio.PlaySchermataSelezionePersonaggio();
         selectionScreen.SetActive(true);
+        uiPlayer1 = GameObject.FindGameObjectWithTag("UiPlayer1").GetComponent<UI_Manager>();
+        uiPlayer2 = GameObject.FindGameObjectWithTag("UiPlayer2").GetComponent<UI_Manager>();
+       /* uiPlayer3 = GameObject.FindGameObjectWithTag("UiPlayer3").GetComponent<UI_Manager>();
+        uiPlayer4 = GameObject.FindGameObjectWithTag("UiPlayer4").GetComponent<UI_Manager>();*/
     }
 
     private void Update()
@@ -96,7 +111,7 @@ public class ManagerTry : MonoBehaviour
             return;
         }
 
-        if (joinedDevices.Count < 2)
+        if (joinedDevices.Count < maxPlayer)
         {
             int playerIndex = joinedDevices.Count;
             joinedDevices[inputDevice] = playerIndex;
@@ -155,15 +170,14 @@ public class ManagerTry : MonoBehaviour
         lockedDevices.Add(playerInput.devices[0]); // Lock player input after selection
 
         int playerIndex = joinedDevices[playerInput.devices[0]];
-
+        
         if (joinIndex == 0)
         {
             playerInput.GetComponent<PlayerController>().uiManager = uiPlayer1;
 
             uiPlayer1.targetPlayer = playerInput.transform;
             playerInput.gameObject.transform.position = spawnPointPlayer1.transform.position;
-
-            joinIndex ++;
+            joinIndex++;
         }
         else if (joinIndex == 1)
         {
@@ -172,11 +186,58 @@ public class ManagerTry : MonoBehaviour
             uiPlayer2.targetPlayer = playerInput.transform;
             playerInput.gameObject.transform.position = spawnPointPlayer2.transform.position;
 
-            managerAudio.PlayStage1();
-            managerAudio.StopPlaySchermataSelezionePersonaggio();
+            if (maxPlayer == 2)
+                StartGame();
+            else
+                joinIndex++;
 
-            selectionScreen.SetActive(false);
-            enabled = false;
+        }
+        else if (joinIndex == 2)
+        {
+            playerInput.GetComponent<PlayerController>().uiManager = uiPlayer3;
+
+            uiPlayer3.targetPlayer = playerInput.transform;
+            playerInput.gameObject.transform.position = spawnPointPlayer3.transform.position;
+            joinIndex++;
+        }
+        else if (joinIndex == 3)
+        {
+            playerInput.GetComponent<PlayerController>().uiManager = uiPlayer4;
+
+            uiPlayer4.targetPlayer = playerInput.transform;
+            playerInput.gameObject.transform.position = spawnPointPlayer4.transform.position;
+            StartGame();
         }
     }
+
+
+    private void StartGame()
+    {
+        foreach (GameObject g in objectToActiveOnJoin)
+            g.gameObject.SetActive(true);
+
+        managerAudio.PlayStage1();
+        managerAudio.StopPlaySchermataSelezionePersonaggio();
+
+        selectionScreen.SetActive(false);
+
+        GameTimer.instance.StartGame();
+
+        enabled = false;
+    }
+
+
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
