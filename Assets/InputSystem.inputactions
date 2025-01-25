@@ -229,7 +229,7 @@
                 {
                     "name": "",
                     "id": "705209c1-ee5d-4729-bea9-497cd6bd90a0",
-                    "path": "<Keyboard>/j",
+                    "path": "<Keyboard>/l",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -240,7 +240,7 @@
                 {
                     "name": "",
                     "id": "a9b37e52-82fc-418d-aed9-b8867c7f45e3",
-                    "path": "<Gamepad>/start",
+                    "path": "<Gamepad>/buttonSouth",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
