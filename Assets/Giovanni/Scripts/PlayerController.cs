@@ -159,12 +159,12 @@ public class PlayerController : MonoBehaviour
 
     public void Jump(InputAction.CallbackContext context)
     {
-        currentState.JumpCall(context);
+        currentState?.JumpCall(context);
     }
 
     public void AnyKey(InputAction.CallbackContext context)
     {
-        currentState.AnyKeyCall(context);
+        currentState?.AnyKeyCall(context);
     }
 
 

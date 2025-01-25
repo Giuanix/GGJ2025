@@ -16,7 +16,7 @@ public class ManagerTry : MonoBehaviour
     public AudioManager managerAudio;
     [SerializeField] private GameObject[] prefabPlayers;
     [SerializeField] private List<GameObject> objectToActiveOnJoin = new List<GameObject>();
-    private GameObject[] currentPrefabs = { null, null };
+    private GameObject[] currentPrefabs = { null, null,null,null };
 
     private int[] selectionIndex = { -1, -1,-1,-1 };
 
@@ -59,12 +59,19 @@ public class ManagerTry : MonoBehaviour
 
         fighters.Add(null);
         fighters.Add(null);
+        fighters.Add(null);
+        fighters.Add(null);
 
         foreach (Transform t in selectionFrame)
             t.gameObject.SetActive(false);
 
         foreach (Animator a in previews)
             a.gameObject.SetActive(false);
+
+
+        foreach (GameObject g in objectToActiveOnJoin)
+            g.gameObject.SetActive(false);
+
 
         managerAudio.PlaySchermataSelezionePersonaggio();
         selectionScreen.SetActive(true);
