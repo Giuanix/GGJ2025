@@ -429,6 +429,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5954255954290999946, guid: e51e8686ef3f3fc4da56d3e1c7c25eb1, type: 3}
+      propertyPath: Loop
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5954255954290999946, guid: e51e8686ef3f3fc4da56d3e1c7c25eb1, type: 3}
+      propertyPath: m_PlayOnAwake
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 9120111996359293343, guid: e51e8686ef3f3fc4da56d3e1c7c25eb1, type: 3}
       propertyPath: m_Name
       value: AudioManager
@@ -836,6 +844,10 @@ PrefabInstance:
     - target: {fileID: 405603238652375006, guid: cd5102a2a5da85f4fb4363b0121c96cd, type: 3}
       propertyPath: m_Name
       value: SpawnObject
+      objectReference: {fileID: 0}
+    - target: {fileID: 445823209756598108, guid: cd5102a2a5da85f4fb4363b0121c96cd, type: 3}
+      propertyPath: minSpawnTime
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 1961775073285286830, guid: cd5102a2a5da85f4fb4363b0121c96cd, type: 3}
       propertyPath: m_LocalPosition.x
@@ -3960,6 +3972,10 @@ PrefabInstance:
     - target: {fileID: 405603238652375006, guid: cd5102a2a5da85f4fb4363b0121c96cd, type: 3}
       propertyPath: m_Name
       value: SpawnObject (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 445823209756598108, guid: cd5102a2a5da85f4fb4363b0121c96cd, type: 3}
+      propertyPath: minSpawnTime
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 1961775073285286830, guid: cd5102a2a5da85f4fb4363b0121c96cd, type: 3}
       propertyPath: m_LocalPosition.x

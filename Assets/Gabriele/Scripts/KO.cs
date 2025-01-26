@@ -8,7 +8,6 @@ using Unity.VisualScripting;
 public class KO : MonoBehaviour
 {
     public static KO instance;
-    
     [SerializeField] private GameObject overlay;
     [SerializeField] private GameObject draw;
     [SerializeField] private Image p1;
@@ -58,8 +57,10 @@ public class KO : MonoBehaviour
         yield return new WaitForSeconds(0.1f);
         AudioManager.instance.PlayKO();
         gameObject.SetActive(true);
-        yield return new WaitForSeconds(4);
-    
+        yield return new WaitForSeconds(2);
+        AudioManager.instance.PlayTheWinnerIs();
+        yield return new WaitForSeconds(2);
+        AudioManager.instance.PlaySchermataVittoria();
         GetComponent<Image>().color = Color.clear;
         if(force){
             draw.SetActive(true);
@@ -69,8 +70,7 @@ public class KO : MonoBehaviour
 
             p1.sprite = playerControllers[0].GetComponent<SpriteRenderer>().sprite;
         }
-        yield return new WaitForSeconds(4);
-
+        yield return new WaitForSeconds(8);
         SceneManager.LoadScene(0);
         yield return null;
     }

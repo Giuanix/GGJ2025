@@ -20,17 +20,18 @@ public class AudioManager : MonoBehaviour
     [Header("OST")]
     [SerializeField] private AudioSource[] stages;
     [SerializeField] private AudioSource SchermataSelezionePersonaggio;
+    [SerializeField] private AudioSource SchermataVittoria;
 
     [Header("Voiceline")]
     [SerializeField] private AudioSource KO;
     [SerializeField] private AudioSource Countdown;
     [SerializeField] private AudioSource ChooseYourFighter;
+    [SerializeField] private AudioSource theWinnerIs;
 
     void Awake()
     {
         instance = this;
     }
-
 
     public void StopAll()
     {
@@ -67,11 +68,11 @@ public class AudioManager : MonoBehaviour
     }
     public void PlayExplosionBubble()
     {
-        PlayerSconfitto.PlayOneShot(PlayerJump.clip, 0.5f);
+        PlayerSconfitto.PlayOneShot(PlayerSconfitto.clip, 0.5f);
     }
     public void PlayTryToBeFree()
     {
-        PlayerSconfitto.PlayOneShot(PlayerJump.clip, 0.5f);
+        TryToBeFree.PlayOneShot(TryToBeFree.clip, 0.5f);
     }
     //OST
     
@@ -88,19 +89,28 @@ public class AudioManager : MonoBehaviour
     {
         stages[index-1].Play();
     }
+    public void PlaySchermataVittoria()
+    {
+        SchermataVittoria.Play();
+    }
 
     //VOICELINE
 
     public void PlayKO()
     {
-        KO.PlayOneShot(KO.clip, 0.7f);
+        KO.PlayOneShot(KO.clip,0.5f);
     }
     public void PlayCountdown()
     {
-        Countdown.PlayOneShot(Countdown.clip, 0.6f);
+        Countdown.volume = 0.6f;
+        Countdown.PlayOneShot(Countdown.clip);
     }
     public void PlayChoose()
     {
         ChooseYourFighter.PlayOneShot(ChooseYourFighter.clip, 0.5f);
+    }
+    public void PlayTheWinnerIs()
+    {
+        theWinnerIs.PlayOneShot(theWinnerIs.clip, 0.5f);
     }
 }
