@@ -105,7 +105,7 @@ public class IncapsulateBubble : MonoBehaviour
                         pl.ChangeState(pl.locomotionState);
                         if(pl.TryGetComponent<BubbleCounter>(out BubbleCounter b))
                         {
-                            b.SetPercentage(b.MaxDamageCounter - 10);
+                            b.OverridePercentage(75);
                         }
                         else
                         {

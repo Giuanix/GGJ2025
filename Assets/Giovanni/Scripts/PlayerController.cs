@@ -51,6 +51,7 @@ public class PlayerController : MonoBehaviour
     {
         uiManager.DeactivateUI();
         KO.instance.AnimateKO();
+        GetComponent<PlayerShoot>().SliderHide();
     }
 
 

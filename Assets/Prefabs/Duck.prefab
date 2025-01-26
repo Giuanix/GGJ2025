@@ -491,7 +491,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bullet: {fileID: 8945811867683996988, guid: e5773f23a3901c44cb7e3695c82d7a27, type: 3}
   BulletSpawnPoint: {fileID: 3798126348865350500}
-  shotDelay: 3
+  shotDelay: 2
   shotMaxCounter: 4
   singleShotDelay: 0.25
   offset: {x: 0, y: 0.5, z: 0}

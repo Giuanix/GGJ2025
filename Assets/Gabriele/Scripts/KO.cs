@@ -48,6 +48,7 @@ public class KO : MonoBehaviour
    
         }
         if(force) GameTimer.instance.gameObject.SetActive(false);
+        
         yield return new WaitForSeconds(0.5f);
         
         AudioManager.instance.StopAll();

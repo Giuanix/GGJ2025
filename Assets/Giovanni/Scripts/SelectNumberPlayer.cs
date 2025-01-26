@@ -75,7 +75,7 @@ public class SelectNumberPlayer : MonoBehaviour
                 break;
 
             case -70:
-                select2Player.sprite = clicked;
+                select4Player.sprite = clicked;
                 Invoke("Select4Player",waitFrame);
                 break;
         } 

@@ -8,7 +8,7 @@ public class ResourceSpawner : MonoBehaviour
     public float minSpawnTime = 10f;     // Minimum spawn interval
     public float maxSpawnTime = 20f;     // Maximum spawn interval
 
-    private void Start()
+    private void OnEnable()
     {
         StartCoroutine(SpawnRoutine());
     }

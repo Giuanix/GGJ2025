@@ -107,4 +107,9 @@ public class BubbleCounter : MonoBehaviour, IDamageable
         damageCounter -= amount;
         UpdateText();
     }
+    public void OverridePercentage(int amount)
+    {
+        damageCounter = amount;
+        UpdateText();
+    }
 }

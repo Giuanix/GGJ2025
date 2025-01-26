@@ -252,6 +252,9 @@ public class PlayerShoot : MonoBehaviour
         pl.uiManager.SetupPowerUpImage(icon);
         extraDamage = damage;
     }
-
+    public void SliderHide()
+    {
+        slider.gameObject.SetActive(false);
+    }
 
 }
