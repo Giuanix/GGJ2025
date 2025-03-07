@@ -87,17 +87,32 @@ public class ManagerTry : MonoBehaviour
 
     private void Update()
     {
-        if (Keyboard.current.jKey.wasPressedThisFrame)
+        //Aggiungi Device "Keyboard"
+        if (Input.GetKeyDown(KeyCode.Return))
         {
             TryJoinDevice(Keyboard.current);
         }
-
+        /*
+        //Torna al menu di selezione Stage
+        if(Input.GetKeyDown(KeyCode.Escape))
+        {
+            tornaIndietro();
+        }
+        */
         foreach (var gamepad in Gamepad.all)
         {
+            //Aggiungi Device "Gamepad"
             if (gamepad.startButton.wasPressedThisFrame)
             {
                 TryJoinDevice(gamepad);
             }
+            /*
+            //Torna al menu di selezione Stage
+            if(gamepad.buttonEast.wasPressedThisFrame)
+            {
+                tornaIndietro();
+            }
+            */
         }
 
         if (joinedDevices.Count > 0)
@@ -225,8 +240,6 @@ public class ManagerTry : MonoBehaviour
             StartGame();
         }
     }
-
-
     private void StartGame()
     {
         foreach (GameObject g in objectToActiveOnJoin)
@@ -243,7 +256,15 @@ public class ManagerTry : MonoBehaviour
         enabled = false;
     }
 
-
+    public void tornaIndietro()
+    {
+        //COME FACCIAMO A RESETTARE LE SCELTE DEI PLAYER E A RIMUOVERE I DEVICES COLLEGATI?
+        Debug.Log("Torna al menu di selezione stage");
+        selectionScreen.SetActive(false);
+        FindObjectOfType<SelectLevel>().enabled = true;
+        FindObjectOfType<ManagerTry>().enabled = false;
+        FindObjectOfType<SelectNumberPlayer>().screen[1].SetActive(true);
+    }
 }
 
 
