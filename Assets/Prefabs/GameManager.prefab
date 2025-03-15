@@ -198,4 +198,5 @@ MonoBehaviour:
   waitFrame: 0.2
   select2Player: {fileID: 0}
   select4Player: {fileID: 0}
-  clicked: {fileID: 0}
+  clicked: {fileID: 21300000, guid: cd50866c7c4ee5a448d0a2f21ae3c0dc, type: 3}
+  Uncliked: {fileID: 21300000, guid: 43771f878f273534f8215cbb0c8d0239, type: 3}

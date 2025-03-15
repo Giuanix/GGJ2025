@@ -20,28 +20,37 @@ public class StartMenu : MonoBehaviour
     }
     void Update()
     {
+        //Keyboard Control
+        //Torna alla schermata principale
         if(Input.GetKeyDown(KeyCode.Escape))
-            {
-                comandScreen.SetActive(false);
-            }
-            if(Input.GetKeyDown(KeyCode.S))
-            {
-                pointer.anchoredPosition = new Vector2(pointer.anchoredPosition.x, pointer.anchoredPosition.y-170);
-            }
-            if(Input.GetKeyDown(KeyCode.W))
-            {
-                pointer.anchoredPosition = new Vector2(pointer.anchoredPosition.x, pointer.anchoredPosition.y+170);
-            }
-            if(Input.GetKeyDown(KeyCode.J))
-            {
-                Press();
-            }
+        {
+            Debug.Log("Esci da Schermata Comandi");
+            comandScreen.SetActive(false);
+        }
+        //Scorri nella schermata
+        if(Input.GetKeyDown(KeyCode.S))
+        {
+            pointer.anchoredPosition = new Vector2(pointer.anchoredPosition.x, pointer.anchoredPosition.y-170);
+        }
+        if(Input.GetKeyDown(KeyCode.W))
+        {
+            pointer.anchoredPosition = new Vector2(pointer.anchoredPosition.x, pointer.anchoredPosition.y+170);
+        }
+        //Conferma la tua scelta
+        if(Input.GetKeyDown(KeyCode.Return))
+        {
+            Press();
+        }
+
+        //Gamepad Control
         foreach(var gamepad in Gamepad.all)
         {
-            if(Input.GetKeyDown(KeyCode.I)|| gamepad.buttonEast.wasPressedThisFrame)//KeyCode.Escape
+            //Torna alla schermata principale
+            if(gamepad.buttonEast.wasPressedThisFrame)
             {
                 comandScreen.SetActive(false);
             }
+            //Scorri nella schermata
             if(gamepad.dpad.down.wasPressedThisFrame)
             {
                 pointer.anchoredPosition = new Vector2(pointer.anchoredPosition.x, pointer.anchoredPosition.y-170);
@@ -50,6 +59,7 @@ public class StartMenu : MonoBehaviour
             {
                 pointer.anchoredPosition = new Vector2(pointer.anchoredPosition.x, pointer.anchoredPosition.y+170);
             }
+            //Conferma la tua scelta
             if(gamepad.buttonSouth.wasPressedThisFrame)
             {
                 Press();
@@ -70,11 +80,13 @@ public class StartMenu : MonoBehaviour
         switch (pointer.anchoredPosition.y)
         {
             case -80:
+            Debug.Log("Inizia Gioco");
             inizia.sprite = clicked;
             Invoke("SelectInizia",waitFrame); 
                 break;
 
             case -250:
+            Debug.Log("Schermata Comandi");
             comandi.sprite = clicked;
             Invoke("SelectComandi",waitFrame); 
                 break;
@@ -89,6 +101,7 @@ public class StartMenu : MonoBehaviour
     public void SelectInizia()
     {
         SceneManager.LoadScene(1);
+        inizia.sprite = unclicked;
     }
     public void SelectComandi()
     {
