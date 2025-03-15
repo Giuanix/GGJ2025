@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using System.Runtime.CompilerServices;
 public class SelectNumberPlayer : MonoBehaviour
 {
     public GameObject[] screen;
@@ -32,8 +33,7 @@ public class SelectNumberPlayer : MonoBehaviour
         //Torna al Menu
         if(Input.GetKeyDown(KeyCode.Escape))
         {
-            Debug.Log("Torna al Menu Principale");
-            SceneManager.LoadScene(0);
+            SchermataPrecedente();
         }
         //Scorri nella schermata
         if(Input.GetKeyDown(KeyCode.S))
@@ -57,8 +57,7 @@ public class SelectNumberPlayer : MonoBehaviour
             //Torna al Menu
             if(gamepad.buttonEast.wasPressedThisFrame)
             {
-                Debug.Log("Torna al Menu Principale");
-                SceneManager.LoadScene(0);
+                SchermataPrecedente();
             }
             //Scorri nella schermata
             if(gamepad.dpad.down.wasPressedThisFrame)
@@ -126,6 +125,12 @@ public class SelectNumberPlayer : MonoBehaviour
         FindObjectOfType<SelectLevel>().enabled = true;
         FindObjectOfType<ManagerTry>().enabled = false;
         enabled = false;
+    }
+
+    private void SchermataPrecedente()
+    {
+        Debug.Log("Torna al menu pricipale");
+        SceneManager.LoadScene(0);
     }
     #endregion
 }

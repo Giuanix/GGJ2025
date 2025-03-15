@@ -97,7 +97,6 @@ public class SelectLevel : MonoBehaviour
         stage[0].SetActive(true);
         selectedStage = 1;
         FindObjectOfType<ManagerTry>().enabled = true;
-        AudioManager.instance.PlayChoose();
 
         enabled = false;
     }
@@ -110,7 +109,6 @@ public class SelectLevel : MonoBehaviour
         stage[1].SetActive(true);
         selectedStage = 2;
         FindObjectOfType<ManagerTry>().enabled = true;
-        AudioManager.instance.PlayChoose();
 
         enabled = false;
     }

@@ -5,6 +5,7 @@ using UnityEngine.UI;
 using UnityEngine.InputSystem;
 using System.Linq;
 using Unity.VisualScripting;
+using UnityEngine.SceneManagement;
 
 public class ManagerTry : MonoBehaviour
 {
@@ -53,7 +54,7 @@ public class ManagerTry : MonoBehaviour
     private void Start()
     {
         managerAudio = AudioManager.instance;
-
+        managerAudio.PlayChoose();
         playerInputManager = GetComponent<PlayerInputManager>();
         playerInputManager.onPlayerJoined += OnPlayerJoined;
 
@@ -92,13 +93,13 @@ public class ManagerTry : MonoBehaviour
         {
             TryJoinDevice(Keyboard.current);
         }
-        /*
+        
         //Torna al menu di selezione Stage
         if(Input.GetKeyDown(KeyCode.Escape))
         {
-            tornaIndietro();
+            SchermataPrecedente();
         }
-        */
+        
         foreach (var gamepad in Gamepad.all)
         {
             //Aggiungi Device "Gamepad"
@@ -256,14 +257,17 @@ public class ManagerTry : MonoBehaviour
         enabled = false;
     }
 
-    public void tornaIndietro()
+    public void SchermataPrecedente()
     {
-        //COME FACCIAMO A RESETTARE LE SCELTE DEI PLAYER E A RIMUOVERE I DEVICES COLLEGATI?
         Debug.Log("Torna al menu di selezione stage");
+        SceneManager.LoadScene(1);
+        /*
+        //COME FACCIAMO A RESETTARE LE SCELTE DEI PLAYER E A RIMUOVERE I DEVICES COLLEGATI?
         selectionScreen.SetActive(false);
         FindObjectOfType<SelectLevel>().enabled = true;
         FindObjectOfType<ManagerTry>().enabled = false;
         FindObjectOfType<SelectNumberPlayer>().screen[1].SetActive(true);
+        */
     }
 }
 
