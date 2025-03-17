@@ -96,6 +96,39 @@
                 },
                 {
                     "name": "2D Vector",
+                    "id": "94d1efac-98eb-4039-a010-ea07b30e846b",
+                    "path": "2DVector",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Move",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "left",
+                    "id": "7bcd6068-8aad-4866-a457-000a945bec02",
+                    "path": "<Keyboard>/leftArrow",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Move",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "right",
+                    "id": "d1bd9a05-02fc-491f-9348-3dc4ef963381",
+                    "path": "<Keyboard>/rightArrow",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Move",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "2D Vector",
                     "id": "17270a2a-bee9-45e9-866b-966a1100ad38",
                     "path": "2DVector",
                     "interactions": "",
@@ -197,6 +230,17 @@
                     "name": "",
                     "id": "6feb9af8-d992-4e21-a22c-b1da9956615b",
                     "path": "<Gamepad>/rightTrigger",
+                    "interactions": "Hold",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Shoot",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "4b761737-e443-449f-a628-78a0065516c0",
+                    "path": "<Gamepad>/buttonWest",
                     "interactions": "Hold",
                     "processors": "",
                     "groups": "",

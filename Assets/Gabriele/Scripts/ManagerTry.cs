@@ -28,7 +28,6 @@ public class ManagerTry : MonoBehaviour
     [SerializeField] private bool[] selectionFlipping;
     [SerializeField] private Animator[] previews;
     [SerializeField] private string[] animationsName = { "Duck", "Whale" };
-
     [SerializeField] private GameObject selectionScreen;
     public int maxPlayer = 2;
     [Space(5)]
@@ -93,7 +92,6 @@ public class ManagerTry : MonoBehaviour
         {
             TryJoinDevice(Keyboard.current);
         }
-        
         //Torna al menu di selezione Stage
         if(Input.GetKeyDown(KeyCode.Escape))
         {
@@ -107,13 +105,12 @@ public class ManagerTry : MonoBehaviour
             {
                 TryJoinDevice(gamepad);
             }
-            /*
             //Torna al menu di selezione Stage
             if(gamepad.buttonEast.wasPressedThisFrame)
             {
-                tornaIndietro();
+                SchermataPrecedente();
             }
-            */
+
         }
 
         if (joinedDevices.Count > 0)
