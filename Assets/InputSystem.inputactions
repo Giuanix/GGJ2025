@@ -228,17 +228,6 @@
                 },
                 {
                     "name": "",
-                    "id": "6feb9af8-d992-4e21-a22c-b1da9956615b",
-                    "path": "<Gamepad>/rightTrigger",
-                    "interactions": "Hold",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Shoot",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
                     "id": "4b761737-e443-449f-a628-78a0065516c0",
                     "path": "<Gamepad>/buttonWest",
                     "interactions": "Hold",
