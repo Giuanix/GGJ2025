@@ -8,8 +8,10 @@ public class StartMenu : MonoBehaviour
 {
     public RectTransform pointer;
     public GameObject comandScreen;
+    public GameObject creditScreen;
     public Image inizia;
     public Image comandi;
+    public Image credits;
     public Sprite clicked;
     public Sprite unclicked;
     [SerializeField] private float waitFrame = 0.2f;
@@ -24,17 +26,18 @@ public class StartMenu : MonoBehaviour
         //Torna alla schermata principale
         if(Input.GetKeyDown(KeyCode.Escape))
         {
-            Debug.Log("Esci da Schermata Comandi");
+            Debug.Log("Esci dalle schermate");
             comandScreen.SetActive(false);
+            creditScreen.SetActive(false);
         }
         //Scorri nella schermata
         if(Input.GetKeyDown(KeyCode.S))
         {
-            pointer.anchoredPosition = new Vector2(pointer.anchoredPosition.x, pointer.anchoredPosition.y-170);
+            pointer.anchoredPosition = new Vector2(pointer.anchoredPosition.x, pointer.anchoredPosition.y-160);
         }
         if(Input.GetKeyDown(KeyCode.W))
         {
-            pointer.anchoredPosition = new Vector2(pointer.anchoredPosition.x, pointer.anchoredPosition.y+170);
+            pointer.anchoredPosition = new Vector2(pointer.anchoredPosition.x, pointer.anchoredPosition.y+160);
         }
         //Conferma la tua scelta
         if(Input.GetKeyDown(KeyCode.Return))
@@ -48,16 +51,18 @@ public class StartMenu : MonoBehaviour
             //Torna alla schermata principale
             if(gamepad.buttonEast.wasPressedThisFrame)
             {
+                Debug.Log("Esci dalle schermate");
                 comandScreen.SetActive(false);
+                creditScreen.SetActive(false);
             }
             //Scorri nella schermata
             if(gamepad.dpad.down.wasPressedThisFrame)
             {
-                pointer.anchoredPosition = new Vector2(pointer.anchoredPosition.x, pointer.anchoredPosition.y-170);
+                pointer.anchoredPosition = new Vector2(pointer.anchoredPosition.x, pointer.anchoredPosition.y-160);
             }
             if(gamepad.dpad.up.wasPressedThisFrame)
             {
-                pointer.anchoredPosition = new Vector2(pointer.anchoredPosition.x, pointer.anchoredPosition.y+170);
+                pointer.anchoredPosition = new Vector2(pointer.anchoredPosition.x, pointer.anchoredPosition.y+160);
             }
             //Conferma la tua scelta
             if(gamepad.buttonSouth.wasPressedThisFrame)
@@ -66,34 +71,52 @@ public class StartMenu : MonoBehaviour
             }
         }
 
-        if(pointer.anchoredPosition.y > -80)
+        //Limita il movimento del cursore
+        if(pointer.anchoredPosition.y > 40)
         {
-            pointer.anchoredPosition = new Vector2(pointer.anchoredPosition.x, pointer.anchoredPosition.y-170);
+            pointer.anchoredPosition = new Vector2(pointer.anchoredPosition.x, pointer.anchoredPosition.y-160);
         }
-        if(pointer.anchoredPosition.y < -420)
+        if(pointer.anchoredPosition.y < -440)
         {
-            pointer.anchoredPosition = new Vector2(pointer.anchoredPosition.x , pointer.anchoredPosition.y+170);
+            pointer.anchoredPosition = new Vector2(pointer.anchoredPosition.x , pointer.anchoredPosition.y+160);
+        }
+ 
+        //Cambia la posizione del cursore in base alla schermata
+        if(comandScreen.activeSelf)
+        {
+            pointer.anchoredPosition = new Vector2(pointer.anchoredPosition.x, -120);
+        }
+
+        if(creditScreen.activeSelf)
+        {
+            pointer.anchoredPosition = new Vector2(pointer.anchoredPosition.x, -280);
         }
     }
     public void Press()
     {
         switch (pointer.anchoredPosition.y)
         {
-            case -80:
+            case 40:
             Debug.Log("Inizia Gioco");
             inizia.sprite = clicked;
             Invoke("SelectInizia",waitFrame); 
                 break;
 
-            case -250:
+            case -120:
             Debug.Log("Schermata Comandi");
             comandi.sprite = clicked;
             Invoke("SelectComandi",waitFrame); 
                 break;
 
-            case -420:
-                Debug.Log("Esci");
-                Application.Quit();
+            case -280:
+            Debug.Log("Credits");
+            credits.sprite = clicked;
+            Invoke("SelectCredit",waitFrame); 
+                break;
+            
+            case -440:
+            Debug.Log("Esci");
+            Application.Quit();
                 break;
         }
     }
@@ -107,5 +130,11 @@ public class StartMenu : MonoBehaviour
     {
         comandi.sprite = unclicked;
         comandScreen.SetActive(true);
+    }
+
+    public void SelectCredit()
+    {
+        credits.sprite = unclicked;
+        creditScreen.SetActive(true);
     }
 }
