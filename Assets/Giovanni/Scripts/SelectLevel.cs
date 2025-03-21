@@ -67,11 +67,11 @@ public class SelectLevel : MonoBehaviour
 
         if(pointer.anchoredPosition.x > 200)
         {
-            pointer.anchoredPosition = new Vector2(pointer.anchoredPosition.x-200, pointer.anchoredPosition.y);
+            pointer.anchoredPosition = new Vector2(pointer.anchoredPosition.x-400, pointer.anchoredPosition.y);
         }
         if(pointer.anchoredPosition.x < -100)
         {
-            pointer.anchoredPosition = new Vector2(pointer.anchoredPosition.x +200, pointer.anchoredPosition.y);
+            pointer.anchoredPosition = new Vector2(pointer.anchoredPosition.x +400, pointer.anchoredPosition.y);
         }
     }
     public void Press()

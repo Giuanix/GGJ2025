@@ -78,11 +78,11 @@ public class SelectNumberPlayer : MonoBehaviour
 
         if(pointer.anchoredPosition.y > 70)
         {
-            pointer.anchoredPosition = new Vector2(pointer.anchoredPosition.x, pointer.anchoredPosition.y-140);
+            pointer.anchoredPosition = new Vector2(pointer.anchoredPosition.x, pointer.anchoredPosition.y-280);
         }
         if(pointer.anchoredPosition.y < -70)
         {
-            pointer.anchoredPosition = new Vector2(pointer.anchoredPosition.x, pointer.anchoredPosition.y+140);
+            pointer.anchoredPosition = new Vector2(pointer.anchoredPosition.x, pointer.anchoredPosition.y+280);
         }
     }
 
