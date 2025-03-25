@@ -26,7 +26,8 @@ public class SelectLevel : MonoBehaviour
         {
             SchermataPrecedente();
         }
-        //Scorri nella schermata
+
+        //Scorri nella schermata in orizzontale
         if(Input.GetKeyDown(KeyCode.D))
         {
             pointer.anchoredPosition = new Vector2(pointer.anchoredPosition.x+200, pointer.anchoredPosition.y);
@@ -34,6 +35,16 @@ public class SelectLevel : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.A))
         {
             pointer.anchoredPosition = new Vector2(pointer.anchoredPosition.x-200, pointer.anchoredPosition.y);
+        }
+
+        //Scorri nella schermata in verticale
+        if(Input.GetKeyDown(KeyCode.W))
+        {
+            pointer.anchoredPosition = new Vector2(pointer.anchoredPosition.x, pointer.anchoredPosition.y+140);
+        }
+        if(Input.GetKeyDown(KeyCode.S))
+        {
+            pointer.anchoredPosition = new Vector2(pointer.anchoredPosition.x, pointer.anchoredPosition.y-140);
         }
         //Conferma Scelta
         if(Input.GetKeyDown(KeyCode.Return))
@@ -49,7 +60,7 @@ public class SelectLevel : MonoBehaviour
             {
                 SchermataPrecedente();
             }
-            //Scorri nella schermata
+            //Scorri nella schermata orizzontale
             if(gamepad.dpad.right.wasPressedThisFrame)
             {
                 pointer.anchoredPosition = new Vector2(pointer.anchoredPosition.x+200, pointer.anchoredPosition.y);
@@ -58,6 +69,15 @@ public class SelectLevel : MonoBehaviour
             {
                 pointer.anchoredPosition = new Vector2(pointer.anchoredPosition.x-200, pointer.anchoredPosition.y);
             }
+            //Scorri la Schermata in verticale
+            if(gamepad.dpad.up.wasPressedThisFrame)
+            {
+                pointer.anchoredPosition = new Vector2(pointer.anchoredPosition.x, pointer.anchoredPosition.y+140);
+            }
+            if(gamepad.dpad.down.wasPressedThisFrame)
+            {
+                pointer.anchoredPosition = new Vector2(pointer.anchoredPosition.x, pointer.anchoredPosition.y-140);
+            }
             //Conferma Scelta
             if(gamepad.buttonSouth.wasPressedThisFrame)
             {
@@ -65,6 +85,7 @@ public class SelectLevel : MonoBehaviour
             }
         }
 
+        //Controllo per non uscire dalla schermata
         if(pointer.anchoredPosition.x > 200)
         {
             pointer.anchoredPosition = new Vector2(pointer.anchoredPosition.x-400, pointer.anchoredPosition.y);
@@ -73,17 +94,29 @@ public class SelectLevel : MonoBehaviour
         {
             pointer.anchoredPosition = new Vector2(pointer.anchoredPosition.x +400, pointer.anchoredPosition.y);
         }
+        if(pointer.anchoredPosition.y > 140)
+        {
+            pointer.anchoredPosition = new Vector2(pointer.anchoredPosition.x, pointer.anchoredPosition.y-280);
+        }
+        if(pointer.anchoredPosition.y < 0)
+        {
+            pointer.anchoredPosition = new Vector2(pointer.anchoredPosition.x, pointer.anchoredPosition.y+280);
+        }
     }
     public void Press()
     {
-        switch (pointer.anchoredPosition.x)
+        switch (pointer.anchoredPosition.x, pointer.anchoredPosition.y)
         {
-            case -100:
+            case (-100, 140):
                 Invoke("SelectStage1",waitFrame);
                 break;
 
-            case 100:
+            case (100, 140):
                 Invoke("SelectStage2",waitFrame);
+                break;
+
+            case (-100, 0):
+                Invoke("SelectStage3",waitFrame);
                 break;
         } 
     }
@@ -108,6 +141,18 @@ public class SelectLevel : MonoBehaviour
         screen[1].SetActive(true);
         stage[1].SetActive(true);
         selectedStage = 2;
+        FindObjectOfType<ManagerTry>().enabled = true;
+
+        enabled = false;
+    }
+
+    public void SelectStage3()
+    {
+        Debug.Log("Stage 3 Selezionato");
+        screen[0].SetActive(false);
+        screen[1].SetActive(true);
+        stage[2].SetActive(true);
+        selectedStage = 3;
         FindObjectOfType<ManagerTry>().enabled = true;
 
         enabled = false;
