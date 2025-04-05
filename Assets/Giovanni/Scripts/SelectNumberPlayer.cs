@@ -14,8 +14,10 @@ public class SelectNumberPlayer : MonoBehaviour
     [SerializeField] private float waitFrame = 0.2f;
     public Image select2Player;
     public Image select4Player;
-    public Sprite clicked;
-    public Sprite Uncliked;
+    public Sprite player2Clicked;
+    public Sprite player4Clicked;
+    public Sprite player2Uncliked;
+    public Sprite player4Uncliked;
     // Start is called before the first frame update
     void Start()
     {
@@ -92,12 +94,12 @@ public class SelectNumberPlayer : MonoBehaviour
         switch (pointer.anchoredPosition.y)
         {
             case 70:
-                select2Player.sprite = clicked;
+                select2Player.sprite = player2Clicked;
                 Invoke("Select2Player",waitFrame);
                 break;
 
             case -70:
-                select4Player.sprite = clicked;
+                select4Player.sprite = player4Clicked;
                 Invoke("Select4Player",waitFrame);
                 break;
         } 
@@ -108,7 +110,7 @@ public class SelectNumberPlayer : MonoBehaviour
         screen[0].SetActive(false);
         screen[1].SetActive(true);
         headSprite.SetActive(true);
-        select2Player.sprite = Uncliked;
+        select2Player.sprite = player2Uncliked;
         manager.maxPlayer = 2;
         FindObjectOfType<SelectLevel>().enabled = true;
         FindObjectOfType<ManagerTry>().enabled = false;
@@ -120,7 +122,7 @@ public class SelectNumberPlayer : MonoBehaviour
         screen[0].SetActive(false);
         screen[1].SetActive(true);
         headSprite.SetActive(false);
-        select4Player.sprite = Uncliked;
+        select4Player.sprite = player4Uncliked;
         manager.maxPlayer = 4;
         FindObjectOfType<SelectLevel>().enabled = true;
         FindObjectOfType<ManagerTry>().enabled = false;

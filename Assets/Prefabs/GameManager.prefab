@@ -174,6 +174,7 @@ MonoBehaviour:
   stage:
   - {fileID: 0}
   - {fileID: 0}
+  - {fileID: 0}
   pointer: {fileID: 0}
   waitFrame: 0.2
   selectedStage: 0
@@ -198,5 +199,7 @@ MonoBehaviour:
   waitFrame: 0.2
   select2Player: {fileID: 0}
   select4Player: {fileID: 0}
-  clicked: {fileID: 21300000, guid: cd50866c7c4ee5a448d0a2f21ae3c0dc, type: 3}
-  Uncliked: {fileID: 21300000, guid: 43771f878f273534f8215cbb0c8d0239, type: 3}
+  player2Clicked: {fileID: 21300000, guid: 8cf6ba5eb8036494d88789dfc439a597, type: 3}
+  player4Clicked: {fileID: 21300000, guid: 447fad5f4b086d94a852ddf6cd556c2e, type: 3}
+  player2Uncliked: {fileID: 21300000, guid: 0b1d53bec7d9a4f4281beb90c1b36306, type: 3}
+  player4Uncliked: {fileID: 21300000, guid: 56c63a25eb7a06545bee10a54b3e9595, type: 3}

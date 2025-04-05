@@ -6,14 +6,32 @@ using UnityEngine.InputSystem;
 using UnityEngine.UI;
 public class StartMenu : MonoBehaviour
 {
+    [Header("Schermate")]
     public RectTransform pointer;
     public GameObject comandScreen;
     public GameObject creditScreen;
+    [Header("Pulsanti")]
     public Image inizia;
     public Image comandi;
     public Image credits;
-    public Sprite clicked;
-    public Sprite unclicked;
+    public Image exit;
+
+    [Header("sprite pulsanti")]
+    //Sprite del pulsante "Inizia"
+    public Sprite iniziaClicked;
+    public Sprite iniziaUnclicked;
+
+    //Sprite del pulsante "Comandi"
+    public Sprite comandiClicked;
+    public Sprite comandiUnclicked;
+
+    //Sprite del pulsante "Credits"
+    public Sprite creditsClicked;
+    public Sprite creditsUnclicked;
+
+    //Sprite del pulsante "Esci"
+    public Sprite exitClicked;
+    public Sprite exitUnclicked;
     [SerializeField] private float waitFrame = 0.2f;
     void Start()
     {
@@ -98,25 +116,26 @@ public class StartMenu : MonoBehaviour
         {
             case 40:
             Debug.Log("Inizia Gioco");
-            inizia.sprite = clicked;
+            inizia.sprite = iniziaClicked;
             Invoke("SelectInizia",waitFrame); 
                 break;
 
             case -120:
             Debug.Log("Schermata Comandi");
-            comandi.sprite = clicked;
+            comandi.sprite = comandiClicked;
             Invoke("SelectComandi",waitFrame); 
                 break;
 
             case -280:
             Debug.Log("Credits");
-            credits.sprite = clicked;
+            credits.sprite = creditsClicked;
             Invoke("SelectCredit",waitFrame); 
                 break;
             
             case -440:
             Debug.Log("Esci");
-            Application.Quit();
+            exit.sprite = exitClicked;
+            Invoke("Exit",waitFrame); 
                 break;
         }
     }
@@ -124,17 +143,22 @@ public class StartMenu : MonoBehaviour
     public void SelectInizia()
     {
         SceneManager.LoadScene(1);
-        inizia.sprite = unclicked;
+        inizia.sprite = iniziaUnclicked;
     }
     public void SelectComandi()
     {
-        comandi.sprite = unclicked;
+        comandi.sprite = comandiUnclicked;
         comandScreen.SetActive(true);
     }
 
     public void SelectCredit()
     {
-        credits.sprite = unclicked;
+        credits.sprite = creditsUnclicked;
         creditScreen.SetActive(true);
+    }
+    public void Exit()
+    {
+        exit.sprite = exitUnclicked;
+        Application.Quit();
     }
 }
