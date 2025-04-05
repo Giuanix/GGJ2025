@@ -108,14 +108,20 @@ public class SelectLevel : MonoBehaviour
         switch (pointer.anchoredPosition.x, pointer.anchoredPosition.y)
         {
             case (-100, 140):
+                Debug.Log("Stage 1 Selezionato");
+                AudioManager.instance.PlayBottonPressed();
                 Invoke("SelectStage1",waitFrame);
                 break;
 
             case (100, 140):
+                Debug.Log("Stage 2 Selezionato");
+                AudioManager.instance.PlayBottonPressed();
                 Invoke("SelectStage2",waitFrame);
                 break;
 
             case (-100, 0):
+                Debug.Log("Stage 3 Selezionato");
+                AudioManager.instance.PlayBottonPressed();
                 Invoke("SelectStage3",waitFrame);
                 break;
         } 

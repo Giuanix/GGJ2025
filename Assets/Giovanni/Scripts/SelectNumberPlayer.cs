@@ -94,11 +94,13 @@ public class SelectNumberPlayer : MonoBehaviour
         switch (pointer.anchoredPosition.y)
         {
             case 70:
+                AudioManager.instance.PlayBottonPressed();
                 select2Player.sprite = player2Clicked;
                 Invoke("Select2Player",waitFrame);
                 break;
 
             case -70:
+                AudioManager.instance.PlayBottonPressed();
                 select4Player.sprite = player4Clicked;
                 Invoke("Select4Player",waitFrame);
                 break;

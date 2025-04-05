@@ -6,32 +6,37 @@ using UnityEngine.InputSystem;
 using UnityEngine.UI;
 public class StartMenu : MonoBehaviour
 {
+    [Header("Componenti")]
+    [SerializeField] private GameObject bottonAudioSource;
+    [SerializeField] private RectTransform pointer;
     [Header("Schermate")]
-    public RectTransform pointer;
-    public GameObject comandScreen;
-    public GameObject creditScreen;
+    
+    [SerializeField] private GameObject comandScreen;
+    [SerializeField] private GameObject creditScreen;
+    
+
     [Header("Pulsanti")]
-    public Image inizia;
-    public Image comandi;
-    public Image credits;
-    public Image exit;
+    [SerializeField] private Image inizia;
+    [SerializeField] private Image comandi;
+    [SerializeField] private Image credits;
+    [SerializeField] private Image exit;
 
     [Header("sprite pulsanti")]
     //Sprite del pulsante "Inizia"
-    public Sprite iniziaClicked;
-    public Sprite iniziaUnclicked;
+    [SerializeField] private Sprite iniziaClicked;
+    [SerializeField] private Sprite iniziaUnclicked;
 
     //Sprite del pulsante "Comandi"
-    public Sprite comandiClicked;
-    public Sprite comandiUnclicked;
+    [SerializeField] private Sprite comandiClicked;
+    [SerializeField] private Sprite comandiUnclicked;
 
     //Sprite del pulsante "Credits"
-    public Sprite creditsClicked;
-    public Sprite creditsUnclicked;
+    [SerializeField] private Sprite creditsClicked;
+    [SerializeField] private Sprite creditsUnclicked;
 
     //Sprite del pulsante "Esci"
-    public Sprite exitClicked;
-    public Sprite exitUnclicked;
+    [SerializeField] private Sprite exitClicked;
+    [SerializeField] private Sprite exitUnclicked;
     [SerializeField] private float waitFrame = 0.2f;
     void Start()
     {
@@ -99,16 +104,21 @@ public class StartMenu : MonoBehaviour
             pointer.anchoredPosition = new Vector2(pointer.anchoredPosition.x , pointer.anchoredPosition.y+160);
         }
  
-        //Cambia la posizione del cursore in base alla schermata
+        //Cambia la posizione del cursore in base alla schermata e disattiva l'input audio
         if(comandScreen.activeSelf)
         {
             pointer.anchoredPosition = new Vector2(pointer.anchoredPosition.x, -120);
+            bottonAudioSource.SetActive(false);
+            
         }
+        else bottonAudioSource.SetActive(true);
 
         if(creditScreen.activeSelf)
         {
             pointer.anchoredPosition = new Vector2(pointer.anchoredPosition.x, -280);
+            bottonAudioSource.SetActive(false);            
         }
+        else bottonAudioSource.SetActive(true);
     }
     public void Press()
     {
@@ -116,24 +126,28 @@ public class StartMenu : MonoBehaviour
         {
             case 40:
             Debug.Log("Inizia Gioco");
+            AudioManager.instance.PlayBottonPressed();
             inizia.sprite = iniziaClicked;
             Invoke("SelectInizia",waitFrame); 
                 break;
 
             case -120:
             Debug.Log("Schermata Comandi");
+            AudioManager.instance.PlayBottonPressed();
             comandi.sprite = comandiClicked;
             Invoke("SelectComandi",waitFrame); 
                 break;
 
             case -280:
             Debug.Log("Credits");
+            AudioManager.instance.PlayBottonPressed();
             credits.sprite = creditsClicked;
             Invoke("SelectCredit",waitFrame); 
                 break;
             
             case -440:
             Debug.Log("Esci");
+            AudioManager.instance.PlayBottonPressed();
             exit.sprite = exitClicked;
             Invoke("Exit",waitFrame); 
                 break;

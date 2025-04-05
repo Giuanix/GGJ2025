@@ -16,6 +16,7 @@ public class AudioManager : MonoBehaviour
     [SerializeField] private AudioSource PlayerJump;
     [SerializeField] private AudioSource ExplosionBubble;
     [SerializeField] private AudioSource TryToBeFree;
+    [SerializeField] private AudioSource BottonPressed;
 
     [Header("OST")]
     [SerializeField] private AudioSource[] stages;
@@ -73,6 +74,10 @@ public class AudioManager : MonoBehaviour
     public void PlayTryToBeFree()
     {
         TryToBeFree.PlayOneShot(TryToBeFree.clip, 0.5f);
+    }
+    public void PlayBottonPressed()
+    {
+        BottonPressed.PlayOneShot(BottonPressed.clip, 0.5f);
     }
     //OST
     
