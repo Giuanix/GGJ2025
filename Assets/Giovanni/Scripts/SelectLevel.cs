@@ -124,6 +124,12 @@ public class SelectLevel : MonoBehaviour
                 AudioManager.instance.PlayBottonPressed();
                 Invoke("SelectStage3",waitFrame);
                 break;
+            
+            case (100, 0):
+                Debug.Log("Stage 4 Selezionato");
+                AudioManager.instance.PlayBottonPressed();
+                Invoke("SelectStage4",waitFrame);
+                break;
         } 
     }
 
@@ -159,6 +165,17 @@ public class SelectLevel : MonoBehaviour
         screen[1].SetActive(true);
         stage[2].SetActive(true);
         selectedStage = 3;
+        FindObjectOfType<ManagerTry>().enabled = true;
+
+        enabled = false;
+    }
+    public void SelectStage4()
+    {
+        Debug.Log("Stage 4 Selezionato");
+        screen[0].SetActive(false);
+        screen[1].SetActive(true);
+        stage[3].SetActive(true);
+        selectedStage = 4;
         FindObjectOfType<ManagerTry>().enabled = true;
 
         enabled = false;

@@ -175,6 +175,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  - {fileID: 0}
   pointer: {fileID: 0}
   waitFrame: 0.2
   selectedStage: 0
