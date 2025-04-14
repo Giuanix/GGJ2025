@@ -25,7 +25,6 @@ public class CameraController : MonoBehaviour
     void Update()
     {
         distanceFromCenter = GetFartherCharacter();
-
         if (distanceFromCenter > defaultDistanceFromCenter)
         {
             cam.orthographicSize = distanceFromCenter / aspectRatio;
@@ -46,7 +45,8 @@ public class CameraController : MonoBehaviour
 
         foreach (PlayerController player in FindObjectsOfType<PlayerController>())
         {
-            float currDist = Mathf.Abs(worldCenter.x+3f - player.transform.position.x);
+            float dir = player.transform.position.x > 0 ? -1 : 1;
+            float currDist = Mathf.Abs(worldCenter.x+3f*dir - player.transform.position.x);
             if (currDist > maxDistance)
             {
                 maxDistance = currDist;
