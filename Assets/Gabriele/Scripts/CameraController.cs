@@ -4,71 +4,94 @@ using UnityEngine;
 [RequireComponent(typeof(Camera))]
 public class CameraController : MonoBehaviour
 {
-    private float distanceFromCenter;
-    private float defaultDistanceFromCenter;
     private Camera cam;
+
     [SerializeField] private float defaultSize = 5f;
     [SerializeField] private float maxSize = 10f;
-    float aspectRatio;
+
+    private float aspectRatio;
+
+    private float minX, maxX, minY, maxY;
+
     private void Awake()
     {
         cam = GetComponent<Camera>();
         cam.orthographicSize = defaultSize;
     }
-    void Start()
-    {
 
+    private void Start()
+    {
         aspectRatio = cam.aspect;
 
-        Vector3 worldCenter = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width / 2f, Screen.height / 2f, Camera.main.nearClipPlane));
-        Vector3 worldEdge = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height / 2f, Camera.main.nearClipPlane));
+        // Temporarily set to max to calculate world bounds
+        cam.orthographicSize = maxSize;
 
-        defaultDistanceFromCenter = Vector3.Distance(worldCenter, worldEdge);
+        Vector3 bottomLeft = cam.ViewportToWorldPoint(new Vector3(0, 0, cam.nearClipPlane));
+        Vector3 topRight = cam.ViewportToWorldPoint(new Vector3(1, 1, cam.nearClipPlane));
+
+        minX = bottomLeft.x;
+        minY = bottomLeft.y;
+        maxX = topRight.x;
+        maxY = topRight.y;
+
+        cam.orthographicSize = defaultSize;
     }
 
-    void Update()
+    private void Update()
     {
-        distanceFromCenter = GetFartherCharacter();
-        Debug.Log(distanceFromCenter);
-        
-        if (distanceFromCenter > defaultDistanceFromCenter)
-        {
-            cam.orthographicSize = distanceFromCenter / aspectRatio;
+        PlayerController[] players = FindObjectsOfType<PlayerController>();
+        if (players.Length == 0) return;
 
-        }
-        else
-        {
-            cam.orthographicSize = defaultSize;
-        }
+        Bounds bounds = GetPlayersBounds(players);
+        Vector3 center = bounds.center;
 
-        cam.orthographicSize = Mathf.Clamp(cam.orthographicSize, defaultSize, maxSize);
+        float requiredHeight = bounds.size.y / 2f;
+        float requiredWidth = bounds.size.x / (2f * aspectRatio);
+
+        float targetSize = Mathf.Max(requiredHeight, requiredWidth);
+
+        cam.orthographicSize = Mathf.Clamp(targetSize, defaultSize, maxSize);
+
+        ClampCameraPosition(center);
     }
-    Vector2 oldDistance;
-    private float GetFartherCharacter()
+
+    private Bounds GetPlayersBounds(PlayerController[] players)
     {
-        float maxDistance = 0;
-        Vector3 worldCenter = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width / 2f, Screen.height / 2f, Camera.main.nearClipPlane));
-        Vector2 thisDist = Vector2.zero;
-        foreach (PlayerController player in FindObjectsOfType<PlayerController>())
+        Vector3 min = players[0].transform.position;
+        Vector3 max = players[0].transform.position;
+
+        foreach (var player in players)
         {
-            float y = Mathf.Floor(player.transform.position.y / 4f) * 4f; //change 1 to use different snap!
-
-            float xPos = Mathf.Abs(worldCenter.x + 1f * Mathf.Sign(-player.transform.position.x) - player.transform.position.x);
-            float yPos = Mathf.Abs(worldCenter.y + 1.5f * Mathf.Sign(-player.transform.position.y) - y);
-            Vector2 dist = new Vector2(xPos, yPos);
-            float distance = Vector2.Distance(worldCenter, dist);
-
-
-            
-            if (distance > maxDistance)
-            {
-                maxDistance = distance;
-                thisDist = dist;
-            }
+            Vector3 pos = player.transform.position;
+            min = Vector3.Min(min, pos);
+            max = Vector3.Max(max, pos);
         }
-        oldDistance.x = thisDist.x;
-        oldDistance.y = Mathf.Lerp(oldDistance.y, thisDist.y, Time.deltaTime*3f);
 
-        return Vector2.Distance(worldCenter, oldDistance);
+        Bounds bounds = new Bounds();
+
+        //Evitare il resize quando un giocatore è oltro il bordo, così viene contata la posizione come se fosse SUL bordo.
+        if (min.x < minX) min.x = minX;
+        if (min.y < minY) min.y = minY;
+
+        if (max.x > maxX) max.x = maxX;
+        if (max.y > maxY) max.y = maxY;
+
+        bounds.SetMinMax(min, max);
+        return bounds;
+    }
+
+    private void ClampCameraPosition(Vector3 targetCenter)
+    {
+        float camSize = cam.orthographicSize;
+        float camHeight = camSize * 2f;
+        float camWidth = camHeight * cam.aspect;
+
+        float halfWidth = camWidth / 2f;
+        float halfHeight = camHeight / 2f;
+
+        float clampedX = Mathf.Clamp(targetCenter.x, minX + halfWidth, maxX - halfWidth);
+        float clampedY = Mathf.Clamp(targetCenter.y, minY + halfHeight, maxY - halfHeight);
+
+        transform.position = new Vector3(clampedX, clampedY, transform.position.z);
     }
 }
