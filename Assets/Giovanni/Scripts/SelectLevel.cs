@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
 public class SelectLevel : MonoBehaviour
 {
     [SerializeField] private GameObject[] screen;
@@ -9,6 +10,9 @@ public class SelectLevel : MonoBehaviour
     [SerializeField] private RectTransform pointer;
     [SerializeField] private float waitFrame = 0.2f;
     [HideInInspector] public int selectedStage;
+    public Image back;
+    public Sprite backClicked;
+    public Sprite backUnclicked;
     // Start is called before the first frame update
     void Start()
     {
@@ -24,7 +28,8 @@ public class SelectLevel : MonoBehaviour
         //Torna alla schermata di selezione Player
         if(Input.GetKeyDown(KeyCode.Escape))
         {
-            SchermataPrecedente();
+            back.sprite = backClicked;
+            Invoke("SchermataPrecedente",waitFrame);
         }
 
         //Scorri nella schermata in orizzontale
@@ -58,7 +63,8 @@ public class SelectLevel : MonoBehaviour
             //Torna alla schermata di selezione Player
              if(gamepad.buttonEast.wasPressedThisFrame)
             {
-                SchermataPrecedente();
+                back.sprite = backClicked;
+                Invoke("SchermataPrecedente",waitFrame);
             }
             //Scorri nella schermata orizzontale
             if(gamepad.dpad.right.wasPressedThisFrame)
@@ -183,6 +189,7 @@ public class SelectLevel : MonoBehaviour
     public void SchermataPrecedente()
     {
         Debug.Log("Torna alla schermata di selezione Num Player");
+        back.sprite = backUnclicked;
         FindObjectOfType<SelectNumberPlayer>().enabled = true;
         FindObjectOfType<SelectNumberPlayer>().screen[0].SetActive(true);
         FindObjectOfType<SelectNumberPlayer>().screen[1].SetActive(false);

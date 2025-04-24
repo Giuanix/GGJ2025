@@ -7,17 +7,27 @@ using UnityEngine.SceneManagement;
 using System.Runtime.CompilerServices;
 public class SelectNumberPlayer : MonoBehaviour
 {
+    [Header("Game Menu screen")]
     public GameObject[] screen;
+
+    [Header("Components")]
     [SerializeField] private RectTransform pointer;
     [SerializeField] private GameObject headSprite;
     public ManagerTry manager;
     [SerializeField] private float waitFrame = 0.2f;
+
+    [Header("Botton Image")]
     public Image select2Player;
     public Image select4Player;
+    public Image back;
+
+    [Header("Botton sprite")]
     public Sprite player2Clicked;
     public Sprite player4Clicked;
     public Sprite player2Uncliked;
     public Sprite player4Uncliked;
+    public Sprite backClicked;
+    public Sprite backUnclicked;
     // Start is called before the first frame update
     void Start()
     {
@@ -35,7 +45,8 @@ public class SelectNumberPlayer : MonoBehaviour
         //Torna al Menu
         if(Input.GetKeyDown(KeyCode.Escape))
         {
-            SchermataPrecedente();
+            back.sprite = backClicked;
+            Invoke("SchermataPrecedente",waitFrame);
         }
         //Scorri nella schermata
         if(Input.GetKeyDown(KeyCode.S))
@@ -59,7 +70,8 @@ public class SelectNumberPlayer : MonoBehaviour
             //Torna al Menu
             if(gamepad.buttonEast.wasPressedThisFrame)
             {
-                SchermataPrecedente();
+                back.sprite = backClicked;
+                Invoke("SchermataPrecedente",waitFrame);
             }
             //Scorri nella schermata
             if(gamepad.dpad.down.wasPressedThisFrame)
@@ -134,6 +146,7 @@ public class SelectNumberPlayer : MonoBehaviour
     private void SchermataPrecedente()
     {
         Debug.Log("Torna al menu pricipale");
+        back.sprite = backUnclicked;
         SceneManager.LoadScene(0);
     }
     #endregion

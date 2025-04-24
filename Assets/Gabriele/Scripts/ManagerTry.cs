@@ -42,9 +42,11 @@ public class ManagerTry : MonoBehaviour
     public Transform spawnPointPlayer4;
     [Space(5)]
     [SerializeField] private List<GameObject> fighters = new List<GameObject>();
-
     int joinIndex = 0;
 
+    public Image back;
+    public Sprite backClicked;
+    public Sprite backUnclicked;
     private void Awake()
     {
         instance = this;
@@ -95,7 +97,8 @@ public class ManagerTry : MonoBehaviour
         //Torna al menu di selezione Stage
         if(Input.GetKeyDown(KeyCode.Escape))
         {
-            SchermataPrecedente();
+            back.sprite = backClicked;
+            Invoke("SchermataPrecedente",0.2f);
         }
         
         foreach (var gamepad in Gamepad.all)
@@ -108,7 +111,8 @@ public class ManagerTry : MonoBehaviour
             //Torna al menu di selezione Stage
             if(gamepad.buttonEast.wasPressedThisFrame)
             {
-                SchermataPrecedente();
+                back.sprite = backClicked;
+                Invoke("SchermataPrecedente",0.2f);
             }
 
         }
@@ -257,6 +261,7 @@ public class ManagerTry : MonoBehaviour
     public void SchermataPrecedente()
     {
         Debug.Log("Torna al menu di selezione stage");
+        back.sprite = backUnclicked;
         SceneManager.LoadScene(1);
         /*
         //COME FACCIAMO A RESETTARE LE SCELTE DEI PLAYER E A RIMUOVERE I DEVICES COLLEGATI?
