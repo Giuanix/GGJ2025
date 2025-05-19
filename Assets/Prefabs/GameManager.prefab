@@ -156,6 +156,9 @@ MonoBehaviour:
   spawnPointPlayer3: {fileID: 0}
   spawnPointPlayer4: {fileID: 0}
   fighters: []
+  back: {fileID: 0}
+  backClicked: {fileID: 21300000, guid: 1bbe57b69608fe74fb62df474640c3d0, type: 3}
+  backUnclicked: {fileID: 21300000, guid: 6fc9fcb93c6df864ca09d6c71390cc2a, type: 3}
 --- !u!114 &1092626047770730558
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -179,6 +182,9 @@ MonoBehaviour:
   pointer: {fileID: 0}
   waitFrame: 0.2
   selectedStage: 0
+  back: {fileID: 0}
+  backClicked: {fileID: 0}
+  backUnclicked: {fileID: 0}
 --- !u!114 &4636852760846756190
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -200,7 +206,10 @@ MonoBehaviour:
   waitFrame: 0.2
   select2Player: {fileID: 0}
   select4Player: {fileID: 0}
+  back: {fileID: 0}
   player2Clicked: {fileID: 21300000, guid: 8cf6ba5eb8036494d88789dfc439a597, type: 3}
   player4Clicked: {fileID: 21300000, guid: 447fad5f4b086d94a852ddf6cd556c2e, type: 3}
   player2Uncliked: {fileID: 21300000, guid: 0b1d53bec7d9a4f4281beb90c1b36306, type: 3}
   player4Uncliked: {fileID: 21300000, guid: 56c63a25eb7a06545bee10a54b3e9595, type: 3}
+  backClicked: {fileID: 21300000, guid: 1bbe57b69608fe74fb62df474640c3d0, type: 3}
+  backUnclicked: {fileID: 21300000, guid: 6fc9fcb93c6df864ca09d6c71390cc2a, type: 3}

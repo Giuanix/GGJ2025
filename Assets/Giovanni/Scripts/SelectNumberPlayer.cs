@@ -46,6 +46,7 @@ public class SelectNumberPlayer : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.Escape))
         {
             back.sprite = backClicked;
+            AudioManager.instance.PlayBottonPressed();
             Invoke("SchermataPrecedente",waitFrame);
         }
         //Scorri nella schermata
@@ -71,6 +72,7 @@ public class SelectNumberPlayer : MonoBehaviour
             if(gamepad.buttonEast.wasPressedThisFrame)
             {
                 back.sprite = backClicked;
+                AudioManager.instance.PlayBottonPressed();
                 Invoke("SchermataPrecedente",waitFrame);
             }
             //Scorri nella schermata

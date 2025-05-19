@@ -29,6 +29,7 @@ public class SelectLevel : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.Escape))
         {
             back.sprite = backClicked;
+            AudioManager.instance.PlayBottonPressed();
             Invoke("SchermataPrecedente",waitFrame);
         }
 
@@ -64,6 +65,7 @@ public class SelectLevel : MonoBehaviour
              if(gamepad.buttonEast.wasPressedThisFrame)
             {
                 back.sprite = backClicked;
+                AudioManager.instance.PlayBottonPressed();
                 Invoke("SchermataPrecedente",waitFrame);
             }
             //Scorri nella schermata orizzontale

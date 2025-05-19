@@ -70,13 +70,9 @@ public class ManagerTry : MonoBehaviour
         foreach (Animator a in previews)
             a.gameObject.SetActive(false);
 
-
         foreach (GameObject g in objectToActiveOnJoin)
-            g.gameObject.SetActive(false);
-
-
-        
-        selectionScreen.SetActive(true);
+            g.gameObject.SetActive(false);        
+            selectionScreen.SetActive(true);
 
         uiPlayer1 = GameObject.FindGameObjectWithTag("UiPlayer1").GetComponent<UI_Manager>();
         uiPlayer2 = GameObject.FindGameObjectWithTag("UiPlayer2").GetComponent<UI_Manager>();
