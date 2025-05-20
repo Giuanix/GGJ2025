@@ -76,7 +76,7 @@ public class CameraController : MonoBehaviour
         if (max.x > maxX) max.x = maxX;
         if (max.y > maxY) max.y = maxY;
 
-        bounds.SetMinMax(min, max);
+        bounds.SetMinMax(min+Vector3.one*-2f, max + Vector3.one * 2f);
         return bounds;
     }
 

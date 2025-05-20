@@ -38,8 +38,9 @@ public class LocomotionState : State
 
     public override void Update()
     {
-        player.Movement();
+        player.Movement(); 
         player.Gravity();
+        player.HandleSprint();
         player.animator.SetBool("Falling", !player.IsGrounded());
 
         if (Mathf.Abs(player.rb.velocity.x) < 0.1f)
