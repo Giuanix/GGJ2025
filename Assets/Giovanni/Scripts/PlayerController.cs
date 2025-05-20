@@ -192,6 +192,7 @@ public class PlayerController : MonoBehaviour
         {
             rb.gravityScale = baseGravity * fallSpeedMultiplier;
             rb.velocity = new Vector2(rb.velocity.x, Mathf.Max(rb.velocity.y, -maxFallSpeed));
+         
         }
         else
         {
@@ -215,9 +216,9 @@ public class PlayerController : MonoBehaviour
             return Physics2D.OverlapBox(groundCheckPos.position, groundCheckSize, 0, grondLayer).gameObject.tag == "Slippery";
         return false;
     }
-    private void Flip()
+    private void Flip(bool force = false)
     {
-        if(isFacingRight && horizontalMovement > 0 || !isFacingRight && horizontalMovement < 0)
+        if(isFacingRight && horizontalMovement > 0 || !isFacingRight && horizontalMovement < 0 || force)
         {
             isFacingRight = !isFacingRight;
             Vector3 ls = transform.localScale;
@@ -228,7 +229,7 @@ public class PlayerController : MonoBehaviour
 
 
 
-    int maxFrame = 30; // 1~ second, if game to 60fps half second
+    int maxFrame = 15; // 1~ second, if game to 60fps half second
     int currentFrame = 0;
     float startDirection = 0f;
     Coroutine sprintCoroutine;
@@ -271,21 +272,15 @@ public class PlayerController : MonoBehaviour
 
                 if (Mathf.Abs(horizontalMovement) >= 1)
                 {
-                    if(horizontalMovement != startDirection)
+                    if (horizontalMovement != startDirection)
                     {
                         ResetSprint();
                         break;
                     }
 
-
-                    if (sprintCoroutine != null)
-                        StopCoroutine(sprintCoroutine);
-                    sprintCoroutine = StartCoroutine(Sprint());
-
-                    ResetSprint();
-                    sprintState = SprintState.WaitForEndSprint;
+                    StartSprint();
                 }
-                
+
                 else if (currentFrame > maxFrame)
                 {
                     ResetSprint();
@@ -296,6 +291,16 @@ public class PlayerController : MonoBehaviour
          
                 break;
         }
+    }
+
+    public void StartSprint()
+    {
+        if (sprintCoroutine != null)
+            StopCoroutine(sprintCoroutine);
+        sprintCoroutine = StartCoroutine(Sprint());
+
+        ResetSprint();
+        sprintState = SprintState.WaitForEndSprint;
     }
 
     private void ResetSprint()
@@ -330,7 +335,17 @@ public class PlayerController : MonoBehaviour
         inSprint = false;
         sprintState = SprintState.WaitForFirstSprint;
     }
-
+    public void StopSprint()
+    {
+        if (sprintCoroutine != null)
+        {
+            StopCoroutine(sprintCoroutine);
+        }
+            actualSpeed = moveSpeed;
+            horizontalMovement = 0;
+            inSprint = false;
+            sprintState = SprintState.WaitForFirstSprint;
+    }
     private void CreateAfterImage()
     {
         GameObject afterImage = new GameObject("AfterImage");
@@ -363,6 +378,22 @@ public class PlayerController : MonoBehaviour
         }
 
         Destroy(afterImage);
+    }
+
+
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if(collision.gameObject.CompareTag("Player") && inSprint){
+            collision.gameObject.GetComponent<Rigidbody2D>().AddForce(transform.up * 4f,ForceMode2D.Impulse);
+            if(collision.gameObject.GetComponent<PlayerController>().isFacingRight != isFacingRight)
+            {
+                collision.gameObject.GetComponent<PlayerController>().Flip(true);
+
+            }
+                StopSprint();
+            collision.gameObject.GetComponent<PlayerController>().StartSprint();
+        }
     }
     private void OnDrawGizmosSelected()
     {
