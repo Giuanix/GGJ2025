@@ -6,14 +6,19 @@ public class PassiveAbility : MonoBehaviour
 {
     public enum Ability
     {
-        Dash
+        Dash,
+        None
     }
 
+    [Header("General Ability Properties")]
     [SerializeField] private Ability ability;
+    [SerializeField] private float abilityCooldown = 0.35f; 
     PlayerController player;
-    private float sprintInstantSpeed = 25f;
-    private float sprintDuration = 0.35f;
-    private float cooldown = 0.35f;
+    [Header("Dash")]
+    [SerializeField] private float sprintInstantSpeed = 25f;
+    [SerializeField] private float sprintDuration = 0.35f;
+    [SerializeField] private LayerMask projectileLayer;
+
 
     bool canAbility = true;
     private void Start()
@@ -27,7 +32,10 @@ public class PassiveAbility : MonoBehaviour
         {
             case Ability.Dash:
                 if (canAbility)
-                    StartSprint();
+                {
+                    StartSprint(true);
+                    canAbility = false;
+                }
                 break;
         }
     }
@@ -38,30 +46,20 @@ public class PassiveAbility : MonoBehaviour
     /// </summary>
     Coroutine sprintCoroutine;
 
-    public void StartSprint()
+    public void StartSprint(bool ignoreProjectile)
     {
-        if (sprintCoroutine != null)
-            StopCoroutine(sprintCoroutine);
-        sprintCoroutine = StartCoroutine(Sprint());
-        canAbility = false;
+        sprintCoroutine = StartCoroutine(Sprint(ignoreProjectile));
     }
 
-    public void StopSprint()
-    {
-        if (sprintCoroutine != null)
-        {
-            StopCoroutine(sprintCoroutine);
-        }
-        player.ResetSpeed();
-        player.StopMovement();
-        player.inSprint = false;
-    }
 
-    private IEnumerator Sprint()
+    private IEnumerator Sprint(bool ignoreProjectile)
     {
         player.SetActualSpeed(sprintInstantSpeed);
         player.inSprint = true;
-
+       
+        if(ignoreProjectile)
+            player.rb.excludeLayers = projectileLayer;
+        
         float timer = 0;
         float spawnInterval = 0.05f; // Adjust to control trail density
         float lastSpawnTime = 0f;
@@ -73,24 +71,26 @@ public class PassiveAbility : MonoBehaviour
 
             if (timer - lastSpawnTime >= spawnInterval)
             {
-                CreateAfterImage();
+                StartCoroutine(FadeAndDestroy());
                 lastSpawnTime = timer;
             }
 
             yield return null;
         }
-        timer = 0;
+
+       
         player.inSprint = false;
-        while (timer < cooldown)
-        {
-            timer += Time.deltaTime;
-            yield return null;
-        }
+
+        player.rb.excludeLayers = 0;
+
+        yield return new WaitForSeconds(abilityCooldown);
         canAbility = true;
     }
 
-    private void CreateAfterImage()
+
+    private IEnumerator FadeAndDestroy()
     {
+        //Creating Image
         GameObject afterImage = new GameObject("AfterImage");
         afterImage.transform.position = transform.position;
         afterImage.transform.localScale = transform.localScale;
@@ -103,20 +103,17 @@ public class PassiveAbility : MonoBehaviour
         spriteRenderer.sortingOrder = playerSprite.sortingOrder - 1;
         spriteRenderer.color = new Color(1f, 1f, 1f, 0.8f); // Initial alpha
 
-        StartCoroutine(FadeAndDestroy(afterImage, spriteRenderer));
-    }
 
-    private IEnumerator FadeAndDestroy(GameObject afterImage, SpriteRenderer sr)
-    {
+        //Fade
         float fadeDuration = 0.3f;
         float elapsed = 0f;
-        Color originalColor = sr.color;
+        Color originalColor = spriteRenderer.color;
 
         while (elapsed < fadeDuration)
         {
             elapsed += Time.deltaTime;
             float alpha = Mathf.Lerp(originalColor.a, 0f, elapsed / fadeDuration);
-            sr.color = new Color(originalColor.r, originalColor.g, originalColor.b, alpha);
+            spriteRenderer.color = new Color(originalColor.r, originalColor.g, originalColor.b, alpha);
             yield return null;
         }
 
@@ -132,8 +129,18 @@ public class PassiveAbility : MonoBehaviour
             {
                 collision.gameObject.GetComponent<PlayerController>().Flip(true);
             }
-            StopSprint();
-            collision.gameObject.GetComponent<PassiveAbility>().StartSprint();
+            //Stop sprint
+
+            if (sprintCoroutine != null)
+            {
+                StopCoroutine(sprintCoroutine);
+            }
+            player.ResetSpeed();
+            player.StopMovement();
+            player.inSprint = false;
+            canAbility = true;
+
+            collision.gameObject.GetComponent<PassiveAbility>().StartSprint(false);
         }
     }
     /// <summary>

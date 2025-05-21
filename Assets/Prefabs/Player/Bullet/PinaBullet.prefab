@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 3175359447629906547}
   - component: {fileID: 6713230058581752168}
   - component: {fileID: 53820226693912855}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: PinaBullet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
