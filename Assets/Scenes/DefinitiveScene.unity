@@ -2765,7 +2765,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 5767589002443258519, guid: 1421506f930340a428e3f2e70ec7096a, type: 3}
       propertyPath: m_ColliderPaths.Array.size
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5767589002443258519, guid: 1421506f930340a428e3f2e70ec7096a, type: 3}
       propertyPath: m_ColliderPaths.Array.data[0].m_Collider
@@ -2945,7 +2945,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6415392379435197127, guid: 1421506f930340a428e3f2e70ec7096a, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7363115426539984855, guid: 1421506f930340a428e3f2e70ec7096a, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2985,6 +2985,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7363115426539984855, guid: 1421506f930340a428e3f2e70ec7096a, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9200743368025289929, guid: 1421506f930340a428e3f2e70ec7096a, type: 3}
+      propertyPath: m_ExtrusionFactor
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9200743368025289929, guid: 1421506f930340a428e3f2e70ec7096a, type: 3}
+      propertyPath: m_UseDelaunayMesh
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

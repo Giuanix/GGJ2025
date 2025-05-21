@@ -48,18 +48,9 @@ public class PlayerController : MonoBehaviour
     [HideInInspector] public BubbleState bubbleState;
     [HideInInspector] public NullState nullState;
     public UI_Manager uiManager;
-    bool inSprint = false;
+    [HideInInspector] public bool inSprint = false;
     private float accumulatedVelocity;
-    //Enum for sprint state.
-    enum SprintState
-    {
-        WaitForFirstSprint,
-        FirstSprintStarted,
-        WaitForSecondSprint,
-        WaitForEndSprint //Questo serve per prevenire un doppio scatto continuo. Il giocatore deve prima fermarsi per fare un altro scatto
-    }
 
-    SprintState sprintState = SprintState.WaitForFirstSprint;
 
     private void OnDestroy()
     {
@@ -154,10 +145,17 @@ public class PlayerController : MonoBehaviour
 
         Flip();
     }
-
+    public void StopMovement()
+    {
+        horizontalMovement = 0;
+    }
     public void ResetSpeed()
     {
         actualSpeed = moveSpeed;
+    }
+    public float GetDefaultSpeed()
+    {
+        return moveSpeed;
     }
     public void ReduceActualSpeedBy(float d)
     {
@@ -216,7 +214,7 @@ public class PlayerController : MonoBehaviour
             return Physics2D.OverlapBox(groundCheckPos.position, groundCheckSize, 0, grondLayer).gameObject.tag == "Slippery";
         return false;
     }
-    private void Flip(bool force = false)
+    public void Flip(bool force = false)
     {
         if(isFacingRight && horizontalMovement > 0 || !isFacingRight && horizontalMovement < 0 || force)
         {
@@ -229,172 +227,9 @@ public class PlayerController : MonoBehaviour
 
 
 
-    int maxFrame = 15; // 1~ second, if game to 60fps half second
-    int currentFrame = 0;
-    float startDirection = 0f;
-    Coroutine sprintCoroutine;
-
-    public void HandleSprint()
-    {
-
-        switch (sprintState)
-        {
-            case SprintState.WaitForFirstSprint:
-                
-                if (Mathf.Abs(horizontalMovement) >= 1 && !inSprint)
-                {
-                    startDirection = horizontalMovement;
-                    sprintState = SprintState.FirstSprintStarted;
-                    currentFrame = 0;
-                }
-
-                break;
-
-            case SprintState.FirstSprintStarted:
-               
-                currentFrame++;
-                
-                if (Mathf.Abs(horizontalMovement) < 1)
-                {
-                    sprintState = SprintState.WaitForSecondSprint;
-                }
-                
-                else if (currentFrame > maxFrame)
-                {
-                    ResetSprint();
-                }
-
-                break;
-
-            case SprintState.WaitForSecondSprint:
-
-                currentFrame++;
-
-                if (Mathf.Abs(horizontalMovement) >= 1)
-                {
-                    if (horizontalMovement != startDirection)
-                    {
-                        ResetSprint();
-                        break;
-                    }
-
-                    StartSprint();
-                }
-
-                else if (currentFrame > maxFrame)
-                {
-                    ResetSprint();
-                }
-                break;
-
-            case SprintState.WaitForEndSprint:
-         
-                break;
-        }
-    }
-
-    public void StartSprint()
-    {
-        if (sprintCoroutine != null)
-            StopCoroutine(sprintCoroutine);
-        sprintCoroutine = StartCoroutine(Sprint());
-
-        ResetSprint();
-        sprintState = SprintState.WaitForEndSprint;
-    }
-
-    private void ResetSprint()
-    {
-        currentFrame = 0;
-        sprintState = SprintState.WaitForFirstSprint;
-    }
-  
-    private IEnumerator Sprint()
-    {
-        actualSpeed = sprintInstantSpeed;
-        inSprint = true;
-        
-        float timer = 0;
-        float spawnInterval = 0.05f; // Adjust to control trail density
-        float lastSpawnTime = 0f;
-
-        while (timer < sprintDuration)
-        {
-            timer += Time.deltaTime;
-            actualSpeed = Mathf.Lerp(sprintInstantSpeed, moveSpeed, timer / sprintDuration);
-
-            if (timer - lastSpawnTime >= spawnInterval)
-            {
-                CreateAfterImage();
-                lastSpawnTime = timer;
-            }
-
-            yield return null;
-        }
-        
-        inSprint = false;
-        sprintState = SprintState.WaitForFirstSprint;
-    }
-    public void StopSprint()
-    {
-        if (sprintCoroutine != null)
-        {
-            StopCoroutine(sprintCoroutine);
-        }
-            actualSpeed = moveSpeed;
-            horizontalMovement = 0;
-            inSprint = false;
-            sprintState = SprintState.WaitForFirstSprint;
-    }
-    private void CreateAfterImage()
-    {
-        GameObject afterImage = new GameObject("AfterImage");
-        afterImage.transform.position = transform.position;
-        afterImage.transform.localScale = transform.localScale;
-
-        SpriteRenderer spriteRenderer = afterImage.AddComponent<SpriteRenderer>();
-        SpriteRenderer playerSprite = GetComponent<SpriteRenderer>();
-
-        spriteRenderer.sprite = playerSprite.sprite;
-        spriteRenderer.sortingLayerID = playerSprite.sortingLayerID;
-        spriteRenderer.sortingOrder = playerSprite.sortingOrder - 1;
-        spriteRenderer.color = new Color(1f, 1f, 1f, 0.8f); // Initial alpha
-
-        StartCoroutine(FadeAndDestroy(afterImage, spriteRenderer));
-    }
-
-    private IEnumerator FadeAndDestroy(GameObject afterImage, SpriteRenderer sr)
-    {
-        float fadeDuration = 0.3f;
-        float elapsed = 0f;
-        Color originalColor = sr.color;
-
-        while (elapsed < fadeDuration)
-        {
-            elapsed += Time.deltaTime;
-            float alpha = Mathf.Lerp(originalColor.a, 0f, elapsed / fadeDuration);
-            sr.color = new Color(originalColor.r, originalColor.g, originalColor.b, alpha);
-            yield return null;
-        }
-
-        Destroy(afterImage);
-    }
 
 
 
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        if(collision.gameObject.CompareTag("Player") && inSprint){
-            collision.gameObject.GetComponent<Rigidbody2D>().AddForce(transform.up * 4f,ForceMode2D.Impulse);
-            if(collision.gameObject.GetComponent<PlayerController>().isFacingRight != isFacingRight)
-            {
-                collision.gameObject.GetComponent<PlayerController>().Flip(true);
-
-            }
-                StopSprint();
-            collision.gameObject.GetComponent<PlayerController>().StartSprint();
-        }
-    }
     private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.white;

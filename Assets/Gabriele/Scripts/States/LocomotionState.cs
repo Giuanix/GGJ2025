@@ -40,7 +40,6 @@ public class LocomotionState : State
     {
         player.Movement(); 
         player.Gravity();
-        player.HandleSprint();
         player.animator.SetBool("Falling", !player.IsGrounded());
 
         if (Mathf.Abs(player.rb.velocity.x) < 0.1f)
