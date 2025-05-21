@@ -79,6 +79,7 @@ GameObject:
   - component: {fileID: 1997455846933103327}
   - component: {fileID: 8797212596078879233}
   - component: {fileID: 2570541001904814953}
+  - component: {fileID: -4713868440622713880}
   m_Layer: 0
   m_Name: Whale
   m_TagString: Player
@@ -383,6 +384,7 @@ MonoBehaviour:
   maxSlipperySpeed: 5
   frictionSlippery: 1.5
   uiManager: {fileID: 0}
+  inSprint: 0
 --- !u!114 &8797212596078879233
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -423,6 +425,22 @@ MonoBehaviour:
   maxChargeTime: 3.5
   sliderPrefab: {fileID: 6029025125323320054, guid: 36407245cd878e6458aefd5633bf7762, type: 3}
   managerAudio: {fileID: 0}
+--- !u!114 &-4713868440622713880
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6867630237549604282}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 52cd718084a3833469758ebc6a11fb08, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ability: 1
+  abilityCooldown: 0.35
+  sprintInstantSpeed: 25
+  sprintDuration: 0.35
 --- !u!1 &7022139854241590268
 GameObject:
   m_ObjectHideFlags: 0

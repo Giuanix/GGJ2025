@@ -48,6 +48,7 @@ GameObject:
   - component: {fileID: 2997197054508664654}
   - component: {fileID: 7557652588790115553}
   - component: {fileID: 3072313616157151897}
+  - component: {fileID: -3234275382854747658}
   m_Layer: 0
   m_Name: Rita
   m_TagString: Player
@@ -352,6 +353,7 @@ MonoBehaviour:
   maxSlipperySpeed: 4
   frictionSlippery: 0.5
   uiManager: {fileID: 0}
+  inSprint: 0
 --- !u!114 &7557652588790115553
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -392,6 +394,22 @@ MonoBehaviour:
   defense: 0
   managerAudio: {fileID: 0}
   incapsulateBubble: {fileID: 4747875170398013927, guid: 783050ddcbd67fe4d83302adaae79654, type: 3}
+--- !u!114 &-3234275382854747658
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5648766338510067762}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 52cd718084a3833469758ebc6a11fb08, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ability: 1
+  abilityCooldown: 0.35
+  sprintInstantSpeed: 25
+  sprintDuration: 0.35
 --- !u!1 &6080555577987118377
 GameObject:
   m_ObjectHideFlags: 0

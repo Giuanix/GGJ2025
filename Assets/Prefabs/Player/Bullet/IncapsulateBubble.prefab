@@ -100,10 +100,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: edad4e6b131fa4745bafcb86830a40f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  managerAudio: {fileID: 0}
   horizontalAmplitude: 0.69
   horizontalSpeed: 0.69
   verticalSpeed: 0.65
   livingTime: 10
+  pressKeyAmount: 0.4
   scale: 2.2
   floatingSpeed: {x: 1, y: 2}
 --- !u!58 &7633289569714482654
