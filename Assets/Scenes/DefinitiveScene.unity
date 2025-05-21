@@ -491,14 +491,6 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 447427918}
     - target: {fileID: 1092626047770730558, guid: 2d871af97ce1cdc40ae78e76038ff47f, type: 3}
-      propertyPath: backClicked
-      value: 
-      objectReference: {fileID: 21300000, guid: 1bbe57b69608fe74fb62df474640c3d0, type: 3}
-    - target: {fileID: 1092626047770730558, guid: 2d871af97ce1cdc40ae78e76038ff47f, type: 3}
-      propertyPath: backUnclicked
-      value: 
-      objectReference: {fileID: 21300000, guid: 6fc9fcb93c6df864ca09d6c71390cc2a, type: 3}
-    - target: {fileID: 1092626047770730558, guid: 2d871af97ce1cdc40ae78e76038ff47f, type: 3}
       propertyPath: stage.Array.data[0]
       value: 
       objectReference: {fileID: 638484306}

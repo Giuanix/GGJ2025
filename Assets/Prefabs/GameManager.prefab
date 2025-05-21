@@ -183,8 +183,8 @@ MonoBehaviour:
   waitFrame: 0.2
   selectedStage: 0
   back: {fileID: 0}
-  backClicked: {fileID: 0}
-  backUnclicked: {fileID: 0}
+  backClicked: {fileID: 21300000, guid: 1bbe57b69608fe74fb62df474640c3d0, type: 3}
+  backUnclicked: {fileID: 21300000, guid: 6fc9fcb93c6df864ca09d6c71390cc2a, type: 3}
 --- !u!114 &4636852760846756190
 MonoBehaviour:
   m_ObjectHideFlags: 0
