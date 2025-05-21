@@ -279,6 +279,7 @@ GameObject:
   - component: {fileID: 8754030352744470608}
   - component: {fileID: 6833439229870935013}
   - component: {fileID: 6903357223986525600}
+  - component: {fileID: 928897970899709712}
   m_Layer: 0
   m_Name: Pina
   m_TagString: Player
@@ -448,7 +449,7 @@ Rigidbody2D:
     m_Bits: 0
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 4
 --- !u!114 &8761747397270490333
 MonoBehaviour:
@@ -547,6 +548,22 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 51b379b0-a7f4-4c14-ba1a-c9945e34432d
     m_ActionName: Movement/AnyKey[/Keyboard/anyKey]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 928897970899709712}
+        m_TargetAssemblyTypeName: PassiveAbility, Assembly-CSharp
+        m_MethodName: TriggerAbility
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 06c02c4b-64bd-4c2e-b37e-a9593fa99db6
+    m_ActionName: Movement/Ability[/XInputControllerWindows/buttonWest,/Keyboard/k]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Movement
@@ -583,6 +600,7 @@ MonoBehaviour:
   maxSlipperySpeed: 4
   frictionSlippery: 0.5
   uiManager: {fileID: 0}
+  inSprint: 0
 --- !u!114 &6833439229870935013
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -623,3 +641,16 @@ MonoBehaviour:
   defense: 0
   managerAudio: {fileID: 0}
   incapsulateBubble: {fileID: 4747875170398013927, guid: 783050ddcbd67fe4d83302adaae79654, type: 3}
+--- !u!114 &928897970899709712
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8248129932488849628}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 52cd718084a3833469758ebc6a11fb08, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ability: 0
