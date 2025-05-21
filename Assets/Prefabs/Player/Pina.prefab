@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5237470001212121190}
   - component: {fileID: 8180401428857416147}
   - component: {fileID: 3955036247490583145}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: PinaWaterCollision
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -103,7 +103,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4170700349347288503}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: GroundCheck
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -136,7 +136,7 @@ GameObject:
   - component: {fileID: 7396798067520966920}
   - component: {fileID: 5523349724472385612}
   - component: {fileID: 3079653225407581764}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Particles
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -240,7 +240,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 925091849823303394}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: BulletSpawnPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -280,7 +280,7 @@ GameObject:
   - component: {fileID: 6833439229870935013}
   - component: {fileID: 6903357223986525600}
   - component: {fileID: 928897970899709712}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Pina
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -657,6 +657,6 @@ MonoBehaviour:
   abilityCooldown: 0.35
   sprintInstantSpeed: 25
   sprintDuration: 0.35
-  projectileLayer:
+  ignoreProjectileAndPlayer:
     serializedVersion: 2
-    m_Bits: 64
+    m_Bits: 0

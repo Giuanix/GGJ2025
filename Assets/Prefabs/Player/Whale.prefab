@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2024064165126389897}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: BulletSpawnPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -40,7 +40,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7454703321035014835}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: GroundCheck
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -80,7 +80,7 @@ GameObject:
   - component: {fileID: 8797212596078879233}
   - component: {fileID: 2570541001904814953}
   - component: {fileID: -4713868440622713880}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Whale
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -437,10 +437,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 52cd718084a3833469758ebc6a11fb08, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ability: 1
+  ability: 2
   abilityCooldown: 0.35
   sprintInstantSpeed: 25
   sprintDuration: 0.35
+  ignoreProjectileAndPlayer:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!1 &7022139854241590268
 GameObject:
   m_ObjectHideFlags: 0
@@ -452,7 +455,7 @@ GameObject:
   - component: {fileID: 8025461823820582924}
   - component: {fileID: 8318363247558375380}
   - component: {fileID: 9058909843669569931}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Particles
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -558,7 +561,7 @@ GameObject:
   - component: {fileID: 8624995896326111973}
   - component: {fileID: 419603074013069737}
   - component: {fileID: 3153151586371563102}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: WhaleWaterCollision
   m_TagString: Untagged
   m_Icon: {fileID: 0}

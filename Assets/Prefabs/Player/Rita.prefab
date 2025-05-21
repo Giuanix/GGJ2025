@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7171156009888544470}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: GroundCheck
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -49,7 +49,7 @@ GameObject:
   - component: {fileID: 7557652588790115553}
   - component: {fileID: 3072313616157151897}
   - component: {fileID: -3234275382854747658}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Rita
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -317,6 +317,10 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 51b379b0-a7f4-4c14-ba1a-c9945e34432d
     m_ActionName: Movement/AnyKey[/Keyboard/anyKey]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 06c02c4b-64bd-4c2e-b37e-a9593fa99db6
+    m_ActionName: Movement/Ability[/XInputControllerWindows/buttonEast,/Keyboard/k]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Movement
@@ -410,6 +414,9 @@ MonoBehaviour:
   abilityCooldown: 0.35
   sprintInstantSpeed: 25
   sprintDuration: 0.35
+  ignoreProjectileAndPlayer:
+    serializedVersion: 2
+    m_Bits: 192
 --- !u!1 &6080555577987118377
 GameObject:
   m_ObjectHideFlags: 0
@@ -421,7 +428,7 @@ GameObject:
   - component: {fileID: 8560605960647150008}
   - component: {fileID: 2673561733766137804}
   - component: {fileID: 5722939539535371692}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: RitaWaterCollision
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -515,7 +522,7 @@ GameObject:
   - component: {fileID: 821638903592949383}
   - component: {fileID: 1268139451156714308}
   - component: {fileID: 1508456669199555053}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Particles
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -619,7 +626,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8722952733435168890}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: BulletSpawnPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}

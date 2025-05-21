@@ -7,6 +7,7 @@ public class PassiveAbility : MonoBehaviour
     public enum Ability
     {
         Dash,
+        Dodge,
         None
     }
 
@@ -14,10 +15,10 @@ public class PassiveAbility : MonoBehaviour
     [SerializeField] private Ability ability;
     [SerializeField] private float abilityCooldown = 0.35f; 
     PlayerController player;
-    [Header("Dash")]
+    [Header("Dash and Dodge")]
     [SerializeField] private float sprintInstantSpeed = 25f;
     [SerializeField] private float sprintDuration = 0.35f;
-    [SerializeField] private LayerMask projectileLayer;
+    [SerializeField] private LayerMask ignoreProjectileAndPlayer;
 
 
     bool canAbility = true;
@@ -31,6 +32,13 @@ public class PassiveAbility : MonoBehaviour
         switch (ability)
         {
             case Ability.Dash:
+                if (canAbility)
+                {
+                    StartSprint(false);
+                    canAbility = false;
+                }
+                break;
+            case Ability.Dodge:
                 if (canAbility)
                 {
                     StartSprint(true);
@@ -58,7 +66,7 @@ public class PassiveAbility : MonoBehaviour
         player.inSprint = true;
        
         if(ignoreProjectile)
-            player.rb.excludeLayers = projectileLayer;
+            player.rb.excludeLayers = ignoreProjectileAndPlayer;
         
         float timer = 0;
         float spawnInterval = 0.05f; // Adjust to control trail density
@@ -122,7 +130,7 @@ public class PassiveAbility : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("Player") && player.inSprint)
+        if (collision.gameObject.CompareTag("Player") && player.inSprint && ability == Ability.Dash)
         {
             collision.gameObject.GetComponent<Rigidbody2D>().AddForce(transform.up * 4f, ForceMode2D.Impulse);
             if (collision.gameObject.GetComponent<PlayerController>().isFacingRight != player.isFacingRight)
