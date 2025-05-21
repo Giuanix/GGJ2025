@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8123689303608257652}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: GroundCheck
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -40,7 +40,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3798126348865350500}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: BulletSpawnPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -73,7 +73,7 @@ GameObject:
   - component: {fileID: 8523431405749320338}
   - component: {fileID: 3264857353737046274}
   - component: {fileID: 2871415451236676448}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: DuckWaterCollision
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -174,7 +174,7 @@ GameObject:
   - component: {fileID: 7929221384556208824}
   - component: {fileID: 3530814244235874763}
   - component: {fileID: -3243772290261271666}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Duck
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -535,10 +535,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 52cd718084a3833469758ebc6a11fb08, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ability: 1
+  ability: 2
   abilityCooldown: 0.35
   sprintInstantSpeed: 25
   sprintDuration: 0.35
+  ignoreProjectileAndPlayer:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!1 &7627854446639897142
 GameObject:
   m_ObjectHideFlags: 0
@@ -550,7 +553,7 @@ GameObject:
   - component: {fileID: 4819600371872693756}
   - component: {fileID: 686989591895825673}
   - component: {fileID: 2038243308300828207}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Particles
   m_TagString: Untagged
   m_Icon: {fileID: 0}
