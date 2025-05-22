@@ -33,9 +33,9 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private LayerMask grondLayer;
 
     [Header("Gravity Settings")]
-    [SerializeField] private float baseGravity = 2f;
+    [SerializeField] public float baseGravity = 2f;
     [SerializeField] private float maxFallSpeed = 18f;
-    [SerializeField] private float fallSpeedMultiplier = 2f;
+    [SerializeField] public float fallSpeedMultiplier = 2f;
     [SerializeField] private float slipperySpeedMultiplier = 0.5f;
     [SerializeField] private float maxSlipperySpeed = 5f;
     [SerializeField] private float frictionSlippery = 1.5f;
@@ -106,6 +106,11 @@ public class PlayerController : MonoBehaviour
         {
             ChangeState(waterState);
         }
+
+        if(Mathf.Abs(rb.velocity.y) == 0f)
+        {
+            baseGravity = 2f;
+        }
     }
 
     public void Movement()
@@ -132,7 +137,6 @@ public class PlayerController : MonoBehaviour
                    rb.velocity.y);
             
             }
-   
         }
         else
         {
@@ -209,8 +213,7 @@ public class PlayerController : MonoBehaviour
 
     public bool IsSlippery()
     {
-        
-        if(Physics2D.OverlapBox(groundCheckPos.position, groundCheckSize, 0, grondLayer))
+        if (Physics2D.OverlapBox(groundCheckPos.position, groundCheckSize, 0, grondLayer))
             return Physics2D.OverlapBox(groundCheckPos.position, groundCheckSize, 0, grondLayer).gameObject.tag == "Slippery";
         return false;
     }
@@ -224,11 +227,6 @@ public class PlayerController : MonoBehaviour
             transform.localScale = ls;
         }
     }
-
-
-
-
-
 
     private void OnDrawGizmosSelected()
     {

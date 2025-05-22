@@ -8,6 +8,7 @@ public class PassiveAbility : MonoBehaviour
     {
         Dash,
         Dodge,
+        Glide,
         None
     }
 
@@ -15,12 +16,11 @@ public class PassiveAbility : MonoBehaviour
     [SerializeField] private Ability ability;
     [SerializeField] private float abilityCooldown = 0.35f; 
     PlayerController player;
+
     [Header("Dash and Dodge")]
     [SerializeField] private float sprintInstantSpeed = 25f;
     [SerializeField] private float sprintDuration = 0.35f;
     [SerializeField] private LayerMask ignoreProjectileAndPlayer;
-
-
     bool canAbility = true;
     private void Start()
     {
@@ -34,15 +34,33 @@ public class PassiveAbility : MonoBehaviour
             case Ability.Dash:
                 if (canAbility)
                 {
+                    Debug.Log("DASH");
                     StartSprint(false);
                     canAbility = false;
                 }
                 break;
+
             case Ability.Dodge:
                 if (canAbility)
                 {
+                    Debug.Log("DODGE");
                     StartSprint(true);
                     canAbility = false;
+                }
+                break;
+
+            case Ability.Glide:
+                if (canAbility)
+                {
+                    Debug.Log("GLIDE");
+                    StartGlide();
+                    canAbility = false;
+                }
+                else
+                {
+                    Debug.Log("STOP GLIDE");
+                    StopGlide();
+                    canAbility = true;
                 }
                 break;
         }
@@ -58,16 +76,22 @@ public class PassiveAbility : MonoBehaviour
     {
         sprintCoroutine = StartCoroutine(Sprint(ignoreProjectile));
     }
-
-
+    public void StartGlide()
+    {
+        player.baseGravity = 0.2f;
+    }
+    public void StopGlide()
+    {
+        player.baseGravity = 2f;
+    }
     private IEnumerator Sprint(bool ignoreProjectile)
     {
         player.SetActualSpeed(sprintInstantSpeed);
         player.inSprint = true;
-       
-        if(ignoreProjectile)
+
+        if (ignoreProjectile)
             player.rb.excludeLayers = ignoreProjectileAndPlayer;
-        
+
         float timer = 0;
         float spawnInterval = 0.05f; // Adjust to control trail density
         float lastSpawnTime = 0f;
@@ -86,7 +110,6 @@ public class PassiveAbility : MonoBehaviour
             yield return null;
         }
 
-       
         player.inSprint = false;
 
         player.rb.excludeLayers = 0;

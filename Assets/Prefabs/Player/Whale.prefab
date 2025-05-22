@@ -348,6 +348,10 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 51b379b0-a7f4-4c14-ba1a-c9945e34432d
     m_ActionName: Movement/AnyKey[/Keyboard/anyKey]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 06c02c4b-64bd-4c2e-b37e-a9593fa99db6
+    m_ActionName: Movement/Ability[/XInputControllerWindows/buttonEast,/Keyboard/k]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Movement
@@ -437,7 +441,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 52cd718084a3833469758ebc6a11fb08, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ability: 2
+  ability: 3
   abilityCooldown: 0.35
   sprintInstantSpeed: 25
   sprintDuration: 0.35

@@ -443,7 +443,19 @@ MonoBehaviour:
     m_ActionId: 51b379b0-a7f4-4c14-ba1a-c9945e34432d
     m_ActionName: Movement/AnyKey[/Keyboard/anyKey]
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: -3243772290261271666}
+        m_TargetAssemblyTypeName: PassiveAbility, Assembly-CSharp
+        m_MethodName: TriggerAbility
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: 06c02c4b-64bd-4c2e-b37e-a9593fa99db6
     m_ActionName: Movement/Ability[/XInputControllerWindows/buttonEast,/Keyboard/k]
   m_NeverAutoSwitchControlSchemes: 0
