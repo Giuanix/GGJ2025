@@ -256,7 +256,7 @@ Transform:
   m_GameObject: {fileID: 8126735396834550716}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.181, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -618,10 +618,11 @@ MonoBehaviour:
   shotDelay: 3
   shotMaxCounter: 4
   singleShotDelay: 0.25
+  numOfBullets: 8
   offset: {x: 0, y: 0.5, z: 0}
   fillColor: {r: 0.53381866, g: 0.39215684, b: 1, a: 1}
-  type: 2
-  chargedScale: 0.5
+  type: 3
+  chargedScale: 0.3
   maxChargeTime: 3.5
   sliderPrefab: {fileID: 6029025125323320054, guid: 36407245cd878e6458aefd5633bf7762, type: 3}
   managerAudio: {fileID: 0}

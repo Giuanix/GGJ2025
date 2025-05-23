@@ -9,11 +9,15 @@ public class PlayerShoot : MonoBehaviour
     [SerializeField] private GameObject bullet;
     [SerializeField] private Transform BulletSpawnPoint;
     [SerializeField] private float shotDelay;
+
     [Header("Only Duck")]
     [SerializeField] private int shotMaxCounter = 4;
 
     [Header("Only Whale")]
     [SerializeField] private float singleShotDelay = 0.25f;
+    
+    [Header("Only Rita")]
+    [SerializeField] private float numOfBullets = 8;
 
     [Space(5)]
     [Header("Reload Bar")]
@@ -43,6 +47,7 @@ public class PlayerShoot : MonoBehaviour
     {
         MultipleShot,
         SingleShot,
+        RadialShot,
         Shotgun
     }
 
@@ -111,9 +116,15 @@ public class PlayerShoot : MonoBehaviour
                         case ShotType.MultipleShot:
                             StartCoroutine(Raffica());
                             break;
+
                         case ShotType.SingleShot:
                             StartCoroutine(SingleShot());
                             break;
+                        
+                        case ShotType.RadialShot:
+                            RadialShot();
+                            break;
+
                         case ShotType.Shotgun:
                             StartCoroutine(ShotgunShot());
                             break;
@@ -176,11 +187,23 @@ public class PlayerShoot : MonoBehaviour
         extraSize = 0;
     }
 
+    void RadialShot()
+    {
+        managerAudio.PlaySparoPapera();
+        for (int i = 0; i < numOfBullets; i++)
+        {
+            float angle = i * (360f / numOfBullets);
+            Vector3 direction = Quaternion.Euler(0, 0, angle) * Vector3.right;
+            SpawnBubble(direction);
+        }
+        chargedShotExtraDamage = 0;
+        extraSize = 0;
+    }
+
     IEnumerator PowerUp(float duration,float delayReducer)
     {
         float elapsedTime = 0f;
         float colorTime = 0f;
-
 
         if (spriteRenderer)
         {
@@ -228,15 +251,11 @@ public class PlayerShoot : MonoBehaviour
     {
         float direction =  pl.isFacingRight ? -1 : 1;
         yield return new WaitForSeconds(singleShotDelay);
-        SpawnBubble(new Vector3(-0.25f * direction ,0.5f,0));
-        managerAudio.PlaySparoBalena();
-        SpawnBubble(new Vector3(-0.05f * direction,0.25f,0));
-        managerAudio.PlaySparoBalena();
-        SpawnBubble(new Vector3(0,0,0));
-        managerAudio.PlaySparoBalena();
-        SpawnBubble(new Vector3(-0.05f * direction,-0.25f,0));
-        managerAudio.PlaySparoBalena();
-        SpawnBubble(new Vector3(-0.25f * direction,-0.5f,0));
+        SpawnBubble(Quaternion.Euler(0, 0, 40) * Vector3.right * direction);
+        SpawnBubble(Quaternion.Euler(0, 0, 20) * Vector3.right * direction);
+        SpawnBubble(Quaternion.Euler(0, 0, 0) * Vector3.right * direction);
+        SpawnBubble(Quaternion.Euler(0, 0, -20) * Vector3.right * direction);
+        SpawnBubble(Quaternion.Euler(0, 0, -40) * Vector3.right * direction);
         managerAudio.PlaySparoBalena();
         chargedShotExtraDamage = 0;
         extraSize = 0;

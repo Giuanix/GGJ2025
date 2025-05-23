@@ -160,7 +160,7 @@ MonoBehaviour:
   horizontalSpeed: 12
   verticalSpeed: 0.65
   livingTime: 0.2
-  scale: 0.34
+  scale: 0.5
   scaleIncreasing: 0
   floatingSpeed: {x: 1, y: 2}
   increasingScaleSpeed: {x: 1, y: 2}

@@ -157,14 +157,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   horizontalAmplitude: 1
-  horizontalSpeed: 3
-  verticalSpeed: 0.2
-  livingTime: 1.8
-  scale: 1.1
+  horizontalSpeed: 0
+  verticalSpeed: 0
+  livingTime: 1
+  scale: 0.6
   scaleIncreasing: 1
   floatingSpeed: {x: 1, y: 2}
   increasingScaleSpeed: {x: 0.8, y: 1}
-  damage: {x: 10, y: 16}
+  damage: {x: 8, y: 12}
   isProjectile: 1
   airFriction: 5
   minSpeedStartFloating: 6.5

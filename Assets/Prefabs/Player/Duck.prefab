@@ -512,10 +512,11 @@ MonoBehaviour:
   shotDelay: 2
   shotMaxCounter: 4
   singleShotDelay: 0.25
+  numOfBullets: 8
   offset: {x: 0, y: 0.5, z: 0}
   fillColor: {r: 1, g: 0.89212996, b: 0.3915094, a: 1}
   type: 0
-  chargedScale: 0.9
+  chargedScale: 0.5
   maxChargeTime: 3.5
   sliderPrefab: {fileID: 6029025125323320054, guid: 36407245cd878e6458aefd5633bf7762, type: 3}
   managerAudio: {fileID: 0}
