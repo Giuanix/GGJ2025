@@ -79,7 +79,6 @@ public class Bubble : MonoBehaviour
     private void Move()
     {
         float verticalMovement = 0f;
-        float horizontalMovement = 0f;
         if (isBlowUp)
         {
             rb.velocity = Vector3.zero;
@@ -87,13 +86,13 @@ public class Bubble : MonoBehaviour
         }
         if (isProjectile)
         {
-            horizontalSpeed -= Time.deltaTime * airFriction;
-            horizontalSpeed = Mathf.Clamp(horizontalSpeed, 0, 100);
+            //horizontalSpeed *= Mathf.Exp(-airFriction * Time.deltaTime);
+            horizontalSpeed = Mathf.Lerp(horizontalSpeed, 0, airFriction/4.5f * Time.deltaTime);
         }
         else
         {
             livingTime -= Time.deltaTime;
-            horizontalMovement = horizontalAmplitude * Mathf.Sin((Time.time + startHorizontalOffset));
+            horizontalSpeed = horizontalAmplitude * Mathf.Sin((Time.time + startHorizontalOffset));
         }
 
         if ((isProjectile && Mathf.Abs(horizontalSpeed) < minSpeedStartFloating) || !isProjectile)
