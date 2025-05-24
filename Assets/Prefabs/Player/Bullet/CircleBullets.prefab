@@ -1564,7 +1564,7 @@ MonoBehaviour:
   scaleIncreasing: 0
   floatingSpeed: {x: 1, y: 2}
   increasingScaleSpeed: {x: 1, y: 2}
-  damage: {x: 1, y: 2}
+  damage: {x: 6, y: 8}
   isProjectile: 0
   airFriction: 1
   minSpeedStartFloating: 7

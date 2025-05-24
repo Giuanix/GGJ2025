@@ -17,6 +17,7 @@ public class AudioManager : MonoBehaviour
     [SerializeField] private AudioSource ExplosionBubble;
     [SerializeField] private AudioSource TryToBeFree;
     [SerializeField] private AudioSource BottonPressed;
+    [SerializeField] private AudioSource PlayerJoin;
 
     [Header("OST")]
     [SerializeField] private AudioSource[] stages;
@@ -77,10 +78,14 @@ public class AudioManager : MonoBehaviour
     }
     public void PlayBottonPressed()
     {
-        BottonPressed.PlayOneShot(BottonPressed.clip, 0.5f);
+        BottonPressed.PlayOneShot(BottonPressed.clip, 0.6f);
+    }
+    public void PlayPlayerJoin()
+    {
+        PlayerJoin.PlayOneShot(PlayerJoin.clip, 0.4f);
     }
     //OST
-    
+
     public void PlaySchermataSelezionePersonaggio()
     {
         SchermataSelezionePersonaggio.Play();
