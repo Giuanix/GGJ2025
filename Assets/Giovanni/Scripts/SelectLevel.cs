@@ -5,14 +5,29 @@ using UnityEngine.InputSystem;
 using UnityEngine.UI;
 public class SelectLevel : MonoBehaviour
 {
+    [Header("Game Menu screen")]
     [SerializeField] private GameObject[] screen;
+
+    [Header("Stage")]
     [SerializeField] private GameObject[] stage;
+
+    [Header("Components")]
     [SerializeField] private RectTransform pointer;
     [SerializeField] private float waitFrame = 0.2f;
     [HideInInspector] public int selectedStage;
+
+    [Header("Botton Image")]
     public Image back;
+
+    [Header("Botton sprite")]
     public Sprite backClicked;
     public Sprite backUnclicked;
+
+    [Header("Water Color")]
+    public Color waterColorBeach = new Color(0f, 0.769f, 1f, 1f);
+    public Color waterColorBath = new Color(0.31f, 0.863f, 0.878f, 1f);
+    public Color waterColorPool = new Color(0.31f, 0.403f, 0.878f, 1f);
+    public Color waterColorSewer = new Color(0.427f, 0.6f, 0.184f, 1f);
     // Start is called before the first frame update
     void Start()
     {
@@ -149,6 +164,7 @@ public class SelectLevel : MonoBehaviour
         screen[1].SetActive(true);
         stage[0].SetActive(true);
         selectedStage = 1;
+        FindObjectOfType<WaterLevel>().fillColor = waterColorBeach;
         FindObjectOfType<ManagerTry>().enabled = true;
 
         enabled = false;
@@ -161,6 +177,7 @@ public class SelectLevel : MonoBehaviour
         screen[1].SetActive(true);
         stage[1].SetActive(true);
         selectedStage = 2;
+        FindObjectOfType<WaterLevel>().fillColor = waterColorBath;
         FindObjectOfType<ManagerTry>().enabled = true;
 
         enabled = false;
@@ -173,6 +190,7 @@ public class SelectLevel : MonoBehaviour
         screen[1].SetActive(true);
         stage[2].SetActive(true);
         selectedStage = 3;
+        FindObjectOfType<WaterLevel>().fillColor = waterColorPool;
         FindObjectOfType<ManagerTry>().enabled = true;
 
         enabled = false;
@@ -184,6 +202,7 @@ public class SelectLevel : MonoBehaviour
         screen[1].SetActive(true);
         stage[3].SetActive(true);
         selectedStage = 4;
+        FindObjectOfType<WaterLevel>().fillColor = waterColorSewer;
         FindObjectOfType<ManagerTry>().enabled = true;
 
         enabled = false;

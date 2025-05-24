@@ -145,14 +145,6 @@ public class WaterLevel : MonoBehaviour
 
         impulseIntensity = 0f;  // Set it to 0 after the damping is complete
     }
-
-
-
-
-
-
-
-
     public float GetHeightAtPosition(float x)
     {
         float distance = 10000f;
@@ -175,14 +167,6 @@ public class WaterLevel : MonoBehaviour
 
         return 0f;  
     }
-
-
-
-
-
-
-
-
 
     private void DrawWaterCurve()
     {
