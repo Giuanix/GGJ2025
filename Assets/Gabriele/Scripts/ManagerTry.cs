@@ -129,7 +129,7 @@ public class ManagerTry : MonoBehaviour
 
     private void TryJoinDevice(InputDevice inputDevice)
     {
-
+        AudioManager.instance.PlayPlayerJoin();
         if (joinedDevices.ContainsKey(inputDevice))
         {
             Debug.Log("This input device has already been joined!");
@@ -197,10 +197,10 @@ public class ManagerTry : MonoBehaviour
 
     public void OnPlayerJoined(PlayerInput playerInput)
     {
+        AudioManager.instance.PlayBottonPressed();
         lockedDevices.Add(playerInput.devices[0]); // Lock player input after selection
 
         PlayerController pl = playerInput.GetComponent<PlayerController>();
-      //  pl.ChangeState(pl.nullState); on create is already state null
         if (joinIndex == 0)
         {
             pl.uiManager = uiPlayer1;

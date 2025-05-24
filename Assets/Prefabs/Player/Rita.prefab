@@ -382,7 +382,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f86372a984ebcd46a2daedc7ae999f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bullet: {fileID: 8945811867683996988, guid: 40e77aa6c405c57478b0c2d77cb9d910, type: 3}
+  bullet: {fileID: 8945811867683996988, guid: 64f4d6f0b02645f468d8971d9f1f4ba3, type: 3}
   BulletSpawnPoint: {fileID: 8722952733435168890}
   shotDelay: 2
   shotMaxCounter: 4
