@@ -27,44 +27,42 @@ public class PassiveAbility : MonoBehaviour
         player = GetComponent<PlayerController>();
     }
 
-    public void TriggerAbility(InputAction.CallbackContext context)
+public void TriggerAbility(InputAction.CallbackContext context)
+{
+    switch (ability)
     {
-        switch (ability)
-        {
-            case Ability.Dash:
-                if (canAbility)
-                {
-                    Debug.Log("DASH");
-                    StartSprint(false);
-                    canAbility = false;
-                }
-                break;
+        case Ability.Dash:
+            if (context.performed && canAbility)
+            {
+                Debug.Log("DASH");
+                StartSprint(false);
+                canAbility = false;
+            }
+            break;
 
-            case Ability.Dodge:
-                if (canAbility)
-                {
-                    Debug.Log("DODGE");
-                    StartSprint(true);
-                    canAbility = false;
-                }
-                break;
+        case Ability.Dodge:
+            if (context.performed && canAbility)
+            {
+                Debug.Log("DODGE");
+                StartSprint(true);
+                canAbility = false;
+            }
+            break;
 
-            case Ability.Glide:
-                if (canAbility)
-                {
-                    Debug.Log("GLIDE");
-                    StartGlide();
-                    canAbility = false;
-                }
-                else
-                {
-                    Debug.Log("STOP GLIDE");
-                    StopGlide();
-                    canAbility = true;
-                }
-                break;
-        }
+        case Ability.Glide:
+            if (context.started)
+            {
+                Debug.Log("GLIDE");
+                StartGlide();
+            }
+            else if (context.canceled)
+            {
+                Debug.Log("STOP GLIDE");
+                StopGlide();
+            }
+            break;
     }
+}
 
 
     /// <summary>
@@ -78,11 +76,13 @@ public class PassiveAbility : MonoBehaviour
     }
     public void StartGlide()
     {
-        player.baseGravity = 0.2f;
+        player.baseGravity = 0.4f;
+        player.fallSpeedMultiplier = 0.2f;
     }
     public void StopGlide()
     {
         player.baseGravity = 2f;
+        player.fallSpeedMultiplier = 2f;
     }
     private IEnumerator Sprint(bool ignoreProjectile)
     {

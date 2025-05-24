@@ -107,9 +107,10 @@ public class PlayerController : MonoBehaviour
             ChangeState(waterState);
         }
 
-        if(Mathf.Abs(rb.velocity.y) == 0f)
+        if (IsGrounded() == true)
         {
             baseGravity = 2f;
+            fallSpeedMultiplier = 2f;
         }
     }
 
@@ -208,7 +209,7 @@ public class PlayerController : MonoBehaviour
 
     public bool IsGrounded()
     {
-        return Physics2D.OverlapBox(groundCheckPos.position, groundCheckSize, 0, grondLayer) && Mathf.Abs(rb.velocity.y) < 0.1f; //<-- avoid IsGrounded instantly when jumping!
+        return Physics2D.OverlapBox(groundCheckPos.position, groundCheckSize, 0, grondLayer); //<-- avoid IsGrounded instantly when jumping!
     }
 
     public bool IsSlippery()
