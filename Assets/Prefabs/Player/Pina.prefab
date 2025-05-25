@@ -656,8 +656,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ability: 0
   abilityCooldown: 0.35
-  sprintInstantSpeed: 25
-  sprintDuration: 0.35
+  sprintInstantSpeed: 40
+  sprintDuration: 0.1
   ignoreProjectileAndPlayer:
     serializedVersion: 2
     m_Bits: 0

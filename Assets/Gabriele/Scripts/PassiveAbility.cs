@@ -20,7 +20,7 @@ public class PassiveAbility : MonoBehaviour
     [Header("Dash and Dodge")]
     [SerializeField] private float sprintInstantSpeed = 25f;
     [SerializeField] private float sprintDuration = 0.35f;
-    [SerializeField] private LayerMask ignoreProjectileAndPlayer;
+    [SerializeField] private LayerMask ignoreLayerMask;
     bool canAbility = true;
     private void Start()
     {
@@ -90,7 +90,7 @@ public void TriggerAbility(InputAction.CallbackContext context)
         player.inSprint = true;
 
         if (ignoreProjectile)
-            player.rb.excludeLayers = ignoreProjectileAndPlayer;
+            player.rb.excludeLayers = ignoreLayerMask;
 
         float timer = 0;
         float spawnInterval = 0.05f; // Adjust to control trail density

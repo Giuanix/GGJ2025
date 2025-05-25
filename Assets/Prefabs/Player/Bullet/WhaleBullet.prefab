@@ -157,7 +157,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   horizontalAmplitude: 1
-  horizontalSpeed: 9
+  horizontalSpeed: 11
   verticalSpeed: 0.65
   livingTime: 0.2
   scale: 1

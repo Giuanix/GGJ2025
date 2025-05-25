@@ -251,11 +251,11 @@ public class PlayerShoot : MonoBehaviour
     {
         float direction =  pl.isFacingRight ? -1 : 1;
         yield return new WaitForSeconds(singleShotDelay);
-        SpawnBubble(Quaternion.Euler(0, 0, 40) * Vector3.right * direction);
-        SpawnBubble(Quaternion.Euler(0, 0, 20) * Vector3.right * direction);
+        SpawnBubble(Quaternion.Euler(0, 0, 45) * Vector3.right * direction);
+        SpawnBubble(Quaternion.Euler(0, 0, 22.5f) * Vector3.right * direction);
         SpawnBubble(Quaternion.Euler(0, 0, 0) * Vector3.right * direction);
-        SpawnBubble(Quaternion.Euler(0, 0, -20) * Vector3.right * direction);
-        SpawnBubble(Quaternion.Euler(0, 0, -40) * Vector3.right * direction);
+        SpawnBubble(Quaternion.Euler(0, 0, -22.5f) * Vector3.right * direction);
+        SpawnBubble(Quaternion.Euler(0, 0, -45) * Vector3.right * direction);
         managerAudio.PlaySparoBalena();
         chargedShotExtraDamage = 0;
         extraSize = 0;

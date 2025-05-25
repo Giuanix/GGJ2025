@@ -47,6 +47,8 @@ public class ManagerTry : MonoBehaviour
     public Image back;
     public Sprite backClicked;
     public Sprite backUnclicked;
+
+    private bool isJoined = false;
     private void Awake()
     {
         instance = this;
@@ -128,34 +130,32 @@ public class ManagerTry : MonoBehaviour
     }
 
     private void TryJoinDevice(InputDevice inputDevice)
+{
+    if (joinedDevices.ContainsKey(inputDevice))
     {
-        AudioManager.instance.PlayPlayerJoin();
-        if (joinedDevices.ContainsKey(inputDevice))
-        {
-            Debug.Log("This input device has already been joined!");
-            return;
-        }
-
-        if (joinedDevices.Count < maxPlayer)
-        {
-            int playerIndex = joinedDevices.Count;
-            joinedDevices[inputDevice] = playerIndex;
-            
-
-            selectionFrame[playerIndex].gameObject.SetActive(true);
-            previews[playerIndex].gameObject.SetActive(true);
-            selectionIndex[playerIndex] = 0;
-            SwitchIcon(playerIndex);
-
-            Debug.Log($"Player {playerIndex + 1} joined with {inputDevice.displayName}");
-        }
-        else
-        {
-            Debug.Log("Maximum number of players already joined!");
-        }
+        Debug.Log("This input device has already been joined!");
+        return;
     }
 
-    private void SwitchIcon(int n)
+    if (joinedDevices.Count < maxPlayer)
+    {
+        int playerIndex = joinedDevices.Count;
+        joinedDevices[inputDevice] = playerIndex;
+
+        selectionFrame[playerIndex].gameObject.SetActive(true);
+        previews[playerIndex].gameObject.SetActive(true);
+        selectionIndex[playerIndex] = 0;
+        SwitchIcon(playerIndex);
+
+        Debug.Log($"Player {playerIndex + 1} joined with {inputDevice.displayName}");
+        managerAudio.PlayDeviceJoin();
+    }
+    else
+    {
+        Debug.Log("Maximum number of players already joined!");
+    }
+}
+    public void SwitchIcon(int n)
     {
         if (lockedDevices.Contains(joinedDevices.Keys.ElementAt(n))) return; // Prevent switching after locking
 
@@ -171,8 +171,6 @@ public class ManagerTry : MonoBehaviour
         selectionFrame[n].transform.GetChild(0).localScale = new Vector3((selectionFlipping[sel] ? -1 : 1), 1, 1);
 
         previews[n].Play(animationsName[sel]);
-        
-
     }
 
     private void HandlePlayerSelection()
@@ -197,10 +195,14 @@ public class ManagerTry : MonoBehaviour
 
     public void OnPlayerJoined(PlayerInput playerInput)
     {
-        AudioManager.instance.PlayBottonPressed();
         lockedDevices.Add(playerInput.devices[0]); // Lock player input after selection
 
+        int playerIndex = joinedDevices.Keys.ToList().IndexOf(playerInput.devices[0]);
+        int selectedCharacter = selectionIndex[playerIndex];
+        PlayJoinSound(selectedCharacter);
+
         PlayerController pl = playerInput.GetComponent<PlayerController>();
+
         if (joinIndex == 0)
         {
             pl.uiManager = uiPlayer1;
@@ -218,7 +220,6 @@ public class ManagerTry : MonoBehaviour
                 StartGame();
             else
                 joinIndex++;
-
         }
         else if (joinIndex == 2)
         {
@@ -232,17 +233,35 @@ public class ManagerTry : MonoBehaviour
         {
             pl.uiManager = uiPlayer4;
             uiPlayer4.gameObject.SetActive(true);
-
             uiPlayer4.targetPlayer = playerInput.transform;
             playerInput.gameObject.transform.position = spawnPointPlayer4.transform.position;
             StartGame();
         }
     }
+
+    //Funzione per riprodurre il suono di join in base al personaggio selezionato
+    private void PlayJoinSound(int characterIndex)
+    {
+        switch (characterIndex)
+        {
+            case 0:
+                managerAudio.PlayGoosewayJoin();
+                break;
+            case 1:
+                managerAudio.PlayWhallaJoin();
+                break;
+            case 2:
+                managerAudio.PlayRitaJoin();
+                break;
+            case 3:
+                managerAudio.PlayPinaJoin();
+                break;
+        }
+    }
     private void StartGame()
     {
         foreach (GameObject g in objectToActiveOnJoin)
-            g.gameObject.SetActive(true);
-
+        g.gameObject.SetActive(true);
 
         managerAudio.PlayStage(FindObjectOfType<SelectLevel>().selectedStage);
         managerAudio.StopPlaySchermataSelezionePersonaggio();
@@ -253,7 +272,6 @@ public class ManagerTry : MonoBehaviour
 
         enabled = false;
     }
-
     public void SchermataPrecedente()
     {
         Debug.Log("Torna al menu di selezione stage");
