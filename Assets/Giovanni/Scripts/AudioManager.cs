@@ -94,7 +94,7 @@ public class AudioManager : MonoBehaviour
     }
     public void PlayWhallaJoin()
     {
-        WhallaJoin.PlayOneShot(WhallaJoin.clip, 0.4f);
+        WhallaJoin.PlayOneShot(WhallaJoin.clip, 12f);
     }
     public void PlayRitaJoin()
     {

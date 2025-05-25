@@ -179,19 +179,38 @@ public class ManagerTry : MonoBehaviour
         {
             if (lockedDevices.Contains(device.Key)) continue;
 
-            if (device.Key is Keyboard keyboard && (keyboard.aKey.wasPressedThisFrame || keyboard.dKey.wasPressedThisFrame))
-            {
-                selectionIndex[device.Value]++;
+            int playerIndex = device.Value;
+            int iconCount = 4;
 
-                SwitchIcon(device.Value);
-            }
-            else if (device.Key is Gamepad gamepad && (gamepad.dpad.right.wasPressedThisFrame || gamepad.dpad.left.wasPressedThisFrame))
+            if (device.Key is Keyboard keyboard)
             {
-                selectionIndex[device.Value]++;
-                SwitchIcon(device.Value);
+                if (keyboard.aKey.wasPressedThisFrame)
+                {
+                    selectionIndex[playerIndex] = (selectionIndex[playerIndex] - 1 + iconCount) % iconCount;
+                    SwitchIcon(playerIndex);
+                }
+                else if (keyboard.dKey.wasPressedThisFrame)
+                {
+                    selectionIndex[playerIndex] = (selectionIndex[playerIndex] + 1) % iconCount;
+                    SwitchIcon(playerIndex);
+                }
+            }
+            else if (device.Key is Gamepad gamepad)
+            {
+                if (gamepad.dpad.left.wasPressedThisFrame)
+                {
+                    selectionIndex[playerIndex] = (selectionIndex[playerIndex] - 1 + iconCount) % iconCount;
+                    SwitchIcon(playerIndex);
+                }
+                else if (gamepad.dpad.right.wasPressedThisFrame)
+                {
+                    selectionIndex[playerIndex] = (selectionIndex[playerIndex] + 1) % iconCount;
+                    SwitchIcon(playerIndex);
+                }
             }
         }
     }
+
 
     public void OnPlayerJoined(PlayerInput playerInput)
     {
@@ -217,7 +236,7 @@ public class ManagerTry : MonoBehaviour
             playerInput.gameObject.transform.position = spawnPointPlayer2.transform.position;
 
             if (maxPlayer == 2)
-                StartGame();
+                StartCoroutine(StartGame());
             else
                 joinIndex++;
         }
@@ -235,7 +254,7 @@ public class ManagerTry : MonoBehaviour
             uiPlayer4.gameObject.SetActive(true);
             uiPlayer4.targetPlayer = playerInput.transform;
             playerInput.gameObject.transform.position = spawnPointPlayer4.transform.position;
-            StartGame();
+            StartCoroutine(StartGame());
         }
     }
 
@@ -258,10 +277,11 @@ public class ManagerTry : MonoBehaviour
                 break;
         }
     }
-    private void StartGame()
+    IEnumerator StartGame()
     {
+        yield return new WaitForSeconds(1f);
         foreach (GameObject g in objectToActiveOnJoin)
-        g.gameObject.SetActive(true);
+            g.gameObject.SetActive(true);
 
         managerAudio.PlayStage(FindObjectOfType<SelectLevel>().selectedStage);
         managerAudio.StopPlaySchermataSelezionePersonaggio();
