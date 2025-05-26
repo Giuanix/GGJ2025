@@ -12,6 +12,7 @@ public class AudioManager : MonoBehaviour
     [SerializeField] private AudioSource SparoPapera;
     [SerializeField] private AudioSource DannoSubito;
     [SerializeField] private AudioSource FluttuamentoBolla;
+    [SerializeField] private AudioSource DashAndDodge;
     [SerializeField] private AudioSource PlayerSconfitto;
     [SerializeField] private AudioSource PlayerJump;
     [SerializeField] private AudioSource ExplosionBubble;
@@ -64,9 +65,13 @@ public class AudioManager : MonoBehaviour
     {
         FluttuamentoBolla.PlayOneShot(FluttuamentoBolla.clip,0.5f);
     }  
+    public void PlayDashAndDodge()
+    {
+        DashAndDodge.PlayOneShot(DashAndDodge.clip, 0.8f);
+    }
     public void PlayPlayerSconfitto()
     {
-        PlayerSconfitto.PlayOneShot(PlayerSconfitto.clip,1f);
+        PlayerSconfitto.PlayOneShot(PlayerSconfitto.clip, 1f);
     }
     public void PlayJump()
     {

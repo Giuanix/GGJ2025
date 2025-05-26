@@ -29,6 +29,7 @@ public class ManagerTry : MonoBehaviour
     [SerializeField] private Animator[] previews;
     [SerializeField] private string[] animationsName = { "Duck", "Whale" };
     [SerializeField] private GameObject selectionScreen;
+    [SerializeField] private GameObject loadingScreen;
     public int maxPlayer = 2;
     [Space(5)]
     public UI_Manager uiPlayer1;
@@ -43,12 +44,10 @@ public class ManagerTry : MonoBehaviour
     [Space(5)]
     [SerializeField] private List<GameObject> fighters = new List<GameObject>();
     int joinIndex = 0;
-
+    private bool loading = false;
     public Image back;
     public Sprite backClicked;
     public Sprite backUnclicked;
-
-    private bool isJoined = false;
     private void Awake()
     {
         instance = this;
@@ -60,6 +59,8 @@ public class ManagerTry : MonoBehaviour
         managerAudio.PlayChoose();
         playerInputManager = GetComponent<PlayerInputManager>();
         playerInputManager.onPlayerJoined += OnPlayerJoined;
+        loadingScreen.SetActive(false);
+        loading = false;
 
         fighters.Add(null);
         fighters.Add(null);
@@ -95,8 +96,11 @@ public class ManagerTry : MonoBehaviour
         //Torna al menu di selezione Stage
         if(Input.GetKeyDown(KeyCode.Escape))
         {
-            back.sprite = backClicked;
-            Invoke("SchermataPrecedente",0.2f);
+            if (loading == false)
+            {
+                back.sprite = backClicked;
+                Invoke("SchermataPrecedente",0.2f);
+            }
         }
         
         foreach (var gamepad in Gamepad.all)
@@ -109,10 +113,12 @@ public class ManagerTry : MonoBehaviour
             //Torna al menu di selezione Stage
             if(gamepad.buttonEast.wasPressedThisFrame)
             {
-                back.sprite = backClicked;
-                Invoke("SchermataPrecedente",0.2f);
+                 if (loading == false)
+                {
+                    back.sprite = backClicked;
+                    Invoke("SchermataPrecedente",0.2f);
+                }
             }
-
         }
 
         if (joinedDevices.Count > 0)
@@ -236,7 +242,7 @@ public class ManagerTry : MonoBehaviour
             playerInput.gameObject.transform.position = spawnPointPlayer2.transform.position;
 
             if (maxPlayer == 2)
-                StartCoroutine(StartGame());
+                StartCoroutine(LoadingScreen());
             else
                 joinIndex++;
         }
@@ -254,7 +260,7 @@ public class ManagerTry : MonoBehaviour
             uiPlayer4.gameObject.SetActive(true);
             uiPlayer4.targetPlayer = playerInput.transform;
             playerInput.gameObject.transform.position = spawnPointPlayer4.transform.position;
-            StartCoroutine(StartGame());
+            StartCoroutine(LoadingScreen());
         }
     }
 
@@ -277,16 +283,24 @@ public class ManagerTry : MonoBehaviour
                 break;
         }
     }
-    IEnumerator StartGame()
+
+    IEnumerator LoadingScreen()
     {
-        yield return new WaitForSeconds(1f);
+        loading = true;
+        yield return new WaitForSeconds(2f);
+        managerAudio.StopPlaySchermataSelezionePersonaggio();
+        selectionScreen.SetActive(false);
+        loadingScreen.SetActive(true);
+        yield return new WaitForSeconds(7f);
+        loadingScreen.SetActive(false);
+        StartGame();
+    }
+    void StartGame()
+    {
         foreach (GameObject g in objectToActiveOnJoin)
             g.gameObject.SetActive(true);
 
         managerAudio.PlayStage(FindObjectOfType<SelectLevel>().selectedStage);
-        managerAudio.StopPlaySchermataSelezionePersonaggio();
-
-        selectionScreen.SetActive(false);
 
         GameTimer.instance.StartGame();
 

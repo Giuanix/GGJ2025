@@ -552,9 +552,11 @@ MonoBehaviour:
   abilityCooldown: 0.35
   sprintInstantSpeed: 25
   sprintDuration: 0.35
-  ignoreProjectileAndPlayer:
+  ignoreLayerMask:
     serializedVersion: 2
     m_Bits: 0
+  glideGravity: 0.4
+  glideFallSpeedMultiplier: 0.5
 --- !u!1 &7627854446639897142
 GameObject:
   m_ObjectHideFlags: 0

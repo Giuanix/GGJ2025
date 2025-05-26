@@ -426,8 +426,8 @@ MonoBehaviour:
   ability: 1
   abilityCooldown: 1.2
   sprintInstantSpeed: 25
-  sprintDuration: 0.2
-  ignoreProjectileAndPlayer:
+  sprintDuration: 0.25
+  ignoreLayerMask:
     serializedVersion: 2
     m_Bits: 192
 --- !u!1 &6080555577987118377

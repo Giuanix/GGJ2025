@@ -160,11 +160,11 @@ MonoBehaviour:
   horizontalSpeed: 1.7
   verticalSpeed: 0.7
   livingTime: 0.7
-  scale: 0.7
+  scale: 0.9
   scaleIncreasing: 0
   floatingSpeed: {x: 1, y: 2}
   increasingScaleSpeed: {x: 1, y: 1}
-  damage: {x: 4, y: 6}
+  damage: {x: 2, y: 4}
   isProjectile: 1
   airFriction: 5
   minSpeedStartFloating: 6.5
@@ -355,11 +355,11 @@ MonoBehaviour:
   horizontalSpeed: -2.8
   verticalSpeed: 0
   livingTime: 0.7
-  scale: 0.7
+  scale: 0.9
   scaleIncreasing: 0
   floatingSpeed: {x: 1, y: 2}
   increasingScaleSpeed: {x: 1, y: 1}
-  damage: {x: 4, y: 6}
+  damage: {x: 2, y: 4}
   isProjectile: 1
   airFriction: 5
   minSpeedStartFloating: 6.5
@@ -550,11 +550,11 @@ MonoBehaviour:
   horizontalSpeed: 2.8
   verticalSpeed: 0
   livingTime: 0.7
-  scale: 0.7
+  scale: 0.9
   scaleIncreasing: 0
   floatingSpeed: {x: 1, y: 2}
   increasingScaleSpeed: {x: 1, y: 1}
-  damage: {x: 4, y: 6}
+  damage: {x: 2, y: 4}
   isProjectile: 1
   airFriction: 5
   minSpeedStartFloating: 6.5
@@ -745,11 +745,11 @@ MonoBehaviour:
   horizontalSpeed: -1.7
   verticalSpeed: 0.7
   livingTime: 0.7
-  scale: 0.7
+  scale: 0.9
   scaleIncreasing: 0
   floatingSpeed: {x: 1, y: 2}
   increasingScaleSpeed: {x: 1, y: 1}
-  damage: {x: 4, y: 6}
+  damage: {x: 2, y: 4}
   isProjectile: 1
   airFriction: 5
   minSpeedStartFloating: 6.5
@@ -940,11 +940,11 @@ MonoBehaviour:
   horizontalSpeed: 0
   verticalSpeed: -1
   livingTime: 0.7
-  scale: 0.7
+  scale: 0.9
   scaleIncreasing: 0
   floatingSpeed: {x: 1, y: 2}
   increasingScaleSpeed: {x: 1, y: 1}
-  damage: {x: 4, y: 6}
+  damage: {x: 2, y: 4}
   isProjectile: 1
   airFriction: 5
   minSpeedStartFloating: 6.5
@@ -1135,11 +1135,11 @@ MonoBehaviour:
   horizontalSpeed: 0
   verticalSpeed: 1
   livingTime: 0.7
-  scale: 0.7
+  scale: 0.9
   scaleIncreasing: 0
   floatingSpeed: {x: 1, y: 2}
   increasingScaleSpeed: {x: 1, y: 1}
-  damage: {x: 4, y: 6}
+  damage: {x: 2, y: 4}
   isProjectile: 1
   airFriction: 5
   minSpeedStartFloating: 6.5
@@ -1330,11 +1330,11 @@ MonoBehaviour:
   horizontalSpeed: -1.7
   verticalSpeed: -0.7
   livingTime: 0.7
-  scale: 0.7
+  scale: 0.9
   scaleIncreasing: 0
   floatingSpeed: {x: 1, y: 2}
   increasingScaleSpeed: {x: 1, y: 1}
-  damage: {x: 4, y: 6}
+  damage: {x: 2, y: 4}
   isProjectile: 1
   airFriction: 5
   minSpeedStartFloating: 6.5
@@ -1380,7 +1380,7 @@ GameObject:
   - component: {fileID: 823394003071446024}
   - component: {fileID: 2785175863678907186}
   m_Layer: 6
-  m_Name: RitaBullet
+  m_Name: GranateExplosion
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1728,11 +1728,11 @@ MonoBehaviour:
   horizontalSpeed: 1.7
   verticalSpeed: -0.7
   livingTime: 0.7
-  scale: 0.7
+  scale: 0.9
   scaleIncreasing: 0
   floatingSpeed: {x: 1, y: 2}
   increasingScaleSpeed: {x: 1, y: 1}
-  damage: {x: 4, y: 6}
+  damage: {x: 2, y: 4}
   isProjectile: 1
   airFriction: 5
   minSpeedStartFloating: 6.5

@@ -4,7 +4,6 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
-using System.Runtime.CompilerServices;
 public class SelectNumberPlayer : MonoBehaviour
 {
     [Header("Game Menu screen")]
@@ -29,13 +28,16 @@ public class SelectNumberPlayer : MonoBehaviour
     public Sprite backClicked;
     public Sprite backUnclicked;
     // Start is called before the first frame update
-    void Start()
+    private void Awake()
     {
-        AudioManager.instance.PlaySchermataSelezionePersonaggio();
         Cursor.visible = false;
         FindObjectOfType<ManagerTry>().enabled = false;
         FindObjectOfType<SelectLevel>().enabled = false;
         manager = ManagerTry.instance;
+    }
+    private void Start()
+    {
+        AudioManager.instance.PlaySchermataSelezionePersonaggio();
     }
 
     // Update is called once per frame
@@ -127,9 +129,9 @@ public class SelectNumberPlayer : MonoBehaviour
         screen[1].SetActive(true);
         headSprite.SetActive(true);
         select2Player.sprite = player2Uncliked;
-        manager.maxPlayer = 2;
+        ManagerTry.instance.maxPlayer = 2;
         FindObjectOfType<SelectLevel>().enabled = true;
-        FindObjectOfType<ManagerTry>().enabled = false;
+        ManagerTry.instance.enabled = false;
         enabled = false;
     }
     public void Select4Player()
@@ -139,9 +141,9 @@ public class SelectNumberPlayer : MonoBehaviour
         screen[1].SetActive(true);
         headSprite.SetActive(false);
         select4Player.sprite = player4Uncliked;
-        manager.maxPlayer = 4;
+        ManagerTry.instance.maxPlayer = 4;
         FindObjectOfType<SelectLevel>().enabled = true;
-        FindObjectOfType<ManagerTry>().enabled = false;
+        ManagerTry.instance.enabled = false;
         enabled = false;
     }
 

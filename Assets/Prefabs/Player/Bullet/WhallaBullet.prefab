@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 6713230058581752168}
   - component: {fileID: 53820226693912855}
   m_Layer: 6
-  m_Name: WhaleBullet
+  m_Name: WhallaBullet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

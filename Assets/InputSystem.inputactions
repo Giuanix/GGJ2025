@@ -248,9 +248,9 @@
                 },
                 {
                     "name": "",
-                    "id": "c49661a6-1d95-48b1-b010-732ff882ec4e",
-                    "path": "<XInputController>/buttonWest",
-                    "interactions": "",
+                    "id": "a866309b-2cd2-453b-90cf-749928f8183b",
+                    "path": "<Gamepad>/buttonNorth",
+                    "interactions": "Hold",
                     "processors": "",
                     "groups": "",
                     "action": "Shoot",
@@ -337,17 +337,6 @@
                 {
                     "name": "",
                     "id": "e4850353-4fc3-4f0a-8126-34545dfef1b8",
-                    "path": "<Gamepad>/buttonEast",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Ability",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "5cde6a5c-0e37-42fa-a3de-96b367785a0b",
                     "path": "<Gamepad>/buttonEast",
                     "interactions": "",
                     "processors": "",

@@ -4,86 +4,106 @@ using UnityEngine.InputSystem;
 
 public class PassiveAbility : MonoBehaviour
 {
+    #region Variables
     public enum Ability
     {
         Dash,
         Dodge,
         Glide,
+        Granate,
         None
     }
 
     [Header("General Ability Properties")]
     [SerializeField] private Ability ability;
-    [SerializeField] private float abilityCooldown = 0.35f; 
+    [SerializeField] private float abilityCooldown = 0.35f;
     PlayerController player;
+    AudioManager audioManager;
 
-    [Header("Dash and Dodge")]
+    [Header("Dash and Dodge: Pina e Rita")]
     [SerializeField] private float sprintInstantSpeed = 25f;
     [SerializeField] private float sprintDuration = 0.35f;
     [SerializeField] private LayerMask ignoreLayerMask;
     bool canAbility = true;
+
+    [Header("Glide: Mr. Gooseway")]
+    [SerializeField] private float glideGravity = 0.4f;
+    [SerializeField] private float glideFallSpeedMultiplier = 0.6f;
+
+    [Header("Granate: Whalla")]
+    [SerializeField] private GameObject grenadePrefab;
+    [SerializeField] private Transform spawnPoint;
+    [SerializeField] private float force = 7f;
+    [SerializeField] private float upwardModifier = 0.7f;
+    [SerializeField] private Transform whallaTransform;
+
+    #endregion
     private void Start()
     {
         player = GetComponent<PlayerController>();
+        audioManager = AudioManager.instance;
     }
 
-public void TriggerAbility(InputAction.CallbackContext context)
-{
-    switch (ability)
+    public void TriggerAbility(InputAction.CallbackContext context)
     {
-        case Ability.Dash:
-            if (context.performed && canAbility)
-            {
-                Debug.Log("DASH");
-                StartSprint(false);
-                canAbility = false;
-            }
-            break;
+        switch (ability)
+        {
+            case Ability.Dash:
+                if (context.performed && canAbility)
+                {
+                    Debug.Log("DASH");
+                    audioManager.PlayDashAndDodge();
+                    StartSprint(false);
+                    canAbility = false;
+                }
+                break;
 
-        case Ability.Dodge:
-            if (context.performed && canAbility)
-            {
-                Debug.Log("DODGE");
-                StartSprint(true);
-                canAbility = false;
-            }
-            break;
+            case Ability.Dodge:
+                if (context.performed && canAbility)
+                {
+                    Debug.Log("DODGE");
+                    audioManager.PlayDashAndDodge();
+                    StartSprint(true);
+                    canAbility = false;
+                }
+                break;
 
-        case Ability.Glide:
-            if (context.started)
-            {
-                Debug.Log("GLIDE");
-                StartGlide();
-            }
-            else if (context.canceled)
-            {
-                Debug.Log("STOP GLIDE");
-                StopGlide();
-            }
-            break;
+            case Ability.Glide:
+                if (context.started)
+                {
+                    Debug.Log("GLIDE");
+                    StartGlide();
+                }
+                else if (context.canceled)
+                {
+                    Debug.Log("STOP GLIDE");
+                    StopGlide();
+                }
+                break;
+
+            case Ability.Granate:
+                if (context.performed && canAbility)
+                {
+                    Debug.Log("GRANATE");
+                    StartCoroutine(LaunchGrenade());
+                    canAbility = false;
+                }
+                break;
+        }
     }
-}
 
 
     /// <summary>
     /// DASH
     /// </summary>
-    Coroutine sprintCoroutine;
 
+    #region Dash and Dodge
+    Coroutine sprintCoroutine;
     public void StartSprint(bool ignoreProjectile)
     {
         sprintCoroutine = StartCoroutine(Sprint(ignoreProjectile));
     }
-    public void StartGlide()
-    {
-        player.baseGravity = 0.4f;
-        player.fallSpeedMultiplier = 0.2f;
-    }
-    public void StopGlide()
-    {
-        player.baseGravity = 2f;
-        player.fallSpeedMultiplier = 2f;
-    }
+
     private IEnumerator Sprint(bool ignoreProjectile)
     {
         player.SetActualSpeed(sprintInstantSpeed);
@@ -118,7 +138,44 @@ public void TriggerAbility(InputAction.CallbackContext context)
         canAbility = true;
     }
 
+    #endregion
 
+    #region Glide
+    public void StartGlide()
+    {
+        player.baseGravity = glideGravity;
+        player.fallSpeedMultiplier = glideFallSpeedMultiplier;
+    }
+
+    public void StopGlide()
+    {
+        player.baseGravity = 2f;
+        player.fallSpeedMultiplier = 2f;
+    }
+    #endregion
+
+    #region Granata
+    IEnumerator LaunchGrenade()
+    {
+        GameObject grenade = Instantiate(grenadePrefab, spawnPoint.position, Quaternion.identity);
+
+        float directionX = whallaTransform.localScale.x > 0 ? -1f : 1f;
+        Vector2 direction = new Vector2(directionX, upwardModifier).normalized;
+
+        Rigidbody2D rb = grenade.GetComponent<Rigidbody2D>();
+
+        if (rb != null)
+        {
+            rb.AddForce(direction.normalized * force, ForceMode2D.Impulse);
+        }
+
+        yield return new WaitForSeconds(abilityCooldown);
+        canAbility = true;
+    }
+
+    #endregion
+
+    #region Fade and Destroy
     private IEnumerator FadeAndDestroy()
     {
         //Creating Image
@@ -174,6 +231,9 @@ public void TriggerAbility(InputAction.CallbackContext context)
             collision.gameObject.GetComponent<PassiveAbility>().StartSprint(false);
         }
     }
+        
+    #endregion
+
     /// <summary>
     /// END DASH
     /// </summary>

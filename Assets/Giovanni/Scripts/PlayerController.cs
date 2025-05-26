@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using static UnityEditor.Timeline.TimelinePlaybackControls;
 
 [RequireComponent(typeof(Rigidbody2D))]
 [RequireComponent(typeof(Animator))]
@@ -17,8 +16,6 @@ public class PlayerController : MonoBehaviour
     public FloatingObject floatingObject;
     public Animator particles;
     [SerializeField] private float moveSpeed;
-    private float sprintInstantSpeed = 25f;
-    private float sprintDuration = 0.35f;
     private float actualSpeed;
 
     private float horizontalMovement;

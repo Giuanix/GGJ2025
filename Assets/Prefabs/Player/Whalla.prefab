@@ -81,7 +81,7 @@ GameObject:
   - component: {fileID: 2570541001904814953}
   - component: {fileID: -4713868440622713880}
   m_Layer: 7
-  m_Name: Whale
+  m_Name: Whalla
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -454,13 +454,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 52cd718084a3833469758ebc6a11fb08, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ability: 2
-  abilityCooldown: 0.35
+  ability: 3
+  abilityCooldown: 6
   sprintInstantSpeed: 25
   sprintDuration: 0.35
-  ignoreProjectileAndPlayer:
+  ignoreLayerMask:
     serializedVersion: 2
     m_Bits: 0
+  glideGravity: 0.4
+  glideFallSpeedMultiplier: 0.6
+  grenadePrefab: {fileID: 8945811867683996988, guid: ee5e236eeb41a054781364b658032575, type: 3}
+  spawnPoint: {fileID: 2024064165126389897}
+  force: 11
+  upwardModifier: 1.4
+  whallaTransform: {fileID: 6995958410870831485}
 --- !u!1 &7022139854241590268
 GameObject:
   m_ObjectHideFlags: 0
