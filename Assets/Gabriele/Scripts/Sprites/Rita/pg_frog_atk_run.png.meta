@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 6071e80df7ec40340bc6a7ebde290957
+guid: 5a2187ffc233771469fc098f08431b3d
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -110,12 +110,12 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Pina_jump-Sheet_0
+      name: pg_frog_atk_run_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 64
+        width: 48
         height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -124,19 +124,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6af6254fdfec69f4bb5b60336eacd15b
-      internalID: 147451706
+      spriteID: 97dac87a5dbeb5947969dc669b61c3b6
+      internalID: 1717525698
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Pina_jump-Sheet_1
+      name: pg_frog_atk_run_1
       rect:
         serializedVersion: 2
-        x: 64
+        x: 48
         y: 0
-        width: 64
+        width: 48
         height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -145,19 +145,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a954fa4e4ea09a847a58c7ae17f81144
-      internalID: 259943604
+      spriteID: cd84ec21cafec0d418fcad234ef9a844
+      internalID: 1343384425
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Pina_jump-Sheet_2
+      name: pg_frog_atk_run_2
       rect:
         serializedVersion: 2
-        x: 128
+        x: 96
         y: 0
-        width: 64
+        width: 48
         height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -166,19 +166,40 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a694f6faef6d8e040adc2ebba93fce85
-      internalID: 834431302
+      spriteID: 62779d73eb396a2498539d7afaf6b8d6
+      internalID: 1351090154
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Pina_jump-Sheet_3
+      name: pg_frog_atk_run_3
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 0
+        width: 48
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c5608b928f33907449b05e34909bf027
+      internalID: 1342251417
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pg_frog_atk_run_4
       rect:
         serializedVersion: 2
         x: 192
         y: 0
-        width: 64
+        width: 48
         height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -187,19 +208,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 719031482322d0c40b6d3f979dfb9a26
-      internalID: 556125992
+      spriteID: 134b933cb9b626d459e261c5b4220734
+      internalID: 1009373108
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Pina_jump-Sheet_4
+      name: pg_frog_atk_run_5
       rect:
         serializedVersion: 2
-        x: 256
+        x: 240
         y: 0
-        width: 64
+        width: 48
         height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -208,19 +229,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 57cbfc563c8a17d489416e5432832b15
-      internalID: 1554678601
+      spriteID: 9da21607492c8394bb9f5fb598468049
+      internalID: 1042767655
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Pina_jump-Sheet_5
+      name: pg_frog_atk_run_6
       rect:
         serializedVersion: 2
-        x: 320
+        x: 288
         y: 0
-        width: 64
+        width: 48
         height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -229,19 +250,40 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c0ccbed15d14b9648a5a2dbfdea4753a
-      internalID: -1489831276
+      spriteID: 47d578c8ac7cd1948aff7386f3a8ae25
+      internalID: 921760985
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Pina_jump-Sheet_6
+      name: pg_frog_atk_run_7
+      rect:
+        serializedVersion: 2
+        x: 336
+        y: 0
+        width: 48
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0a8cf1c16befa9f4da90d89f1fa350d9
+      internalID: 39186662
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pg_frog_atk_run_8
       rect:
         serializedVersion: 2
         x: 384
         y: 0
-        width: 64
+        width: 48
         height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -250,29 +292,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ca275b244aa21594f9d7480a659f6003
-      internalID: -2078279251
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Pina_jump-Sheet_7
-      rect:
-        serializedVersion: 2
-        x: 448
-        y: 0
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: c75c2a48bf546aa4890f4612859600dc
-      internalID: 1173478127
+      spriteID: bd5876ffcdf9f754d9c4eedd78de9a2f
+      internalID: -1140899147
       vertices: []
       indices: 
       edges: []
@@ -288,14 +309,15 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Pina_jump-Sheet_0: 147451706
-      Pina_jump-Sheet_1: 259943604
-      Pina_jump-Sheet_2: 834431302
-      Pina_jump-Sheet_3: 556125992
-      Pina_jump-Sheet_4: 1554678601
-      Pina_jump-Sheet_5: -1489831276
-      Pina_jump-Sheet_6: -2078279251
-      Pina_jump-Sheet_7: 1173478127
+      pg_frog_atk_run_0: 1717525698
+      pg_frog_atk_run_1: 1343384425
+      pg_frog_atk_run_2: 1351090154
+      pg_frog_atk_run_3: 1342251417
+      pg_frog_atk_run_4: 1009373108
+      pg_frog_atk_run_5: 1042767655
+      pg_frog_atk_run_6: 921760985
+      pg_frog_atk_run_7: 39186662
+      pg_frog_atk_run_8: -1140899147
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 9aa766b42a10a7d40adb1fe214c23b7f
+guid: ce5bc457f5499c4429462562258fbd5c
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -110,12 +110,12 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Pina_bollata-Sheet_0
+      name: pg_frog_jump_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 64
+        width: 48
         height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -124,19 +124,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 97f1ee3cb88afde4c95927de3f4778fa
-      internalID: -1078006351
+      spriteID: 04d7f85f482e6b147b4b1d065db5f195
+      internalID: -238555342
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Pina_bollata-Sheet_1
+      name: pg_frog_jump_1
       rect:
         serializedVersion: 2
-        x: 64
+        x: 48
         y: 0
-        width: 64
+        width: 48
         height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -145,19 +145,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c898aa3e94032144a92907d4086928d3
-      internalID: -247355953
+      spriteID: 798dd95dbcfb1cc40b97e1cfd29ca44e
+      internalID: -2073951555
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Pina_bollata-Sheet_2
+      name: pg_frog_jump_2
       rect:
         serializedVersion: 2
-        x: 128
+        x: 96
         y: 0
-        width: 64
+        width: 48
         height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -166,19 +166,40 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2bc58a3fc89a063478ced3b4b5460880
-      internalID: -261653138
+      spriteID: 669a309c4235f0143adf082cc45d2e49
+      internalID: -762230687
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Pina_bollata-Sheet_3
+      name: pg_frog_jump_3
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 0
+        width: 48
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: da568ffb0b5b2d44a8a98916e3da3403
+      internalID: -1122762147
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pg_frog_jump_4
       rect:
         serializedVersion: 2
         x: 192
         y: 0
-        width: 64
+        width: 48
         height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -187,19 +208,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ed8e825551ea74e4f8f0ab7b94da0c48
-      internalID: -8415599
+      spriteID: 8209103fa50d71c4da3370b77ab07af8
+      internalID: 984794364
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Pina_bollata-Sheet_4
+      name: pg_frog_jump_5
       rect:
         serializedVersion: 2
-        x: 256
+        x: 240
         y: 0
-        width: 64
+        width: 48
         height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -208,8 +229,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 41075f9d262293d428f6d411181f680b
-      internalID: 1222132541
+      spriteID: 35bba85f913dfb5438a0d71159b3b3c2
+      internalID: -1612525244
       vertices: []
       indices: 
       edges: []
@@ -225,11 +246,12 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Pina_bollata-Sheet_0: -1078006351
-      Pina_bollata-Sheet_1: -247355953
-      Pina_bollata-Sheet_2: -261653138
-      Pina_bollata-Sheet_3: -8415599
-      Pina_bollata-Sheet_4: 1222132541
+      pg_frog_jump_0: -238555342
+      pg_frog_jump_1: -2073951555
+      pg_frog_jump_2: -762230687
+      pg_frog_jump_3: -1122762147
+      pg_frog_jump_4: 984794364
+      pg_frog_jump_5: -1612525244
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

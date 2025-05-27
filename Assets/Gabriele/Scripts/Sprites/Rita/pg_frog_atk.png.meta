@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 067ea83ada79b664da9bcfb3b70e9b89
+guid: 19eddb86dc9e41b488c871180839f75a
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -110,7 +110,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: pg_frog_run_atk_0
+      name: pg_frog_atk_0
       rect:
         serializedVersion: 2
         x: 0
@@ -124,14 +124,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c4fda99dde10c9341804b70e350b6a21
-      internalID: 517615647
+      spriteID: 33b4a747b36d56e41ac3482f1192c115
+      internalID: -1770935704
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: pg_frog_run_atk_1
+      name: pg_frog_atk_1
       rect:
         serializedVersion: 2
         x: 48
@@ -145,14 +145,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: af9bd471dc567964996ce964ec631a75
-      internalID: 752248236
+      spriteID: 8e09421f57b16134b8e33d73d9a9d1e6
+      internalID: 2095394807
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: pg_frog_run_atk_2
+      name: pg_frog_atk_2
       rect:
         serializedVersion: 2
         x: 96
@@ -166,14 +166,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7acd1936caacd0345ab935e20d09584f
-      internalID: 1776424230
+      spriteID: 1c8d36d9249e5364bb34802de0657202
+      internalID: -1139833706
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: pg_frog_run_atk_3
+      name: pg_frog_atk_3
       rect:
         serializedVersion: 2
         x: 144
@@ -187,14 +187,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8bdddd2b906e7894c87f4449ee98edee
-      internalID: -1677990477
+      spriteID: ce1e4b8e0fbb597469629a819ff7c7a5
+      internalID: -1118114949
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: pg_frog_run_atk_4
+      name: pg_frog_atk_4
       rect:
         serializedVersion: 2
         x: 192
@@ -208,14 +208,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7d6ecc0c22d5c104b807af67e4fbe465
-      internalID: -467781912
+      spriteID: 05a4c16c327a9ce4fadce57bb3c5888e
+      internalID: -1579909533
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: pg_frog_run_atk_5
+      name: pg_frog_atk_5
       rect:
         serializedVersion: 2
         x: 240
@@ -229,14 +229,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 778b389cbf24a774ea2c608c3c3cb437
-      internalID: -611353531
+      spriteID: 98545032d76919b4f86e045365ce70a6
+      internalID: -807003283
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: pg_frog_run_atk_6
+      name: pg_frog_atk_6
       rect:
         serializedVersion: 2
         x: 288
@@ -250,50 +250,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6f453ced143d3d34d92d6719208e0719
-      internalID: -1735891884
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: pg_frog_run_atk_7
-      rect:
-        serializedVersion: 2
-        x: 336
-        y: 0
-        width: 48
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 8875ed25c247f39409602c377988becc
-      internalID: -998990461
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: pg_frog_run_atk_8
-      rect:
-        serializedVersion: 2
-        x: 384
-        y: 0
-        width: 48
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: f68b5d0362e9d2c459b73c5ec224e37f
-      internalID: -189464984
+      spriteID: effe4d740b1202749a03d4c3a786c1ef
+      internalID: -140513935
       vertices: []
       indices: 
       edges: []
@@ -309,15 +267,13 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      pg_frog_run_atk_0: 517615647
-      pg_frog_run_atk_1: 752248236
-      pg_frog_run_atk_2: 1776424230
-      pg_frog_run_atk_3: -1677990477
-      pg_frog_run_atk_4: -467781912
-      pg_frog_run_atk_5: -611353531
-      pg_frog_run_atk_6: -1735891884
-      pg_frog_run_atk_7: -998990461
-      pg_frog_run_atk_8: -189464984
+      pg_frog_atk_0: -1770935704
+      pg_frog_atk_1: 2095394807
+      pg_frog_atk_2: -1139833706
+      pg_frog_atk_3: -1118114949
+      pg_frog_atk_4: -1579909533
+      pg_frog_atk_5: -807003283
+      pg_frog_atk_6: -140513935
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

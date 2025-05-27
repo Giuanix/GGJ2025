@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 7c180530d5da31a4f82f0317d5507a9c
+guid: 2bae8005a41c89f479d80055e21ee9ec
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -110,12 +110,12 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: pg_frog_0
+      name: Pina_attack_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 48
+        width: 64
         height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -124,19 +124,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0e9f93fb5cd5bee4b958d6d806f19f20
-      internalID: 212814162
+      spriteID: 5c5b9e92f0b8b1b4c9e996cf9cbb8a7e
+      internalID: 1468682603
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: pg_frog_1
+      name: Pina_attack_1
       rect:
         serializedVersion: 2
-        x: 48
+        x: 64
         y: 0
-        width: 48
+        width: 64
         height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -145,19 +145,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 631c5d73d8196d548b1f8edccc39928a
-      internalID: 1230879663
+      spriteID: 50bfdf62f27d3bc419e2b48ef860d270
+      internalID: -1080510508
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: pg_frog_2
+      name: Pina_attack_2
       rect:
         serializedVersion: 2
-        x: 96
+        x: 128
         y: 0
-        width: 48
+        width: 64
         height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -166,40 +166,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 956b7b90e46997c49af3cf75f8452104
-      internalID: 1437692193
+      spriteID: 3c43532d057379944b6921855f429713
+      internalID: 1500761990
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: pg_frog_3
-      rect:
-        serializedVersion: 2
-        x: 144
-        y: 0
-        width: 48
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 1c0090b8710770f40bc5dbb3b6176f17
-      internalID: 1870578641
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: pg_frog_4
+      name: Pina_attack_3
       rect:
         serializedVersion: 2
         x: 192
         y: 0
-        width: 48
+        width: 64
         height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -208,19 +187,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b0d1cea1e897cb3439c00b79e5b5d233
-      internalID: -902875304
+      spriteID: a61a8a6fda9a3664a9b961312bc0246e
+      internalID: -264418313
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: pg_frog_5
+      name: Pina_attack_4
       rect:
         serializedVersion: 2
-        x: 240
+        x: 256
         y: 0
-        width: 48
+        width: 64
         height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -229,19 +208,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ab13fd90a6f19cc4081eef2fe83519a4
-      internalID: 911618262
+      spriteID: afad3898f6f0f104791973a9486167aa
+      internalID: 1492859602
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: pg_frog_6
+      name: Pina_attack_5
       rect:
         serializedVersion: 2
-        x: 288
+        x: 320
         y: 0
-        width: 48
+        width: 64
         height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -250,19 +229,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8a4b3118557fb2b43adc20d6530febb8
-      internalID: -1676391321
+      spriteID: bf5f7dda4ef6c97419c57012089b3b5e
+      internalID: 1472933942
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: pg_frog_7
+      name: Pina_attack_6
       rect:
         serializedVersion: 2
-        x: 336
+        x: 384
         y: 0
-        width: 48
+        width: 64
         height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -271,8 +250,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4e4d74894f82ba840857f10c497d0a91
-      internalID: 1005022068
+      spriteID: bbb36facecaf4fd4aa3f731b33654715
+      internalID: -1118729512
       vertices: []
       indices: 
       edges: []
@@ -288,14 +267,13 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      pg_frog_0: 212814162
-      pg_frog_1: 1230879663
-      pg_frog_2: 1437692193
-      pg_frog_3: 1870578641
-      pg_frog_4: -902875304
-      pg_frog_5: 911618262
-      pg_frog_6: -1676391321
-      pg_frog_7: 1005022068
+      Pina_attack_0: 1468682603
+      Pina_attack_1: -1080510508
+      Pina_attack_2: 1500761990
+      Pina_attack_3: -264418313
+      Pina_attack_4: 1492859602
+      Pina_attack_5: 1472933942
+      Pina_attack_6: -1118729512
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

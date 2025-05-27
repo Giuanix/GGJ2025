@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 3b71fd95aa88d43408f4c5de4c6eac52
+guid: b2d54134d07a971429280078477cc9d3
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -110,7 +110,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: pg_balena_run_atk_0
+      name: Pina_run_0
       rect:
         serializedVersion: 2
         x: 0
@@ -124,14 +124,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 643f2ad18ca000e43941c53a9396d9d4
-      internalID: -1933462336
+      spriteID: 11fe99fa10a6af84f87115c448b5b841
+      internalID: -1339615293
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: pg_balena_run_atk_1
+      name: Pina_run_1
       rect:
         serializedVersion: 2
         x: 64
@@ -145,14 +145,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b1254adfae2ac1e4081649964edc898b
-      internalID: -1095998055
+      spriteID: edb26855d6df3c542b0319e41006559c
+      internalID: -1317519112
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: pg_balena_run_atk_2
+      name: Pina_run_2
       rect:
         serializedVersion: 2
         x: 128
@@ -166,14 +166,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4f3b246355b8d5e42a8bd483d5897e65
-      internalID: 1841949710
+      spriteID: b08ce768534c06346a37a02b19cfb419
+      internalID: -1397083179
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: pg_balena_run_atk_3
+      name: Pina_run_3
       rect:
         serializedVersion: 2
         x: 192
@@ -187,14 +187,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a74be77a38d7bc94086abd68db94e5a5
-      internalID: 631720420
+      spriteID: d48feb9802566f446b2dea76da251e1f
+      internalID: 1942227594
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: pg_balena_run_atk_4
+      name: Pina_run_4
       rect:
         serializedVersion: 2
         x: 256
@@ -208,14 +208,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ed0de7acbf2d825488c77099516e3cc3
-      internalID: 1443506632
+      spriteID: d5c9289131db66f4388193faf401fdcb
+      internalID: -1001224222
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: pg_balena_run_atk_5
+      name: Pina_run_5
       rect:
         serializedVersion: 2
         x: 320
@@ -229,14 +229,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d442244733d44504284743365d9c06cf
-      internalID: -382490619
+      spriteID: 6f7e6d131dce094428d46dc0bf0d482e
+      internalID: 2110599702
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: pg_balena_run_atk_6
+      name: Pina_run_6
       rect:
         serializedVersion: 2
         x: 384
@@ -250,71 +250,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 487d294d96c57524bba0e88a0eb0b105
-      internalID: 1819643386
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: pg_balena_run_atk_7
-      rect:
-        serializedVersion: 2
-        x: 448
-        y: 0
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: d45c76b3aa8ae5641aeb20b25087e8d9
-      internalID: -997799157
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: pg_balena_run_atk_8
-      rect:
-        serializedVersion: 2
-        x: 512
-        y: 0
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 3a11463caeca59b448c2d70ad3c8622f
-      internalID: -1875294892
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: pg_balena_run_atk_9
-      rect:
-        serializedVersion: 2
-        x: 576
-        y: 0
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 0c2d42b278f007540a238dfbb9d375ea
-      internalID: -461400988
+      spriteID: e96db7394894ea64d9e9f350b1deb0d3
+      internalID: -140433728
       vertices: []
       indices: 
       edges: []
@@ -330,16 +267,13 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      pg_balena_run_atk_0: -1933462336
-      pg_balena_run_atk_1: -1095998055
-      pg_balena_run_atk_2: 1841949710
-      pg_balena_run_atk_3: 631720420
-      pg_balena_run_atk_4: 1443506632
-      pg_balena_run_atk_5: -382490619
-      pg_balena_run_atk_6: 1819643386
-      pg_balena_run_atk_7: -997799157
-      pg_balena_run_atk_8: -1875294892
-      pg_balena_run_atk_9: -461400988
+      Pina_run_0: -1339615293
+      Pina_run_1: -1317519112
+      Pina_run_2: -1397083179
+      Pina_run_3: 1942227594
+      Pina_run_4: -1001224222
+      Pina_run_5: 2110599702
+      Pina_run_6: -140433728
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

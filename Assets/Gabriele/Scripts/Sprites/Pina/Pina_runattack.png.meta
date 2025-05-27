@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 7925558dcbba57747b399e61176b3700
+guid: f3b09ab6750821f408d8b46bc7fa61d0
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -110,7 +110,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Pina_attack-Sheet_0
+      name: Pina_runattack_0
       rect:
         serializedVersion: 2
         x: 0
@@ -124,14 +124,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5f1a33a837879a8438f2ad550d692684
-      internalID: 1615344149
+      spriteID: b263ced8fa86f6c42881a2fb545aa6b9
+      internalID: 1921547487
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Pina_attack-Sheet_1
+      name: Pina_runattack_1
       rect:
         serializedVersion: 2
         x: 64
@@ -145,14 +145,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 91a51cfcbe35c32489c92f2fe9d4201b
-      internalID: -242340632
+      spriteID: 9e81ea2dcba48c54d9046fcfc7e16744
+      internalID: 55701588
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Pina_attack-Sheet_2
+      name: Pina_runattack_2
       rect:
         serializedVersion: 2
         x: 128
@@ -166,14 +166,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d704609b5102cd64683f4f20c951f41e
-      internalID: 811151758
+      spriteID: 80f68ed8d38c3b9479d91f8278b7db79
+      internalID: -707016695
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Pina_attack-Sheet_3
+      name: Pina_runattack_3
       rect:
         serializedVersion: 2
         x: 192
@@ -187,14 +187,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 001ddfeb2ec00d248b37e25ad9265154
-      internalID: 751580743
+      spriteID: b34b2c1a90c37914b8a08e5ad8e6aea4
+      internalID: 1991937788
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Pina_attack-Sheet_4
+      name: Pina_runattack_4
       rect:
         serializedVersion: 2
         x: 256
@@ -208,14 +208,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5ea9b0c220911aa47b68fbe143a0e851
-      internalID: 1688392196
+      spriteID: 50ca196f7c5cbf749a95ad7d05fd819a
+      internalID: -1704803477
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Pina_attack-Sheet_5
+      name: Pina_runattack_5
       rect:
         serializedVersion: 2
         x: 320
@@ -229,14 +229,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 38ea2aa02840c65438c94dbc8c1912b5
-      internalID: 400650802
+      spriteID: 842abed713c87b84db80299b86049c2f
+      internalID: -1257091344
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Pina_attack-Sheet_6
+      name: Pina_runattack_6
       rect:
         serializedVersion: 2
         x: 384
@@ -250,71 +250,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5338b646d4dce4c44a359c5435bb6be3
-      internalID: -1617852005
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Pina_attack-Sheet_7
-      rect:
-        serializedVersion: 2
-        x: 448
-        y: 0
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 788e0faf0dac1b94fbf154d17b2ea220
-      internalID: 1387447751
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Pina_attack-Sheet_8
-      rect:
-        serializedVersion: 2
-        x: 512
-        y: 0
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 93699761144527148a9ed8b375e0a79c
-      internalID: 965309979
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Pina_attack-Sheet_9
-      rect:
-        serializedVersion: 2
-        x: 576
-        y: 0
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: ea7b9f4ca9aba1c4f87c7f2ceee6c37c
-      internalID: 494495321
+      spriteID: c40d913416d001f458891371911d5059
+      internalID: -352300043
       vertices: []
       indices: 
       edges: []
@@ -330,16 +267,13 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Pina_attack-Sheet_0: 1615344149
-      Pina_attack-Sheet_1: -242340632
-      Pina_attack-Sheet_2: 811151758
-      Pina_attack-Sheet_3: 751580743
-      Pina_attack-Sheet_4: 1688392196
-      Pina_attack-Sheet_5: 400650802
-      Pina_attack-Sheet_6: -1617852005
-      Pina_attack-Sheet_7: 1387447751
-      Pina_attack-Sheet_8: 965309979
-      Pina_attack-Sheet_9: 494495321
+      Pina_runattack_0: 1921547487
+      Pina_runattack_1: 55701588
+      Pina_runattack_2: -707016695
+      Pina_runattack_3: 1991937788
+      Pina_runattack_4: -1704803477
+      Pina_runattack_5: -1257091344
+      Pina_runattack_6: -352300043
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

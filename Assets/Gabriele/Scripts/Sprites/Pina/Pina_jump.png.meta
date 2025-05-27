@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: a6856c0db01daeb4291319ea835af199
+guid: 21822082759a936448a998e5d02e4437
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -110,7 +110,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Pina_run-Sheet_0
+      name: Pina_jump_0
       rect:
         serializedVersion: 2
         x: 0
@@ -124,14 +124,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8bfe3389a6105a14290dbbb95ae680dd
-      internalID: 1881901469
+      spriteID: e9601d65d29e8a64dad0cb9098054f21
+      internalID: 1704134803
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Pina_run-Sheet_1
+      name: Pina_jump_1
       rect:
         serializedVersion: 2
         x: 64
@@ -145,14 +145,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6e2c97d6663a8474082554bddbb6d326
-      internalID: 1369060917
+      spriteID: ea7cd2390b5a1524a80e26a76f2ab327
+      internalID: 1257626530
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Pina_run-Sheet_2
+      name: Pina_jump_2
       rect:
         serializedVersion: 2
         x: 128
@@ -166,14 +166,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2714919d3d88b974598abe4c1fdad0fc
-      internalID: 1679753953
+      spriteID: 2c26545db2da49041ae51a1a6f993bec
+      internalID: -531487590
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Pina_run-Sheet_3
+      name: Pina_jump_3
       rect:
         serializedVersion: 2
         x: 192
@@ -187,14 +187,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f881004ac8a19c04a8788b87bfcc2d4f
-      internalID: 1302409998
+      spriteID: f96944f47afacef49a12c44e71660ade
+      internalID: -2091561922
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Pina_run-Sheet_4
+      name: Pina_jump_4
       rect:
         serializedVersion: 2
         x: 256
@@ -208,14 +208,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ac68f090a19cbf14aa0f70e993204bb7
-      internalID: -75236973
+      spriteID: cd6f2e46acd04ff46b3865cdd0e7f938
+      internalID: -409353163
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Pina_run-Sheet_5
+      name: Pina_jump_5
       rect:
         serializedVersion: 2
         x: 320
@@ -229,14 +229,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4a56e735f133a2f40bbb7cea73709d25
-      internalID: 810360132
+      spriteID: f88d92fa89ccc9644b4333a2e671965e
+      internalID: 894574657
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Pina_run-Sheet_6
+      name: Pina_jump_6
       rect:
         serializedVersion: 2
         x: 384
@@ -250,14 +250,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 20b3bbdbdcbd32743a0923781aea1902
-      internalID: -405160311
+      spriteID: ede5f5cbb54f1404d9bb1b0a5e5732c4
+      internalID: 363280881
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Pina_run-Sheet_7
+      name: Pina_jump_7
       rect:
         serializedVersion: 2
         x: 448
@@ -271,14 +271,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: bfbbba85ca24f8b4bb5a460fc01f8c79
-      internalID: 144853200
+      spriteID: 50066cad47237344aaedd97b26acd318
+      internalID: -2024456515
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Pina_run-Sheet_8
+      name: Pina_jump_8
       rect:
         serializedVersion: 2
         x: 512
@@ -292,29 +292,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d7302c988f322c14ba4e87eae596cb29
-      internalID: -90991472
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Pina_run-Sheet_9
-      rect:
-        serializedVersion: 2
-        x: 576
-        y: 0
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 44c659d467c6a4949a8f26f20d32634a
-      internalID: 254129735
+      spriteID: 1543831b2fe76924eb403f452cdf3d69
+      internalID: 728027067
       vertices: []
       indices: 
       edges: []
@@ -330,16 +309,15 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Pina_run-Sheet_0: 1881901469
-      Pina_run-Sheet_1: 1369060917
-      Pina_run-Sheet_2: 1679753953
-      Pina_run-Sheet_3: 1302409998
-      Pina_run-Sheet_4: -75236973
-      Pina_run-Sheet_5: 810360132
-      Pina_run-Sheet_6: -405160311
-      Pina_run-Sheet_7: 144853200
-      Pina_run-Sheet_8: -90991472
-      Pina_run-Sheet_9: 254129735
+      Pina_jump_0: 1704134803
+      Pina_jump_1: 1257626530
+      Pina_jump_2: -531487590
+      Pina_jump_3: -2091561922
+      Pina_jump_4: -409353163
+      Pina_jump_5: 894574657
+      Pina_jump_6: 363280881
+      Pina_jump_7: -2024456515
+      Pina_jump_8: 728027067
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

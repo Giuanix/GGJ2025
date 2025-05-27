@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 94444d6142ea68242b68d3d1ce3f5efc
+guid: 4f50069ae99cc3b449bda6e034cfe1fb
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -110,12 +110,12 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: jump_frog_0
+      name: Pina_Idle_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 48
+        width: 64
         height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -124,19 +124,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6f1d44b17e2a06042a1e6a7671b39305
-      internalID: 659685676
+      spriteID: 5c5a2cfd3e17f71438f38cef1185ce6c
+      internalID: -1429360460
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: jump_frog_1
+      name: Pina_Idle_1
       rect:
         serializedVersion: 2
-        x: 48
+        x: 64
         y: 0
-        width: 48
+        width: 64
         height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -145,19 +145,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e9532f463b373a24c84ab16898d4b547
-      internalID: 2108656144
+      spriteID: 8e1101e9010e4b04195d3e1ae1cdd86d
+      internalID: -1825607221
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: jump_frog_2
+      name: Pina_Idle_2
       rect:
         serializedVersion: 2
-        x: 96
+        x: 128
         y: 0
-        width: 48
+        width: 64
         height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -166,40 +166,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 72c6f946fa7875b4e84e0dfa5bac41bc
-      internalID: 2067484535
+      spriteID: cdb4a25626529aa479a0650f7e71a44d
+      internalID: -2105782646
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: jump_frog_3
-      rect:
-        serializedVersion: 2
-        x: 144
-        y: 0
-        width: 48
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: fc75434e60c1f344faa9de8cf9f58a7c
-      internalID: -1744540663
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: jump_frog_4
+      name: Pina_Idle_3
       rect:
         serializedVersion: 2
         x: 192
         y: 0
-        width: 48
+        width: 64
         height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -208,19 +187,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c60ffa7a273660b4783e5aab97879e1f
-      internalID: 1690707332
+      spriteID: 14babfc176e2cc5419bece50a04d8c9c
+      internalID: 70371869
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: jump_frog_5
+      name: Pina_Idle_4
       rect:
         serializedVersion: 2
-        x: 240
+        x: 256
         y: 0
-        width: 48
+        width: 64
         height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -229,19 +208,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e9e558313ac095d45ba78905661af962
-      internalID: -717171934
+      spriteID: 910e3349f62007e4dbe5493204568261
+      internalID: 663893075
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: jump_frog_6
+      name: Pina_Idle_5
       rect:
         serializedVersion: 2
-        x: 288
+        x: 320
         y: 0
-        width: 48
+        width: 64
         height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -250,40 +229,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: fc8d7c7c3103a6f45b11acd483101a87
-      internalID: 451414425
+      spriteID: 9e94fb701bcf0f14d874e908d55e219d
+      internalID: -1717733480
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: jump_frog_7
-      rect:
-        serializedVersion: 2
-        x: 336
-        y: 0
-        width: 48
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: eaa1464efa85b58439f0dc1e15263ef1
-      internalID: -860685585
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: jump_frog_8
+      name: Pina_Idle_6
       rect:
         serializedVersion: 2
         x: 384
         y: 0
-        width: 48
+        width: 64
         height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -292,8 +250,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a47183930e9011346878bdc2a744dffc
-      internalID: -1383934858
+      spriteID: 057d0f5feb812874a9ba5a50bf468158
+      internalID: -1832042457
       vertices: []
       indices: 
       edges: []
@@ -309,15 +267,13 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      jump_frog_0: 659685676
-      jump_frog_1: 2108656144
-      jump_frog_2: 2067484535
-      jump_frog_3: -1744540663
-      jump_frog_4: 1690707332
-      jump_frog_5: -717171934
-      jump_frog_6: 451414425
-      jump_frog_7: -860685585
-      jump_frog_8: -1383934858
+      Pina_Idle_0: -1429360460
+      Pina_Idle_1: -1825607221
+      Pina_Idle_2: -2105782646
+      Pina_Idle_3: 70371869
+      Pina_Idle_4: 663893075
+      Pina_Idle_5: -1717733480
+      Pina_Idle_6: -1832042457
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
