@@ -149,8 +149,8 @@ public class PassiveAbility : MonoBehaviour
 
     public void StopGlide()
     {
-        player.baseGravity = 2f;
-        player.fallSpeedMultiplier = 2f;
+        player.baseGravity = 3f;
+        player.fallSpeedMultiplier = 3f;
     }
     #endregion
 

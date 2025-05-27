@@ -25,7 +25,7 @@ Transform:
   m_GameObject: {fileID: 2855685271126227569}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.0095, y: -0.3204, z: 0}
+  m_LocalPosition: {x: -0.0095, y: -0.3183, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -56,7 +56,7 @@ Transform:
   m_GameObject: {fileID: 5461920337114562593}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.181, y: 0, z: 0}
+  m_LocalPosition: {x: -0.181, y: -0.0081, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -191,8 +191,8 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -2.929, y: -1.146, z: 0}
-  m_LocalScale: {x: 2.5, y: 2.5, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 5, y: 5, z: 2}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 8123689303608257652}
   - {fileID: 3798126348865350500}
@@ -316,7 +316,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.20020667, y: 0.49747536}
+  m_Size: {x: 0.20020667, y: 0.49}
   m_EdgeRadius: 0
 --- !u!50 &1689800573828224956
 Rigidbody2D:
@@ -343,7 +343,7 @@ Rigidbody2D:
     m_Bits: 0
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 4
 --- !u!114 &835911150231949216
 MonoBehaviour:
@@ -479,16 +479,16 @@ MonoBehaviour:
   animator: {fileID: 0}
   floatingObject: {fileID: 2871415451236676448}
   particles: {fileID: 2038243308300828207}
-  moveSpeed: 6
+  moveSpeed: 12
   isFacingRight: 1
-  jumpForce: 13
+  jumpForce: 20
   groundCheckPos: {fileID: 8123689303608257652}
-  groundCheckSize: {x: 0.5, y: 0.05}
+  groundCheckSize: {x: 0.9, y: 0.05}
   grondLayer:
     serializedVersion: 2
     m_Bits: 8
   baseGravity: 2
-  maxFallSpeed: 18
+  maxFallSpeed: 26
   fallSpeedMultiplier: 2
   slipperySpeedMultiplier: 0.85
   maxSlipperySpeed: 4
@@ -555,8 +555,13 @@ MonoBehaviour:
   ignoreLayerMask:
     serializedVersion: 2
     m_Bits: 0
-  glideGravity: 0.4
-  glideFallSpeedMultiplier: 0.5
+  glideGravity: 0.8
+  glideFallSpeedMultiplier: 1
+  grenadePrefab: {fileID: 0}
+  spawnPoint: {fileID: 0}
+  force: 7
+  upwardModifier: 0.7
+  whallaTransform: {fileID: 0}
 --- !u!1 &7627854446639897142
 GameObject:
   m_ObjectHideFlags: 0

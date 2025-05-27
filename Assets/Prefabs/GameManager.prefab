@@ -146,6 +146,7 @@ MonoBehaviour:
   - Pina
   - Rita
   selectionScreen: {fileID: 0}
+  loadingScreen: {fileID: 0}
   maxPlayer: 2
   uiPlayer1: {fileID: 0}
   uiPlayer2: {fileID: 0}
@@ -186,7 +187,7 @@ MonoBehaviour:
   backClicked: {fileID: 21300000, guid: 1bbe57b69608fe74fb62df474640c3d0, type: 3}
   backUnclicked: {fileID: 21300000, guid: 6fc9fcb93c6df864ca09d6c71390cc2a, type: 3}
   waterColorBeach: {r: 0.29622638, g: 0.8371659, b: 1, a: 0.6156863}
-  waterColorBath: {r: 0.43389106, g: 0.773876, b: 0.8301887, a: 0.6156863}
+  waterColorBath: {r: 0.63584906, g: 0.85663354, b: 1, a: 0.6156863}
   waterColorPool: {r: 0.14401919, g: 0.26539955, b: 0.8773585, a: 0.6156863}
   waterColorSewer: {r: 0.427, g: 0.6, b: 0.184, a: 0.6156863}
 --- !u!114 &4636852760846756190

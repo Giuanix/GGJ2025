@@ -156,18 +156,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac912bd111d09b443972e07bff699f5e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  horizontalAmplitude: 1
-  horizontalSpeed: 11
-  verticalSpeed: 0.65
-  livingTime: 0.2
-  scale: 1
+  horizontalAmplitude: 2
+  horizontalSpeed: 22
+  verticalSpeed: 0.4
+  livingTime: 0.4
+  scale: 2
   scaleIncreasing: 0
-  floatingSpeed: {x: 1, y: 2}
-  increasingScaleSpeed: {x: 1, y: 2}
+  floatingSpeed: {x: 2, y: 4}
+  increasingScaleSpeed: {x: 2, y: 4}
   damage: {x: 8, y: 12}
   isProjectile: 1
-  airFriction: 5
-  minSpeedStartFloating: 6.5
+  airFriction: 10
+  minSpeedStartFloating: 13
 --- !u!50 &53820226693912855
 Rigidbody2D:
   serializedVersion: 4

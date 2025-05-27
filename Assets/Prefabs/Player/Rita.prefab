@@ -66,8 +66,8 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 267.75974, y: 152.6495, z: 0}
-  m_LocalScale: {x: 2.5, y: 2.5, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 5, y: 5, z: 2}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 7171156009888544470}
   - {fileID: 8722952733435168890}
@@ -116,12 +116,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 212814162, guid: 7c180530d5da31a4f82f0317d5507a9c, type: 3}
+  m_Sprite: {fileID: -1770935704, guid: 19eddb86dc9e41b488c871180839f75a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 0.48, y: 0.64}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -185,7 +185,7 @@ BoxCollider2D:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
     oldSize: {x: 0.48, y: 0.64}
-    newSize: {x: 1, y: 1}
+    newSize: {x: 0.48, y: 0.64}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
@@ -218,7 +218,7 @@ Rigidbody2D:
     m_Bits: 0
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 4
 --- !u!114 &8212419404632729761
 MonoBehaviour:
@@ -354,16 +354,16 @@ MonoBehaviour:
   animator: {fileID: 0}
   floatingObject: {fileID: 5722939539535371692}
   particles: {fileID: 1508456669199555053}
-  moveSpeed: 6
+  moveSpeed: 12
   isFacingRight: 1
-  jumpForce: 13
+  jumpForce: 20
   groundCheckPos: {fileID: 7171156009888544470}
-  groundCheckSize: {x: 0.5, y: 0.05}
+  groundCheckSize: {x: 0.9, y: 0.05}
   grondLayer:
     serializedVersion: 2
     m_Bits: 8
   baseGravity: 2
-  maxFallSpeed: 18
+  maxFallSpeed: 26
   fallSpeedMultiplier: 2
   slipperySpeedMultiplier: 0.85
   maxSlipperySpeed: 4
@@ -425,11 +425,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ability: 1
   abilityCooldown: 1.2
-  sprintInstantSpeed: 25
+  sprintInstantSpeed: 50
   sprintDuration: 0.25
   ignoreLayerMask:
     serializedVersion: 2
     m_Bits: 192
+  glideGravity: 0.4
+  glideFallSpeedMultiplier: 0.6
+  grenadePrefab: {fileID: 0}
+  spawnPoint: {fileID: 0}
+  force: 7
+  upwardModifier: 0.7
+  whallaTransform: {fileID: 0}
 --- !u!1 &6080555577987118377
 GameObject:
   m_ObjectHideFlags: 0

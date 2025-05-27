@@ -106,8 +106,8 @@ public class PlayerController : MonoBehaviour
 
         if (IsGrounded() == true)
         {
-            baseGravity = 2f;
-            fallSpeedMultiplier = 2f;
+            baseGravity = 3f;
+            fallSpeedMultiplier = 3f;
         }
     }
 

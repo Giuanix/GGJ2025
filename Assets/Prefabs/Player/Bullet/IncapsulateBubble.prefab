@@ -101,13 +101,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   managerAudio: {fileID: 0}
-  horizontalAmplitude: 0.69
-  horizontalSpeed: 0.69
-  verticalSpeed: 0.65
+  horizontalAmplitude: 1.4
+  horizontalSpeed: 1.4
+  verticalSpeed: 1.4
   livingTime: 10
   pressKeyAmount: 0.4
-  scale: 2.2
-  floatingSpeed: {x: 1, y: 2}
+  scale: 7
+  floatingSpeed: {x: 2, y: 4}
 --- !u!58 &7633289569714482654
 CircleCollider2D:
   m_ObjectHideFlags: 0

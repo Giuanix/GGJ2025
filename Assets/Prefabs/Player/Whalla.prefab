@@ -56,7 +56,7 @@ Transform:
   m_GameObject: {fileID: 6454552062653583998}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.0139, y: -0.3144, z: 0}
+  m_LocalPosition: {x: -0.0139, y: -0.3197, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -97,8 +97,8 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -4.12, y: -1, z: 0}
-  m_LocalScale: {x: 3.2, y: 3.2, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 6, y: 6, z: 1.875}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 8025461823820582924}
   - {fileID: 7454703321035014835}
@@ -249,7 +249,7 @@ Rigidbody2D:
     m_Bits: 0
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 4
 --- !u!114 &5744029355315750161
 MonoBehaviour:
@@ -385,20 +385,20 @@ MonoBehaviour:
   animator: {fileID: 0}
   floatingObject: {fileID: 3153151586371563102}
   particles: {fileID: 9058909843669569931}
-  moveSpeed: 6
+  moveSpeed: 12
   isFacingRight: 1
-  jumpForce: 13
+  jumpForce: 20
   groundCheckPos: {fileID: 7454703321035014835}
-  groundCheckSize: {x: 0.65, y: 0.05}
+  groundCheckSize: {x: 1.15, y: 0.05}
   grondLayer:
     serializedVersion: 2
     m_Bits: 8
   baseGravity: 2
-  maxFallSpeed: 18
+  maxFallSpeed: 26
   fallSpeedMultiplier: 2
-  slipperySpeedMultiplier: 0.5
-  maxSlipperySpeed: 5
-  frictionSlippery: 1.5
+  slipperySpeedMultiplier: 0.85
+  maxSlipperySpeed: 4
+  frictionSlippery: 0.5
   uiManager: {fileID: 0}
   inSprint: 0
 --- !u!114 &8797212596078879233
@@ -465,8 +465,8 @@ MonoBehaviour:
   glideFallSpeedMultiplier: 0.6
   grenadePrefab: {fileID: 8945811867683996988, guid: ee5e236eeb41a054781364b658032575, type: 3}
   spawnPoint: {fileID: 2024064165126389897}
-  force: 11
-  upwardModifier: 1.4
+  force: 22
+  upwardModifier: 2.8
   whallaTransform: {fileID: 6995958410870831485}
 --- !u!1 &7022139854241590268
 GameObject:
