@@ -51,63 +51,63 @@ public class AudioManager : MonoBehaviour
     //SFX
     public void PlaySparoBalena()
     {
-        SparoBalena.PlayOneShot(SparoBalena.clip,0.2f);
+        SparoBalena.PlayOneShot(SparoBalena.clip,0.1f);
     }  
     public void PlaySparoPapera()
     {
-        SparoPapera.PlayOneShot(SparoPapera.clip,0.5f);
+        SparoPapera.PlayOneShot(SparoPapera.clip,0.1f);
     }  
     public void PlayDannoSubito()
     {
-        DannoSubito.PlayOneShot(DannoSubito.clip,0.5f);
+        DannoSubito.PlayOneShot(DannoSubito.clip,0.1f);
     }  
     public void PlayFluttuamentoBolla()
     {
-        FluttuamentoBolla.PlayOneShot(FluttuamentoBolla.clip,0.5f);
+        FluttuamentoBolla.PlayOneShot(FluttuamentoBolla.clip,0.1f);
     }  
     public void PlayDashAndDodge()
     {
-        DashAndDodge.PlayOneShot(DashAndDodge.clip, 0.8f);
+        DashAndDodge.PlayOneShot(DashAndDodge.clip, 1.5f);
     }
     public void PlayPlayerSconfitto()
     {
-        PlayerSconfitto.PlayOneShot(PlayerSconfitto.clip, 1f);
+        PlayerSconfitto.PlayOneShot(PlayerSconfitto.clip, 0.1f);
     }
     public void PlayJump()
     {
-        PlayerSconfitto.PlayOneShot(PlayerJump.clip, 0.3f);
+        PlayerSconfitto.PlayOneShot(PlayerJump.clip, 0.1f);
     }
     public void PlayExplosionBubble()
     {
-        PlayerSconfitto.PlayOneShot(PlayerSconfitto.clip, 0.5f);
+        PlayerSconfitto.PlayOneShot(PlayerSconfitto.clip, 0.1f);
     }
     public void PlayTryToBeFree()
     {
-        TryToBeFree.PlayOneShot(TryToBeFree.clip, 0.5f);
+        TryToBeFree.PlayOneShot(TryToBeFree.clip, 0.1f);
     }
     public void PlayBottonPressed()
     {
-        BottonPressed.PlayOneShot(BottonPressed.clip, 0.6f);
+        BottonPressed.PlayOneShot(BottonPressed.clip, 0.1f);
     }
     public void PlayDeviceJoin()
     {
-        DeviceJoin.PlayOneShot(DeviceJoin.clip, 0.4f);
+        DeviceJoin.PlayOneShot(DeviceJoin.clip, 0.1f);
     }
     public void PlayGoosewayJoin()
     {
-        GoosewayJoin.PlayOneShot(GoosewayJoin.clip, 0.4f);
+        GoosewayJoin.PlayOneShot(GoosewayJoin.clip, 0.1f);
     }
     public void PlayWhallaJoin()
     {
-        WhallaJoin.PlayOneShot(WhallaJoin.clip, 12f);
+        WhallaJoin.PlayOneShot(WhallaJoin.clip, 4f);
     }
     public void PlayRitaJoin()
     {
-        RitaJoin.PlayOneShot(RitaJoin.clip, 0.4f);
+        RitaJoin.PlayOneShot(RitaJoin.clip, 0.2f);
     }
     public void PlayPinaJoin()
     {
-        PinaJoin.PlayOneShot(PinaJoin.clip, 0.4f);
+        PinaJoin.PlayOneShot(PinaJoin.clip, 0.2f);
     }
 
     //OST
@@ -134,19 +134,19 @@ public class AudioManager : MonoBehaviour
 
     public void PlayKO()
     {
-        KO.PlayOneShot(KO.clip,0.5f);
+        KO.PlayOneShot(KO.clip,0.4f);
     }
     public void PlayCountdown()
     {
-        Countdown.volume = 0.6f;
+        Countdown.volume = 0.1f;
         Countdown.PlayOneShot(Countdown.clip);
     }
     public void PlayChoose()
     {
-        ChooseYourFighter.PlayOneShot(ChooseYourFighter.clip, 0.5f);
+        ChooseYourFighter.PlayOneShot(ChooseYourFighter.clip, 0.4f);
     }
     public void PlayTheWinnerIs()
     {
-        theWinnerIs.PlayOneShot(theWinnerIs.clip, 0.5f);
+        theWinnerIs.PlayOneShot(theWinnerIs.clip, 0.4f);
     }
 }
