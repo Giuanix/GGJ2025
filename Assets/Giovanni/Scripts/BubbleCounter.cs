@@ -97,11 +97,6 @@ public class BubbleCounter : MonoBehaviour, IDamageable
         }
 
     }
-
-
-
-
-
     public void SetPercentage(int amount)
     {
         damageCounter -= amount;

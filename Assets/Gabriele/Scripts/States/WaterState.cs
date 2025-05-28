@@ -37,7 +37,7 @@ public class WaterState : State
         if (context.performed && player.floatingObject.IsInWater())
         {
             player.animator.SetTrigger("Jump");
-            player.rb.velocity = new Vector2(player.rb.velocity.x, player.jumpForce);
+            player.rb.velocity = new Vector2(player.rb.velocity.x, player.jumpForce*1.5f);
         }
     }
 

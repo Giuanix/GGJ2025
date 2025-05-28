@@ -19,10 +19,7 @@ public class AudioManager : MonoBehaviour
     [SerializeField] private AudioSource TryToBeFree;
     [SerializeField] private AudioSource BottonPressed;
     [SerializeField] private AudioSource DeviceJoin;
-    [SerializeField] private AudioSource GoosewayJoin;
-    [SerializeField] private AudioSource WhallaJoin;
-    [SerializeField] private AudioSource RitaJoin;
-    [SerializeField] private AudioSource PinaJoin;
+    [SerializeField] private AudioSource PlayerConfirm;
 
     [Header("OST")]
     [SerializeField] private AudioSource[] stages;
@@ -93,23 +90,10 @@ public class AudioManager : MonoBehaviour
     {
         DeviceJoin.PlayOneShot(DeviceJoin.clip, 0.1f);
     }
-    public void PlayGoosewayJoin()
+    public void PlayPlayerConfirm()
     {
-        GoosewayJoin.PlayOneShot(GoosewayJoin.clip, 0.1f);
+        PlayerConfirm.PlayOneShot(PlayerConfirm.clip, 0.1f);
     }
-    public void PlayWhallaJoin()
-    {
-        WhallaJoin.PlayOneShot(WhallaJoin.clip, 4f);
-    }
-    public void PlayRitaJoin()
-    {
-        RitaJoin.PlayOneShot(RitaJoin.clip, 0.2f);
-    }
-    public void PlayPinaJoin()
-    {
-        PinaJoin.PlayOneShot(PinaJoin.clip, 0.2f);
-    }
-
     //OST
 
     public void PlaySchermataSelezionePersonaggio()

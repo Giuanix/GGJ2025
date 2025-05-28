@@ -250,22 +250,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 442949911707012, guid: e51e8686ef3f3fc4da56d3e1c7c25eb1, type: 3}
-      propertyPath: m_Volume
-      value: 0.1
-      objectReference: {fileID: 0}
-    - target: {fileID: 171860624897364319, guid: e51e8686ef3f3fc4da56d3e1c7c25eb1, type: 3}
-      propertyPath: m_Volume
-      value: 0.1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1856068771772588647, guid: e51e8686ef3f3fc4da56d3e1c7c25eb1, type: 3}
-      propertyPath: m_Volume
-      value: 0.1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2705357266201646516, guid: e51e8686ef3f3fc4da56d3e1c7c25eb1, type: 3}
-      propertyPath: m_Volume
-      value: 0.1
-      objectReference: {fileID: 0}
     - target: {fileID: 3415747649630023281, guid: e51e8686ef3f3fc4da56d3e1c7c25eb1, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -305,30 +289,6 @@ PrefabInstance:
     - target: {fileID: 3415747649630023281, guid: e51e8686ef3f3fc4da56d3e1c7c25eb1, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4113786433585684932, guid: e51e8686ef3f3fc4da56d3e1c7c25eb1, type: 3}
-      propertyPath: m_Volume
-      value: 0.1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5812118769760685918, guid: e51e8686ef3f3fc4da56d3e1c7c25eb1, type: 3}
-      propertyPath: m_Volume
-      value: 0.1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5954255954290999946, guid: e51e8686ef3f3fc4da56d3e1c7c25eb1, type: 3}
-      propertyPath: m_Volume
-      value: 0.1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7478203682166308322, guid: e51e8686ef3f3fc4da56d3e1c7c25eb1, type: 3}
-      propertyPath: m_Volume
-      value: 0.1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8079502106758538496, guid: e51e8686ef3f3fc4da56d3e1c7c25eb1, type: 3}
-      propertyPath: m_Volume
-      value: 0.1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8533136276079988113, guid: e51e8686ef3f3fc4da56d3e1c7c25eb1, type: 3}
-      propertyPath: m_Volume
-      value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 9120111996359293343, guid: e51e8686ef3f3fc4da56d3e1c7c25eb1, type: 3}
       propertyPath: m_Name

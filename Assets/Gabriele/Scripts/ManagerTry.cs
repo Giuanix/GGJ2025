@@ -244,7 +244,7 @@ public class ManagerTry : MonoBehaviour
 
         int playerIndex = joinedDevices.Keys.ToList().IndexOf(playerInput.devices[0]);
         int selectedCharacter = selectionIndex[playerIndex];
-        PlayJoinSound(selectedCharacter);
+        managerAudio.PlayPlayerConfirm();
 
         // Abilita animazione
         previewAnimators[playerIndex].enabled = true;
@@ -285,27 +285,6 @@ public class ManagerTry : MonoBehaviour
             uiPlayer4.targetPlayer = playerInput.transform;
             playerInput.gameObject.transform.position = spawnPointPlayer4.position;
             StartCoroutine(LoadingScreen());
-        }
-    }
-    #endregion
-
-    #region PlayJoinSound
-    private void PlayJoinSound(int characterIndex)
-    {
-        switch (characterIndex)
-        {
-            case 0:
-                managerAudio.PlayGoosewayJoin();
-                break;
-            case 1:
-                managerAudio.PlayWhallaJoin();
-                break;
-            case 2:
-                managerAudio.PlayRitaJoin();
-                break;
-            case 3:
-                managerAudio.PlayPinaJoin();
-                break;
         }
     }
     #endregion
