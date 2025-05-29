@@ -13,26 +13,37 @@ public class BubbleCounter : MonoBehaviour, IDamageable
     [Header("Settings")]
     [SerializeField] private int maxDamageCounter = 100;
     public int MaxDamageCounter { get => maxDamageCounter;}
-    [SerializeField]private int defense = 0;
+    [SerializeField] private int defense = 0;
     private int extraDefense = 0;
     PlayerController pl;
     private int damageCounter = 0;
     [HideInInspector] public AudioManager managerAudio;
-    [SerializeField] private GameObject incapsulateBubble; 
+    [SerializeField] private GameObject incapsulateBubble;
+
+    private SpriteRenderer spriteRenderer;
+    private Color originalColor;
+
     void Awake()
     {
         instance = this;
+        spriteRenderer = GetComponent<SpriteRenderer>();
+        if (spriteRenderer != null)
+            originalColor = spriteRenderer.color;
     }
+
     private void Start()
     {
         managerAudio = AudioManager.instance;
         pl = GetComponent<PlayerController>();
     }
 
-    public void TakeDamage(int amount,bool damageFromProjectile)
+    public void TakeDamage(int amount, bool damageFromProjectile)
     {
         managerAudio.PlayDannoSubito();
         damageCounter += amount - extraDefense - defense;
+
+        if (spriteRenderer != null)
+            StartCoroutine(FlashRed(0.2f));
 
         UpdateText();
 
@@ -43,9 +54,16 @@ public class BubbleCounter : MonoBehaviour, IDamageable
         }
     }
 
+    private IEnumerator FlashRed(float duration)
+    {
+        spriteRenderer.color = Color.red;
+        yield return new WaitForSeconds(duration);
+        spriteRenderer.color = originalColor;
+    }
+
     public void UpdateText()
     {
-        damageCounter = Mathf.Clamp(damageCounter,0,maxDamageCounter+5);
+        damageCounter = Mathf.Clamp(damageCounter, 0, maxDamageCounter + 5);
 
         if (pl.uiManager)
         {
@@ -53,9 +71,11 @@ public class BubbleCounter : MonoBehaviour, IDamageable
             pl.uiManager.UpdateText(maxDamageCounter);
         }
     }
-    public void Incapsulate() { 
+
+    public void Incapsulate()
+    {
         GameObject prefab = Instantiate(incapsulateBubble, transform.position, Quaternion.identity);
-        
+
         transform.SetParent(prefab.transform, true);
         pl.ChangeState(pl.bubbleState);
     }
@@ -64,15 +84,13 @@ public class BubbleCounter : MonoBehaviour, IDamageable
     {
         damageCounter -= amount;
         UpdateText();
-
     }
 
-    public void SetDefense( float duration, int defense,Sprite icon)
+    public void SetDefense(float duration, int defense, Sprite icon)
     {
         this.extraDefense = defense;
         pl.uiManager.SetupPowerUpImage(icon);
         StartCoroutine(DefensePowerUp(duration));
-
     }
 
     IEnumerator DefensePowerUp(float duration)
@@ -95,13 +113,14 @@ public class BubbleCounter : MonoBehaviour, IDamageable
 
             extraDefense = 0;
         }
-
     }
+
     public void SetPercentage(int amount)
     {
         damageCounter -= amount;
         UpdateText();
     }
+
     public void OverridePercentage(int amount)
     {
         damageCounter = amount;

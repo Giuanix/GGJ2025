@@ -157,10 +157,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   horizontalAmplitude: 2
-  horizontalSpeed: 20
-  verticalSpeed: 0.7
-  livingTime: 0.3
-  scale: 0.8
+  horizontalSpeed: 33
+  verticalSpeed: 0
+  livingTime: 0.2
+  scale: 1
   scaleIncreasing: 1
   floatingSpeed: {x: 0.2, y: 1}
   increasingScaleSpeed: {x: 2, y: 2.4}

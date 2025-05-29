@@ -156,15 +156,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac912bd111d09b443972e07bff699f5e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  horizontalAmplitude: 1
-  horizontalSpeed: 1.7
-  verticalSpeed: -0.7
-  livingTime: 1
-  scale: 1.3
+  horizontalAmplitude: 1.2
+  horizontalSpeed: 1.9
+  verticalSpeed: -0.9
+  livingTime: 0.8
+  scale: 1.5
   scaleIncreasing: 0
   floatingSpeed: {x: 2, y: 2}
   increasingScaleSpeed: {x: 1, y: 1}
-  damage: {x: 2, y: 4}
+  damage: {x: 3, y: 5}
   isProjectile: 1
   airFriction: 2
   minSpeedStartFloating: 7
@@ -351,15 +351,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac912bd111d09b443972e07bff699f5e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  horizontalAmplitude: 1
-  horizontalSpeed: 1.7
-  verticalSpeed: 0.7
-  livingTime: 1
-  scale: 1.3
+  horizontalAmplitude: 1.2
+  horizontalSpeed: 1.9
+  verticalSpeed: 0.9
+  livingTime: 0.8
+  scale: 1.5
   scaleIncreasing: 0
   floatingSpeed: {x: 2, y: 2}
   increasingScaleSpeed: {x: 1, y: 1}
-  damage: {x: 2, y: 4}
+  damage: {x: 3, y: 5}
   isProjectile: 1
   airFriction: 2
   minSpeedStartFloating: 7
@@ -546,15 +546,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac912bd111d09b443972e07bff699f5e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  horizontalAmplitude: 1
-  horizontalSpeed: -1.7
-  verticalSpeed: 0.7
-  livingTime: 1
-  scale: 1.3
+  horizontalAmplitude: 1.2
+  horizontalSpeed: -1.9
+  verticalSpeed: 0.9
+  livingTime: 0.8
+  scale: 1.5
   scaleIncreasing: 0
   floatingSpeed: {x: 2, y: 2}
   increasingScaleSpeed: {x: 1, y: 1}
-  damage: {x: 2, y: 4}
+  damage: {x: 3, y: 5}
   isProjectile: 1
   airFriction: 2
   minSpeedStartFloating: 7
@@ -741,15 +741,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac912bd111d09b443972e07bff699f5e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  horizontalAmplitude: 1
-  horizontalSpeed: -1.7
-  verticalSpeed: -0.7
-  livingTime: 1
-  scale: 1.3
+  horizontalAmplitude: 1.2
+  horizontalSpeed: -1.9
+  verticalSpeed: -0.9
+  livingTime: 0.8
+  scale: 1.5
   scaleIncreasing: 0
   floatingSpeed: {x: 2, y: 2}
   increasingScaleSpeed: {x: 1, y: 1}
-  damage: {x: 2, y: 4}
+  damage: {x: 3, y: 5}
   isProjectile: 1
   airFriction: 2
   minSpeedStartFloating: 7
@@ -936,15 +936,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac912bd111d09b443972e07bff699f5e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  horizontalAmplitude: 1
+  horizontalAmplitude: 1.2
   horizontalSpeed: 2.8
   verticalSpeed: 0
-  livingTime: 1
-  scale: 1.3
+  livingTime: 0.8
+  scale: 1.5
   scaleIncreasing: 0
   floatingSpeed: {x: 2, y: 2}
   increasingScaleSpeed: {x: 1, y: 1}
-  damage: {x: 2, y: 4}
+  damage: {x: 3, y: 5}
   isProjectile: 1
   airFriction: 2
   minSpeedStartFloating: 7
@@ -1131,15 +1131,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac912bd111d09b443972e07bff699f5e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  horizontalAmplitude: 1
-  horizontalSpeed: -2.8
+  horizontalAmplitude: 1.2
+  horizontalSpeed: -3
   verticalSpeed: 0
   livingTime: 1
-  scale: 1.3
+  scale: 1.5
   scaleIncreasing: 0
   floatingSpeed: {x: 2, y: 2}
   increasingScaleSpeed: {x: 1, y: 1}
-  damage: {x: 2, y: 4}
+  damage: {x: 3, y: 5}
   isProjectile: 1
   airFriction: 2
   minSpeedStartFloating: 7
@@ -1328,13 +1328,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   horizontalAmplitude: 0
   horizontalSpeed: 0
-  verticalSpeed: 1
-  livingTime: 1
-  scale: 1.3
+  verticalSpeed: 1.2
+  livingTime: 0.8
+  scale: 1.5
   scaleIncreasing: 0
   floatingSpeed: {x: 2, y: 2}
   increasingScaleSpeed: {x: 1, y: 1}
-  damage: {x: 2, y: 4}
+  damage: {x: 3, y: 5}
   isProjectile: 1
   airFriction: 2
   minSpeedStartFloating: 7
@@ -1523,13 +1523,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   horizontalAmplitude: 0
   horizontalSpeed: 0
-  verticalSpeed: -1
-  livingTime: 1
-  scale: 1.3
+  verticalSpeed: -1.2
+  livingTime: 0.8
+  scale: 1.5
   scaleIncreasing: 0
   floatingSpeed: {x: 2, y: 2}
   increasingScaleSpeed: {x: 1, y: 1}
-  damage: {x: 2, y: 4}
+  damage: {x: 3, y: 5}
   isProjectile: 1
   airFriction: 2
   minSpeedStartFloating: 7

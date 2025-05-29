@@ -964,10 +964,6 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3108644622123964831, guid: 6032b7463df51af4bafbcecf559984ee, type: 3}
-      propertyPath: slipperyEvent.toSlippery.Array.size
-      value: 12
-      objectReference: {fileID: 0}
-    - target: {fileID: 3108644622123964831, guid: 6032b7463df51af4bafbcecf559984ee, type: 3}
       propertyPath: slipperyEvent.toSlippery.Array.data[0]
       value: 
       objectReference: {fileID: 4455365270034979569}
@@ -1004,10 +1000,6 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1324730900}
     - target: {fileID: 3108644622123964831, guid: 6032b7463df51af4bafbcecf559984ee, type: 3}
-      propertyPath: slipperyEvent.toSlippery.Array.data[9]
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 3108644622123964831, guid: 6032b7463df51af4bafbcecf559984ee, type: 3}
       propertyPath: slipperyEvent.toSlippery.Array.data[10]
       value: 
       objectReference: {fileID: 5029374519456032514}
@@ -1018,10 +1010,6 @@ PrefabInstance:
     - target: {fileID: 4834433727937332805, guid: 6032b7463df51af4bafbcecf559984ee, type: 3}
       propertyPath: m_Name
       value: RandomEvent
-      objectReference: {fileID: 0}
-    - target: {fileID: 4834433727937332805, guid: 6032b7463df51af4bafbcecf559984ee, type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

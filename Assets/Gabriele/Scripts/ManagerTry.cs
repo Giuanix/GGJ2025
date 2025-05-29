@@ -112,6 +112,7 @@ public class ManagerTry : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Return))
         {
             TryJoinDevice(Keyboard.current);
+            managerAudio.PlayDeviceJoin();
         }
 
         if (Input.GetKeyDown(KeyCode.Escape))
@@ -119,6 +120,7 @@ public class ManagerTry : MonoBehaviour
             if (!loading)
             {
                 back.sprite = backClicked;
+                managerAudio.PlayBottonPressed();
                 Invoke("SchermataPrecedente", 0.2f);
             }
         }
@@ -128,6 +130,7 @@ public class ManagerTry : MonoBehaviour
             if (gamepad.startButton.wasPressedThisFrame)
             {
                 TryJoinDevice(gamepad);
+                managerAudio.PlayDeviceJoin();
             }
 
             if (gamepad.buttonEast.wasPressedThisFrame)
@@ -135,6 +138,7 @@ public class ManagerTry : MonoBehaviour
                 if (!loading)
                 {
                     back.sprite = backClicked;
+                    managerAudio.PlayBottonPressed();
                     Invoke("SchermataPrecedente", 0.2f);
                 }
             }
@@ -170,7 +174,6 @@ public class ManagerTry : MonoBehaviour
             SwitchIcon(playerIndex);
 
             Debug.Log($"Player {playerIndex + 1} joined with {inputDevice.displayName}");
-            managerAudio.PlayDeviceJoin();
         }
     }
     #endregion

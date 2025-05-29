@@ -74,8 +74,8 @@ MonoBehaviour:
     - {fileID: 4747875170398013927, guid: d500316205314a14eb00156efef2da2d, type: 3}
     spawnCount: 20
     spawnDuration: 20
-    SpawnRange: {x: -9, y: 9}
-    spawnHeight: -6
+    SpawnRange: {x: -18, y: 18}
+    spawnHeight: -10
   slipperyEvent:
     newWaveHeight: 150
     newWaveSpeed: 2
@@ -93,6 +93,8 @@ MonoBehaviour:
     - {fileID: 0}
     - {fileID: 0}
     - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
     firstWaveDuration: 1
-  countdownTime: 35.7
+  countdownTime: 40
   defaultSpawnTimer: 4

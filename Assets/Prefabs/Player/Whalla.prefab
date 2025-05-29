@@ -466,7 +466,7 @@ MonoBehaviour:
   grenadePrefab: {fileID: 8945811867683996988, guid: ee5e236eeb41a054781364b658032575, type: 3}
   spawnPoint: {fileID: 2024064165126389897}
   force: 22
-  upwardModifier: 2.8
+  upwardModifier: 1.6
   whallaTransform: {fileID: 6995958410870831485}
 --- !u!1 &7022139854241590268
 GameObject:
