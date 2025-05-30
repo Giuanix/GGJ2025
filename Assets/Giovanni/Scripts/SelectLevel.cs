@@ -5,6 +5,7 @@ using UnityEngine.InputSystem;
 using UnityEngine.UI;
 public class SelectLevel : MonoBehaviour
 {
+    public static SelectLevel instance;
     [Header("Game Menu screen")]
     [SerializeField] private GameObject[] screen;
 
@@ -29,6 +30,10 @@ public class SelectLevel : MonoBehaviour
     public Color waterColorPool = new Color(0.31f, 0.403f, 0.878f, 1f);
     public Color waterColorSewer = new Color(0.427f, 0.6f, 0.184f, 1f);
     // Start is called before the first frame update
+    void Awake()
+    {
+        instance = this;
+    }
     void Start()
     {
         Cursor.visible = false;

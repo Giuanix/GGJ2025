@@ -6,6 +6,7 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 public class SelectNumberPlayer : MonoBehaviour
 {
+    public static SelectNumberPlayer instance;
     [Header("Game Menu screen")]
     public GameObject[] screen;
 
@@ -30,6 +31,8 @@ public class SelectNumberPlayer : MonoBehaviour
     // Start is called before the first frame update
     private void Awake()
     {
+        instance = this;
+        
         Cursor.visible = false;
         FindObjectOfType<ManagerTry>().enabled = false;
         FindObjectOfType<SelectLevel>().enabled = false;

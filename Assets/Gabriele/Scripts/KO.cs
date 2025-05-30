@@ -41,13 +41,18 @@ public class KO : MonoBehaviour
 
     IEnumerator CoroutineKO(bool force)
     {
+        PlayerInputManager.instance.enabled = false;
+        ManagerTry.instance.enabled = false;
+        SelectLevel.instance.enabled = false;
+        SelectNumberPlayer.instance.enabled = false;
+
         PlayerController[] playerControllers = FindObjectsOfType<PlayerController>();
-        foreach (PlayerController pl in playerControllers){
-            if(force)
-                Destroy(p1.gameObject);
-   
+        foreach (PlayerController pl in playerControllers)
+        {
+            if (force) Destroy(p1.gameObject);
         }
-        if(force) GameTimer.instance.gameObject.SetActive(false);
+        
+        if (force) GameTimer.instance.gameObject.SetActive(false);
         
         yield return new WaitForSeconds(0.5f);
         
@@ -71,7 +76,7 @@ public class KO : MonoBehaviour
 
             p1.sprite = playerControllers[0].GetComponent<SpriteRenderer>().sprite;
         }
-        yield return new WaitForSeconds(8);
+        yield return new WaitForSeconds(7f);
         SceneManager.LoadScene(0);
         yield return null;
     }

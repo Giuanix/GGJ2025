@@ -140,6 +140,11 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  previewSprites:
+  - {fileID: -1957073732, guid: 1ed235b626773cc488c59f176281e8da, type: 3}
+  - {fileID: -2033291302, guid: 330098ee0f871e4459c1ac94a4b66b50, type: 3}
+  - {fileID: 1468682603, guid: 2bae8005a41c89f479d80055e21ee9ec, type: 3}
+  - {fileID: -1770935704, guid: 19eddb86dc9e41b488c871180839f75a, type: 3}
   animationsName:
   - Duck
   - Whale
