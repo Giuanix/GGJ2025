@@ -89,25 +89,26 @@ public class SelectLevel : MonoBehaviour
                 Invoke("SchermataPrecedente",waitFrame);
             }
             //Scorri nella schermata orizzontale
-            if(gamepad.dpad.right.wasPressedThisFrame)
+            if(gamepad.dpad.right.wasPressedThisFrame || gamepad.leftStick.right.wasPressedThisFrame)
             {
                 pointer.anchoredPosition = new Vector2(pointer.anchoredPosition.x+200, pointer.anchoredPosition.y);
             }
-            if(gamepad.dpad.left.wasPressedThisFrame)
+            if(gamepad.dpad.left.wasPressedThisFrame || gamepad.leftStick.left.wasPressedThisFrame)
             {
                 pointer.anchoredPosition = new Vector2(pointer.anchoredPosition.x-200, pointer.anchoredPosition.y);
             }
             //Scorri la Schermata in verticale
-            if(gamepad.dpad.up.wasPressedThisFrame)
+            if(gamepad.dpad.up.wasPressedThisFrame || gamepad.leftStick.up.wasPressedThisFrame)
             {
                 pointer.anchoredPosition = new Vector2(pointer.anchoredPosition.x, pointer.anchoredPosition.y+140);
             }
-            if(gamepad.dpad.down.wasPressedThisFrame)
+            if(gamepad.dpad.down.wasPressedThisFrame || gamepad.leftStick.down.wasPressedThisFrame)
             {
                 pointer.anchoredPosition = new Vector2(pointer.anchoredPosition.x, pointer.anchoredPosition.y-140);
             }
+            
             //Conferma Scelta
-            if(gamepad.buttonSouth.wasPressedThisFrame)
+            if (gamepad.buttonSouth.wasPressedThisFrame)
             {
                 Press();
             }

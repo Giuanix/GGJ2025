@@ -164,7 +164,7 @@ MonoBehaviour:
   scaleIncreasing: 0
   floatingSpeed: {x: 2, y: 2}
   increasingScaleSpeed: {x: 1, y: 1}
-  damage: {x: 3, y: 5}
+  damage: {x: 3, y: 4}
   isProjectile: 1
   airFriction: 2
   minSpeedStartFloating: 7
@@ -359,7 +359,7 @@ MonoBehaviour:
   scaleIncreasing: 0
   floatingSpeed: {x: 2, y: 2}
   increasingScaleSpeed: {x: 1, y: 1}
-  damage: {x: 3, y: 5}
+  damage: {x: 3, y: 4}
   isProjectile: 1
   airFriction: 2
   minSpeedStartFloating: 7
@@ -554,7 +554,7 @@ MonoBehaviour:
   scaleIncreasing: 0
   floatingSpeed: {x: 2, y: 2}
   increasingScaleSpeed: {x: 1, y: 1}
-  damage: {x: 3, y: 5}
+  damage: {x: 3, y: 4}
   isProjectile: 1
   airFriction: 2
   minSpeedStartFloating: 7
@@ -749,7 +749,7 @@ MonoBehaviour:
   scaleIncreasing: 0
   floatingSpeed: {x: 2, y: 2}
   increasingScaleSpeed: {x: 1, y: 1}
-  damage: {x: 3, y: 5}
+  damage: {x: 3, y: 4}
   isProjectile: 1
   airFriction: 2
   minSpeedStartFloating: 7
@@ -944,7 +944,7 @@ MonoBehaviour:
   scaleIncreasing: 0
   floatingSpeed: {x: 2, y: 2}
   increasingScaleSpeed: {x: 1, y: 1}
-  damage: {x: 3, y: 5}
+  damage: {x: 3, y: 4}
   isProjectile: 1
   airFriction: 2
   minSpeedStartFloating: 7
@@ -1139,7 +1139,7 @@ MonoBehaviour:
   scaleIncreasing: 0
   floatingSpeed: {x: 2, y: 2}
   increasingScaleSpeed: {x: 1, y: 1}
-  damage: {x: 3, y: 5}
+  damage: {x: 3, y: 4}
   isProjectile: 1
   airFriction: 2
   minSpeedStartFloating: 7
@@ -1334,7 +1334,7 @@ MonoBehaviour:
   scaleIncreasing: 0
   floatingSpeed: {x: 2, y: 2}
   increasingScaleSpeed: {x: 1, y: 1}
-  damage: {x: 3, y: 5}
+  damage: {x: 3, y: 4}
   isProjectile: 1
   airFriction: 2
   minSpeedStartFloating: 7
@@ -1529,7 +1529,7 @@ MonoBehaviour:
   scaleIncreasing: 0
   floatingSpeed: {x: 2, y: 2}
   increasingScaleSpeed: {x: 1, y: 1}
-  damage: {x: 3, y: 5}
+  damage: {x: 3, y: 4}
   isProjectile: 1
   airFriction: 2
   minSpeedStartFloating: 7

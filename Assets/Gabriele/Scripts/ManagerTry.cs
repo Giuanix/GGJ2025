@@ -208,36 +208,82 @@ public class ManagerTry : MonoBehaviour
             if (lockedDevices.Contains(device.Key)) continue;
 
             int playerIndex = device.Value;
-            int iconCount = 4;
+            int columns = 2; // due colonne: sinistra e destra
+            int rows = 2;    // due righe: sopra e sotto
 
             if (device.Key is Keyboard keyboard)
             {
-                if (keyboard.aKey.wasPressedThisFrame)
+                if (keyboard.aKey.wasPressedThisFrame) // sinistra
                 {
-                    selectionIndex[playerIndex] = (selectionIndex[playerIndex] - 1 + iconCount) % iconCount;
+                    int current = selectionIndex[playerIndex];
+                    int row = current / columns;
+                    int col = (current % columns - 1 + columns) % columns;
+                    selectionIndex[playerIndex] = row * columns + col;
                     SwitchIcon(playerIndex);
                 }
-                else if (keyboard.dKey.wasPressedThisFrame)
+                else if (keyboard.dKey.wasPressedThisFrame) // destra
                 {
-                    selectionIndex[playerIndex] = (selectionIndex[playerIndex] + 1) % iconCount;
+                    int current = selectionIndex[playerIndex];
+                    int row = current / columns;
+                    int col = (current % columns + 1) % columns;
+                    selectionIndex[playerIndex] = row * columns + col;
+                    SwitchIcon(playerIndex);
+                }
+                else if (keyboard.wKey.wasPressedThisFrame) // su
+                {
+                    int current = selectionIndex[playerIndex];
+                    int row = (current / columns - 1 + rows) % rows;
+                    int col = current % columns;
+                    selectionIndex[playerIndex] = row * columns + col;
+                    SwitchIcon(playerIndex);
+                }
+                else if (keyboard.sKey.wasPressedThisFrame) // giù
+                {
+                    int current = selectionIndex[playerIndex];
+                    int row = (current / columns + 1) % rows;
+                    int col = current % columns;
+                    selectionIndex[playerIndex] = row * columns + col;
                     SwitchIcon(playerIndex);
                 }
             }
             else if (device.Key is Gamepad gamepad)
             {
-                if (gamepad.dpad.left.wasPressedThisFrame)
+                if (gamepad.dpad.left.wasPressedThisFrame || gamepad.leftStick.left.wasPressedThisFrame) // sinistra
                 {
-                    selectionIndex[playerIndex] = (selectionIndex[playerIndex] - 1 + iconCount) % iconCount;
+                    int current = selectionIndex[playerIndex];
+                    int row = current / columns;
+                    int col = (current % columns - 1 + columns) % columns;
+                    selectionIndex[playerIndex] = row * columns + col;
                     SwitchIcon(playerIndex);
                 }
-                else if (gamepad.dpad.right.wasPressedThisFrame)
+                else if (gamepad.dpad.right.wasPressedThisFrame || gamepad.leftStick.right.wasPressedThisFrame) // destra
                 {
-                    selectionIndex[playerIndex] = (selectionIndex[playerIndex] + 1) % iconCount;
+                    int current = selectionIndex[playerIndex];
+                    int row = current / columns;
+                    int col = (current % columns + 1) % columns;
+                    selectionIndex[playerIndex] = row * columns + col;
+                    SwitchIcon(playerIndex);
+                }
+                else if (gamepad.dpad.up.wasPressedThisFrame || gamepad.leftStick.up.wasPressedThisFrame) // su
+                {
+                    int current = selectionIndex[playerIndex];
+                    int row = (current / columns - 1 + rows) % rows;
+                    int col = current % columns;
+                    selectionIndex[playerIndex] = row * columns + col;
+                    SwitchIcon(playerIndex);
+                }
+                else if (gamepad.dpad.down.wasPressedThisFrame || gamepad.leftStick.down.wasPressedThisFrame) // giù
+                {
+                    int current = selectionIndex[playerIndex];
+                    int row = (current / columns + 1) % rows;
+                    int col = current % columns;
+                    selectionIndex[playerIndex] = row * columns + col;
                     SwitchIcon(playerIndex);
                 }
             }
         }
     }
+
     #endregion
 
     #region OnPlayerJoined

@@ -79,11 +79,11 @@ public class StartMenu : MonoBehaviour
                 creditScreen.SetActive(false);
             }
             //Scorri nella schermata
-            if(gamepad.dpad.down.wasPressedThisFrame)
+            if(gamepad.dpad.down.wasPressedThisFrame || gamepad.leftStick.down.wasPressedThisFrame)
             {
                 pointer.anchoredPosition = new Vector2(pointer.anchoredPosition.x, pointer.anchoredPosition.y-160);
             }
-            if(gamepad.dpad.up.wasPressedThisFrame)
+            if(gamepad.dpad.up.wasPressedThisFrame || gamepad.leftStick.up.wasPressedThisFrame)
             {
                 pointer.anchoredPosition = new Vector2(pointer.anchoredPosition.x, pointer.anchoredPosition.y+160);
             }
