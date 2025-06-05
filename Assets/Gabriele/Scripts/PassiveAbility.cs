@@ -207,31 +207,46 @@ public class PassiveAbility : MonoBehaviour
 
         Destroy(afterImage);
     }
+    #endregion
 
+    #region Collision Handling
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("Player") && player.inSprint && ability == Ability.Dash)
         {
-            collision.gameObject.GetComponent<Rigidbody2D>().AddForce(transform.up * 4f, ForceMode2D.Impulse);
-            if (collision.gameObject.GetComponent<PlayerController>().isFacingRight != player.isFacingRight)
-            {
-                collision.gameObject.GetComponent<PlayerController>().Flip(true);
-            }
-            //Stop sprint
+            var otherRb = collision.gameObject.GetComponent<Rigidbody2D>();
+            var otherPlayerMovement = collision.gameObject.GetComponent<PlayerController>();
+            var otherPassive = collision.gameObject.GetComponent<PassiveAbility>();
 
+            otherPlayerMovement.isStunned = true;
+
+            if (otherRb != null)
+            {
+                otherRb.AddForce(Vector2.up * 20f, ForceMode2D.Impulse);
+            }
+
+            if (otherPlayerMovement != null && otherPlayerMovement.isFacingRight != player.isFacingRight)
+            {
+                otherPlayerMovement.Flip(true);
+            }
+
+            // Stop sprint
             if (sprintCoroutine != null)
             {
                 StopCoroutine(sprintCoroutine);
             }
+
             player.ResetSpeed();
             player.StopMovement();
             player.inSprint = false;
             canAbility = true;
 
-            collision.gameObject.GetComponent<PassiveAbility>().StartSprint(false);
+            if (otherPassive != null)
+            {
+                otherPassive.StartSprint(false);
+            }
         }
     }
-        
     #endregion
 
     /// <summary>
